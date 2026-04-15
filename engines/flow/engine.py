@@ -29,21 +29,22 @@ class FlowEngine(FeatureAccessMixin):
 
         # 1. EXCHANGE NETFLOW — SECONDARY (paid tier often missing)
         netflow_z, ok = self._feat(features, 'exchange_netflow_btc_zscore')
-        val = -netflow_z * 25 if ok else 0
+        val = -netflow_z * 40 if ok else 0
         sigs.append(SubSignal("exchange_flow", val, float(np.clip(val, -100, 100)),
-                              SignalGrade.SECONDARY, 0.20, ok))
+                              SignalGrade.SECONDARY, 0.18, ok))
 
         # 2. ETF NET FLOW — DECISION (institutional, verifiable)
+        # v9 FIX: multipliers raised (was 20/15 → now 35/25)
         etf_7d_z, ok7 = self._feat(features, 'etf_net_flow_7d_zscore')
         etf_daily_z, okd = self._feat(features, 'etf_net_flow_daily_zscore')
         val = 0.0
         is_real = ok7 or okd
         if ok7:
-            val = etf_7d_z * 20
+            val = etf_7d_z * 35
         if okd and abs(etf_daily_z) > 1.5:
-            val += np.sign(etf_daily_z) * 15
+            val += np.sign(etf_daily_z) * 25
         sigs.append(SubSignal("etf_flow", val, float(np.clip(val, -100, 100)),
-                              SignalGrade.DECISION, 0.30, is_real))
+                              SignalGrade.DECISION, 0.28, is_real))
 
         # 3. FEAR & GREED — CONTEXT (daily, contrarian folk heuristic)
         # Phase 3: demoted from decision to context-only.
@@ -67,20 +68,21 @@ class FlowEngine(FeatureAccessMixin):
 
         # 4. STABLECOIN POWER — SECONDARY
         stable_z, ok = self._feat(features, 'stablecoin_exchange_ratio_zscore')
-        val = stable_z * 15 if ok else 0
+        val = stable_z * 25 if ok else 0
         sigs.append(SubSignal("stablecoin_power", val, float(np.clip(val, -100, 100)),
-                              SignalGrade.SECONDARY, 0.15, ok))
+                              SignalGrade.SECONDARY, 0.14, ok))
 
-        # 5. MARKET SENTIMENT — SECONDARY
+        # 5. MARKET SENTIMENT — DECISION (v9 FIX: promoted from SECONDARY)
+        # Total crypto mcap change is verifiable on-chain data, not opinion.
         mcap_change, ok = self._feat(features, 'total_mcap_change_24h')
         val = 0
         if ok:
-            if mcap_change > 3: val = 40
-            elif mcap_change > 1: val = 20
-            elif mcap_change < -3: val = -40
-            elif mcap_change < -1: val = -20
+            if mcap_change > 3: val = 60
+            elif mcap_change > 1: val = 30
+            elif mcap_change < -3: val = -60
+            elif mcap_change < -1: val = -30
         sigs.append(SubSignal("market_sentiment", val, float(np.clip(val, -100, 100)),
-                              SignalGrade.SECONDARY, 0.20, ok))
+                              SignalGrade.DECISION, 0.22, ok))
 
         self._log_missing("FlowEngine")
 

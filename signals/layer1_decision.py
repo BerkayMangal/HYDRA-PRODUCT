@@ -159,8 +159,8 @@ class DecisionExplanation:
 _CONFIDENCE_WEIGHT = {
     ConfidenceLevel.HIGH:   1.0,
     ConfidenceLevel.MEDIUM: 0.7,
-    ConfidenceLevel.LOW:    0.3,
-    ConfidenceLevel.NONE:   0.0,   # Suppressed engines contribute nothing
+    ConfidenceLevel.LOW:    0.5,    # v9 FIX: was 0.3 — killed low-data engines
+    ConfidenceLevel.NONE:   0.0,    # Suppressed engines contribute nothing
 }
 
 # Base engine weights (priors — multiply by confidence weight)
@@ -170,9 +170,10 @@ _BASE_WEIGHTS = {
     "macro":          0.25,
 }
 
-# Score thresholds
-_DIRECTIONAL_THRESHOLD = 25.0     # Below this: NEUTRAL
-_STRONG_SIGNAL_THRESHOLD = 40.0   # Above this with med+ confidence: BULLISH/BEARISH
+# Score thresholds — v9 FIX: recalibrated to match actual scoring algebra.
+# Previously 25/40 which was unreachable: typical strong-signal composite ≈ 15-25.
+_DIRECTIONAL_THRESHOLD = 12.0     # Below this: NEUTRAL
+_STRONG_SIGNAL_THRESHOLD = 22.0   # Above this with med+ confidence: BULLISH/BEARISH
 
 # Conflict threshold
 _HIGH_CONFLICT_THRESHOLD = 0.60   # Above this: suppress to NO_SIGNAL

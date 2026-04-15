@@ -216,7 +216,8 @@ def build_engine_output(
         s.weighted_contribution for s in signals
         if s.grade in (SignalGrade.DECISION, SignalGrade.SECONDARY)
     )
-    # Secondary signals capped at 30% of total score magnitude
+    # v9 FIX: Secondary cap raised 30%→60%. At 30% the Flow engine (1 DECISION
+    # signal) was capped so hard it could never produce a meaningful score.
     decision_only = sum(
         s.weighted_contribution for s in signals
         if s.grade == SignalGrade.DECISION
@@ -226,13 +227,13 @@ def build_engine_output(
         if s.grade == SignalGrade.SECONDARY
     )
     if abs(decision_only) > 0:
-        secondary_cap = abs(decision_only) * 0.30
+        secondary_cap = abs(decision_only) * 0.60
         if abs(secondary_only) > secondary_cap:
             secondary_only = np.sign(secondary_only) * secondary_cap
     raw_score = decision_only + secondary_only
 
     # Agreement boost: ≥3 strong signals same direction
-    strong = [s for s in signals if s.is_active and abs(s.capped_value) > 40
+    strong = [s for s in signals if s.is_active and abs(s.capped_value) > 25
               and s.grade == SignalGrade.DECISION]
     if len(strong) >= 3:
         signs = {np.sign(s.capped_value) for s in strong}

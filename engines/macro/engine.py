@@ -38,13 +38,14 @@ class MacroEngine(FeatureAccessMixin):
         sigs = []
 
         # 1. DXY REGIME — SECONDARY (yfinance, 15min delay)
+        # v9 FIX: multipliers raised (was 20/25 → now 35/40)
         dxy_trend, t_ok = self._feat(features, "dxy_vs_sma20")
         dxy_change, c_ok = self._feat(features, "dxy_change_24h")
         val = 0.0
         if t_ok and abs(dxy_trend) > 0.3:
-            val += -np.sign(dxy_trend) * min(abs(dxy_trend) * 20, 60)
+            val += -np.sign(dxy_trend) * min(abs(dxy_trend) * 35, 80)
         if c_ok and abs(dxy_change) > 0.3:
-            val += -np.sign(dxy_change) * min(abs(dxy_change) * 25, 40)
+            val += -np.sign(dxy_change) * min(abs(dxy_change) * 40, 60)
         sigs.append(SubSignal("dxy_regime", val, float(np.clip(val, -100, 100)),
                               SignalGrade.SECONDARY, 0.18, t_ok or c_ok))
 
@@ -52,20 +53,21 @@ class MacroEngine(FeatureAccessMixin):
         us10y_change, ok = self._feat(features, "us10y_change_24h")
         val = 0.0
         if ok:
-            if us10y_change > 0.20: val = -40
-            elif us10y_change > 0.10: val = -20
-            elif us10y_change < -0.20: val = 40
-            elif us10y_change < -0.10: val = 20
+            if us10y_change > 0.20: val = -60
+            elif us10y_change > 0.10: val = -30
+            elif us10y_change < -0.20: val = 60
+            elif us10y_change < -0.10: val = 30
         sigs.append(SubSignal("rates_regime", val, float(np.clip(val, -100, 100)),
                               SignalGrade.DECISION, 0.15, ok))
 
         # 3. SPX CORRELATION — SECONDARY
+        # v9 FIX: multiplier raised (12 → 20)
         corr, corr_ok = self._feat(features, "btc_spx_correlation")
         spx_trend, trend_ok = self._feat(features, "spx_vs_sma20")
         val = 0.0
         is_real = corr_ok and trend_ok
         if is_real and abs(corr) > 0.4:
-            val = np.sign(corr) * spx_trend * 12 * min(abs(corr), 1.0)
+            val = np.sign(corr) * spx_trend * 20 * min(abs(corr), 1.0)
         sigs.append(SubSignal("spx_correlation", val, float(np.clip(val, -100, 100)),
                               SignalGrade.SECONDARY, 0.12, is_real))
 
@@ -76,19 +78,20 @@ class MacroEngine(FeatureAccessMixin):
                               note="context-only: does not affect score"))
 
         # 5. VOLATILITY REGIME — DECISION (VIX is real-time, traded)
+        # v9 FIX: multipliers raised ~1.5x
         vix_val, vix_ok = self._feat(features, "vix_current", neutral=20.0)
         vix_change, vc_ok = self._feat(features, "vix_change_24h")
         regime = "normal"
         val = 0.0
         if vix_ok and vix_val > 0:
-            if vix_val > _VIX_CRISIS: regime = "crisis"; val = -30
-            elif vix_val > _VIX_ELEVATED: regime = "high_vol"; val = -10
-            elif vix_val < _VIX_LOW: regime = "low_vol"; val = +10
+            if vix_val > _VIX_CRISIS: regime = "crisis"; val = -50
+            elif vix_val > _VIX_ELEVATED: regime = "high_vol"; val = -20
+            elif vix_val < _VIX_LOW: regime = "low_vol"; val = +20
         if vc_ok:
-            if vix_change > 15: val -= 25
-            elif vix_change > 5: val -= 10
-            elif vix_change < -10: val += 15
-            elif vix_change < -5: val += 7
+            if vix_change > 15: val -= 40
+            elif vix_change > 5: val -= 15
+            elif vix_change < -10: val += 25
+            elif vix_change < -5: val += 12
         sigs.append(SubSignal("volatility_regime", val, float(np.clip(val, -100, 100)),
                               SignalGrade.DECISION, 0.25, vix_ok))
 
@@ -99,12 +102,13 @@ class MacroEngine(FeatureAccessMixin):
                               note="context-only: events handled by blackout, not by score"))
 
         # 7. BTC DOMINANCE — SECONDARY (slow, context-adjacent)
+        # v9 FIX: values raised
         btc_dom, ok = self._feat(features, "btc_dominance")
         val = 0.0
         if ok and btc_dom > 0:
-            if btc_dom > _BTC_DOM_HIGH: val = 15
-            elif btc_dom > _BTC_DOM_MID: val = 5
-            elif btc_dom < _BTC_DOM_ALT: val = -10
+            if btc_dom > _BTC_DOM_HIGH: val = 25
+            elif btc_dom > _BTC_DOM_MID: val = 10
+            elif btc_dom < _BTC_DOM_ALT: val = -20
         sigs.append(SubSignal("btc_dominance", val, float(np.clip(val, -100, 100)),
                               SignalGrade.SECONDARY, 0.10, ok))
 
