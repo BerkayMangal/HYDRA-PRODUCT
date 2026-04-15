@@ -1,0 +1,171 @@
+# HYDRA Trading Bot v7 — Configuration Template
+# Copy to config.yaml and fill in your keys.
+# All values can be overridden by environment variables (see README.md).
+
+# ============================================================
+# API KEYS
+# ============================================================
+api_keys:
+  okx:
+    api_key: ""
+    secret_key: ""
+    passphrase: ""
+
+  coinglass:
+    api_key: ""           # Plan: Startup ($79/mo) — 80 req/min. Free tier for testing.
+
+  cryptoquant:
+    api_key: ""           # Plan: Advanced ($39/mo) — 24H resolution API.
+
+  polymarket:
+    api_key: ""           # Public market data needs no auth.
+
+  kalshi:
+    api_key: ""           # Public market data needs no auth.
+
+  fred:
+    api_key: ""           # Free with registration. Used for FOMC calendar + macro fallback.
+
+  perplexity:
+    api_key: ""           # Perplexity AI (sonar model). Used by Pulse Engine quad-AI.
+
+  telegram:
+    bot_token: ""
+    chat_id: ""
+
+# ============================================================
+# TRADING TARGETS
+# ============================================================
+targets:
+  primary:
+    symbol: "BTC-USDT-SWAP"
+    exchange: "okx"
+    bar_interval: "5m"
+
+# ============================================================
+# COLLECTOR SETTINGS
+# ============================================================
+collectors:
+  microstructure:
+    polling_interval_sec: 300      # 5 min
+    source: "coinglass"
+  flow:
+    polling_interval_sec: 14400    # 4 hours
+    source: "cryptoquant"
+  macro:
+    polling_interval_sec: 3600     # 1 hour
+
+# ============================================================
+# NORMALIZATION
+# ============================================================
+normalization:
+  microstructure:
+    window_hours: 24
+    method: "zscore"
+  flow:
+    window_days: 7
+    method: "zscore"
+  macro:
+    window_days: 30
+    method: "zscore"
+
+# ============================================================
+# SESSION DEFINITIONS (UTC)
+# ============================================================
+sessions:
+  tokyo:
+    start_utc: 0
+    end_utc: 8
+  london:
+    start_utc: 8
+    end_utc: 14
+  new_york:
+    start_utc: 14
+    end_utc: 21
+  off_hours:
+    start_utc: 21
+    end_utc: 24
+
+# ============================================================
+# LAYER 1 — DETERMINISTIC SIGNAL GENERATION
+# ============================================================
+layer1:
+  signal_threshold: 35           # Minimum |score| to emit directional signal
+
+  confidence_levels:
+    low: 35
+    medium: 50
+    high: 70
+    extreme: 85
+
+  engine_weights:
+    microstructure: 0.45
+    flow: 0.30
+    macro: 0.25
+
+  event_dampening:
+    fomc_hours_before: 24
+    fomc_dampen_factor: 0.5
+    cpi_hours_before: 6
+    cpi_dampen_factor: 0.5
+    post_release_boost_hours: 2
+
+# ============================================================
+# ML SETTINGS (Step 1–3 refactor)
+# ============================================================
+ml:
+  # Master switch. Set true to enable paper-trade ML engine.
+  # Requires: pip install xgboost scikit-learn
+  # ML does NOT participate in live trading decisions — paper-trade only.
+  enabled: false
+
+  # How often to retrain the model (hours).
+  # Training runs in a background daemon thread — never blocks the main loop.
+  retrain_interval_hours: 24
+
+  # Minimum labelled rows required before training is attempted.
+  # Lower values lead to noisy models. 500 is a reasonable floor.
+  min_samples_for_train: 500
+
+  # Forward return target: how many 1H bars ahead to predict.
+  # 24 = next-day BTC/USDC market timing.
+  forward_return_hours: 24
+
+  # Days of 1H OHLCV history to fetch for training.
+  train_days: 90
+
+  # Entry/exit probability thresholds.
+  # NOTE: These are config defaults only. After training, thresholds are
+  # derived from validation-set Sharpe optimisation and override these values.
+  # To use config values: disable ML, study walk-forward results first.
+  in_threshold: 0.52
+  out_threshold: 0.47
+
+  # Minimum 1H bars to hold a position before switching (reduces churn).
+  min_hold_hours: 48
+
+  # Hard stop-loss from entry price (fraction, e.g. 0.08 = 8%).
+  stop_loss_pct: 0.08
+
+  # Round-trip fee assumption used in threshold optimisation.
+  fee_pct: 0.001
+
+# ============================================================
+# BACKTEST (walk-forward research — offline use only)
+# Run: python -m ml.research.run
+# ============================================================
+backtest:
+  walk_forward:
+    train_days: 90          # Training window per fold
+    test_days: 30           # Out-of-sample test window per fold
+    step_days: 7            # Fold advancement stride
+    min_train_samples: 300  # Minimum rows before fold is skipped
+
+# ============================================================
+# DEPLOYMENT
+# ============================================================
+deployment:
+  platform: "railway"
+  log_level: "INFO"
+  data_persist_path: "./data"
+  heartbeat_interval_sec: 60
