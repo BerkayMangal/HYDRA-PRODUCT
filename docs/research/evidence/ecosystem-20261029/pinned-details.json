@@ -1,0 +1,47 @@
+[
+  {
+    "repo": "0xArchiveIO/examples",
+    "commit": "d82cb504847b21a99683c24774844f0ebc1869e9",
+    "path": "liquidation-heatmap/liquidation_heatmap.ipynb",
+    "url": "https://github.com/0xArchiveIO/examples/blob/d82cb504847b21a99683c24774844f0ebc1869e9/liquidation-heatmap/liquidation_heatmap.ipynb",
+    "status": 200,
+    "sha256": "b1edb9e4aed9df57885b542a5c477dae479075960b9fb65303f2d292e9153218",
+    "matches_downloaded": true
+  },
+  {
+    "repo": "0xArchiveIO/examples",
+    "commit": "d82cb504847b21a99683c24774844f0ebc1869e9",
+    "path": "funding-rate-scanner/funding_rate_scanner.ipynb",
+    "url": "https://github.com/0xArchiveIO/examples/blob/d82cb504847b21a99683c24774844f0ebc1869e9/funding-rate-scanner/funding_rate_scanner.ipynb",
+    "status": 200,
+    "sha256": "83cf54944341d9801eb2c6094a473e7ad75f5a575fd6dc575b982816f018e047",
+    "matches_downloaded": true
+  },
+  {
+    "repo": "bitquery/hyperliquid-api",
+    "commit": "44585d346f428f5d0d056c01992b24bd6404df83",
+    "path": "queries/08-liquidations.graphql",
+    "url": "https://github.com/bitquery/hyperliquid-api/blob/44585d346f428f5d0d056c01992b24bd6404df83/queries/08-liquidations.graphql",
+    "status": 200,
+    "sha256": "4f59dc2d678077d5d95595b7e8e84c61d706fb61f4e258d9cf0d024d456dd3f2",
+    "matches_downloaded": true
+  },
+  {
+    "repo": "bitquery/hyperliquid-api",
+    "commit": "44585d346f428f5d0d056c01992b24bd6404df83",
+    "path": "queries/16-twap-orders.graphql",
+    "url": "https://github.com/bitquery/hyperliquid-api/blob/44585d346f428f5d0d056c01992b24bd6404df83/queries/16-twap-orders.graphql",
+    "status": 200,
+    "sha256": "7fe1e6f4f792a0df2ae71af4a08733e867ef96f83c786be69dbb434cae0ad7f3",
+    "matches_downloaded": true
+  },
+  {
+    "repo": "bitquery/hyperliquid-api",
+    "commit": "44585d346f428f5d0d056c01992b24bd6404df83",
+    "path": "queries/06-order-book-l3-stream.graphql",
+    "url": "https://github.com/bitquery/hyperliquid-api/blob/44585d346f428f5d0d056c01992b24bd6404df83/queries/06-order-book-l3-stream.graphql",
+    "status": 200,
+    "sha256": "6be7069e44dfa8777f8cdcc81d76caef8475039f1ce100433d5e18f7165c59d8",
+    "matches_downloaded": true
+  }
+]

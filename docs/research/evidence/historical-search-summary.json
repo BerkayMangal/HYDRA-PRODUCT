@@ -1,0 +1,635 @@
+{
+  "completed_at": "2026-10-27T19:56:17.759489+00:00",
+  "declared_variants": 13368,
+  "distinct_discovery_paths": 10941,
+  "shortlisted_before_validation": 18,
+  "selected_before_test": 4,
+  "promotion_eligible_count": 0,
+  "evaluations": [
+    {
+      "spec": {
+        "family": "breakout",
+        "window": 72,
+        "exit_window": 6,
+        "trend_filter": 200,
+        "atr_buffer": 0.5,
+        "hours": 4,
+        "vol_target": 0.6,
+        "id": "049b23e779f5ae78"
+      },
+      "discovery": {
+        "net_return": 2.3346017339681544,
+        "sharpe": 1.6231748981577516,
+        "max_dd": -0.1563834691007866,
+        "exposure": 0.13201939880629832,
+        "entries": 41
+      },
+      "validation": {
+        "net_return": 0.16352363398604158,
+        "cagr": 0.1630422604648407,
+        "max_dd": -0.24784772034121838,
+        "sharpe": 0.7122697873860374,
+        "exposure": 0.1807469085034571,
+        "entries": 18,
+        "turnover": 36.44960195122009,
+        "hours": 8784
+      },
+      "test_2025": {
+        "net_return": 0.05924994752816046,
+        "cagr": 0.05924994752816046,
+        "max_dd": -0.08373609762262102,
+        "sharpe": 0.4737843839064034,
+        "exposure": 0.1324200913242009,
+        "entries": 11,
+        "turnover": 22.0,
+        "hours": 8760,
+        "excess_statistics": {
+          "mean_daily_excess": 0.00017771999867864633,
+          "ci95": [
+            -0.000442945929603542,
+            0.0008182818068961375
+          ],
+          "p_one_sided_block_bootstrap": 0.30884557721139433,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha",
+          "p_holm_selected_families": 1.0
+        },
+        "cost_stress": {
+          "net_return": 0.0361620965575728,
+          "cagr": 0.0361620965575728,
+          "max_dd": -0.08740004945884194,
+          "sharpe": 0.31771582496212186,
+          "exposure": 0.1324200913242009,
+          "entries": 11,
+          "turnover": 22.0,
+          "hours": 8760
+        },
+        "extra_hour_latency": {
+          "net_return": 0.03555098713611941,
+          "cagr": 0.03555098713611941,
+          "max_dd": -0.10185192484683159,
+          "sharpe": 0.3106124415131148,
+          "exposure": 0.1324200913242009,
+          "entries": 11,
+          "turnover": 22.0,
+          "hours": 8760
+        },
+        "buy_hold": {
+          "net_return": -0.06578412053350384,
+          "cagr": -0.06578412053350384,
+          "max_dd": -0.3475483466516428,
+          "sharpe": 0.044746993537879184,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 8760
+        },
+        "quarterly_returns": {
+          "2025-01-01 00:00:00+00:00": -0.07027300360961614,
+          "2025-04-01 00:00:00+00:00": 0.10333935875346992,
+          "2025-07-01 00:00:00+00:00": -0.0025724713916495724,
+          "2025-10-01 00:00:00+00:00": 0.03526742320971513
+        }
+      },
+      "diagnostic_2026": {
+        "net_return": -0.06876730011414393,
+        "cagr": -0.08310938155311992,
+        "max_dd": -0.16556769400357196,
+        "sharpe": -0.5742807605137673,
+        "exposure": 0.09471322922803657,
+        "entries": 11,
+        "turnover": 21.823192188697593,
+        "hours": 7193,
+        "excess_statistics": {
+          "mean_daily_excess": -0.00021236190386438218,
+          "ci95": [
+            -0.0009589146073813589,
+            0.0006235698642897476
+          ],
+          "p_one_sided_block_bootstrap": 0.6846576711644178,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha"
+        },
+        "cost_stress": {
+          "net_return": -0.08890309566719488,
+          "cagr": -0.10719690938416825,
+          "max_dd": -0.18033271881875523,
+          "sharpe": -0.7589160573364391,
+          "exposure": 0.09471322922803657,
+          "entries": 11,
+          "turnover": 21.823192188697593,
+          "hours": 7193
+        },
+        "extra_hour_latency": {
+          "net_return": -0.03459751266508657,
+          "cagr": -0.04197436362763913,
+          "max_dd": -0.1407238915047675,
+          "sharpe": -0.25994929643812703,
+          "exposure": 0.09471322922803657,
+          "entries": 11,
+          "turnover": 21.823192188697593,
+          "hours": 7193
+        },
+        "buy_hold": {
+          "net_return": -0.08196986113638183,
+          "cagr": -0.09891595912481327,
+          "max_dd": -0.4030353423540931,
+          "sharpe": -0.011565550510415856,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 7193
+        },
+        "quarterly_returns": {
+          "2026-01-01 00:00:00+00:00": -0.05357683809036678,
+          "2026-04-01 00:00:00+00:00": -0.08637868801194676,
+          "2026-07-01 00:00:00+00:00": 0.07697751338853759,
+          "2026-10-01 00:00:00+00:00": 0.0
+        }
+      },
+      "promotion_eligible": false,
+      "rejection_reasons": [
+        "test_2025: fewer than 20 entries",
+        "test_2025: positive excess not established",
+        "diagnostic_2026: fewer than 20 entries",
+        "diagnostic_2026: nonpositive net return",
+        "diagnostic_2026: fails cost stress",
+        "diagnostic_2026: fails delay stress",
+        "diagnostic_2026: positive excess not established",
+        "historical test: fails Holm multiple-family significance"
+      ]
+    },
+    {
+      "spec": {
+        "family": "dual_ema",
+        "fast": 4,
+        "slow": 200,
+        "buffer": 0,
+        "hours": 4,
+        "vol_target": 0,
+        "id": "806ef45dc42abb7a"
+      },
+      "discovery": {
+        "net_return": 7.108237299796901,
+        "sharpe": 1.551625989662496,
+        "max_dd": -0.3789868957668906,
+        "exposure": 0.5343773873185638,
+        "entries": 54
+      },
+      "validation": {
+        "net_return": 0.7425706248674777,
+        "cagr": 0.739928486631559,
+        "max_dd": -0.28499129357801534,
+        "sharpe": 1.492406820964197,
+        "exposure": 0.6470856102003643,
+        "entries": 17,
+        "turnover": 34.0,
+        "hours": 8784
+      },
+      "test_2025": {
+        "net_return": 0.06045775105301728,
+        "cagr": 0.06045775105301728,
+        "max_dd": -0.19357445031836307,
+        "sharpe": 0.3611990470911393,
+        "exposure": 0.46301369863013697,
+        "entries": 16,
+        "turnover": 32.0,
+        "hours": 8760,
+        "excess_statistics": {
+          "mean_daily_excess": 0.00021628275514224505,
+          "ci95": [
+            -0.0007361423054825205,
+            0.0011826774919813656
+          ],
+          "p_one_sided_block_bootstrap": 0.32733633183408295,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha",
+          "p_holm_selected_families": 1.0
+        },
+        "cost_stress": {
+          "net_return": 0.02700434345867972,
+          "cagr": 0.02700434345867972,
+          "max_dd": -0.20321000899323627,
+          "sharpe": 0.23076807452808756,
+          "exposure": 0.46301369863013697,
+          "entries": 16,
+          "turnover": 32.0,
+          "hours": 8760
+        },
+        "extra_hour_latency": {
+          "net_return": 0.08960255446410847,
+          "cagr": 0.08960255446410847,
+          "max_dd": -0.183054749834905,
+          "sharpe": 0.4716575106164723,
+          "exposure": 0.46301369863013697,
+          "entries": 16,
+          "turnover": 32.0,
+          "hours": 8760
+        },
+        "buy_hold": {
+          "net_return": -0.06578412053350384,
+          "cagr": -0.06578412053350384,
+          "max_dd": -0.3475483466516428,
+          "sharpe": 0.044746993537879184,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 8760
+        },
+        "quarterly_returns": {
+          "2025-01-01 00:00:00+00:00": -0.07650742911428089,
+          "2025-04-01 00:00:00+00:00": 0.15760235248150686,
+          "2025-07-01 00:00:00+00:00": 0.025584978950868403,
+          "2025-10-01 00:00:00+00:00": -0.03277188348067038
+        }
+      },
+      "diagnostic_2026": {
+        "net_return": 0.01553882486593355,
+        "cagr": 0.018955869861839305,
+        "max_dd": -0.21858903412028263,
+        "sharpe": 0.20157912971395314,
+        "exposure": 0.500486584179063,
+        "entries": 19,
+        "turnover": 38.0,
+        "hours": 7193,
+        "excess_statistics": {
+          "mean_daily_excess": 0.00015143588689231255,
+          "ci95": [
+            -0.0011614941706914164,
+            0.0015623448477226696
+          ],
+          "p_one_sided_block_bootstrap": 0.4002998500749625,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha"
+        },
+        "cost_stress": {
+          "net_return": -0.022390897574660413,
+          "cagr": -0.027201871061967687,
+          "max_dd": -0.2402012977392043,
+          "sharpe": 0.030603569950671903,
+          "exposure": 0.500486584179063,
+          "entries": 19,
+          "turnover": 38.0,
+          "hours": 7193
+        },
+        "extra_hour_latency": {
+          "net_return": 0.022239564002433026,
+          "cagr": 0.02714970245123029,
+          "max_dd": -0.21196272478412592,
+          "sharpe": 0.23142485826594886,
+          "exposure": 0.500486584179063,
+          "entries": 19,
+          "turnover": 38.0,
+          "hours": 7193
+        },
+        "buy_hold": {
+          "net_return": -0.08196986113638183,
+          "cagr": -0.09891595912481327,
+          "max_dd": -0.4030353423540931,
+          "sharpe": -0.011565550510415856,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 7193
+        },
+        "quarterly_returns": {
+          "2026-01-01 00:00:00+00:00": -0.08719344098651688,
+          "2026-04-01 00:00:00+00:00": 0.034703909607478226,
+          "2026-07-01 00:00:00+00:00": 0.16972664387561617,
+          "2026-10-01 00:00:00+00:00": -0.08078456745013068
+        }
+      },
+      "promotion_eligible": false,
+      "rejection_reasons": [
+        "test_2025: fewer than 20 entries",
+        "test_2025: positive excess not established",
+        "diagnostic_2026: fewer than 20 entries",
+        "diagnostic_2026: fails cost stress",
+        "diagnostic_2026: positive excess not established",
+        "historical test: fails Holm multiple-family significance"
+      ]
+    },
+    {
+      "spec": {
+        "family": "momentum",
+        "window": 168,
+        "threshold": 0.08,
+        "trend_filter": 100,
+        "hours": 1,
+        "vol_target": 0,
+        "id": "3fce6fc229f42f60"
+      },
+      "discovery": {
+        "net_return": 3.4790020058278,
+        "sharpe": 1.462535497541282,
+        "max_dd": -0.30393773012098546,
+        "exposure": 0.21352177234530176,
+        "entries": 118
+      },
+      "validation": {
+        "net_return": 0.19634148908320556,
+        "cagr": 0.19575566012160844,
+        "max_dd": -0.17655693481278956,
+        "sharpe": 0.7617787917815351,
+        "exposure": 0.25876593806921677,
+        "entries": 32,
+        "turnover": 64.0,
+        "hours": 8784
+      },
+      "test_2025": {
+        "net_return": -0.26581197187757594,
+        "cagr": -0.26581197187757594,
+        "max_dd": -0.2956562631394687,
+        "sharpe": -2.1898877435757305,
+        "exposure": 0.09817351598173515,
+        "entries": 28,
+        "turnover": 56.0,
+        "hours": 8760,
+        "excess_statistics": {
+          "mean_daily_excess": -0.000825738694989843,
+          "ci95": [
+            -0.0015455046839356606,
+            -0.0002073162450160481
+          ],
+          "p_one_sided_block_bootstrap": 0.9830084957521239,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha",
+          "p_holm_selected_families": 1.0
+        },
+        "cost_stress": {
+          "net_return": -0.3058626871232348,
+          "cagr": -0.3058626871232348,
+          "max_dd": -0.3300645592528414,
+          "sharpe": -2.4607555797886085,
+          "exposure": 0.09817351598173515,
+          "entries": 28,
+          "turnover": 56.0,
+          "hours": 8760
+        },
+        "extra_hour_latency": {
+          "net_return": -0.28311985671790896,
+          "cagr": -0.28311985671790896,
+          "max_dd": -0.28999515997971304,
+          "sharpe": -2.5843115371600227,
+          "exposure": 0.09817351598173515,
+          "entries": 28,
+          "turnover": 56.0,
+          "hours": 8760
+        },
+        "buy_hold": {
+          "net_return": -0.06578412053350384,
+          "cagr": -0.06578412053350384,
+          "max_dd": -0.3475483466516428,
+          "sharpe": 0.044746993537879184,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 8760
+        },
+        "quarterly_returns": {
+          "2025-01-01 00:00:00+00:00": -0.15684326580076757,
+          "2025-04-01 00:00:00+00:00": -0.10808978727011664,
+          "2025-07-01 00:00:00+00:00": -0.03592462777048125,
+          "2025-10-01 00:00:00+00:00": 0.012667471414382502
+        }
+      },
+      "diagnostic_2026": {
+        "net_return": 0.014846560414161651,
+        "cagr": 0.018110021199462277,
+        "max_dd": -0.07604779009370144,
+        "sharpe": 0.19506403114549348,
+        "exposure": 0.08869734464062283,
+        "entries": 13,
+        "turnover": 26.0,
+        "hours": 7193,
+        "excess_statistics": {
+          "mean_daily_excess": 7.732373571595267e-05,
+          "ci95": [
+            -0.0007036126777631501,
+            0.001074104948199489
+          ],
+          "p_one_sided_block_bootstrap": 0.37881059470264866,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha"
+        },
+        "cost_stress": {
+          "net_return": -0.011243166216004205,
+          "cagr": -0.013675679578799149,
+          "max_dd": -0.08800162278737267,
+          "sharpe": -0.02197365248363371,
+          "exposure": 0.08869734464062283,
+          "entries": 13,
+          "turnover": 26.0,
+          "hours": 7193
+        },
+        "extra_hour_latency": {
+          "net_return": 0.010892557945653473,
+          "cagr": 0.013281203911643358,
+          "max_dd": -0.08306013269805046,
+          "sharpe": 0.1618801858603374,
+          "exposure": 0.08869734464062283,
+          "entries": 13,
+          "turnover": 26.0,
+          "hours": 7193
+        },
+        "buy_hold": {
+          "net_return": -0.08196986113638183,
+          "cagr": -0.09891595912481327,
+          "max_dd": -0.4030353423540931,
+          "sharpe": -0.011565550510415856,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 7193
+        },
+        "quarterly_returns": {
+          "2026-01-01 00:00:00+00:00": -0.04935436243448427,
+          "2026-04-01 00:00:00+00:00": -0.00423607858141813,
+          "2026-07-01 00:00:00+00:00": 0.07207541713055894,
+          "2026-10-01 00:00:00+00:00": 0.0
+        }
+      },
+      "promotion_eligible": false,
+      "rejection_reasons": [
+        "test_2025: nonpositive net return",
+        "test_2025: fails cost stress",
+        "test_2025: fails delay stress",
+        "test_2025: positive excess not established",
+        "diagnostic_2026: fewer than 20 entries",
+        "diagnostic_2026: fails cost stress",
+        "diagnostic_2026: positive excess not established",
+        "historical test: fails Holm multiple-family significance"
+      ]
+    },
+    {
+      "spec": {
+        "family": "trend",
+        "slow": 200,
+        "slope": 0,
+        "buffer": 0.005,
+        "hours": 4,
+        "vol_target": 1.0,
+        "id": "26be2fce8b7b8d3e"
+      },
+      "discovery": {
+        "net_return": 7.9805732912898275,
+        "sharpe": 1.634230885683926,
+        "max_dd": -0.3438008197297552,
+        "exposure": 0.5283167883681994,
+        "entries": 58
+      },
+      "validation": {
+        "net_return": 0.6985015045539045,
+        "cagr": 0.6960448810640485,
+        "max_dd": -0.2697804005786104,
+        "sharpe": 1.4286256554055623,
+        "exposure": 0.6429872495446266,
+        "entries": 20,
+        "turnover": 40.0,
+        "hours": 8784
+      },
+      "test_2025": {
+        "net_return": -0.014279263295290055,
+        "cagr": -0.014279263295290055,
+        "max_dd": -0.26228781562260806,
+        "sharpe": 0.06787190000362558,
+        "exposure": 0.46621004566210045,
+        "entries": 18,
+        "turnover": 36.0,
+        "hours": 8760,
+        "excess_statistics": {
+          "mean_daily_excess": 1.980716109601263e-05,
+          "ci95": [
+            -0.0010009527896725084,
+            0.0010605719019861706
+          ],
+          "p_one_sided_block_bootstrap": 0.4847576211894053,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha",
+          "p_holm_selected_families": 1.0
+        },
+        "cost_stress": {
+          "net_return": -0.04919235242517987,
+          "cagr": -0.04919235242517987,
+          "max_dd": -0.2740170666213818,
+          "sharpe": -0.07325364495547701,
+          "exposure": 0.46621004566210045,
+          "entries": 18,
+          "turnover": 36.0,
+          "hours": 8760
+        },
+        "extra_hour_latency": {
+          "net_return": 0.01201566402929096,
+          "cagr": 0.01201566402929096,
+          "max_dd": -0.23381380405683605,
+          "sharpe": 0.17348635814927438,
+          "exposure": 0.46621004566210045,
+          "entries": 18,
+          "turnover": 36.0,
+          "hours": 8760
+        },
+        "buy_hold": {
+          "net_return": -0.06578412053350384,
+          "cagr": -0.06578412053350384,
+          "max_dd": -0.3475483466516428,
+          "sharpe": 0.044746993537879184,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 8760
+        },
+        "quarterly_returns": {
+          "2025-01-01 00:00:00+00:00": -0.10392117492047112,
+          "2025-04-01 00:00:00+00:00": 0.11111066433743702,
+          "2025-07-01 00:00:00+00:00": 0.024551483554833806,
+          "2025-10-01 00:00:00+00:00": -0.033689773518932965
+        }
+      },
+      "diagnostic_2026": {
+        "net_return": 0.002295988251729592,
+        "cagr": 0.0027968697522608834,
+        "max_dd": -0.22120396296487688,
+        "sharpe": 0.14278944805272437,
+        "exposure": 0.49937439176977616,
+        "entries": 18,
+        "turnover": 36.0,
+        "hours": 7193,
+        "excess_statistics": {
+          "mean_daily_excess": 0.00010865303432317659,
+          "ci95": [
+            -0.001247708564390828,
+            0.0015189315723555155
+          ],
+          "p_one_sided_block_bootstrap": 0.4222888555722139,
+          "p_bonferroni_search": 1.0,
+          "block_days": 7,
+          "replicates": 2000,
+          "note": "Centered circular block bootstrap; exploratory, exposure matching is not factor alpha"
+        },
+        "cost_stress": {
+          "net_return": -0.03320417712913422,
+          "cagr": -0.04029019055024994,
+          "max_dd": -0.24122529081823363,
+          "sharpe": -0.017634396418110047,
+          "exposure": 0.49937439176977616,
+          "entries": 18,
+          "turnover": 36.0,
+          "hours": 7193
+        },
+        "extra_hour_latency": {
+          "net_return": 0.007324881695063666,
+          "cagr": 0.008927716111533647,
+          "max_dd": -0.2214078566366745,
+          "sharpe": 0.16543153948761774,
+          "exposure": 0.49937439176977616,
+          "entries": 18,
+          "turnover": 36.0,
+          "hours": 7193
+        },
+        "buy_hold": {
+          "net_return": -0.08196986113638183,
+          "cagr": -0.09891595912481327,
+          "max_dd": -0.4030353423540931,
+          "sharpe": -0.011565550510415856,
+          "exposure": 1.0,
+          "entries": 1,
+          "turnover": 2.0,
+          "hours": 7193
+        },
+        "quarterly_returns": {
+          "2026-01-01 00:00:00+00:00": -0.11093796123835899,
+          "2026-04-01 00:00:00+00:00": 0.05649800984432082,
+          "2026-07-01 00:00:00+00:00": 0.16786484460900006,
+          "2026-10-01 00:00:00+00:00": -0.08630203785054563
+        }
+      },
+      "promotion_eligible": false,
+      "rejection_reasons": [
+        "test_2025: fewer than 20 entries",
+        "test_2025: nonpositive net return",
+        "test_2025: fails cost stress",
+        "test_2025: positive excess not established",
+        "diagnostic_2026: fewer than 20 entries",
+        "diagnostic_2026: fails cost stress",
+        "diagnostic_2026: positive excess not established",
+        "historical test: fails Holm multiple-family significance"
+      ]
+    }
+  ],
+  "duration_seconds": 83.4,
+  "manifest_sha256": "32d6d70afa57f87ae2b6fdf9c3b925f94ee7aa873df87c382ef0daaec20dbbed"
+}

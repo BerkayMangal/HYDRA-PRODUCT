@@ -4,7 +4,7 @@ collectors/macro_collector.py — Macro Collector v4
 Traditional finance regime indicators with MULTI-SOURCE FALLBACK.
 
 PRIMARY:   yfinance  (free, 15min delay)
-FALLBACK:  FRED API  (free, daily — for VIX, US10Y, DXY)
+FALLBACK:  FRED API  (free, daily — for VIX, US10Y, SPX)
 LAST-RESORT: Cached last-known-good values with age tracking
 
 v4 FIXES:
@@ -17,9 +17,7 @@ v4 FIXES:
 FRED SERIES:
   VIXCLS   → VIX
   DGS10    → US 10-Year
-  DTWEXBGS → Trade-Weighted Dollar (DXY proxy)
   SP500    → S&P 500
-  NASDAQCOM → Nasdaq Composite (QQQ proxy)
 """
 
 import os
@@ -33,24 +31,11 @@ from loguru import logger
 from collectors.base import BaseCollector
 
 
-# Known FOMC meeting dates for 2026
-FOMC_DATES_2026 = [
-    "2026-01-28", "2026-03-18", "2026-05-06", "2026-06-17",
-    "2026-07-29", "2026-09-16", "2026-11-04", "2026-12-16",
-]
-
-# Approximate CPI release dates 2026 (usually ~13th of month)
-CPI_DATES_2026 = [
-    "2026-01-14", "2026-02-12", "2026-03-11", "2026-04-10",
-    "2026-05-13", "2026-06-10", "2026-07-15", "2026-08-12",
-    "2026-09-16", "2026-10-14", "2026-11-12", "2026-12-09",
-]
-
 # FRED series mapping: our_key → FRED series ID
 _FRED_SERIES = {
     "vix":   "VIXCLS",
     "us10y": "DGS10",
-    "dxy":   "DTWEXBGS",
+    # DTWEXBGS has different units/basket from DXY; never substitute it silently.
     "spx":   "SP500",
 }
 
@@ -61,6 +46,10 @@ _CACHE_MAX_AGE = 43200  # 12 hours
 
 class MacroCollector(BaseCollector):
     """Collect macro indicators with yfinance primary + FRED fallback."""
+
+    def observation_times(self, data, fetched_at):
+        return {key: self._cache[key][1] if key in self._cache else fetched_at
+                for key in data}
 
     def __init__(self, config: Dict):
         super().__init__("Macro", config)
@@ -120,22 +109,28 @@ class MacroCollector(BaseCollector):
 
                 if hist is not None and not hist.empty and len(hist) >= 1:
                     current = float(hist['Close'].iloc[-1])
+                    source_time = hist.index[-1].timestamp()
+                    if not np.isfinite(current) or source_time > time.time() + 5:
+                        raise ValueError('Invalid or future macro observation')
                     data[f'{name}_current'] = current
-                    self._update_cache(f'{name}_current', current)
+                    self._update_cache(f'{name}_current', current, source_time)
 
-                    if len(hist) >= 24:
-                        prev_24h = float(hist['Close'].iloc[-24])
-                        chg = (current - prev_24h) / prev_24h * 100
+                    # Twenty-four exchange bars can span several trading days.
+                    cutoff = hist.index[-1] - timedelta(hours=24)
+                    earlier = hist.loc[hist.index <= cutoff]
+                    if not earlier.empty and (cutoff - earlier.index[-1]).total_seconds() <= 7200:
+                        prev_24h = float(earlier['Close'].iloc[-1])
+                        chg = self._change(name, current, prev_24h)
                         data[f'{name}_change_24h'] = chg
-                        self._update_cache(f'{name}_change_24h', chg)
+                        self._update_cache(f'{name}_change_24h', chg, source_time)
 
                     if len(hist) >= 20:
                         sma20 = float(hist['Close'].iloc[-20:].mean())
                         vs = (current - sma20) / sma20 * 100
                         data[f'{name}_vs_sma20'] = vs
-                        self._update_cache(f'{name}_vs_sma20', vs)
+                        self._update_cache(f'{name}_vs_sma20', vs, source_time)
 
-                    self._price_history[name] = hist['Close'].values[-30:]
+                    self._price_history[name] = hist['Close'].copy()
                 else:
                     yf_failed_keys.append(name)
             except Exception as e:
@@ -216,28 +211,33 @@ class MacroCollector(BaseCollector):
                 # Find latest non-"." value
                 current_val = None
                 prev_val = None
+                current_date = prev_date = None
                 for obs in observations:
                     val_str = obs.get("value", ".")
                     if val_str != "." and val_str:
                         try:
                             fval = float(val_str)
+                            if not np.isfinite(fval):
+                                continue
                             if current_val is None:
                                 current_val = fval
+                                current_date = datetime.fromisoformat(obs['date']).replace(tzinfo=timezone.utc)
                             elif prev_val is None:
                                 prev_val = fval
+                                prev_date = datetime.fromisoformat(obs['date']).replace(tzinfo=timezone.utc)
                                 break
                         except ValueError:
                             continue
 
                 if current_val is not None:
                     data[f'{key}_current'] = current_val
-                    self._update_cache(f'{key}_current', current_val)
+                    self._update_cache(f'{key}_current', current_val, current_date.timestamp())
                     logger.info("[Macro] FRED fallback: {}={:.2f}", key, current_val)
 
-                    if prev_val is not None and prev_val > 0:
-                        chg = (current_val - prev_val) / prev_val * 100
+                    if prev_val is not None and prev_val > 0 and current_date - prev_date == timedelta(days=1):
+                        chg = self._change(key, current_val, prev_val)
                         data[f'{key}_change_24h'] = chg
-                        self._update_cache(f'{key}_change_24h', chg)
+                        self._update_cache(f'{key}_change_24h', chg, current_date.timestamp())
 
             except Exception as e:
                 logger.debug("[Macro] FRED {} error: {}", series_id, str(e)[:80])
@@ -246,8 +246,14 @@ class MacroCollector(BaseCollector):
 
     # ── Cache helpers ─────────────────────────────────────────────────────
 
-    def _update_cache(self, key: str, value: float) -> None:
-        self._cache[key] = (value, time.time())
+    @staticmethod
+    def _change(name, current, previous):
+        if not np.isfinite(current) or not np.isfinite(previous) or previous <= 0:
+            raise ValueError('Valid macro reference required')
+        return current - previous if name in ('us10y', 'us5y') else (current / previous - 1) * 100
+
+    def _update_cache(self, key: str, value: float, source_time=None) -> None:
+        self._cache[key] = (value, time.time() if source_time is None else source_time)
 
     def _get_cached(self, key: str) -> Optional[float]:
         entry = self._cache.get(key)
@@ -261,37 +267,9 @@ class MacroCollector(BaseCollector):
     # ── Calendar proximity ────────────────────────────────────────────────
 
     def _fetch_calendar_proximity(self) -> Dict[str, Any]:
-        data = {}
-        now = datetime.now(timezone.utc)
-
-        fomc_hours = self._hours_to_next_event(now, FOMC_DATES_2026)
-        data['fomc_hours_until'] = fomc_hours
-        data['fomc_is_imminent'] = 1.0 if fomc_hours is not None and fomc_hours <= 24 else 0.0
-        data['fomc_just_passed'] = 1.0 if fomc_hours is not None and fomc_hours < 0 and fomc_hours >= -2 else 0.0
-
-        cpi_hours = self._hours_to_next_event(now, CPI_DATES_2026)
-        data['cpi_hours_until'] = cpi_hours
-        data['cpi_is_imminent'] = 1.0 if cpi_hours is not None and cpi_hours <= 6 else 0.0
-        data['cpi_just_passed'] = 1.0 if cpi_hours is not None and cpi_hours < 0 and cpi_hours >= -2 else 0.0
-
-        dampen = 1.0
-        if data['fomc_is_imminent']:
-            dampen *= 0.5
-        if data['cpi_is_imminent']:
-            dampen *= 0.5
-        data['event_dampen_factor'] = dampen
-
-        return data
-
-    def _hours_to_next_event(self, now: datetime, dates: list) -> Optional[float]:
-        for date_str in dates:
-            event_dt = datetime.strptime(date_str, "%Y-%m-%d").replace(
-                hour=14, minute=30, tzinfo=timezone.utc
-            )
-            diff = (event_dt - now).total_seconds() / 3600
-            if diff > -6:
-                return round(diff, 1)
-        return None
+        # The legacy guessed dates and generic 14:30 UTC clock were not a
+        # verified event feed. Do not publish them as decision-grade countdowns.
+        return {"macro_calendar_source": "unverified_legacy_schedule", "macro_calendar_confirmed": False}
 
     # ── Correlation ───────────────────────────────────────────────────────
 
@@ -305,12 +283,11 @@ class MacroCollector(BaseCollector):
             btc = yf.Ticker('BTC-USD')
             btc_hist = btc.history(period='5d', interval='1h')
             if btc_hist is not None and not btc_hist.empty:
-                btc_prices = btc_hist['Close'].values[-30:]
-                min_len = min(len(spx_data), len(btc_prices))
-                if min_len >= 20:
-                    spx_returns = np.diff(spx_data[-min_len:]) / spx_data[-min_len:-1]
-                    btc_returns = np.diff(btc_prices[-min_len:]) / btc_prices[-min_len:-1]
-                    corr = np.corrcoef(spx_returns, btc_returns)[0, 1]
+                import pandas as pd
+                aligned = pd.concat([spx_data.rename('spx'), btc_hist['Close'].rename('btc')], axis=1, join='inner').dropna()
+                if len(aligned) >= 21:
+                    returns = aligned.pct_change(fill_method=None).dropna()
+                    corr = returns['spx'].corr(returns['btc'])
                     if not np.isnan(corr):
                         data['btc_spx_correlation'] = round(float(corr), 3)
                         data['btc_spx_decoupled'] = 1.0 if abs(corr) < 0.3 else 0.0

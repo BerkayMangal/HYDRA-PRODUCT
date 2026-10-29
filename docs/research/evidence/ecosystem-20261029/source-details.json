@@ -1,0 +1,30 @@
+[
+  {
+    "key": "bitquery-liquidations",
+    "url": "https://raw.githubusercontent.com/bitquery/hyperliquid-api/main/queries/08-liquidations.graphql",
+    "status": 200,
+    "bytes": 502
+  },
+  {
+    "key": "bitquery-twaps",
+    "url": "https://raw.githubusercontent.com/bitquery/hyperliquid-api/main/queries/16-twap-orders.graphql",
+    "status": 200,
+    "bytes": 508
+  },
+  {
+    "key": "bitquery-l3",
+    "url": "https://raw.githubusercontent.com/bitquery/hyperliquid-api/main/queries/06-order-book-l3-stream.graphql",
+    "status": 200,
+    "bytes": 414
+  },
+  {
+    "key": "hydromancer-files",
+    "url": "https://github.com/hydromancerxyz/hydromancer-sdk",
+    "status": 200,
+    "bytes": 348777
+  },
+  {
+    "key": "perpledger",
+    "error": "ProxyError"
+  }
+]

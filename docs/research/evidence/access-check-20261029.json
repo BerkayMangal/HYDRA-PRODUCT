@@ -1,0 +1,28 @@
+{
+  "observed_at": "2026-10-29T07:10:41.327146+00:00",
+  "checks": [
+    {
+      "url": "https://pain.homedeck.xyz/",
+      "error_type": "ProxyError"
+    },
+    {
+      "url": "https://hypurrscan.io/",
+      "error_type": "ProxyError"
+    },
+    {
+      "url": "https://www.nansen.ai/",
+      "error_type": "ProxyError"
+    },
+    {
+      "url": "https://hyperliquid.gitbook.io/hyperliquid-docs",
+      "error_type": "ProxyError"
+    }
+  ],
+  "draft_revision": 6,
+  "runtime_access_not_proven_by_draft": true,
+  "diagnosis": {
+    "pain_proxy_tunnel": "403 Forbidden",
+    "publication_tool_available": false,
+    "user_authorization_received": true
+  }
+}

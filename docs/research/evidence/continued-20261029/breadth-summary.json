@@ -1,0 +1,2154 @@
+{
+  "generated_at": "2026-10-29T07:16:45.280630+00:00",
+  "generated_at_istanbul": "2026-10-29T10:16:45.280630+03:00",
+  "specification": {
+    "version": "btc_wallet_breadth_diagnostic_v1",
+    "design": "Exploratory replay on previously collected snapshots; not prospective strategy validation",
+    "sampling": "Earliest usable 14-18 minute frozen-cohort change in each UTC quarter-hour",
+    "directions": [
+      "sign of aggregate BTC base change",
+      "sign of equal-account buying-minus-selling breadth",
+      "aggregate direction only if every single-account removal preserves it"
+    ],
+    "zero_breadth": "Abstain; do not count flat predictions as zero-return successes",
+    "epsilon_btc": 1e-09,
+    "forward_horizons_minutes": [
+      15,
+      60,
+      240
+    ],
+    "orders_enabled": false
+  },
+  "specification_sha256": "6d3a1b3fa5e4461f09c64f7a2f6213a679db2dc83d722cd64244134b7870cf82",
+  "orders_enabled": false,
+  "results": {
+    "usable_quarter_hours": 81,
+    "aggregate_direction_fragile_quarter_hours": 40,
+    "variants": {
+      "aggregate": {
+        "directional_observations": 81,
+        "price_movements": {
+          "15": {
+            "observed_groups": 78,
+            "missing_groups": 3,
+            "nonoverlapping_intervals": 57,
+            "mean_signed_gross_price_move": -2.715832774192483e-05,
+            "median_signed_gross_price_move": -4.109600799484525e-05,
+            "positive_move_fraction": 0.47435897435897434,
+            "mean_move_less_illustrative_cost_hurdle": -0.0024271583277419248
+          },
+          "60": {
+            "observed_groups": 73,
+            "missing_groups": 8,
+            "nonoverlapping_intervals": 16,
+            "mean_signed_gross_price_move": 0.0002893670368864688,
+            "median_signed_gross_price_move": -8.315089778143658e-05,
+            "positive_move_fraction": 0.4931506849315068,
+            "mean_move_less_illustrative_cost_hurdle": -0.002110632963113531
+          },
+          "240": {
+            "observed_groups": 65,
+            "missing_groups": 16,
+            "nonoverlapping_intervals": 5,
+            "mean_signed_gross_price_move": 0.0018710174067344287,
+            "median_signed_gross_price_move": 0.00029162447135377967,
+            "positive_move_fraction": 0.5384615384615384,
+            "mean_move_less_illustrative_cost_hurdle": -0.0005289825932655711
+          }
+        }
+      },
+      "equal_account_breadth": {
+        "directional_observations": 63,
+        "price_movements": {
+          "15": {
+            "observed_groups": 62,
+            "missing_groups": 1,
+            "nonoverlapping_intervals": 49,
+            "mean_signed_gross_price_move": -0.00034326962063327144,
+            "median_signed_gross_price_move": -0.0002914997718700407,
+            "positive_move_fraction": 0.3548387096774194,
+            "mean_move_less_illustrative_cost_hurdle": -0.0027432696206332713
+          },
+          "60": {
+            "observed_groups": 57,
+            "missing_groups": 6,
+            "nonoverlapping_intervals": 15,
+            "mean_signed_gross_price_move": -0.0010717125141875643,
+            "median_signed_gross_price_move": -0.0005437629888591644,
+            "positive_move_fraction": 0.40350877192982454,
+            "mean_move_less_illustrative_cost_hurdle": -0.003471712514187564
+          },
+          "240": {
+            "observed_groups": 49,
+            "missing_groups": 14,
+            "nonoverlapping_intervals": 5,
+            "mean_signed_gross_price_move": -0.0020666762812601588,
+            "median_signed_gross_price_move": -0.002717126650894741,
+            "positive_move_fraction": 0.3673469387755102,
+            "mean_move_less_illustrative_cost_hurdle": -0.0044666762812601585
+          }
+        }
+      },
+      "robust_aggregate": {
+        "directional_observations": 41,
+        "price_movements": {
+          "15": {
+            "observed_groups": 41,
+            "missing_groups": 0,
+            "nonoverlapping_intervals": 36,
+            "mean_signed_gross_price_move": 4.5528105581173174e-05,
+            "median_signed_gross_price_move": -2.358689661008384e-05,
+            "positive_move_fraction": 0.4878048780487805,
+            "mean_move_less_illustrative_cost_hurdle": -0.0023544718944188267
+          },
+          "60": {
+            "observed_groups": 36,
+            "missing_groups": 5,
+            "nonoverlapping_intervals": 14,
+            "mean_signed_gross_price_move": 0.00015387126490492195,
+            "median_signed_gross_price_move": 0.0007379830686433664,
+            "positive_move_fraction": 0.5555555555555556,
+            "mean_move_less_illustrative_cost_hurdle": -0.0022461287350950777
+          },
+          "240": {
+            "observed_groups": 34,
+            "missing_groups": 7,
+            "nonoverlapping_intervals": 4,
+            "mean_signed_gross_price_move": -0.0001598809629926508,
+            "median_signed_gross_price_move": -0.0009389713515813858,
+            "positive_move_fraction": 0.4411764705882353,
+            "mean_move_less_illustrative_cost_hurdle": -0.0025598809629926505
+          }
+        }
+      }
+    },
+    "account_changes": [
+      {
+        "observed_ms": 1793180891282,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.009500000000000008,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.008449999999996294,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.054989999999975225,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.18785000000000096,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 35.59384
+          },
+          "sampled_net_base_change": 35.34995000000002,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.9927264623843567,
+          "leave_one_out_net_min": -0.24388999999997907,
+          "leave_one_out_net_max": 35.53780000000002,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 35.404939999999996,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793181690219,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -1.06379000000004,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -5.234349999999999
+          },
+          "sampled_net_base_change": -6.288770000000035,
+          "accounts_buying": 1,
+          "accounts_selling": 2,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.8298599605866599,
+          "leave_one_out_net_min": -6.298140000000039,
+          "leave_one_out_net_max": -1.0544200000000359,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -5.224979999999995,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793182618988,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.007090000000000013,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.05499999999994998,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.7531299999999987
+          },
+          "sampled_net_base_change": -0.8058599999999478,
+          "accounts_buying": 1,
+          "accounts_selling": 3,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.9133498265784336,
+          "leave_one_out_net_min": -0.8152199999999488,
+          "leave_one_out_net_max": -0.052729999999949095,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -0.7508599999999979,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793183427889,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.016729999999999995,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.05720000000002301,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -5.84219
+          },
+          "sampled_net_base_change": -5.873300000000023,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9859437547675423,
+          "leave_one_out_net_min": -5.8900300000000225,
+          "leave_one_out_net_max": -0.031110000000022175,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -5.8161,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793184358660,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.002950000000000008,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009359999999986712,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.04399999999998272,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -3.8249299999999997
+          },
+          "sampled_net_base_change": -3.8625199999999955,
+          "accounts_buying": 1,
+          "accounts_selling": 3,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.9854917500592673,
+          "leave_one_out_net_min": -3.8718799999999822,
+          "leave_one_out_net_max": -0.03758999999999579,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -3.818520000000013,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793185284606,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.00491999999999998,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.05200000000002092,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -11.66537
+          },
+          "sampled_net_base_change": -11.712920000000016,
+          "accounts_buying": 1,
+          "accounts_selling": 3,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.9943494782494527,
+          "leave_one_out_net_min": -11.72229000000002,
+          "leave_one_out_net_max": -0.04755000000001708,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -11.660919999999996,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793186208398,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.002710000000000018,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.010450000000000514,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.08260000000001355,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 4.46967
+          },
+          "sampled_net_base_change": 4.404169999999987,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9770218960870302,
+          "leave_one_out_net_min": -0.06550000000001255,
+          "leave_one_out_net_max": 4.486770000000001,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 4.486770000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793187011385,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0025700000000000167,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.09859999999997626,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -5.473860000000001
+          },
+          "sampled_net_base_change": -5.560529999999976,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9802073279265994,
+          "leave_one_out_net_min": -5.569889999999977,
+          "leave_one_out_net_max": -0.08666999999997493,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -5.46193,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793187939798,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0017699999999999938,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.0332000000000221,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -4.821389999999999
+          },
+          "sampled_net_base_change": -4.843460000000021,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9908893236766558,
+          "leave_one_out_net_min": -4.852820000000022,
+          "leave_one_out_net_max": -0.022070000000021572,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -4.810259999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793188869359,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.003679999999999989,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009369999999989886,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.03519999999997481,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -3.3657700000000013
+          },
+          "sampled_net_base_change": -3.387919999999986,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9858671009543104,
+          "leave_one_out_net_min": -3.397289999999976,
+          "leave_one_out_net_max": -0.022149999999984793,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -3.3527200000000112,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793189800981,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0010000000000000009,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01775999999999911,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.0706000000000131,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 29.26734
+          },
+          "sampled_net_base_change": 29.222859999999987,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.996638296046524,
+          "leave_one_out_net_min": -0.044480000000014286,
+          "leave_one_out_net_max": 29.29346,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 29.29346,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793190602596,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.002040000000000014,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.07159999999998945,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 8.74937
+          },
+          "sampled_net_base_change": 8.689170000000011,
+          "accounts_buying": 3,
+          "accounts_selling": 1,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.990602748752601,
+          "leave_one_out_net_min": -0.06019999999998937,
+          "leave_one_out_net_max": 8.76077,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 8.76077,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793191537136,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0014299999999999868,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.02181999999999995,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.0716000000000463,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -15.77981
+          },
+          "sampled_net_base_change": -15.818800000000046,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9934393182582214,
+          "leave_one_out_net_min": -15.840620000000046,
+          "leave_one_out_net_max": -0.038990000000046265,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -15.7472,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793192462589,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -1.6702899999999659,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.022679999999999367,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 13.740199999999998
+          },
+          "sampled_net_base_change": 12.056600000000037,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.8897629535037648,
+          "leave_one_out_net_min": -1.6835999999999611,
+          "leave_one_out_net_max": 13.726890000000003,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 13.726890000000003,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793193394655,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.013910000000000977,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.005159999999989395,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.024250000000000327,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 5.47364
+          },
+          "sampled_net_base_change": 5.477819999999991,
+          "accounts_buying": 4,
+          "accounts_selling": 1,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.5,
+          "largest_absolute_change_share": 0.990467435834336,
+          "leave_one_out_net_min": 0.004179999999990969,
+          "leave_one_out_net_max": 5.502069999999991,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 5.472660000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793194324165,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.008330000000000004,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.018639999999999546,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.08602000000001908,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.013989999999999725,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 10.38114
+          },
+          "sampled_net_base_change": 10.317459999999983,
+          "accounts_buying": 4,
+          "accounts_selling": 2,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9870368187056197,
+          "leave_one_out_net_min": -0.0636800000000175,
+          "leave_one_out_net_max": 10.403480000000002,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 10.403480000000002,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793195124377,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0008100000000000052,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.003940000000000055,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.11261000000001786,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.07614000000000054,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -4.5923099999999994
+          },
+          "sampled_net_base_change": -4.766940000000013,
+          "accounts_buying": 3,
+          "accounts_selling": 3,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9576929333205381,
+          "leave_one_out_net_min": -4.776310000000017,
+          "leave_one_out_net_max": -0.17463000000001383,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -4.654329999999995,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793196067291,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.001480000000000009,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.028700000000014825,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.24319999999999986,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -30.422610000000002
+          },
+          "sampled_net_base_change": -30.686630000000015,
+          "accounts_buying": 1,
+          "accounts_selling": 4,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.5,
+          "largest_absolute_change_share": 0.9907918326936507,
+          "leave_one_out_net_min": -30.695990000000016,
+          "leave_one_out_net_max": -0.2640200000000128,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -30.65793,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793197006273,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.009469999999999978,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009359999999986712,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.022299999999972897,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -1.5427100000000014,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.775109999999998
+          },
+          "sampled_net_base_change": -2.3402299999999854,
+          "accounts_buying": 1,
+          "accounts_selling": 4,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.5,
+          "largest_absolute_change_share": 0.6539816443756876,
+          "leave_one_out_net_min": -2.349589999999972,
+          "leave_one_out_net_max": -0.797519999999984,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -2.3179300000000125,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793197819810,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.02768000000000015,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009669999999999845,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.06619999999998072,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -15.143869999999996
+          },
+          "sampled_net_base_change": -15.172719999999977,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9932086871090334,
+          "leave_one_out_net_min": -15.200399999999977,
+          "leave_one_out_net_max": -0.028849999999980724,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -15.106519999999996,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793198753130,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0029800000000000104,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.005369999999999209,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009359999999986712,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.05310000000002901,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.017039999999997946,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 9.703499999999998
+          },
+          "sampled_net_base_change": 9.645109999999956,
+          "accounts_buying": 3,
+          "accounts_selling": 3,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.991027794941452,
+          "leave_one_out_net_min": -0.05839000000004191,
+          "leave_one_out_net_max": 9.698209999999985,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 9.698209999999985,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793199688911,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0015199999999999936,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.06899999999995998,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -1.0271100000000004,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 1.8241999999999976
+          },
+          "sampled_net_base_change": 0.7359300000000382,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.622341096960628,
+          "leave_one_out_net_min": -1.0882699999999594,
+          "leave_one_out_net_max": 1.7630400000000386,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 0.8049299999999981,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793200623009,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.07040000000000646,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -1.0487199999999994,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -18.61264
+          },
+          "sampled_net_base_change": -19.722400000000004,
+          "accounts_buying": 1,
+          "accounts_selling": 3,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.9428360700912609,
+          "leave_one_out_net_min": -19.731760000000005,
+          "leave_one_out_net_max": -1.109760000000005,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -19.651999999999997,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793201426831,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.001600000000000018,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.06740000000002055,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -9.999999999621423e-06,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 11.204909999999998
+          },
+          "sampled_net_base_change": 11.145259999999979,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.9930543246290068,
+          "leave_one_out_net_min": -0.05965000000001908,
+          "leave_one_out_net_max": 11.21266,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 11.21266,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793202368349,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.07720000000000482,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.5036699999999996,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 12.72418
+          },
+          "sampled_net_base_change": 13.160009999999996,
+          "accounts_buying": 3,
+          "accounts_selling": 1,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9556698344124895,
+          "leave_one_out_net_min": 0.4358299999999957,
+          "leave_one_out_net_max": 13.237210000000001,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 13.237210000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793203297481,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.06919999999996662,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.4045899999999989,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 11.437209999999997
+          },
+          "sampled_net_base_change": 10.972780000000032,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9594685059847212,
+          "leave_one_out_net_min": -0.4644299999999646,
+          "leave_one_out_net_max": 11.377370000000031,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 11.041979999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793204106975,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.06380000000001473,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 0.4738599999999984
+          },
+          "sampled_net_base_change": 0.41942999999998776,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.8662413395974324,
+          "leave_one_out_net_min": -0.05443000000001064,
+          "leave_one_out_net_max": 0.4832300000000025,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 0.4832300000000025,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793205044515,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.003019999999999995,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.057999999999992724,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.9918799999999983,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 6.3804
+          },
+          "sampled_net_base_change": 5.3368600000000095,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.8572741466088746,
+          "leave_one_out_net_min": -1.0435399999999904,
+          "leave_one_out_net_max": 6.328740000000008,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 5.394860000000002,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793205975692,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.043000000000006366,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.09070999999999785,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.2789899999999985
+          },
+          "sampled_net_base_change": -0.2219200000000061,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.6610197602236556,
+          "leave_one_out_net_min": -0.31263000000000396,
+          "leave_one_out_net_max": 0.057069999999992405,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -0.17891999999999975,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793206910065,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0035300000000000054,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009659999999996671,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.05789999999996098,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -2.2742199999999997,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -3.1092200000000005
+          },
+          "sampled_net_base_change": -5.428149999999965,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.5700252817383028,
+          "leave_one_out_net_min": -5.437809999999962,
+          "leave_one_out_net_max": -2.3189299999999644,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -5.370250000000004,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793207705935,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.01960999999999999,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.009999999999990905,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 36.84224
+          },
+          "sampled_net_base_change": 36.86122000000001,
+          "accounts_buying": 3,
+          "accounts_selling": 1,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9989430935310709,
+          "leave_one_out_net_min": 0.01898000000001332,
+          "leave_one_out_net_max": 36.87122,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 36.87122,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793208632886,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0030899999999999817,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.0049999999999954525,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -31.776850000000003
+          },
+          "sampled_net_base_change": -31.775579999999998,
+          "accounts_buying": 1,
+          "accounts_selling": 3,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.9994511594845618,
+          "leave_one_out_net_min": -31.78494,
+          "leave_one_out_net_max": 0.0012700000000052114,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -31.770580000000002,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793209563012,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.020229999999999998,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 6.268920000000001
+          },
+          "sampled_net_base_change": 6.2580500000000026,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9953020635039079,
+          "leave_one_out_net_min": -0.010869999999998825,
+          "leave_one_out_net_max": 6.278280000000002,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 6.2580500000000026,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793210496697,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0015400000000000136,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01051999999999964,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.03500000000002501,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 2.4277900000000017,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -5.570740000000001
+          },
+          "sampled_net_base_change": -3.1596100000000233,
+          "accounts_buying": 3,
+          "accounts_selling": 3,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.6915921265805475,
+          "leave_one_out_net_min": -5.5874000000000255,
+          "leave_one_out_net_max": 2.4111299999999773,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -3.1246099999999983,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793211428992,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.06942000000000093,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.14999999999997726,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -2.4208500000000015,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -12.419889999999999
+          },
+          "sampled_net_base_change": -14.911949999999973,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.8241723530859962,
+          "leave_one_out_net_min": -14.981369999999973,
+          "leave_one_out_net_max": -2.4920599999999737,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -14.761949999999995,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793212225743,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.002589999999999981,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01468999999999987,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.10500000000001819,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -9.70448,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -12.868749999999999
+          },
+          "sampled_net_base_change": -22.656770000000016,
+          "accounts_buying": 2,
+          "accounts_selling": 4,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.5667836900189249,
+          "leave_one_out_net_min": -22.671460000000017,
+          "leave_one_out_net_max": -9.788020000000017,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -22.551769999999998,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793213170710,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.002579999999999999,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0479699999999994,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.18019999999995662,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -1.0137199999999993,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 31.93698
+          },
+          "sampled_net_base_change": 30.80297000000004,
+          "accounts_buying": 4,
+          "accounts_selling": 2,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9622235793582633,
+          "leave_one_out_net_min": -1.1340099999999573,
+          "leave_one_out_net_max": 31.81669000000004,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 30.983169999999998,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793214102173,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.002889999999999976,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.007329999999999615,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.22340000000002647,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -2.3392499999999963,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 6.498330000000001
+          },
+          "sampled_net_base_change": 3.9552599999999787,
+          "accounts_buying": 4,
+          "accounts_selling": 2,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.7156309743011425,
+          "leave_one_out_net_min": -2.5430700000000224,
+          "leave_one_out_net_max": 6.294509999999975,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 4.178660000000005,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793214906720,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.005029999999999979,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.26679999999998927,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.015560000000000684,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -2.0682800000000015
+          },
+          "sampled_net_base_change": -2.315189999999989,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.8745259045339839,
+          "leave_one_out_net_min": -2.33074999999999,
+          "leave_one_out_net_max": -0.24690999999998775,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -2.04839,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793215838607,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0029800000000000104,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.14999999999997726,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -1.0248399999999975,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.9932999999999996
+          },
+          "sampled_net_base_change": -2.1617599999999735,
+          "accounts_buying": 1,
+          "accounts_selling": 4,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.5,
+          "largest_absolute_change_share": 0.4700066040504885,
+          "leave_one_out_net_min": -2.1711199999999744,
+          "leave_one_out_net_max": -1.136919999999976,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -2.011759999999996,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793216781702,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.019589999999999996,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.020929999999999893,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009669999999999845,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.08334999999999582,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -7.940809999999999,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 2.7202400000000004
+          },
+          "sampled_net_base_change": -5.292909999999995,
+          "accounts_buying": 3,
+          "accounts_selling": 3,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.7356286806631842,
+          "leave_one_out_net_min": -8.013149999999996,
+          "leave_one_out_net_max": 2.6479000000000044,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -5.209559999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793217718592,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.029350000000000015,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.03990000000000116,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.03300000000001546,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -14.526940000000003,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 4.27607
+          },
+          "sampled_net_base_change": -10.263960000000017,
+          "accounts_buying": 3,
+          "accounts_selling": 3,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.7680270605489292,
+          "leave_one_out_net_min": -14.540030000000016,
+          "leave_one_out_net_max": 4.2629799999999864,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -10.230960000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793218531460,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.06423999999999999,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.022870000000001056,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009659999999996671,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.004399999999975535,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.060139999999996974,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 60.264359999999996
+          },
+          "sampled_net_base_change": 60.41687000000002,
+          "accounts_buying": 5,
+          "accounts_selling": 1,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.6666666666666666,
+          "largest_absolute_change_share": 0.9973304391991025,
+          "leave_one_out_net_min": 0.1525100000000208,
+          "leave_one_out_net_max": 60.42126999999999,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 60.42126999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793219477225,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.002710000000000018,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.010490000000000776,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.07920000000001437,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 4.47428,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 13.840410000000006
+          },
+          "sampled_net_base_change": 18.237069999999992,
+          "accounts_buying": 4,
+          "accounts_selling": 2,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.7515243165756695,
+          "leave_one_out_net_min": 4.3966599999999865,
+          "leave_one_out_net_max": 18.316270000000006,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 18.316270000000006,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793220418982,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.006879999999999997,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.014279999999999404,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009669999999999845,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.061599999999998545,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.5982400000000041,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -4.310480000000005
+          },
+          "sampled_net_base_change": -3.785329999999999,
+          "accounts_buying": 2,
+          "accounts_selling": 4,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.8618977635143915,
+          "leave_one_out_net_min": -4.383570000000003,
+          "leave_one_out_net_max": 0.5251500000000062,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -3.7237300000000007,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793221221771,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0025700000000000167,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.015589999999999549,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009659999999996671,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.015399999999999636,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.4272500000000008,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 4.803040000000003
+          },
+          "sampled_net_base_change": 5.23757,
+          "accounts_buying": 4,
+          "accounts_selling": 2,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9107861746730361,
+          "leave_one_out_net_min": 0.434529999999997,
+          "leave_one_out_net_max": 5.2529699999999995,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 5.2529699999999995,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793222158013,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.008059999999999984,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01688000000000045,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -4.8581199999999995
+          },
+          "sampled_net_base_change": -4.839939999999999,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.992989154651481,
+          "leave_one_out_net_min": -4.856819999999999,
+          "leave_one_out_net_max": 0.018180000000000973,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -4.839939999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793223104525,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0023099999999999787,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.011290000000000688,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 6.660529999999994
+          },
+          "sampled_net_base_change": 6.683499999999999,
+          "accounts_buying": 4,
+          "accounts_selling": 0,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.6666666666666666,
+          "largest_absolute_change_share": 0.9965631779756109,
+          "leave_one_out_net_min": 0.022970000000004376,
+          "leave_one_out_net_max": 6.683499999999999,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 6.683499999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793223908345,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 2.0188699999999997,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -52.356590000000004
+          },
+          "sampled_net_base_change": -50.32836,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9627059536098492,
+          "leave_one_out_net_min": -52.34723,
+          "leave_one_out_net_max": 2.0282300000000006,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -50.32836,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793224844079,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.006320000000002324,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -2.62788
+          },
+          "sampled_net_base_change": -2.612199999999997,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9940686044576241,
+          "leave_one_out_net_min": -2.621559999999998,
+          "leave_one_out_net_max": 0.015680000000003247,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -2.612199999999997,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793225780409,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.008600000000000024,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009669999999999845,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -2.3422400000000003
+          },
+          "sampled_net_base_change": -2.3239700000000005,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9922601471715858,
+          "leave_one_out_net_min": -2.3336400000000004,
+          "leave_one_out_net_max": 0.018269999999999786,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -2.3239700000000005,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793226719837,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -4.602509999999999
+          },
+          "sampled_net_base_change": -4.593149999999998,
+          "accounts_buying": 1,
+          "accounts_selling": 1,
+          "accounts_unchanged": 4,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9979704545011024,
+          "leave_one_out_net_min": -4.602509999999999,
+          "leave_one_out_net_max": 0.009360000000000923,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -4.593149999999998,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793227524565,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.005099999999999993,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009659999999996671,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.2566500000000005
+          },
+          "sampled_net_base_change": -0.24189000000000382,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9456173317121815,
+          "leave_one_out_net_min": -0.2515500000000005,
+          "leave_one_out_net_max": 0.014759999999996665,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -0.24189000000000382,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793228459030,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 7.96407
+          },
+          "sampled_net_base_change": 7.9734400000000045,
+          "accounts_buying": 2,
+          "accounts_selling": 0,
+          "accounts_unchanged": 4,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9988248484970096,
+          "leave_one_out_net_min": 0.009370000000004097,
+          "leave_one_out_net_max": 7.9734400000000045,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 7.9734400000000045,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793229390695,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 7.11509
+          },
+          "sampled_net_base_change": 7.124450000000001,
+          "accounts_buying": 2,
+          "accounts_selling": 0,
+          "accounts_unchanged": 4,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9986862143744428,
+          "leave_one_out_net_min": 0.009360000000000923,
+          "leave_one_out_net_max": 7.124450000000001,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 7.124450000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793230330800,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0025300000000000045,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -3.56847
+          },
+          "sampled_net_base_change": -3.5616399999999993,
+          "accounts_buying": 1,
+          "accounts_selling": 2,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.9966791048944796,
+          "leave_one_out_net_min": -3.571,
+          "leave_one_out_net_max": 0.00683000000000078,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -3.5616399999999993,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793231128396,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.003470000000000001,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -3.3999999999999773,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -2.49195
+          },
+          "sampled_net_base_change": -5.886049999999973,
+          "accounts_buying": 1,
+          "accounts_selling": 3,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": -0.3333333333333333,
+          "largest_absolute_change_share": 0.5758037119016913,
+          "leave_one_out_net_min": -5.8954199999999775,
+          "leave_one_out_net_max": -2.486049999999996,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -2.486049999999996,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793232056019,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0011200000000000099,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 3.33234
+          },
+          "sampled_net_base_change": 3.340580000000001,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9968649224307619,
+          "leave_one_out_net_min": 0.008240000000001135,
+          "leave_one_out_net_max": 3.3417000000000012,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 3.340580000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793232998100,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 0.7968
+          },
+          "sampled_net_base_change": 0.8061600000000009,
+          "accounts_buying": 2,
+          "accounts_selling": 0,
+          "accounts_unchanged": 4,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9883894016076202,
+          "leave_one_out_net_min": 0.009360000000000923,
+          "leave_one_out_net_max": 0.8061600000000009,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 0.8061600000000009,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793233928567,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 12.648109999999999
+          },
+          "sampled_net_base_change": 12.65747,
+          "accounts_buying": 2,
+          "accounts_selling": 0,
+          "accounts_unchanged": 4,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9992605157270765,
+          "leave_one_out_net_min": 0.009360000000000923,
+          "leave_one_out_net_max": 12.65747,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 12.65747,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793234725421,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009369999999989886,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -4.979800000000001
+          },
+          "sampled_net_base_change": -4.970430000000011,
+          "accounts_buying": 1,
+          "accounts_selling": 1,
+          "accounts_unchanged": 4,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.9981219321049413,
+          "leave_one_out_net_min": -4.979800000000001,
+          "leave_one_out_net_max": 0.009369999999989886,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -4.970430000000011,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793235652789,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.033229999999996096,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.981539999999999
+          },
+          "sampled_net_base_change": -0.938950000000002,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9584134826633365,
+          "leave_one_out_net_min": -0.972179999999998,
+          "leave_one_out_net_max": 0.04258999999999702,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -0.938950000000002,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793236580373,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0014300000000000146,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.02102999999999966,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.07540000000000191,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 1.0999200000000044,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -1.7619000000000007
+          },
+          "sampled_net_base_change": -0.7055599999999975,
+          "accounts_buying": 4,
+          "accounts_selling": 2,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.5934241370948172,
+          "leave_one_out_net_min": -1.805480000000002,
+          "leave_one_out_net_max": 1.0563400000000032,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -0.6301599999999956,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793237508851,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0016599999999993287,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.056400000000053296,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 4.482420000000001
+          },
+          "sampled_net_base_change": 4.437039999999948,
+          "accounts_buying": 3,
+          "accounts_selling": 1,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9851818965062392,
+          "leave_one_out_net_min": -0.045380000000053045,
+          "leave_one_out_net_max": 4.493440000000001,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 4.493440000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793238307154,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.004729999999999984,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.008430000000000604,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.08630000000005111,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 2.6338499999999954,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 8.52374
+          },
+          "sampled_net_base_change": 11.09381999999995,
+          "accounts_buying": 5,
+          "accounts_selling": 1,
+          "accounts_unchanged": 0,
+          "equal_account_direction_balance": 0.6666666666666666,
+          "largest_absolute_change_share": 0.7565615341874314,
+          "leave_one_out_net_min": 2.5700799999999493,
+          "leave_one_out_net_max": 11.18012,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 11.18012,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793239242907,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0023200000000000165,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.0007700000000010476,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.13569999999998572,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 23.32988
+          },
+          "sampled_net_base_change": 23.205090000000013,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.993689845357554,
+          "leave_one_out_net_min": -0.12478999999998663,
+          "leave_one_out_net_max": 23.34079,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 23.34079,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793240177736,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": -0.0034500000000000086,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.036450000000000315,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009359999999986712,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.1069999999999709,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -34.06078
+          },
+          "sampled_net_base_change": -34.125419999999984,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.9954332695054873,
+          "leave_one_out_net_min": -34.161869999999986,
+          "leave_one_out_net_max": -0.06463999999998293,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -34.01842000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793241110317,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.014050000000001006,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009660000000010882,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.08000000000004093,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 3.82761
+          },
+          "sampled_net_base_change": 3.771319999999971,
+          "accounts_buying": 3,
+          "accounts_selling": 1,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9736195476328431,
+          "leave_one_out_net_min": -0.05629000000002904,
+          "leave_one_out_net_max": 3.851320000000012,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 3.851320000000012,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793241908829,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.06447,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.016109999999999403,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.08199999999999363,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 25.305279999999996
+          },
+          "sampled_net_base_change": 25.313230000000004,
+          "accounts_buying": 4,
+          "accounts_selling": 1,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.5,
+          "largest_absolute_change_share": 0.9932508361387797,
+          "leave_one_out_net_min": 0.007950000000008117,
+          "leave_one_out_net_max": 25.395229999999998,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 25.395229999999998,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793242836128,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0013800000000000062,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.013329999999999842,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.07399999999995543,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -44.24968
+          },
+          "sampled_net_base_change": -44.29960999999995,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9977886138530149,
+          "leave_one_out_net_min": -44.312939999999955,
+          "leave_one_out_net_max": -0.04992999999995362,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -44.225609999999996,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793243763158,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.00648,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.011610000000001008,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.047000000000025466,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 35.487790000000004
+          },
+          "sampled_net_base_change": 35.46823999999998,
+          "accounts_buying": 4,
+          "accounts_selling": 1,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.5,
+          "largest_absolute_change_share": 0.9979064873303811,
+          "leave_one_out_net_min": -0.019550000000023715,
+          "leave_one_out_net_max": 35.515240000000006,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": 35.515240000000006,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793244694724,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01065999999999967,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.055999999999983174,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 3.4403100000000038,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -5.875680000000003
+          },
+          "sampled_net_base_change": -2.4713499999999815,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.6256041039138597,
+          "leave_one_out_net_min": -5.911659999999985,
+          "leave_one_out_net_max": 3.404330000000021,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -2.4153499999999983,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793245622997,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.005839999999999998,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.05600000000004002,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 1.3382700000000014,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -9.347249999999999
+          },
+          "sampled_net_base_change": -8.049780000000037,
+          "accounts_buying": 3,
+          "accounts_selling": 2,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.8689684216006333,
+          "leave_one_out_net_min": -9.388050000000039,
+          "leave_one_out_net_max": 1.2974699999999615,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -7.993779999999997,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793246415760,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.001130000000000006,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009059999999990964,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.005999999999971806,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.0948800000000034,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -16.76198
+          },
+          "sampled_net_base_change": -16.852669999999986,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.9934173134080699,
+          "leave_one_out_net_min": -16.861729999999977,
+          "leave_one_out_net_max": -0.0906899999999844,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -16.846670000000014,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793247344706,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01317000000000057,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.021200000000021646,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": -0.46739000000000175,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -3.31274
+          },
+          "sampled_net_base_change": -3.7788000000000217,
+          "accounts_buying": 2,
+          "accounts_selling": 3,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": -0.16666666666666666,
+          "largest_absolute_change_share": 0.8663340185048559,
+          "leave_one_out_net_min": -3.7919700000000223,
+          "leave_one_out_net_max": -0.4660600000000219,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": -3.7576,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793248277707,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0004499999999999921,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.0,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009659999999996671,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": -0.002999999999985903,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 1.5112699999999997
+          },
+          "sampled_net_base_change": 1.5183800000000105,
+          "accounts_buying": 3,
+          "accounts_selling": 1,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.3333333333333333,
+          "largest_absolute_change_share": 0.9913997822065477,
+          "leave_one_out_net_min": 0.00711000000001083,
+          "leave_one_out_net_max": 1.5213799999999964,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 1.5213799999999964,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793249200431,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": 0.01325999999999894,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009060000000005175,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -0.8153699999999997
+          },
+          "sampled_net_base_change": -0.7930499999999956,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9733552984994401,
+          "leave_one_out_net_min": -0.8063099999999945,
+          "leave_one_out_net_max": 0.022320000000004114,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -0.7930499999999956,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793255849855,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.008240000000000691,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.0,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 7.287650000000001
+          },
+          "sampled_net_base_change": 7.288770000000001,
+          "accounts_buying": 2,
+          "accounts_selling": 1,
+          "accounts_unchanged": 3,
+          "equal_account_direction_balance": 0.16666666666666666,
+          "largest_absolute_change_share": 0.9975907737585981,
+          "leave_one_out_net_min": 0.001120000000000232,
+          "leave_one_out_net_max": 7.297010000000002,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 7.288770000000001,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793256379009,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.00972999999999935,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009370000000004097,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.1169999999999618,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 0.23794000000000004,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 4.0817
+          },
+          "sampled_net_base_change": 4.436279999999966,
+          "accounts_buying": 4,
+          "accounts_selling": 1,
+          "accounts_unchanged": 1,
+          "equal_account_direction_balance": 0.5,
+          "largest_absolute_change_share": 0.9160543478748832,
+          "leave_one_out_net_min": 0.3545799999999666,
+          "leave_one_out_net_max": 4.446009999999966,
+          "aggregate_direction_survives_every_single_account_removal": true,
+          "net_without_largest_current_btc_account": 4.3192800000000044,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793257305586,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.0006299999999992423,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009060000000005175,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 2.4804000000000013,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -11.93732
+          },
+          "sampled_net_base_change": -9.448489999999993,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.8274056119566849,
+          "leave_one_out_net_min": -11.928889999999994,
+          "leave_one_out_net_max": 2.488830000000007,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -9.448489999999993,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      },
+      {
+        "observed_ms": 1793258105333,
+        "breadth": {
+          "per_wallet_base_change": {
+            "0x0dd5db9c3748486e747c6a123727f472668cf6ee": 0.0,
+            "0x34705cb69ac83cd65d4710259151665ab0ce6fa6": -0.010640000000000427,
+            "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b": 0.009360000000000923,
+            "0xdf954bbe619273a56e0cfa90dad8382195dc7d72": 0.0,
+            "0xe90bf24e807df04f1513d50002d78bfc22ee84d9": 2.0562500000000004,
+            "0xf5d81a135f756ca16544e53c20fc20643ec3ad53": -7.56576
+          },
+          "sampled_net_base_change": -5.510789999999999,
+          "accounts_buying": 2,
+          "accounts_selling": 2,
+          "accounts_unchanged": 2,
+          "equal_account_direction_balance": 0.0,
+          "largest_absolute_change_share": 0.7846662677180378,
+          "leave_one_out_net_min": -7.5670399999999995,
+          "leave_one_out_net_max": 2.054970000000001,
+          "aggregate_direction_survives_every_single_account_removal": false,
+          "net_without_largest_current_btc_account": -5.510789999999999,
+          "scope": "Account-count diagnostic; common ownership and external hedges are unknown",
+          "orders_enabled": false
+        }
+      }
+    ]
+  },
+  "limits": "Common owners, correlated accounts and external hedges are unknown. Descriptive price references, not filled trades or a portfolio. Overlapping intervals and exploratory comparisons do not establish alpha."
+}

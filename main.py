@@ -26,6 +26,7 @@ KEY DESIGN DECISIONS
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import sys
 import threading
 import time
@@ -248,6 +249,19 @@ class HydraBot:
         dashboard_state.bot_start_time = self.start_time
         start_dashboard()
 
+        # Public wallet observations are separate from engines and delivery.
+        import os
+        self.wallet_monitor = None
+        if MODE_CONFIGS[self.runtime_mode].collectors and os.environ.get('HYDRA_WALLET_MONITOR_ENABLED', 'true').lower() not in ('false', '0', 'no'):
+            try:
+                from services.wallet_monitor import WalletMonitor
+                from dashboard import set_wallet_monitor
+                self.wallet_monitor = WalletMonitor()
+                set_wallet_monitor(self.wallet_monitor)
+                self.wallet_monitor.start()
+            except Exception as exc:
+                logger.error('Public wallet monitor unavailable: {}', type(exc).__name__)
+
         logger.info("Active collectors: {}", ", ".join(self.collectors.keys()))
 
         # Pulse Engine — her 60s AI market analizi
@@ -408,90 +422,82 @@ class HydraBot:
     # ------------------------------------------------------------------
 
     def collect_all(self) -> dict:
-        """
-        Collect data from all sources at their respective intervals.
-
-        v4 FIX: Previously, if the OKX (fast) polling interval hadn't elapsed,
-        the entire method returned {} — discarding medium/slow collector data
-        that had just been fetched. This created a hard OKX dependency: if OKX
-        failed or was simply between polls, the system was blind.
-
-        Now: Each tier runs independently. Accumulated data is always returned
-        if ANY collector produced new data this cycle.
-        """
-        now       = time.time()
-        merged    = {}
+        """Poll independent tiers, retaining each field's original observation time."""
+        now = time.time()
         intervals = self._get_intervals()
-        any_new   = False
+        polled = False
 
-        # ── Fast tier: OKX + CoinGlass (every 30s burst / 300s normal) ────
+        def collect(name, **kwargs):
+            collector = self.collectors[name]
+            data = collector.safe_fetch(**kwargs)
+            for key, value in data.items():
+                if key == "timestamp" and name != "okx":
+                    continue  # The candle event time belongs to OKX alone.
+                source_time = collector.field_timestamps.get(key)
+                previous = self._accumulated_timestamps.get(key)
+                if source_time is not None and previous is not None and source_time < previous:
+                    continue
+                self._accumulated_data[key] = deepcopy(value)
+                self._accumulated_timestamps[key] = source_time
+
         if now - self.last_poll["fast"] >= intervals["fast"]:
-            okx_data = self.collectors["okx"].safe_fetch()
-            if okx_data:
-                merged.update(okx_data)
-                any_new = True
+            polled = True
+            collect("okx")
             if self.use_coinglass:
+                collect("coinglass")
                 cg = self.collectors["coinglass"]
-                merged.update(cg.safe_fetch())
-                merged.update(cg.fetch_cvd())
-                merged.update(cg.fetch_basis_spread())
-                any_new = True
+                for data in (cg.fetch_cvd(), cg.fetch_basis_spread()):
+                    for key, value in data.items():
+                        self._accumulated_data[key] = deepcopy(value)
+                        self._accumulated_timestamps[key] = time.time()
             self.last_poll["fast"] = now
-
-        # ── Medium tier: Prediction markets (every 120s burst / 900s normal) ──
         if now - self.last_poll["medium"] >= intervals["medium"]:
-            merged.update(self.collectors["polymarket"].safe_fetch())
-            merged.update(self.collectors["kalshi"].safe_fetch())
-            any_new = True
+            polled = True
+            for name in ("polymarket", "kalshi"):
+                collect(name)
             self.last_poll["medium"] = now
-
-        # ── Slow tier: Macro, sentiment, DeFi, on-chain (every 300s / 3600s) ──
         if now - self.last_poll["slow"] >= intervals["slow"]:
+            polled = True
             for name in ("macro", "fear_greed", "binance", "sentiment", "defi", "mempool", "bybit", "cg_plus"):
                 if name in self.collectors:
-                    merged.update(self.collectors[name].safe_fetch())
-            # Venom: shared_coins'i sentiment'ten al, daha iyi veri
+                    collect(name)
             if "venom" in self.collectors:
-                shared = merged.get("all_coins") or merged.get("coin_list", [])
-                try:
-                    venom_data = self.collectors["venom"].fetch(shared_coins=shared if shared else None)
-                    merged.update(venom_data)
-                except Exception as e:
-                    logger.debug("[Venom] fetch error: {}", e)
-                    merged.update(self.collectors["venom"].safe_fetch())
+                shared = self._accumulated_data.get("all_coins") or self._accumulated_data.get("coin_list")
+                collect("venom", shared_coins=shared)
             self.event_calendar.refresh()
-            any_new = True
             self.last_poll["slow"] = now
-
-        # ── Very slow tier: ETF, CryptoQuant (every 300s / 14400s) ────────
         if now - self.last_poll["very_slow"] >= intervals["very_slow"]:
+            polled = True
             for name in ("etf", "cryptoquant"):
                 if name in self.collectors:
-                    merged.update(self.collectors[name].safe_fetch())
-            any_new = True
+                    collect(name)
             self.last_poll["very_slow"] = now
-
-        # No new data from any tier this cycle
-        if not any_new:
+        if not polled:
             return {}
-
-        # Merge into accumulated store
-        for k, v in merged.items():
-            self._accumulated_data[k] = v
-            self._accumulated_timestamps[k] = now
-
-        # 3D: Derive stablecoin/BTC ratio (free CryptoQuant alternative)
-        stable_mcap = self._accumulated_data.get('total_stablecoin_mcap', 0)
-        total_mcap_t = self._accumulated_data.get('total_mcap_trillion', 0)
-        if stable_mcap > 0 and total_mcap_t > 0:
-            btc_mcap = total_mcap_t * 1e12  # trillion → raw
-            self._accumulated_data['stablecoin_exchange_ratio'] = stable_mcap / btc_mcap
-
-        return self._accumulated_data
+        # This broad market-cap ratio is not CryptoQuant's exchange reserve ratio.
+        stable = self._accumulated_data.get("total_stablecoin_mcap", 0)
+        market = self._accumulated_data.get("total_mcap_trillion", 0)
+        if stable and market and stable > 0 and market > 0:
+            key = "stablecoin_to_total_market_cap_ratio"
+            self._accumulated_data[key] = stable / (market * 1e12)
+            sources = [self._accumulated_timestamps.get(k) for k in ("total_stablecoin_mcap", "total_mcap_trillion")]
+            self._accumulated_timestamps[key] = min(sources) if all(t is not None for t in sources) else None
+        return deepcopy(self._accumulated_data)
 
     # ------------------------------------------------------------------
     # Main cycle
     # ------------------------------------------------------------------
+
+    def _publish_abstention(self, reason, completeness=0.0, maturity=0.0):
+        timestamp = datetime.now(timezone.utc).isoformat()
+        signal = {"state": "NO_SIGNAL", "direction": "NEUTRAL", "score": 0,
+                  "confidence": "NONE", "circuit_breaker": "RED", "timestamp": timestamp,
+                  "suppressed_reason": reason, "feature_completeness": completeness, "data_maturity": maturity}
+        dashboard_state.hybrid_signal = {"state": "NO_SIGNAL", "direction": "NEUTRAL", "composite_score": 0,
+                                        "confidence": "NONE", "suppression_reasons": [reason],
+                                        "data_completeness": completeness, "timestamp_utc": timestamp}
+        dashboard_state.update_signal(signal)
+        return signal
 
     def run_cycle(self) -> Optional[dict]:
         raw_data = self.collect_all()
@@ -509,7 +515,8 @@ class HydraBot:
         # Phase 4: Evaluate pending signal outcomes against current price
         try:
             current_price = raw_data.get('last_price') or raw_data.get('price_now') or raw_data.get('close', 0)
-            if current_price and float(current_price) > 0:
+            price_ts = self._accumulated_timestamps.get('last_price')
+            if current_price and float(current_price) > 0 and price_ts is not None and -5 <= time.time() - price_ts <= 600:
                 self.tracker.check_outcomes(float(current_price))
         except Exception as exc:
             logger.debug("[Main] Tracker check_outcomes: {}", exc)
@@ -529,7 +536,7 @@ class HydraBot:
             macro_keys = {"vix_current", "qqq_current", "us10y_current",
                           "gold_current", "fear_greed_value"}
             if any(raw_data.get(k) for k in macro_keys):
-                self.frame_builder.ingest_macro(raw_data)
+                self.frame_builder.ingest_macro(raw_data, self._accumulated_timestamps)
         except Exception as exc:
             logger.debug("[Main] Frame macro ingest: {}", exc)
 
@@ -558,14 +565,14 @@ class HydraBot:
             logger.warning("[Main] DataStore update error: {}", exc)
 
         if collector_features is None or (hasattr(collector_features, "empty") and collector_features.empty):
-            return None
+            return self._publish_abstention("collector_features_unavailable")
 
         # ── Phase 2: Build unified feature frame ─────────────────────
         try:
             frame = self.frame_builder.build(collector_features, raw_data)
         except Exception as exc:
             logger.warning("[Main] UnifiedFrame build error: {}", exc)
-            return None
+            return self._publish_abstention("calculation_failed")
 
         # ── Phase 2: Quality gate — circuit breaker (v4) ──────────────
         cb_level = frame.quality.circuit_breaker_level
@@ -573,14 +580,8 @@ class HydraBot:
             reason = frame.quality.abstain_reason
             logger.warning("[Main] ABSTAIN [RED] — quality gate failed: {}", reason)
             dashboard_state.update_data_store(self.data_store.status)
-            return {
-                "score": 0, "direction": "NEUTRAL", "confidence": "NONE",
-                "suppressed_reason": f"quality_gate: {reason}",
-                "feature_completeness": frame.quality.usable_fraction,
-                "circuit_breaker": "RED",
-                "data_maturity": min(frame.ring_buffer_bars / 20.0, 1.0),
-                "timestamp": datetime.now(timezone.utc).isoformat(),
-            }
+            return self._publish_abstention("quality_gate: " + str(reason), frame.quality.usable_fraction,
+                                             min(frame.ring_buffer_bars / 20.0, 1.0))
 
         if cb_level != "GREEN":
             logger.info("[Main] Circuit breaker [{}] — running with reduced confidence (multiplier={:.2f})",
@@ -596,7 +597,7 @@ class HydraBot:
             macro_out = self.macro_engine.compute(features)
         except Exception as exc:
             logger.warning("[Main] Engine compute error: {}", exc)
-            return None
+            return self._publish_abstention("calculation_failed")
 
         # Inject real-timestamp event status
         try:
@@ -615,20 +616,19 @@ class HydraBot:
                 quality_gate_reason=frame.quality.abstain_reason or f"ok [{cb_level}]",
                 data_completeness=frame.quality.usable_fraction,
                 session=session,
+                score_multiplier=frame.quality.confidence_multiplier(),
             )
             l1_signal = self.decision_engine.to_legacy_signal(explanation)
 
             # v4: Apply circuit breaker confidence multiplier
             conf_mult = frame.quality.confidence_multiplier()
-            if "score" in l1_signal and isinstance(l1_signal.get("score"), (int, float)):
-                l1_signal["score"] = round(l1_signal["score"] * conf_mult, 1)
             l1_signal["circuit_breaker"] = cb_level
             l1_signal["confidence_multiplier"] = round(conf_mult, 3)
 
             dashboard_state.hybrid_signal = sanitize(explanation.to_dict())
         except Exception as exc:
             logger.warning("[Decision] Error: {}", exc)
-            return None
+            return self._publish_abstention("calculation_failed")
 
         try:
             dashboard_state.update_signal(l1_signal)
@@ -713,6 +713,9 @@ class HydraBot:
                 self.delivery.send_text("🔴 <b>HYDRA stopped</b> (manual shutdown)")
             except Exception:
                 pass
+        finally:
+            if self.wallet_monitor is not None:
+                self.wallet_monitor.stop()
 
     def _log_heartbeat(self) -> None:
         uptime     = (datetime.now(timezone.utc) - self.start_time).total_seconds() / 3600

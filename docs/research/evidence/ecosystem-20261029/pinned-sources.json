@@ -1,0 +1,101 @@
+[
+  {
+    "repo": "sbs2001/awesome-hyperliquid",
+    "commit": "2d27226a51116b94676b4445c6992f63d42bf53a",
+    "source_url": "https://github.com/sbs2001/awesome-hyperliquid/blob/2d27226a51116b94676b4445c6992f63d42bf53a/README.md",
+    "raw_url": "https://raw.githubusercontent.com/sbs2001/awesome-hyperliquid/2d27226a51116b94676b4445c6992f63d42bf53a/README.md",
+    "status": 200,
+    "sha256": "c6219f2a5d8ae09efc928b13cdbf18994f163dfe775cfe8aca797409670417a7",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "dexlytrade/awesome-hyperliquid-copy-trading",
+    "commit": "c25bf9120706de360e554a754bb50272f80df8d6",
+    "source_url": "https://github.com/dexlytrade/awesome-hyperliquid-copy-trading/blob/c25bf9120706de360e554a754bb50272f80df8d6/README.md",
+    "raw_url": "https://raw.githubusercontent.com/dexlytrade/awesome-hyperliquid-copy-trading/c25bf9120706de360e554a754bb50272f80df8d6/README.md",
+    "status": 200,
+    "sha256": "427d2193e034be1442f4c5861aa07ea2983956f16ef68ad592c2b79dfb49f812",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "0xArchiveIO/examples",
+    "commit": "d82cb504847b21a99683c24774844f0ebc1869e9",
+    "source_url": "https://github.com/0xArchiveIO/examples/blob/d82cb504847b21a99683c24774844f0ebc1869e9/README.md",
+    "raw_url": "https://raw.githubusercontent.com/0xArchiveIO/examples/d82cb504847b21a99683c24774844f0ebc1869e9/README.md",
+    "status": 200,
+    "sha256": "3bfcf462e30b7cb4c10257388a566b7d6ff979a5eba368da1764b016701a8082",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "hydromancerxyz/hydromancer-sdk",
+    "commit": "4371df886245419c92e45a7f8038c0ec85d0789c",
+    "source_url": "https://github.com/hydromancerxyz/hydromancer-sdk/blob/4371df886245419c92e45a7f8038c0ec85d0789c/README.md",
+    "raw_url": "https://raw.githubusercontent.com/hydromancerxyz/hydromancer-sdk/4371df886245419c92e45a7f8038c0ec85d0789c/README.md",
+    "status": 200,
+    "sha256": "1eb12f75a5d3b3d5b0e8dff22290c395806f9b1376f214dbca890653611f5dea",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "bitquery/hyperliquid-api",
+    "commit": "44585d346f428f5d0d056c01992b24bd6404df83",
+    "source_url": "https://github.com/bitquery/hyperliquid-api/blob/44585d346f428f5d0d056c01992b24bd6404df83/README.md",
+    "raw_url": "https://raw.githubusercontent.com/bitquery/hyperliquid-api/44585d346f428f5d0d056c01992b24bd6404df83/README.md",
+    "status": 200,
+    "sha256": "8cc5fe4f03ef8cbc99efcc4a4db0ec4d556bc366e78c8731d9818679b5a0aa99",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "akagifreeez/hl-liqmap",
+    "commit": "aa8596b9448823f3d735531a2d4dcfde061a51d3",
+    "source_url": "https://github.com/akagifreeez/hl-liqmap/blob/aa8596b9448823f3d735531a2d4dcfde061a51d3/README.md",
+    "raw_url": "https://raw.githubusercontent.com/akagifreeez/hl-liqmap/aa8596b9448823f3d735531a2d4dcfde061a51d3/README.md",
+    "status": 200,
+    "sha256": "95c409f94ef1f5c08d6540f7b294c03282e8335c5412acc73971c1b547b41d1e",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "KonScanner/hyperliquid-trader-tracker",
+    "commit": "1522aab2569df3c53c6259532a58dbba57a18b5d",
+    "source_url": "https://github.com/KonScanner/hyperliquid-trader-tracker/blob/1522aab2569df3c53c6259532a58dbba57a18b5d/README.md",
+    "raw_url": "https://raw.githubusercontent.com/KonScanner/hyperliquid-trader-tracker/1522aab2569df3c53c6259532a58dbba57a18b5d/README.md",
+    "status": 200,
+    "sha256": "223320eae94a54026c538b918b49d40052c0f5d20ee9ae1e3cd7f208f7e9a4ce",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "ivarurdalen/coinalyze",
+    "commit": "fee7b138ecb2c58e44f33ab5dd1cc6abd9054ca5",
+    "source_url": "https://github.com/ivarurdalen/coinalyze/blob/fee7b138ecb2c58e44f33ab5dd1cc6abd9054ca5/README.md",
+    "raw_url": "https://raw.githubusercontent.com/ivarurdalen/coinalyze/fee7b138ecb2c58e44f33ab5dd1cc6abd9054ca5/README.md",
+    "status": 200,
+    "sha256": "1c48e1191a8f206a78df33995543923e28d76ace9f881810bb7ba0c1afbb341a",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "0xAtasoy/veloxyz-scraper",
+    "commit": "f4a8d755dfd32b2e94d17d5c81e5a7484b4b56a2",
+    "source_url": "https://github.com/0xAtasoy/veloxyz-scraper/blob/f4a8d755dfd32b2e94d17d5c81e5a7484b4b56a2/README.md",
+    "raw_url": "https://raw.githubusercontent.com/0xAtasoy/veloxyz-scraper/f4a8d755dfd32b2e94d17d5c81e5a7484b4b56a2/README.md",
+    "status": 200,
+    "sha256": "c76d4da3791692767058b18f17f7cedba6335064b733eee76a5cbc2be6490a32",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "bru1noia/vextorium-python",
+    "commit": "835c456f6b0b22c5088d9d268012b1eeb6a939cd",
+    "source_url": "https://github.com/bru1noia/vextorium-python/blob/835c456f6b0b22c5088d9d268012b1eeb6a939cd/README.md",
+    "raw_url": "https://raw.githubusercontent.com/bru1noia/vextorium-python/835c456f6b0b22c5088d9d268012b1eeb6a939cd/README.md",
+    "status": 200,
+    "sha256": "2db7be935580469792b66bedbe5007c7b74e00689575161b61cdb5d45d2af8e4",
+    "matches_downloaded_readme": true
+  },
+  {
+    "repo": "yodablocks/hl-liquidation-heatmap",
+    "commit": "d352dd2e400bdeb7440ff034f82a9b818e10b67f",
+    "source_url": "https://github.com/yodablocks/hl-liquidation-heatmap/blob/d352dd2e400bdeb7440ff034f82a9b818e10b67f/README.md",
+    "raw_url": "https://raw.githubusercontent.com/yodablocks/hl-liquidation-heatmap/d352dd2e400bdeb7440ff034f82a9b818e10b67f/README.md",
+    "status": 200,
+    "sha256": "1a44343183a0babbac011e5a4e209bede18fcda07bc2beef0f69d88c367d4992",
+    "matches_downloaded_readme": true
+  }
+]

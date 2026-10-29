@@ -1,0 +1,15 @@
+{
+  "specification": {
+    "version": "ema_spot_v1",
+    "baseline_id": "806ef45dc42abb7a",
+    "baseline": "BTC-USDT spot, completed 4H bars, EMA4 > EMA200, long/flat, no leverage",
+    "confirmation": "Both observed 5m and 15m spot buy-minus-sell quote-volume imbalance > 0",
+    "data_gate": "Known trade-ID overlap on every spot poll; max 90s poll gap and 60s latest-trade age; as-of event and receipt times",
+    "execution": "Research only. Record both variants at the same receipt time and reference quote; no automatic promotion",
+    "missing_data_policy": "No confirmed exposure; paper replay exits to cash at the current recorded reference quote",
+    "fees_per_side": 0.0012,
+    "stress_fees_per_side": 0.0022,
+    "status": "Unvalidated hypothesis. Do not tune thresholds using evaluation outcomes."
+  },
+  "sha256": "5fac1078d45f1e0712678e872618848bc07fce702d9d3e26dc24e1ab4278cafd"
+}

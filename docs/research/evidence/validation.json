@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-10-29T06:24:31.866144+00:00",
+  "tests": {
+    "passed": 131,
+    "warnings": 2,
+    "log": "application-tests.log"
+  },
+  "dependency_check": "No broken requirements found",
+  "source_diff_check": "passed",
+  "frontend_javascript_syntax": "node --check passed; no browser rendering claim",
+  "offline_restore_and_verify": {
+    "files": 13,
+    "independent_directory": "/workspace/hydra-repro-20261029",
+    "status": "passed"
+  },
+  "functional": {
+    "research_snapshot": "2026-10-29T06:22:08.005737+00:00",
+    "legacy_cvd_removed": true,
+    "health": {
+      "status": "alive",
+      "cycles": 1
+    },
+    "state": "NEUTRAL",
+    "score": -1.57,
+    "source_price": 80028.3,
+    "data_store": {
+      "rows": 1,
+      "columns": 200,
+      "maturity": "5%",
+      "completeness": 0.8
+    },
+    "collector_count": 13,
+    "notifications_disabled": true
+  },
+  "http_endpoints_checked": [
+    "/",
+    "/api/health",
+    "/api/status",
+    "/api/signal",
+    "/api/decision",
+    "/api/docs",
+    "/api/research"
+  ],
+  "notifications_disabled_during_check": true,
+  "github_ci_executed": false,
+  "railway_deployed": false,
+  "environment_draft": "saved; requires publication; does not change runtime access",
+  "continuation": {
+    "okx_pid": 92030,
+    "hyperliquid_pid": 92027,
+    "until_utc": "2026-10-30T05:00:00+00:00",
+    "until_istanbul": "2026-10-30T08:00:00+03:00",
+    "orders_enabled": false,
+    "limits": "Bounded local processes; environment must remain running; initial restart gap was preserved and spot confirmation abstained"
+  }
+}

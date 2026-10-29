@@ -147,6 +147,8 @@ class QualityReport:
     """
     timestamp: float
     feature_reports: Dict[str, FeatureStatusReport] = field(default_factory=dict)
+    critical_data_ok: bool = True
+    critical_data_reason: Optional[str] = None
 
     # GREEN thresholds (ideal — all data flowing)
     GREEN_LIVE_FRACTION: float = 0.50
@@ -218,6 +220,8 @@ class QualityReport:
 
         Returns: 'GREEN', 'YELLOW', 'ORANGE', or 'RED'
         """
+        if not self.critical_data_ok:
+            return "RED"
         lf = self.live_fraction
         uf = self.usable_fraction
         de = self.decision_eligible_usable_fraction
@@ -253,6 +257,8 @@ class QualityReport:
         if level != "RED":
             return None
         reasons = []
+        if not self.critical_data_ok:
+            reasons.append(self.critical_data_reason or "critical_data_missing")
         if self.live_fraction < self.ORANGE_LIVE_FRACTION:
             reasons.append(
                 f"live={self.live_fraction:.0%}<{self.ORANGE_LIVE_FRACTION:.0%}"
@@ -315,10 +321,10 @@ class FreshnessTracker:
         self._timestamps: Dict[str, float] = {}
 
     def mark_updated(self, feature_name: str, ts: Optional[float] = None) -> None:
-        self._timestamps[feature_name] = ts or time.time()
+        self._timestamps[feature_name] = time.time() if ts is None else ts
 
     def mark_batch_updated(self, feature_names: List[str], ts: Optional[float] = None) -> None:
-        t = ts or time.time()
+        t = time.time() if ts is None else ts
         for name in feature_names:
             self._timestamps[name] = t
 
@@ -342,7 +348,7 @@ class FreshnessTracker:
         age = self.get_age(contract.name)
 
         # Never seen this feature
-        if age is None or value is None:
+        if age is None or value is None or age < -5:
             return FeatureStatusReport(
                 name=contract.name,
                 status=FeatureStatus.MISSING,
@@ -350,7 +356,7 @@ class FreshnessTracker:
                 age_seconds=age,
                 source_tier=contract.source_tier,
                 decision_eligible=contract.decision_eligible,
-                degradation_reason="never_received" if age is None else "value_is_none",
+                degradation_reason="never_received" if age is None else "future_timestamp" if age < -5 else "value_is_none",
             )
 
         # Check for NaN/inf

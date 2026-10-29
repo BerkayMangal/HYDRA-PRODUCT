@@ -1,0 +1,46 @@
+{
+  "pain": {
+    "url": "https://pain.homedeck.xyz/",
+    "error": "ProxyError: HTTPSConnectionPool(host='pain.homedeck.xyz', port=443): Max retries exceeded with url: / (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403"
+  },
+  "hl_info_docs": {
+    "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint",
+    "error": "ProxyError: HTTPSConnectionPool(host='hyperliquid.gitbook.io', port=443): Max retries exceeded with url: /hyperliquid-docs/for-developers/api/info-endpoint (Caused by ProxyError('Unable to con"
+  },
+  "hl_liquidations_docs": {
+    "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/liquidations",
+    "error": "ProxyError: HTTPSConnectionPool(host='hyperliquid.gitbook.io', port=443): Max retries exceeded with url: /hyperliquid-docs/trading/liquidations (Caused by ProxyError('Unable to connect to prox"
+  },
+  "hl_rate_docs": {
+    "url": "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/rate-limits-and-user-limits",
+    "error": "ProxyError: HTTPSConnectionPool(host='hyperliquid.gitbook.io', port=443): Max retries exceeded with url: /hyperliquid-docs/for-developers/api/rate-limits-and-user-limits (Caused by ProxyError("
+  },
+  "hypurrscan": {
+    "url": "https://hypurrscan.io/",
+    "error": "ProxyError: HTTPSConnectionPool(host='hypurrscan.io', port=443): Max retries exceeded with url: / (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 For"
+  },
+  "hyblock": {
+    "url": "https://hyblockcapital.com/",
+    "error": "ProxyError: HTTPSConnectionPool(host='hyblockcapital.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 40"
+  },
+  "coinglass": {
+    "url": "https://www.coinglass.com/",
+    "error": "ProxyError: HTTPSConnectionPool(host='www.coinglass.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403"
+  },
+  "coinank": {
+    "url": "https://coinank.com/",
+    "error": "ProxyError: HTTPSConnectionPool(host='coinank.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbi"
+  },
+  "hyperdash": {
+    "url": "https://hyperdash.com/",
+    "error": "ProxyError: HTTPSConnectionPool(host='hyperdash.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 For"
+  },
+  "nansen_hl": {
+    "url": "https://www.nansen.ai/hyperliquid",
+    "error": "ProxyError: HTTPSConnectionPool(host='www.nansen.ai', port=443): Max retries exceeded with url: /hyperliquid (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection fail"
+  },
+  "hl_leaderboard": {
+    "url": "https://stats-data.hyperliquid.xyz/Mainnet/leaderboard",
+    "error": "ProxyError: HTTPSConnectionPool(host='stats-data.hyperliquid.xyz', port=443): Max retries exceeded with url: /Mainnet/leaderboard (Caused by ProxyError('Unable to connect to proxy', OSError('T"
+  }
+}

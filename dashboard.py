@@ -17,6 +17,11 @@ import threading,uvicorn,os
 _pulse_engine = None  # Set by main.py — direct ref bypasses state.pulse sync
 _ml_cfg       = None  # Set by main.py via set_ml_config() — used by /api/status
 _signal_tracker = None  # Set by main.py — direct ref for /api/performance
+_wallet_monitor = None
+
+def set_wallet_monitor(monitor):
+    global _wallet_monitor
+    _wallet_monitor = monitor
 
 def set_ml_config(cfg):
     """Called from main.py after settings are loaded so the Blueprint endpoint knows ML state."""
@@ -68,10 +73,21 @@ class DashboardState:
         self.tracker_stats={};self.price_history=[];self.ml_data={};self.ml_dashboard={}
         self.hybrid_signal={};self.next_events=[];self.ml_feature_quality=None;self.ml_ring_buffer_bars=0
         self.pulse={}
-    def update_signal(self,signal):
-        self.current_signal=sanitize(signal);self.last_cycle_time=datetime.now(timezone.utc);self.cycle_count+=1
-        self.signal_history.append(sanitize({'timestamp':signal.get('timestamp',''),'score':float(signal.get('score',0)),'direction':signal.get('direction','NEUTRAL'),'confidence':signal.get('confidence','NONE'),'regime':signal.get('regime',''),'session':signal.get('session',''),'micro':float(signal.get('engines',{}).get('microstructure',{}).get('score',0)),'flow':float(signal.get('engines',{}).get('flow',{}).get('score',0)),'macro':float(signal.get('engines',{}).get('macro',{}).get('score',0))}))
-        if len(self.signal_history)>500:self.signal_history=self.signal_history[-500:]
+    def update_signal(self, signal):
+        engines = signal.get("engines", {})
+        def score(name):
+            value = engines.get(name, 0)
+            return float(value.get("score", 0) if isinstance(value, dict) else value)
+        row = {"timestamp": signal.get("timestamp", ""), "score": float(signal.get("score", 0)),
+               "direction": signal.get("direction", "NEUTRAL"), "state": signal.get("state", "NO_SIGNAL"),
+               "confidence": signal.get("confidence", "NONE"), "regime": signal.get("regime", ""),
+               "session": signal.get("session", ""), "micro": score("microstructure"),
+               "flow": score("flow"), "macro": score("macro")}
+        self.current_signal = sanitize(signal)
+        self.last_cycle_time = datetime.now(timezone.utc)
+        self.cycle_count += 1
+        self.signal_history.append(sanitize(row))
+        self.signal_history = self.signal_history[-500:]
     def update_collectors(self,s):self.collector_status=sanitize(s)
     def update_data_store(self,s):self.data_store_status=sanitize(s)
     def update_tracker(self,s):self.tracker_stats=sanitize(s)
@@ -107,6 +123,34 @@ async def api_status_legacy():
 
 @app.get("/api/health")
 async def api_health():return{"status":"alive","cycles":state.cycle_count}
+@app.get("/api/version")
+def api_version():
+    from pathlib import Path
+    metadata = json.loads((Path(__file__).parent / 'release.json').read_text())
+    metadata['commit'] = os.environ.get('RAILWAY_GIT_COMMIT_SHA') or os.environ.get('HYDRA_BUILD_SHA') or None
+    return JSONResponse(content=metadata, headers={"Cache-Control": "no-store"})
+
+@app.get("/api/wallets")
+def api_wallets():
+    payload = _wallet_monitor.get_snapshot() if _wallet_monitor else {
+        'status':'initializing','orders_enabled':False,'btc_positions':[],
+        'requested_accounts':0,'successful_accounts':0,'is_stale':True,'cohorts':{},'errors':{}}
+    return JSONResponse(content=payload, headers={"Cache-Control": "no-store"})
+
+@app.get("/api/research/tools")
+def api_research_tools():
+    from pathlib import Path
+    path = Path(__file__).parent / 'docs/research/evidence/ecosystem-20261029/catalog.json'
+    try:
+        body=json.loads(path.read_text())
+        entries=[{key:row[key] for key in ('id','name','url','category','hydra_use','evidence_level','api_trial_performed')} for row in body['entries']]
+        return {'status':'source_reviewed','entries':entries,'service_trials_verified':False}
+    except (OSError,ValueError,KeyError,TypeError):
+        return {'status':'unavailable','entries':[],'service_trials_verified':False}
+@app.get("/api/research")
+def api_research():
+    from research.dashboard_summary import load_summary
+    return JSONResponse(content=load_summary(), headers={"Cache-Control": "no-store"})
 @app.get("/api/ml")
 async def api_ml():
     if _ml_cfg is not None and getattr(_ml_cfg, "enabled", False) is False:

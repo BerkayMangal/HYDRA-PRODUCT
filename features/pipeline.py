@@ -245,27 +245,24 @@ class _HourlyAccumulator:
 
     def __init__(self) -> None:
         self._pending: List[_Bar] = []
-        self._current_hour: Optional[int] = None
+        self._current_hour = None
+        self._last_ts = None
 
     def push(self, bar: _Bar) -> Optional[Dict[str, float]]:
-        """
-        Push a 5-min bar. Returns a completed 1H OHLCV dict when a
-        new hour boundary is crossed, else None.
-        """
-        hour_slot = bar.ts_utc.replace(minute=0, second=0, microsecond=0)
-        if self._current_hour is None:
-            self._current_hour = hour_slot
-            self._pending.append(bar)
+        if self._last_ts is not None and bar.ts_utc <= self._last_ts:
             return None
-
-        if hour_slot != self._current_hour:
-            # Hour boundary crossed — emit completed bar
-            completed = self._emit()
-            self._current_hour = hour_slot
-            self._pending = [bar]
-            return completed
-
+        if bar.ts_utc.second or bar.ts_utc.microsecond or bar.ts_utc.minute % 5:
+            return None
+        self._last_ts = bar.ts_utc
+        hour = bar.ts_utc.replace(minute=0, second=0, microsecond=0)
+        if hour != self._current_hour:
+            self._pending = []
+            self._current_hour = hour
         self._pending.append(bar)
+        if len(self._pending) == 12:
+            completed = self._emit()
+            self._pending = []
+            return completed
         return None
 
     def _emit(self) -> Optional[Dict[str, float]]:
@@ -339,7 +336,18 @@ class FeaturePipeline:
             logger.warning("[Pipeline] warm_up called with empty DataFrame")
             return
 
-        df = df.sort_index()
+        df = df.sort_index().copy()
+        df = df[~df.index.duplicated(keep="last")]
+        now = pd.Timestamp.now(tz="UTC")
+        index_utc = df.index.tz_localize("UTC") if df.index.tz is None else df.index.tz_convert("UTC")
+        df = df[(index_utc + pd.Timedelta(hours=1)) <= now]
+        if df.empty:
+            return
+        gaps = df.index.to_series().diff() != pd.Timedelta(hours=1)
+        if gaps.iloc[1:].any():
+            df = df.loc[gaps[gaps].index[-1]:]
+        self._ring.clear()
+        self._accumulator = _HourlyAccumulator()
         # Normalise index to UTC-naive for consistency
         if df.index.tz is not None:
             df.index = df.index.tz_convert("UTC").tz_localize(None)
@@ -354,8 +362,10 @@ class FeaturePipeline:
                 "volume": float(row.get("volume", 0)),
                 "funding": float(row["funding"]) if "funding" in row and pd.notna(row["funding"]) else None,
             }
-            self._ring.append(entry)
+            self._append_hour(entry)
 
+        if self._ring:
+            self._accumulator._last_ts = datetime.fromtimestamp(self._ring[-1]["ts"] + 3300, tz=timezone.utc)
         self._warmup_done = True
         logger.info(
             "[Pipeline] Warm-up complete: {} 1H bars in ring buffer",
@@ -384,9 +394,20 @@ class FeaturePipeline:
             Current OKX perpetual funding rate.
         """
         try:
+            hourly = okx_data.get("hourly_candles")
+            if hourly is not None:
+                changed = False
+                for candle in sorted(hourly, key=lambda row: row[0]):
+                    ts, o, h, l, c, volume = map(float, candle[:6])
+                    ts /= 1000
+                    if ts + 3600 > time.time():
+                        continue
+                    entry = {"ts": ts, "open": o, "high": h, "low": l, "close": c, "volume": volume, "funding": None}
+                    changed = self._append_hour(entry) or changed
+                return changed
             ts_raw = okx_data.get("timestamp")
             if ts_raw is None:
-                ts_utc = datetime.now(timezone.utc)
+                return False  # A receipt timestamp cannot substitute for a candle event time.
             elif isinstance(ts_raw, datetime):
                 # ccxt or other collector already returned a datetime
                 ts_utc = ts_raw if ts_raw.tzinfo else ts_raw.replace(tzinfo=timezone.utc)
@@ -404,7 +425,9 @@ class FeaturePipeline:
                 except ValueError:
                     ts_utc = datetime.fromtimestamp(float(ts_raw) / 1000, tz=timezone.utc)
             else:
-                ts_utc = datetime.now(timezone.utc)
+                return False
+            if ts_utc.timestamp() + 300 > time.time():
+                return False
 
             bar = _Bar(
                 ts_utc  = ts_utc,
@@ -418,17 +441,35 @@ class FeaturePipeline:
 
             completed = self._accumulator.push(bar)
             if completed:
-                self._ring.append(completed)
+                accepted = self._append_hour(completed)
                 logger.debug(
                     "[Pipeline] New 1H bar emitted. Ring: {} bars",
                     len(self._ring),
                 )
-                return True
+                return accepted
             return False
 
         except Exception as exc:
             logger.error("[Pipeline] ingest_candle error: {}", exc)
             return False
+
+    def _append_hour(self, entry):
+        if entry["ts"] % 3600:
+            return False
+        values = [entry[k] for k in ("open", "high", "low", "close", "volume")]
+        if not np.isfinite(values).all() or min(values[:4]) <= 0 or values[4] < 0:
+            return False
+        if entry["low"] > min(entry["open"], entry["close"]) or entry["high"] < max(entry["open"], entry["close"]):
+            return False
+        if self._ring:
+            delta = entry["ts"] - self._ring[-1]["ts"]
+            if delta <= 0:
+                return False
+            if delta != 3600:
+                logger.warning("[Pipeline] Hourly gap: reset buffer instead of computing across missing hours")
+                self._ring.clear()
+        self._ring.append(entry)
+        return True
 
     def ingest_macro(self, macro_data: Dict[str, Any]) -> None:
         """
@@ -648,7 +689,7 @@ class FeaturePipeline:
         # ── Calendar ──────────────────────────────────────────────────────
         f["hour"]       = f.index.hour if hasattr(f.index, "hour") else 0
         f["is_us"]      = ((f["hour"] >= 13) & (f["hour"] < 21)).astype(np.int8)
-        f["day"]        = f.index.dayofweek if hasattr(f.index, "dayofweek") else 0
+        f["day"]        = f.index.day_of_week if hasattr(f.index, "day_of_week") else 0
         f["is_weekend"] = (f["day"] >= 5).astype(np.int8)
 
         return f

@@ -1,0 +1,45 @@
+{
+  "observed_at": "2026-10-29T07:26:24.565449+00:00",
+  "user_authorization_received": true,
+  "tests_passed": 148,
+  "test_warnings": 2,
+  "primary_accounts": 6,
+  "additional_accounts": 16,
+  "distinct_accounts": 22,
+  "cohorts_disjoint": true,
+  "api_research_smoke": "HTTP 200; primary=6, additional=16, unique=22, orders=false",
+  "frontend_js_syntax": "node --check passed",
+  "workers": [
+    {
+      "status_file": "/workspace/HYDRA-PRODUCT/data/research/shadow-status.json",
+      "pid": 97990,
+      "alive": true,
+      "observed_at": "2026-10-29T07:25:59.181794+00:00",
+      "errors": {},
+      "wallets_successful": null,
+      "orders_enabled": false
+    },
+    {
+      "status_file": "/workspace/HYDRA-PRODUCT/data/research/hyperliquid/status.json",
+      "pid": 92027,
+      "alive": true,
+      "observed_at": "2026-10-29T07:26:10.565018+00:00",
+      "errors": {},
+      "wallets_successful": 6,
+      "orders_enabled": false
+    },
+    {
+      "status_file": "/workspace/HYDRA-PRODUCT/data/research-wide/hyperliquid/status.json",
+      "pid": 97789,
+      "alive": true,
+      "observed_at": "2026-10-29T07:24:06.913702+00:00",
+      "errors": {},
+      "wallets_successful": 16,
+      "orders_enabled": false
+    }
+  ],
+  "planned_stop_utc": "2026-10-30T05:00:00+00:00",
+  "environment_draft": "saved; requires publication; competitor proxy tunnel remains 403",
+  "railway_deployed": false,
+  "orders_enabled": false
+}

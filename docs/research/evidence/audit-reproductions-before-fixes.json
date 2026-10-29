@@ -1,0 +1,113 @@
+{
+  "stale_feature_rejuvenated": {
+    "elapsed_seconds": 10000,
+    "reported_status": "live",
+    "reported_age": 0
+  },
+  "expired_raw_resurrected_by_normalization": {
+    "raw": "nan",
+    "zscore": 1.6057930839841814
+  },
+  "duplicate_candle_volume": {
+    "one_candle_volume": 10,
+    "duplicates_ingested": 3,
+    "emitted_volume": 30.0
+  },
+  "source_timestamp_mutated": {
+    "timestamp_inserted_into_input": "2026-10-27 19:00:50.581750+00:00",
+    "type": "datetime"
+  },
+  "slow_market_cap_decays_repeatedly_in_place": {
+    "source_value": 303432780707.017,
+    "age_seconds": 1000,
+    "effective_ttl_seconds": 600.0,
+    "after_first_update": 155787584090.64496,
+    "after_second_same_clock_update": 79984012604.86661
+  },
+  "etf_parser_totals_as_daily": {
+    "expected_last_daily": 90000000.0,
+    "actual": {
+      "etf_net_flow_daily": 1100000000.0,
+      "etf_net_flow_7d": 2410000000.0
+    }
+  },
+  "failed_fetch_returns_unmarked_cache": {
+    "returned": {
+      "last_price": 100.0
+    },
+    "consecutive_errors": 0,
+    "last_fetch_time": null
+  },
+  "unknown_forward_labels_become_zero": {
+    "last_sample": "2025-01-10 00:00:00+00:00",
+    "last_available_price": "2025-01-10 23:00:00+00:00",
+    "label": 0,
+    "known_forward_return": false
+  },
+  "future_values_change_past_imputation": {
+    "first_row_before": 120.0,
+    "first_row_after_future_edit": 10000.0
+  },
+  "overlapping_oos_folds": {
+    "folds": 5,
+    "first_two_shared_test_hours": 384
+  },
+  "open_position_drawdown_not_marked": {
+    "sharpe": 0.0,
+    "sortino": 0.0,
+    "max_dd": 0.0,
+    "hit_rate": 0.0,
+    "n_trades": 1,
+    "total_return": -0.0013995100000000482,
+    "avg_trade": -0.0014,
+    "turnover_annual": 109.5
+  },
+  "sample_price_alignment": {
+    "sampled_prediction_hours": [
+      0,
+      24,
+      48,
+      72,
+      96
+    ],
+    "test_simulation_price_hours": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "validation_simulation_price_hours": [
+      690,
+      691,
+      692,
+      693,
+      694
+    ],
+    "min_hold_steps": 48,
+    "predictions_per_30d": 30
+  },
+  "dashboard_signal_schema_error": {
+    "exception": "AttributeError(\"'float' object has no attribute 'get'\")",
+    "history_rows": 0,
+    "cycle_count": 1
+  },
+  "red_gate_keeps_previous_dashboard_signal": {
+    "returned_direction": "NEUTRAL",
+    "returned_circuit_breaker": "RED",
+    "dashboard_still_shows": {
+      "direction": "LONG",
+      "score": 60,
+      "state": "BULLISH"
+    }
+  },
+  "expired_values_survive_legacy_bridge": {
+    "quality_status": "missing",
+    "safe_accessor_value": null,
+    "legacy_series_value": 40.0
+  },
+  "etf_parser_current_source": {
+    "etf_net_flow_daily": 191100000.0,
+    "etf_net_flow_7d": 734200000.0
+  }
+}

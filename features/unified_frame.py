@@ -40,6 +40,7 @@ quality classification. No missing feature silently becomes 0.
 from __future__ import annotations
 
 import time
+from datetime import datetime, timezone
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Set
 
@@ -117,10 +118,12 @@ class UnifiedFeatureFrame:
         This is a TEMPORARY bridge. Layer 1 engines should migrate to
         SafeFeatureAccessor.
         """
-        s = pd.Series(self.values)
-        s["feature_completeness"] = self.quality.usable_fraction
-        s["data_maturity"] = min(self.ring_buffer_bars / 20.0, 1.0)
-        return s
+        values = {name: report.value for name, report in self.quality.feature_reports.items() if report.is_usable}
+        hour = datetime.fromtimestamp(self.timestamp, tz=timezone.utc).hour
+        values["session_label"] = "tokyo" if hour < 8 else "london" if hour < 14 else "new_york" if hour < 21 else "off_hours"
+        values["feature_completeness"] = self.quality.usable_fraction
+        values["data_maturity"] = min(self.ring_buffer_bars / 20.0, 1.0)
+        return pd.Series(values, dtype=object)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -182,6 +185,13 @@ class UnifiedFrameBuilder:
     def warm_up(self, historical_df: pd.DataFrame) -> None:
         """Seed the ring buffer with historical data."""
         self._pipeline.warm_up(historical_df)
+        self._mark_ohlcv()
+
+    def _mark_ohlcv(self):
+        if self._pipeline._ring:
+            event_end = self._pipeline._ring[-1]["ts"] + 3600
+            names = [name for name, contract in ALL_CONTRACTS.items() if contract.origin.value == "ohlcv"]
+            self._freshness.mark_batch_updated(names, event_end)
 
     def ingest_candle(
         self,
@@ -191,16 +201,10 @@ class UnifiedFrameBuilder:
         """Ingest a 5-min candle. Returns True if a new 1H bar was emitted."""
         result = self._pipeline.ingest_candle(okx_data, funding_rate)
         if result:
-            # Mark all OHLCV features as freshly updated
-            now = time.time()
-            ohlcv_features = [
-                name for name, c in ALL_CONTRACTS.items()
-                if c.origin.value == "ohlcv"
-            ]
-            self._freshness.mark_batch_updated(ohlcv_features, now)
+            self._mark_ohlcv()
         return result
 
-    def ingest_macro(self, macro_data: Dict[str, Any]) -> None:
+    def ingest_macro(self, macro_data: Dict[str, Any], feature_timestamps=None) -> None:
         """
         Ingest macro data. FIXED: computes regime features, not z-scores.
 
@@ -212,11 +216,21 @@ class UnifiedFrameBuilder:
         FIX: Macro data is treated as LOW-FREQUENCY REGIME features.
         We compute level-based and change-based features, NOT z-scores.
         """
-        self._pipeline.ingest_macro(macro_data)
-        now = time.time()
-        self._last_macro_ingest = now
-        # Mark macro features as updated
-        self._freshness.mark_batch_updated(MACRO_FEATURE_NAMES, now)
+        source_times = feature_timestamps or {}
+        fields = ["vix_current", "qqq_current", "us10y_current", "gold_current", "fear_greed_value"]
+        observed = [source_times[key] for key in fields if key in macro_data and source_times.get(key) is not None]
+        if not observed:
+            return
+        ts = max(observed)
+        if ts > self._last_macro_ingest:
+            self._pipeline.ingest_macro({**macro_data, "ts": ts})
+            self._last_macro_ingest = ts
+        dependencies = {"vix_level": "vix_current", "vix_regime": "vix_current", "vix_spike": "vix_current",
+                        "qqq_ret_1d": "qqq_change_24h", "us10y_level": "us10y_current",
+                        "us10y_change_1d": "us10y_change_24h", "fg_val": "fear_greed_value", "fg_regime": "fear_greed_value"}
+        for name, key in dependencies.items():
+            if source_times.get(key) is not None:
+                self._freshness.mark_updated(name, source_times[key])
 
     # ------------------------------------------------------------------
     # Build unified frame
@@ -239,6 +253,7 @@ class UnifiedFrameBuilder:
         """
         now = time.time()
         values: Dict[str, float] = {}
+        source_times = collector_features.attrs.get("source_timestamps", {})
 
         # ── 1. Pipeline features (OHLCV + funding from ring buffer) ──────
         pipeline_vec = self._pipeline.transform_live()
@@ -247,6 +262,11 @@ class UnifiedFrameBuilder:
 
         if pipeline_vec is not None:
             for name in PIPELINE_FEATURE_NAMES:
+                if name in pipeline_vec.quality.default or name in pipeline_vec.quality.proxy:
+                    continue
+                contract = ALL_CONTRACTS[name]
+                if ring_bars < contract.min_history_bars:
+                    continue
                 val = pipeline_vec.values.get(name)
                 if val is not None and not (isinstance(val, float) and (np.isnan(val) or np.isinf(val))):
                     values[name] = float(val)
@@ -265,7 +285,8 @@ class UnifiedFrameBuilder:
                     fval = float(val)
                     if not np.isnan(fval) and not np.isinf(fval):
                         values[name] = fval
-                        self._freshness.mark_updated(name, now)
+                        if source_times.get(name) is not None:
+                            self._freshness.mark_updated(name, source_times[name])
                 except (TypeError, ValueError):
                     pass  # Will be classified as MISSING
 
@@ -279,12 +300,20 @@ class UnifiedFrameBuilder:
                         fval = float(collector_features[key])
                         if not np.isnan(fval) and not np.isinf(fval):
                             values[key] = fval
-                            self._freshness.mark_updated(key, now)
+                            if source_times.get(key) is not None:
+                                self._freshness.mark_updated(key, source_times[key])
                     except (TypeError, ValueError):
                         pass
 
         # ── 5. Build quality report ───────────────────────────────────────
         quality = self._build_quality_report(values, now)
+        price = self._safe_float(raw_data.get("last_price"))
+        close = self._safe_float(raw_data.get("close"))
+        price_ts, close_ts = source_times.get("last_price"), source_times.get("close")
+        quality.critical_data_ok = bool(price and price > 0 and close and close > 0
+                                        and price_ts is not None and -5 <= now - price_ts <= 600
+                                        and close_ts is not None and -5 <= now - close_ts <= 900)
+        quality.critical_data_reason = None if quality.critical_data_ok else "missing_or_stale_btc_price_or_candle"
 
         frame = UnifiedFeatureFrame(
             values=values,
@@ -321,7 +350,7 @@ class UnifiedFrameBuilder:
 
         v4 UPDATE: Now resilient to partial macro data.
         - Uses _change_24h fields from macro_collector directly (works with FRED fallback)
-        - Falls back to macro buffer for change computation
+        - Does not treat adjacent polls as daily changes
         - Each feature computed independently — one missing doesn't block others
         """
         result: Dict[str, float] = {}
@@ -344,13 +373,6 @@ class UnifiedFrameBuilder:
         qqq_chg = self._safe_float(raw_data.get("qqq_change_24h"))
         if qqq_chg is not None:
             result["qqq_ret_1d"] = qqq_chg
-        else:
-            # Fallback: compute from current vs previous
-            qqq = self._safe_float(raw_data.get("qqq_current"))
-            qqq_prev = self._safe_float(raw_data.get("qqq_previous"))
-            if qqq is not None and qqq_prev is not None and qqq_prev > 0:
-                result["qqq_ret_1d"] = (qqq - qqq_prev) / qqq_prev * 100.0
-
         # US10Y — use change_24h from collector
         us10y = self._safe_float(raw_data.get("us10y_current"))
         if us10y is not None and us10y > 0:
@@ -359,57 +381,8 @@ class UnifiedFrameBuilder:
         if us10y_chg is not None:
             result["us10y_change_1d"] = us10y_chg
 
-        # Compute from macro buffer if available (supplements above)
-        macro_list = list(self._pipeline._macro)
-        if len(macro_list) >= 2:
-            latest = macro_list[-1]
-            prev = macro_list[-2]
-
-            # QQQ daily return from buffer (if not already set)
-            if "qqq_ret_1d" not in result:
-                qqq_now = latest.get("qqq", 0)
-                qqq_old = prev.get("qqq", 0)
-                if qqq_now > 0 and qqq_old > 0:
-                    result["qqq_ret_1d"] = (qqq_now - qqq_old) / qqq_old * 100.0
-
-            # US10Y from buffer (if not already set)
-            if "us10y_level" not in result:
-                us10y_now = latest.get("us10y", 0)
-                if us10y_now > 0:
-                    result["us10y_level"] = us10y_now
-            if "us10y_change_1d" not in result:
-                us10y_now = latest.get("us10y", 0)
-                us10y_old = prev.get("us10y", 0)
-                if us10y_now > 0 and us10y_old > 0:
-                    result["us10y_change_1d"] = us10y_now - us10y_old
-
-            # Gold/BTC ratio z-score (multi-day, from buffer)
-            if len(macro_list) >= 5:
-                gold_vals = [obs.get("gold", 0) for obs in macro_list[-20:] if obs.get("gold", 0) > 0]
-                if gold_vals and self._pipeline._ring:
-                    btc_close = self._pipeline._ring[-1].get("close", 0) if self._pipeline._ring else 0
-                    if btc_close > 0 and gold_vals[-1] > 0:
-                        current_ratio = btc_close / gold_vals[-1]
-                        ratios = [btc_close / g for g in gold_vals if g > 0]
-                        if len(ratios) >= 3:
-                            mean_r = np.mean(ratios)
-                            std_r = np.std(ratios)
-                            if std_r > 0:
-                                result["gold_btc_ratio_z"] = float((current_ratio - mean_r) / std_r)
-
-        elif len(macro_list) == 1:
-            latest = macro_list[-1]
-            if "us10y_level" not in result:
-                us10y_now = latest.get("us10y", 0)
-                if us10y_now > 0:
-                    result["us10y_level"] = us10y_now
-
-        # QQQ 5-day momentum from macro buffer
-        if len(macro_list) >= 5:
-            qqq_now = macro_list[-1].get("qqq", 0)
-            qqq_5d = macro_list[-5].get("qqq", 0)
-            if qqq_now > 0 and qqq_5d > 0:
-                result["qqq_momentum_5d"] = (qqq_now - qqq_5d) / qqq_5d * 100.0
+        # Adjacent polls are not daily observations. Only dated collector
+        # changes above may populate daily-return/change contracts.
 
         # Fear & Greed regime
         fg = self._safe_float(raw_data.get("fear_greed_value"))

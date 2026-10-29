@@ -14,6 +14,7 @@ from typing import Dict, Any, List
 import os
 from loguru import logger
 from collectors.base import BaseCollector
+from research.hyperliquid_features import market_contexts
 
 
 CG_BASE = "https://api.coingecko.com/api/v3"
@@ -385,6 +386,7 @@ class VenomCollector(BaseCollector):
                     meta = result[0]
                     contexts = result[1]
                     universe = meta.get('universe', [])
+                    normalized = market_contexts(result)
                     
                     hl_signals = []
                     
@@ -395,10 +397,12 @@ class VenomCollector(BaseCollector):
                         coin = universe[i]
                         name = coin.get('name', '')
                         
-                        funding = float(ctx.get('funding', 0) or 0)
-                        oi = float(ctx.get('openInterest', 0) or 0)
-                        vol_24h = float(ctx.get('dayNtlVlm', 0) or 0)
-                        mark = float(ctx.get('markPx', 0) or 0)
+                        values = normalized[name]
+                        funding = values['funding_hourly']
+                        oi_base = values['open_interest_base']
+                        vol_24h = values['volume_24h_usd']
+                        mark = values['mark_price']
+                        oi = values['open_interest_usd']
                         
                         # Skip tiny markets
                         if vol_24h < 5_000_000 or oi < 1_000_000:
@@ -409,7 +413,7 @@ class VenomCollector(BaseCollector):
                         signal_text = 'Normal'
                         signal_emoji = '⚪'
                         
-                        funding_annualized = funding * 365 * 100  # Rough annualized %
+                        funding_annualized = values['funding_simple_apr_pct']
                         
                         if funding > 0.0005:  # Very positive funding
                             signal = 'crowded_long'
@@ -433,6 +437,8 @@ class VenomCollector(BaseCollector):
                             'funding': round(funding * 100, 4),  # As percentage
                             'funding_annualized': round(funding_annualized, 1),
                             'open_interest': oi,
+                            'open_interest_base': oi_base,
+                            'open_interest_unit': 'USD_notional',
                             'oi_m': round(oi / 1e6, 1),
                             'volume_24h': vol_24h,
                             'volume_m': round(vol_24h / 1e6, 1),
@@ -473,7 +479,7 @@ class VenomCollector(BaseCollector):
             resp = req.post('https://api.hyperliquid.xyz/info',
                 json={"type": "metaAndAssetCtxs"}, timeout=10)
             ok = resp.status_code == 200
-        except:
-            ok = True  # Don't fail on health check — data comes from Sentiment
+        except Exception:
+            ok = False
         logger.info(f"[Venom] Health check {'OK' if ok else 'FAILED'}")
         return ok

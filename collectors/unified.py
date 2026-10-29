@@ -1,50 +1,11 @@
-"""
-collectors/unified.py — UnifiedDataStore v4
-═══════════════════════════════════════════
-FIXES vs v3:
+"""Immutable observations, source-time TTLs and per-feature normalization.
 
-  FIX 1 — LOCF with Exponential Decay (replaces hard NaN on TTL expiry)
-  ─────────────────────────────────────────────────────────────────────
-  v3 set stale features to np.nan immediately on TTL expiry.
-  Result: Fear=nan/100, ETF nanM in pulse logs, ML model fed with NaN rows.
-
-  Quantitative rationale: fear & greed index is a *slow-moving* signal.
-  A value from 40 minutes ago is still informative; setting it to NaN
-  destroys information that was perfectly valid minutes earlier. The
-  correct approach is exponential decay toward a neutral prior:
-
-      decayed = last_value + (neutral_prior - last_value) * (1 - exp(-k*excess_age))
-
-  where excess_age = (current_time - last_ts) - ttl, and k controls
-  the decay rate (k=1 means value decays to 63% of the gap from neutral
-  in one TTL-length of extra age).
-
-  After 2× TTL the value is ~63% decayed toward neutral.
-  After 4× TTL the value is ~86% decayed — effectively neutral.
-  Hard NaN is only applied after 6× TTL (value indistinguishable from prior).
-
-  This preserves the statistical direction of old data while reducing
-  its magnitude — mathematically equivalent to a Bayesian update that
-  shrinks toward a diffuse prior as evidence becomes stale.
-
-  FIX 2 — Extended Feature Group Registry
-  ────────────────────────────────────────
-  Prediction market features (poly_*, kalshi_*) were not in any feature
-  group → defaulted to microstructure TTL (600s). They are collected at
-  the 'medium' interval (900s). They expired BEFORE the next collection
-  cycle, guaranteed. Added a 'prediction_market' group with TTL aligned
-  to the medium polling interval.
-
-  FIX 3 — Per-feature Neutral Priors for Decay
-  ─────────────────────────────────────────────
-  Fear & Greed decays toward 50 (neutral). Funding rate decays toward 0.
-  OI change decays toward 0. This prevents a stale extreme value from
-  permanently anchoring the model's view of the world.
+Raw market facts are never decayed. Repeated reads of one observation do not
+add statistical samples, and expired values cannot reappear through z-scores.
 """
 
 from __future__ import annotations
 
-import math
 import time
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional, Set
@@ -54,45 +15,8 @@ import pandas as pd
 from loguru import logger
 
 
-# Neutral priors for LOCF decay — what to decay toward when data goes stale.
-# Key insight: decay to the "uninformative" value, not zero.
-_NEUTRAL_PRIORS: Dict[str, float] = {
-    "fear_greed_value":          50.0,   # 0–100, neutral = 50
-    "btc_dominance":             55.0,   # typical baseline
-    "ls_ratio":                   1.0,   # long = short = neutral
-    "funding_rate":               0.0,
-    "oi_change_pct":              0.0,
-    "ob_imbalance_raw":           0.0,
-    "cvd_buy_ratio":              0.5,
-    "vix_current":               20.0,   # historical average
-    "dxy_current":              104.0,   # approximate mean
-    "stablecoin_exchange_ratio":  0.0,
-    "stablecoin_ratio_delta":     0.0,
-    "alt_season_index":           0.0,
-    "etf_net_flow_daily":         0.0,
-    "etf_net_flow_7d":            0.0,
-    "exchange_netflow_btc":       0.0,
-    "exchange_netflow_7d":        0.0,
-    "miner_outflow_btc":          0.0,
-    "defi_tvl_change_24h":        0.0,
-    "total_mcap_change_24h":      0.0,
-}
-
-# After this many TTL multiples past expiry, apply hard NaN.
-_HARD_NAN_MULTIPLIER: float = 6.0
-# Decay rate constant: at 1× excess TTL the value has decayed ~63% toward neutral.
-_DECAY_K: float = 1.0
-
-
 class UnifiedDataStore:
-    """
-    Central feature store for HYDRA v4.
-
-    Core changes from v3:
-      - LOCF with exponential decay replaces hard NaN on TTL expiry.
-      - Prediction market features have their own group + TTL.
-      - Decay is logged at DEBUG level to avoid log spam.
-    """
+    """Central feature store with independent source-time histories."""
 
     MIN_ROWS_FOR_ZSCORE: int = 20
     TTL_MULTIPLIER: float = 2.0
@@ -195,7 +119,7 @@ class UnifiedDataStore:
         self.bars_per_hour: int = 12
 
         logger.info(
-            "[DataStore] v4 | TTL micro={}s flow={}s macro={}s pred_mkt={}s very_slow={}s | LOCF decay enabled",
+            "[DataStore] TTL micro={}s flow={}s macro={}s pred_mkt={}s very_slow={}s | immutable observations",
             self.feature_ttls["microstructure"],
             self.feature_ttls["flow"],
             self.feature_ttls["macro"],
@@ -210,82 +134,54 @@ class UnifiedDataStore:
         collector_data: Dict[str, Any],
         feature_timestamps: Optional[Dict[str, float]] = None,
     ) -> pd.Series:
-        now    = datetime.now(timezone.utc)
+        now = datetime.now(timezone.utc)
         now_ts = time.time()
-
-        collector_data["timestamp"]    = now
-        collector_data["hour_utc"]     = now.hour
-        collector_data["day_of_week"]  = now.weekday()
+        # Never modify the shared raw observation, including its candle timestamp.
+        collector_data = dict(collector_data)
+        collector_data["computed_at"] = now
+        collector_data["hour_utc"] = now.hour
+        collector_data["day_of_week"] = now.weekday()
         collector_data["session_label"] = self._get_session(now.hour)
+        source_times = dict(feature_timestamps or {})
+        if feature_timestamps is None:
+            source_times = {key: now_ts for key in collector_data}
 
-        # ── LOCF with Exponential Decay (replaces hard NaN) ──────────────
-        if feature_timestamps:
-            decayed_count = 0
-            nan_count     = 0
-            stale_names   = []
-
-            for feat, last_ts in feature_timestamps.items():
-                age_seconds = now_ts - last_ts
-                ttl         = self._get_feature_ttl(feat)
-
-                if age_seconds <= ttl:
-                    continue  # fresh — no action
-
-                excess_age  = age_seconds - ttl
-
-                # Hard NaN: feature is extremely stale (> 6× TTL)
-                if excess_age > (_HARD_NAN_MULTIPLIER - 1) * ttl:
-                    collector_data[feat] = np.nan
-                    nan_count  += 1
-                    stale_names.append(f"{feat}({age_seconds/3600:.1f}h→NaN)")
-                    continue
-
-                # Soft decay: apply LOCF with exponential decay toward neutral
-                current_val = collector_data.get(feat)
-                if current_val is None:
-                    continue
-                try:
-                    current_float = float(current_val)
-                    if math.isnan(current_float):
-                        continue
-                except (TypeError, ValueError):
-                    continue
-
-                neutral    = _NEUTRAL_PRIORS.get(feat, 0.0)
-                # decay factor: 0 = no decay (fresh), 1 = fully at neutral
-                decay      = 1.0 - math.exp(-_DECAY_K * (excess_age / ttl))
-                decayed_val = current_float + (neutral - current_float) * decay
-
-                collector_data[feat] = decayed_val
-                decayed_count += 1
-                logger.debug(
-                    "[DataStore] LOCF decay: {} {:.3g}→{:.3g} (age={:.0f}s, ttl={:.0f}s, decay={:.1%})",
-                    feat, current_float, decayed_val, age_seconds, ttl, decay
-                )
-
-            if nan_count > 0:
-                logger.warning(
-                    "[DataStore] {} features expired (>{}×TTL) → hard NaN: {}",
-                    nan_count, _HARD_NAN_MULTIPLIER,
-                    ", ".join(stale_names[:10]) + ("..." if nan_count > 10 else ""),
-                )
-            if decayed_count > 0:
-                logger.debug("[DataStore] {} features LOCF-decayed toward neutral", decayed_count)
+        # Quality affects availability, never the numeric value of a market fact.
+        observations = getattr(self, "_observations", {})
+        any_new = False
+        for feature in self._feature_to_group:
+            value = collector_data.get(feature)
+            ts = source_times.get(feature)
+            try:
+                valid = ts is not None and -5 <= now_ts - ts <= self._get_feature_ttl(feature) and np.isfinite(float(value))
+            except (TypeError, ValueError):
+                valid = False
+            if not valid:
+                if feature in collector_data:
+                    collector_data[feature] = np.nan
+                continue
+            history = observations.setdefault(feature, [])
+            if not history or ts > history[-1][0]:
+                history.append((ts, float(value)))
+                any_new = True
+            # An identical source time is not another statistical observation.
+            hours = self.norm_windows.get(self._feature_to_group[feature], 24)
+            observations[feature] = [(t, v) for t, v in history if t >= now_ts - hours * 3600]
+        self._observations = observations
+        self._latest_source_times = source_times
 
         # ── Append to history ────────────────────────────────────────────
         row      = pd.Series(collector_data)
         row.name = now
 
-        self.history = pd.concat(
-            [self.history, pd.DataFrame([row])],
-            ignore_index=False,
-        )
+        if any_new or self.history.empty:
+            self.history = pd.concat([self.history, pd.DataFrame([row])], ignore_index=False)
 
         max_rows = 30 * 24 * self.bars_per_hour
         if len(self.history) > max_rows:
             self.history = self.history.iloc[-max_rows:]
 
-        normalized = self._normalize_latest()
+        normalized = self._normalize_latest(row)
         combined   = pd.concat([row, normalized])
 
         n_rows = len(self.history)
@@ -298,6 +194,9 @@ class UnifiedDataStore:
             n_rows, len(combined), completeness, combined["data_maturity"],
         )
 
+        normalized_times = {name: source_times.get(name.removesuffix("_zscore").removesuffix("_pctrank"))
+                            for name in normalized.index}
+        combined.attrs["source_timestamps"] = {**source_times, **normalized_times}
         return combined
 
     # ── TTL helpers ─────────────────────────────────────────────────────────
@@ -321,66 +220,28 @@ class UnifiedDataStore:
 
     # ── Normalization ───────────────────────────────────────────────────────
 
-    def _normalize_latest(self) -> pd.Series:
-        normalized: Dict[str, float] = {}
-        n_rows = len(self.history)
-
-        if n_rows < 2:
-            return self._cold_start_scaling()
-
-        for group_name, features in self.feature_groups.items():
-            use_zscore = n_rows >= self.MIN_ROWS_FOR_ZSCORE
-
-            if use_zscore:
-                window_hours = self.norm_windows.get(group_name, 24)
-                window_bars  = window_hours * self.bars_per_hour
-                window       = self.history.tail(min(window_bars, n_rows))
+    def _normalize_latest(self, row: pd.Series) -> pd.Series:
+        normalized = {}
+        for feature, history in self._observations.items():
+            current = row.get(feature)
+            try:
+                if not np.isfinite(float(current)):
+                    continue
+            except (TypeError, ValueError):
+                continue
+            # Do not resurrect the last valid value when the latest one expired.
+            values = np.array([value for _, value in history], dtype=float)
+            if not len(values):
+                continue
+            if len(values) >= self.MIN_ROWS_FOR_ZSCORE:
+                std = values.std(ddof=1)
+                scaled = float((current - values.mean()) / std) if std > 0 else 0.0
+                rank = float((values < current).mean())
             else:
-                window = self.history
-
-            for feat in features:
-                if feat not in window.columns:
-                    continue
-
-                col = pd.to_numeric(window[feat], errors="coerce").dropna()
-                if len(col) < 1:
-                    continue
-
-                current_val = col.iloc[-1]
-
-                if use_zscore and len(col) >= 5:
-                    mean = col.mean()
-                    std  = col.std()
-                    if std > 0:
-                        normalized[f"{feat}_zscore"] = float((current_val - mean) / std)
-                    else:
-                        normalized[f"{feat}_zscore"] = 0.0
-                    normalized[f"{feat}_pctrank"] = float(
-                        (col < current_val).sum() / len(col)
-                    )
-                else:
-                    scaled = self._scale_raw(feat, current_val)
-                    normalized[f"{feat}_zscore"] = scaled
-                    normalized[f"{feat}_pctrank"] = 0.5
-
-        return pd.Series(normalized)
-
-    def _cold_start_scaling(self) -> pd.Series:
-        normalized: Dict[str, float] = {}
-        if self.history.empty:
-            return pd.Series(normalized)
-
-        row = self.history.iloc[-1]
-
-        for group_name, features in self.feature_groups.items():
-            for feat in features:
-                if feat in row and pd.notna(row[feat]):
-                    val    = float(row[feat])
-                    scaled = self._scale_raw(feat, val)
-                    normalized[f"{feat}_zscore"] = scaled
-                    normalized[f"{feat}_pctrank"] = 0.5
-
-        return pd.Series(normalized)
+                scaled, rank = self._scale_raw(feature, float(current)), 0.5
+            normalized[feature + "_zscore"] = scaled
+            normalized[feature + "_pctrank"] = rank
+        return pd.Series(normalized, dtype=float)
 
     def _scale_raw(self, feature: str, value: float) -> float:
         if feature == "funding_rate":
@@ -448,10 +309,9 @@ class UnifiedDataStore:
             val = row.get(feat)
             if val is None or (isinstance(val, float) and np.isnan(val)):
                 continue
-            if feature_timestamps and feat in feature_timestamps:
-                age = now_ts - feature_timestamps[feat]
-                ttl = self._get_feature_ttl(feat)
-                if age > _HARD_NAN_MULTIPLIER * ttl:
+            if feature_timestamps is not None:
+                ts = feature_timestamps.get(feat)
+                if ts is None or not -5 <= now_ts - ts <= self._get_feature_ttl(feat):
                     continue
             present += 1
         return present / len(self._CRITICAL_FEATURES)
@@ -526,7 +386,7 @@ class UnifiedDataStore:
             "completeness": float(
                 self._check_completeness(
                     self.history.iloc[-1],
-                    feature_timestamps=None,
+                    feature_timestamps=getattr(self, "_latest_source_times", {}),
                     now_ts=time.time(),
                 )
             ) if not self.history.empty else 0.0,

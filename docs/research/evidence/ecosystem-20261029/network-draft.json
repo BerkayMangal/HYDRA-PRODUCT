@@ -1,0 +1,30 @@
+{
+  "status": "saved",
+  "requires_publish": true,
+  "previous_host_count": 32,
+  "host_count": 53,
+  "added_hosts": [
+    "hypertracker.io",
+    "hyperscreener.asxn.xyz",
+    "cryptoanimon.com",
+    "hyperliquid.tv",
+    "traderspy.app",
+    "vaultvision.tech",
+    "swarm-t3.github.io",
+    "hydromancer.xyz",
+    "docs.bitquery.io",
+    "bitquery.io",
+    "ide.bitquery.io",
+    "streaming.bitquery.io",
+    "www.0xarchive.io",
+    "docs.0xarchive.io",
+    "api.0xarchive.io",
+    "coinalyze.net",
+    "api.coinalyze.net",
+    "velo.xyz",
+    "docs.velo.xyz",
+    "vextorium.com",
+    "api.vextorium.com"
+  ],
+  "runtime_activation_claimed": false
+}

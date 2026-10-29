@@ -18,6 +18,8 @@ class OKXCollector(BaseCollector):
         super().__init__("OKX", config)
         api_keys = config.get('api_keys', {}).get('okx', {})
         self.exchange = ccxt.okx({
+            'trust_env': True,  # Honor managed HTTPS proxies; preserve TLS verification.
+            'requests_trust_env': True,
             'apiKey': api_keys.get('api_key', ''),
             'secret': api_keys.get('secret_key', ''),
             'password': api_keys.get('passphrase', ''),
@@ -63,6 +65,12 @@ class OKXCollector(BaseCollector):
                     data['volume_change_pct'] = ((candle[5] - ohlcv[-3][5]) / ohlcv[-3][5]) * 100
         except Exception as e:
             logger.error("[OKX] OHLCV: {}", e)
+        try:
+            # Authoritative completed 1H bars also repair partial startup hours.
+            hourly = self.exchange.fetch_ohlcv(self.symbol, '1h', limit=3)
+            data['hourly_candles'] = [row for row in hourly if row[0] / 1000 + 3600 <= time.time()]
+        except Exception as exc:
+            logger.warning("[OKX] Hourly candles unavailable: {}", exc)
         return data
 
     def _fetch_orderbook(self) -> Dict[str, Any]:
@@ -97,6 +105,7 @@ class OKXCollector(BaseCollector):
             ticker = self.exchange.fetch_ticker(self.symbol)
             if ticker:
                 data['last_price'] = ticker.get('last', 0)
+                data['last_price_event_ms'] = ticker.get('timestamp')
                 data['volume_24h'] = ticker.get('baseVolume', 0)
                 data['price_change_24h'] = ticker.get('percentage', 0)
                 info = ticker.get('info', {})
@@ -219,37 +228,45 @@ class OKXCollector(BaseCollector):
         return data
 
     def _fetch_cvd_from_trades(self) -> Dict[str, Any]:
-        data = {}
         try:
             trades = self.exchange.fetch_trades(self.symbol, limit=500)
             if trades:
-                buy_vol = sum(t['amount'] for t in trades if t['side'] == 'buy')
-                sell_vol = sum(t['amount'] for t in trades if t['side'] == 'sell')
-                data['cvd_perp'] = float(buy_vol - sell_vol)
-                total = buy_vol + sell_vol
-                data['cvd_buy_ratio'] = float(buy_vol / total) if total > 0 else 0.5
-                if len(trades) >= 10:
-                    mid = len(trades) // 2
-                    h1 = sum(t['amount'] * (1 if t['side'] == 'buy' else -1) for t in trades[:mid])
-                    h2 = sum(t['amount'] * (1 if t['side'] == 'buy' else -1) for t in trades[mid:])
-                    data['cvd_5m_delta'] = float(h2 - h1)
+                contract_size = float(self.exchange.market(self.symbol)['contractSize'])
+                return self._trade_sample(trades, 'perp', contract_size)
         except Exception as e:
             logger.error("[OKX] CVD perp: {}", e)
-        return data
+        return {}
+
+    @staticmethod
+    def _trade_sample(trades, market, base_multiplier):
+        """A bounded trade page is a sample, not time-window CVD evidence."""
+        import math
+        if not math.isfinite(base_multiplier) or base_multiplier <= 0:
+            raise ValueError('Positive contract/base conversion required')
+        valid = []
+        for trade in trades:
+            amount, timestamp = float(trade['amount']), int(trade['timestamp'])
+            if not math.isfinite(amount) or amount <= 0 or trade['side'] not in ('buy', 'sell'):
+                raise ValueError('Invalid sampled trade')
+            valid.append((trade['side'], amount * base_multiplier, timestamp))
+        buy = sum(amount for side, amount, _ in valid if side == 'buy')
+        sell = sum(amount for side, amount, _ in valid if side == 'sell')
+        prefix = f'{market}_trade_sample'
+        return {f'{prefix}_net_btc': buy - sell, f'{prefix}_buy_ratio': buy / (buy + sell),
+                f'{prefix}_count': len(valid), f'{prefix}_first_event_ms': min(row[2] for row in valid),
+                f'{prefix}_last_event_ms': max(row[2] for row in valid),
+                f'{prefix}_complete_window': False}
 
     # ══ v4 NEW: FREE replacements for CoinGlass ($79/mo) ══
 
     def _fetch_spot_cvd(self) -> Dict[str, Any]:
-        data = {}
         try:
             trades = self.exchange.fetch_trades(self.spot_symbol, limit=300)
             if trades:
-                buy_vol = sum(t['amount'] for t in trades if t['side'] == 'buy')
-                sell_vol = sum(t['amount'] for t in trades if t['side'] == 'sell')
-                data['cvd_spot'] = float(buy_vol - sell_vol)
+                return self._trade_sample(trades, 'spot', 1.)
         except Exception as e:
             logger.debug("[OKX] Spot CVD: {}", str(e)[:80])
-        return data
+        return {}
 
     def _fetch_basis_spread(self) -> Dict[str, Any]:
         data = {}
@@ -279,19 +296,26 @@ class OKXCollector(BaseCollector):
         try:
             resp = self._api_get(
                 'https://www.okx.com/api/v5/public/liquidation-orders',
-                params={'instType': 'SWAP', 'instId': self.inst_id, 'state': 'filled', 'limit': '100'}
+                params={'instType': 'SWAP', 'instFamily': 'BTC-USDT', 'state': 'filled', 'limit': '100'}
             )
             if resp and resp.get('data'):
                 long_vol = 0.0
                 short_vol = 0.0
+                contract_size = float(self.exchange.market(self.symbol)['contractSize'])
+                now_ms = time.time() * 1000
                 for item in resp['data']:
+                    if item.get('instId') != self.inst_id:
+                        continue
                     sub = item.get('details', [])
                     if not sub and isinstance(item, dict): sub = [item]
                     for d in sub:
+                        event_ms = float(d.get('ts', 0))
+                        if not 0 <= now_ms - event_ms <= 3600000:
+                            continue
                         side = d.get('side', '').lower()
                         sz = float(d.get('sz', 0))
                         px = float(d.get('bkPx', 0) or d.get('px', 0))
-                        usd_val = sz * px
+                        usd_val = sz * contract_size * px
                         if side == 'sell': long_vol += usd_val
                         elif side == 'buy': short_vol += usd_val
                 total = long_vol + short_vol
@@ -300,6 +324,8 @@ class OKXCollector(BaseCollector):
                     data['liq_short_vol'] = round(short_vol, 2)
                     data['liq_total'] = round(total, 2)
                     data['liq_imbalance'] = round((long_vol - short_vol) / total, 4)
+                    data['liq_window_min'] = 60
+                    data['liq_sample_only'] = True  # Public endpoint is a bounded sample.
         except Exception as e:
             logger.debug("[OKX] Liquidations: {}", str(e)[:80])
         return data

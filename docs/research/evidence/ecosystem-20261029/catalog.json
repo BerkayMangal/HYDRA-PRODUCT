@@ -1,0 +1,401 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-29T08:30:48.870533+00:00",
+  "product_pages": 16,
+  "independent_open_source_tools": 3,
+  "entries": [
+    {
+      "id": "hypertracker",
+      "name": "HyperTracker",
+      "url": "https://hypertracker.io/",
+      "category": "wallet_tracker",
+      "source_supported_description": "Topluluk dizini canlı cüzdan/whale takibi ve filtreli trader listesi tanımlıyor.",
+      "hydra_use": "Büyük ve tutarlı BTC hesaplarını keşfetme; sonuçlara bakmadan yeni cohort dondurma.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S2"
+      ],
+      "limits": "Kapsam, gecikme, API ve güncel fiyat doğrulanmadı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "hyperdash",
+      "name": "HyperDash",
+      "url": "https://hyperdash.com/",
+      "category": "wallet_tracker",
+      "source_supported_description": "Dizin; wallet cohort, whale alarmı, Copy Score ve copy-trading terminali tanımlıyor.",
+      "hydra_use": "Pozisyon açma/ekleme/azaltmayı ayrı izleme; skorun hangi tarihte bilindiğini saklama.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S2"
+      ],
+      "limits": "Ticari skor performansı ve ücretleri ölçülmedi; copy-trading kurulmadı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "hypurrscan",
+      "name": "HypurrScan",
+      "url": "https://hypurrscan.io/",
+      "category": "explorer",
+      "source_supported_description": "Dizinde Hyperliquid explorer ve işlem/hesap dashboard hedefi olarak yer alıyor.",
+      "hydra_use": "Adres ve işlem bazında ham kayıt kontrolü.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S2"
+      ],
+      "limits": "Resmî arayüz ve dış API bu geçişte denenmedi.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "asxn",
+      "name": "ASXN Hyperscreener",
+      "url": "https://hyperscreener.asxn.xyz/",
+      "category": "market_dashboard",
+      "source_supported_description": "Dizin perps, spot, HIP-3, gelir ve top-trader analytics kapsamı tanımlıyor.",
+      "hydra_use": "Hesap yönünü piyasa OI, hacim ve builder-perp bağlamıyla karşılaştırma.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S2"
+      ],
+      "limits": "Her metrik için veri kaynağı, geçmiş ve güncelleme sıklığı doğrulanmalı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "cryptoanimon",
+      "name": "CryptoAnimon",
+      "url": "https://cryptoanimon.com/en/",
+      "category": "liquidation_map_wallet",
+      "source_supported_description": "Dizin; wallet round/PnL, canlı liquidation map ve cüzdan işlem alarmı tanımlıyor.",
+      "hydra_use": "Pain benzeri harita ile adres bazlı pozisyon görünümünü birlikte inceleme.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S1"
+      ],
+      "limits": "Haritanın tahmini envanter mi gerçekleşmiş fill mi gösterdiği yönteminden doğrulanmalı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "hyperalerts",
+      "name": "HyperAlerts",
+      "url": "https://hyperliquid.tv/",
+      "category": "alerts_dashboard",
+      "source_supported_description": "Dizin; fiyat, funding, OI, wallet, büyük işlem ve HIP-3 uyarıları tanımlıyor.",
+      "hydra_use": "Olay kuyruğu ve değişiklik özeti için ürün tasarımı referansı.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S1"
+      ],
+      "limits": "Dizindeki ücretsiz iddiası güncel plan denemesiyle doğrulanmadı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "traderspy",
+      "name": "TraderSpy",
+      "url": "https://traderspy.app/",
+      "category": "wallet_tracker",
+      "source_supported_description": "Dizin; Hyperliquid trader pozisyon/PnL takibi, Binance/Bybit/OKX bağlamı, orderbook ve paper trading tanımlıyor.",
+      "hydra_use": "Cüzdan değişimini borsalar arası bağlama bağlama.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S1"
+      ],
+      "limits": "Borsalar arası kimlik eşlemesi ve cüzdan kapsamı doğrulanmadı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "vaultvision",
+      "name": "VaultVision",
+      "url": "https://vaultvision.tech/vaults/scanner",
+      "category": "vault_analytics",
+      "source_supported_description": "İki dizin; vault tarama, risk/drawdown, TVL, mevduat durumu ve uyarılar tanımlıyor.",
+      "hydra_use": "Tek dönem ROI yerine drawdown, risk ve para giriş/çıkışını inceleme.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "limits": "Vault performansı doğrudan cüzdan-copy getirisi veya kişisel hesap getirisi değildir.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "perpledger",
+      "name": "PerpLedger",
+      "url": "https://swarm-t3.github.io/perpledger/",
+      "category": "wallet_accounting",
+      "source_supported_description": "Dizin; adresin yıllık realized PnL, ücret, funding ve vergi CSV görünümünü tanımlıyor.",
+      "hydra_use": "PnL ile sermaye transferi ve ücret/funding farkını kontrol etme.",
+      "evidence_level": "community_curated",
+      "source_ids": [
+        "S1"
+      ],
+      "limits": "Hesaplama ve sayfalama uygulaması bağımsız denetlenmedi.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "nansen",
+      "name": "Nansen",
+      "url": "https://www.nansen.ai/",
+      "category": "wallet_labels",
+      "source_supported_description": "Önceden okunan sağlayıcı referansları; trader cohort, etiketler, perp pozisyon/PnL ve wallet profiling komutları içeriyor.",
+      "hydra_use": "Etiket ve geçmiş başarıyı sadece bilindiği tarihten itibaren kullanma.",
+      "evidence_level": "provider_documentation",
+      "source_ids": [
+        "N1"
+      ],
+      "limits": "Etiket geçmişi, API kredisi ve plan koşulu servis düzeyinde doğrulanmalı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "hydromancer",
+      "name": "Hydromancer",
+      "url": "https://hydromancer.xyz/",
+      "category": "data_provider",
+      "source_supported_description": "SDK; L4 orderbook, BBO adresleri, kullanıcı emirleri/likiditesi ve USD depth sorguları içeriyor.",
+      "hydra_use": "Likidasyon sonrası görünür defter absorpsiyonu ve maker tepkisini ölçme.",
+      "evidence_level": "provider_sdk",
+      "source_ids": [
+        "S4"
+      ],
+      "limits": "API anahtarı gerekiyor. Toplu pozisyon/arşiv kapsamı dizin beyanından ileri doğrulanmadı; latency benchmark yapılmadı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "bitquery",
+      "name": "Bitquery Hyperliquid",
+      "url": "https://docs.bitquery.io/docs/perpetuals/hyperliquid/",
+      "category": "data_provider",
+      "source_supported_description": "Sağlayıcı deposu; liquidations, L3 orderbook, TWAP ve funding/pozisyon sorguları içeriyor.",
+      "hydra_use": "22 hesap dışındaki gerçekleşmiş likidasyonları ve TWAP/child-fill akışını inceleme.",
+      "evidence_level": "provider_queries",
+      "source_ids": [
+        "S5"
+      ],
+      "limits": "Token gerekiyor. README GraphQL için yaklaşık 30 gün ve daha uzun tarih için ayrı data-lake yolu tanımlıyor; eksiksizlik ve plan denenmedi.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "archive",
+      "name": "0xArchive",
+      "url": "https://www.0xarchive.io/",
+      "category": "historical_data_provider",
+      "source_supported_description": "Sağlayıcı notebooku; liquidation history, cursor pagination, trade-id dedup ve fiyat bağlamı içeriyor.",
+      "hydra_use": "Daha fazla bağımsız likidasyon olayında aynı kuralları maliyetlerle test etme.",
+      "evidence_level": "provider_notebook",
+      "source_ids": [
+        "S3"
+      ],
+      "limits": "API anahtarı gerekiyor. Free/son 30 gün sağlayıcı dokümanının beyanı; gerçek kota, ücret ve kapsam denenmedi.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "coinalyze",
+      "name": "Coinalyze",
+      "url": "https://coinalyze.net/",
+      "category": "derivatives_context",
+      "source_supported_description": "Bağımsız wrapper; future markets, funding ve OI history örnekleri içeriyor.",
+      "hydra_use": "Wallet hipotezine karşı funding/OI piyasa baseline verisi.",
+      "evidence_level": "independent_client",
+      "source_ids": [
+        "S8"
+      ],
+      "limits": "Wrapper resmî API değildir; exchange/symbol kapsamı, birimler ve mevcut ücret doğrulanmalı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "velo",
+      "name": "Velo Data",
+      "url": "https://velo.xyz/",
+      "category": "derivatives_context",
+      "source_supported_description": "Bağımsız wrapper; cross-exchange funding, premium, OI, volume delta ve liquidation serileri tanımlıyor.",
+      "hydra_use": "Spot/perp ve borsalar arası akış bağlamı için karşılaştırma.",
+      "evidence_level": "independent_client",
+      "source_ids": [
+        "S9"
+      ],
+      "limits": "İncelenen kod belgelenmemiş chart endpointlerini kullanıyor; destekli resmî API yerine geçirilmedi.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "vextorium",
+      "name": "Vextorium",
+      "url": "https://vextorium.com/",
+      "category": "metered_data_provider",
+      "source_supported_description": "Client; funding, Hyperliquid whale/liquidation-map ve regime servislerini x402 ile çağırıyor.",
+      "hydra_use": "Kaynağın native public API üzerinde ne kadar ek veri verdiğini ölçme.",
+      "evidence_level": "provider_client",
+      "source_ids": [
+        "S10"
+      ],
+      "limits": "API key istememesi ücretsiz demek değil; client Base USDC ile çağrı başına ödeme yapıyor. Ödeme/servis çağrısı yapılmadı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "hl-liqmap",
+      "name": "hl-liqmap",
+      "url": "https://github.com/akagifreeez/hl-liqmap",
+      "category": "open_source_liquidation_inventory",
+      "source_supported_description": "README; trade tape adres keşfi, liquidationPx envanteri, OI kapsamı, L2 absorpsiyon ve cascade stress modeli tanımlıyor.",
+      "hydra_use": "Envanter / görünür likidite basıncını ayrı bir stres özelliği olarak ele alma.",
+      "evidence_level": "independent_source",
+      "source_ids": [
+        "S6"
+      ],
+      "limits": "Bağımsız proje. Tahmini envanter ve sığ defter modeli gerçekleşmiş liquidation veya fiyat tahmini değildir.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "trader-tracker",
+      "name": "Hyperliquid Trader Tracker",
+      "url": "https://github.com/KonScanner/hyperliquid-trader-tracker",
+      "category": "open_source_wallet_tracker",
+      "source_supported_description": "README; public trades kullanıcılarıyla açık/ekle/azalt/kapat state machine, sessiz cold-start seed ve tek kart yaşam döngüsü tanımlıyor.",
+      "hydra_use": "Olayı doğru sınıflandırma ve geçmiş pozisyonu yeni açılmış sanmama.",
+      "evidence_level": "independent_source",
+      "source_ids": [
+        "S7"
+      ],
+      "limits": "Ürün backend benchmarkı yapılmadı. Tarihsel journal sağlamadığı için ayrı as-of kayıt gerekir.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    },
+    {
+      "id": "oi-proxy-heatmap",
+      "name": "hl-liquidation-heatmap",
+      "url": "https://github.com/yodablocks/hl-liquidation-heatmap",
+      "category": "open_source_proxy_heatmap",
+      "source_supported_description": "README; activeAssetCtx OI düşüşünden liquidation notional tahmini üretiyor.",
+      "hydra_use": "Metodoloji incelemesinde proxy ile gerçek fill ayrımına karşı örnek.",
+      "evidence_level": "independent_source",
+      "source_ids": [
+        "S11"
+      ],
+      "limits": "OI düşüşü gönüllü kapanışları da içerir; HYDRA gerçek liquidation kanıtı olarak kullanmamalı.",
+      "api_trial_performed": false,
+      "current_pricing_verified": false
+    }
+  ],
+  "sources": {
+    "S1": {
+      "repo": "sbs2001/awesome-hyperliquid",
+      "commit": "2d27226a51116b94676b4445c6992f63d42bf53a",
+      "source_url": "https://github.com/sbs2001/awesome-hyperliquid/blob/2d27226a51116b94676b4445c6992f63d42bf53a/README.md",
+      "raw_url": "https://raw.githubusercontent.com/sbs2001/awesome-hyperliquid/2d27226a51116b94676b4445c6992f63d42bf53a/README.md",
+      "status": 200,
+      "sha256": "c6219f2a5d8ae09efc928b13cdbf18994f163dfe775cfe8aca797409670417a7",
+      "matches_downloaded_readme": true
+    },
+    "S2": {
+      "repo": "dexlytrade/awesome-hyperliquid-copy-trading",
+      "commit": "c25bf9120706de360e554a754bb50272f80df8d6",
+      "source_url": "https://github.com/dexlytrade/awesome-hyperliquid-copy-trading/blob/c25bf9120706de360e554a754bb50272f80df8d6/README.md",
+      "raw_url": "https://raw.githubusercontent.com/dexlytrade/awesome-hyperliquid-copy-trading/c25bf9120706de360e554a754bb50272f80df8d6/README.md",
+      "status": 200,
+      "sha256": "427d2193e034be1442f4c5861aa07ea2983956f16ef68ad592c2b79dfb49f812",
+      "matches_downloaded_readme": true
+    },
+    "S3": {
+      "repo": "0xArchiveIO/examples",
+      "commit": "d82cb504847b21a99683c24774844f0ebc1869e9",
+      "source_url": "https://github.com/0xArchiveIO/examples/blob/d82cb504847b21a99683c24774844f0ebc1869e9/README.md",
+      "raw_url": "https://raw.githubusercontent.com/0xArchiveIO/examples/d82cb504847b21a99683c24774844f0ebc1869e9/README.md",
+      "status": 200,
+      "sha256": "3bfcf462e30b7cb4c10257388a566b7d6ff979a5eba368da1764b016701a8082",
+      "matches_downloaded_readme": true
+    },
+    "S4": {
+      "repo": "hydromancerxyz/hydromancer-sdk",
+      "commit": "4371df886245419c92e45a7f8038c0ec85d0789c",
+      "source_url": "https://github.com/hydromancerxyz/hydromancer-sdk/blob/4371df886245419c92e45a7f8038c0ec85d0789c/README.md",
+      "raw_url": "https://raw.githubusercontent.com/hydromancerxyz/hydromancer-sdk/4371df886245419c92e45a7f8038c0ec85d0789c/README.md",
+      "status": 200,
+      "sha256": "1eb12f75a5d3b3d5b0e8dff22290c395806f9b1376f214dbca890653611f5dea",
+      "matches_downloaded_readme": true
+    },
+    "S5": {
+      "repo": "bitquery/hyperliquid-api",
+      "commit": "44585d346f428f5d0d056c01992b24bd6404df83",
+      "source_url": "https://github.com/bitquery/hyperliquid-api/blob/44585d346f428f5d0d056c01992b24bd6404df83/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bitquery/hyperliquid-api/44585d346f428f5d0d056c01992b24bd6404df83/README.md",
+      "status": 200,
+      "sha256": "8cc5fe4f03ef8cbc99efcc4a4db0ec4d556bc366e78c8731d9818679b5a0aa99",
+      "matches_downloaded_readme": true
+    },
+    "S6": {
+      "repo": "akagifreeez/hl-liqmap",
+      "commit": "aa8596b9448823f3d735531a2d4dcfde061a51d3",
+      "source_url": "https://github.com/akagifreeez/hl-liqmap/blob/aa8596b9448823f3d735531a2d4dcfde061a51d3/README.md",
+      "raw_url": "https://raw.githubusercontent.com/akagifreeez/hl-liqmap/aa8596b9448823f3d735531a2d4dcfde061a51d3/README.md",
+      "status": 200,
+      "sha256": "95c409f94ef1f5c08d6540f7b294c03282e8335c5412acc73971c1b547b41d1e",
+      "matches_downloaded_readme": true
+    },
+    "S7": {
+      "repo": "KonScanner/hyperliquid-trader-tracker",
+      "commit": "1522aab2569df3c53c6259532a58dbba57a18b5d",
+      "source_url": "https://github.com/KonScanner/hyperliquid-trader-tracker/blob/1522aab2569df3c53c6259532a58dbba57a18b5d/README.md",
+      "raw_url": "https://raw.githubusercontent.com/KonScanner/hyperliquid-trader-tracker/1522aab2569df3c53c6259532a58dbba57a18b5d/README.md",
+      "status": 200,
+      "sha256": "223320eae94a54026c538b918b49d40052c0f5d20ee9ae1e3cd7f208f7e9a4ce",
+      "matches_downloaded_readme": true
+    },
+    "S8": {
+      "repo": "ivarurdalen/coinalyze",
+      "commit": "fee7b138ecb2c58e44f33ab5dd1cc6abd9054ca5",
+      "source_url": "https://github.com/ivarurdalen/coinalyze/blob/fee7b138ecb2c58e44f33ab5dd1cc6abd9054ca5/README.md",
+      "raw_url": "https://raw.githubusercontent.com/ivarurdalen/coinalyze/fee7b138ecb2c58e44f33ab5dd1cc6abd9054ca5/README.md",
+      "status": 200,
+      "sha256": "1c48e1191a8f206a78df33995543923e28d76ace9f881810bb7ba0c1afbb341a",
+      "matches_downloaded_readme": true
+    },
+    "S9": {
+      "repo": "0xAtasoy/veloxyz-scraper",
+      "commit": "f4a8d755dfd32b2e94d17d5c81e5a7484b4b56a2",
+      "source_url": "https://github.com/0xAtasoy/veloxyz-scraper/blob/f4a8d755dfd32b2e94d17d5c81e5a7484b4b56a2/README.md",
+      "raw_url": "https://raw.githubusercontent.com/0xAtasoy/veloxyz-scraper/f4a8d755dfd32b2e94d17d5c81e5a7484b4b56a2/README.md",
+      "status": 200,
+      "sha256": "c76d4da3791692767058b18f17f7cedba6335064b733eee76a5cbc2be6490a32",
+      "matches_downloaded_readme": true
+    },
+    "S10": {
+      "repo": "bru1noia/vextorium-python",
+      "commit": "835c456f6b0b22c5088d9d268012b1eeb6a939cd",
+      "source_url": "https://github.com/bru1noia/vextorium-python/blob/835c456f6b0b22c5088d9d268012b1eeb6a939cd/README.md",
+      "raw_url": "https://raw.githubusercontent.com/bru1noia/vextorium-python/835c456f6b0b22c5088d9d268012b1eeb6a939cd/README.md",
+      "status": 200,
+      "sha256": "2db7be935580469792b66bedbe5007c7b74e00689575161b61cdb5d45d2af8e4",
+      "matches_downloaded_readme": true
+    },
+    "S11": {
+      "repo": "yodablocks/hl-liquidation-heatmap",
+      "commit": "d352dd2e400bdeb7440ff034f82a9b818e10b67f",
+      "source_url": "https://github.com/yodablocks/hl-liquidation-heatmap/blob/d352dd2e400bdeb7440ff034f82a9b818e10b67f/README.md",
+      "raw_url": "https://raw.githubusercontent.com/yodablocks/hl-liquidation-heatmap/d352dd2e400bdeb7440ff034f82a9b818e10b67f/README.md",
+      "status": 200,
+      "sha256": "1a44343183a0babbac011e5a4e209bede18fcda07bc2beef0f69d88c367d4992",
+      "matches_downloaded_readme": true
+    },
+    "N1": {
+      "repo": "nansen-ai/nansen-skills",
+      "source_url": "https://github.com/nansen-ai/nansen-skills/blob/main/references/commands.md",
+      "verification": "Provider reference previously reviewed on 28 Oct; not freshly pinned in this pass"
+    }
+  },
+  "scope": "Source/document review. Product UI availability, completeness, latency, pricing and profitability are not established."
+}

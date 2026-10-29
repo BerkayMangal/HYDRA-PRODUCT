@@ -207,6 +207,7 @@ class Layer1DecisionEngine:
         quality_gate_reason: str = "ok",
         data_completeness: float = 1.0,
         session: str = "unknown",
+        score_multiplier: float = 1.0,
     ) -> DecisionExplanation:
         """
         Main entry: combine three engine outputs into a final decision.
@@ -250,7 +251,7 @@ class Layer1DecisionEngine:
             composite = 0.0
 
         # Apply event dampening
-        composite *= macro.event_dampen_factor
+        composite *= macro.event_dampen_factor * float(np.clip(score_multiplier, 0.0, 1.0))
 
         composite = float(np.clip(composite, -100, 100))
 
@@ -292,6 +293,9 @@ class Layer1DecisionEngine:
             else:
                 agg_conf = ConfidenceLevel.LOW
             confidence_str = agg_conf.value
+            if score_multiplier < 0.55:
+                agg_conf = ConfidenceLevel.LOW
+                confidence_str = agg_conf.value
 
             abs_score = abs(composite)
             if abs_score < self.signal_threshold:

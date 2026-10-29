@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-10-29T08:34:12.656783+00:00",
+  "catalog_entries": 19,
+  "product_pages": 16,
+  "open_source_tools": 3,
+  "unique_ids_and_https_urls": true,
+  "all_entries_linked_in_report": true,
+  "pinned_readme_matches": 11,
+  "pinned_notebook_query_matches": 5,
+  "api_trials_performed": false,
+  "application_code_modified_this_pass": false,
+  "application_tests_rerun": false,
+  "validation_scope": "Catalog consistency, source retrieval and exact commit/hash matching; no product/API performance claim"
+}

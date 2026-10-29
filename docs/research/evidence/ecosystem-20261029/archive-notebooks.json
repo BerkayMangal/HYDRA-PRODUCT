@@ -1,0 +1,26 @@
+[
+  {
+    "path": "liquidation-heatmap/README.md",
+    "url": "https://raw.githubusercontent.com/0xArchiveIO/examples/main/liquidation-heatmap/README.md",
+    "status": 404,
+    "bytes": 14
+  },
+  {
+    "path": "liquidation-heatmap/liquidation_heatmap.ipynb",
+    "url": "https://raw.githubusercontent.com/0xArchiveIO/examples/main/liquidation-heatmap/liquidation_heatmap.ipynb",
+    "status": 200,
+    "bytes": 23366
+  },
+  {
+    "path": "funding-rate-scanner/README.md",
+    "url": "https://raw.githubusercontent.com/0xArchiveIO/examples/main/funding-rate-scanner/README.md",
+    "status": 404,
+    "bytes": 14
+  },
+  {
+    "path": "funding-rate-scanner/funding_rate_scanner.ipynb",
+    "url": "https://raw.githubusercontent.com/0xArchiveIO/examples/main/funding-rate-scanner/funding_rate_scanner.ipynb",
+    "status": 200,
+    "bytes": 28562
+  }
+]

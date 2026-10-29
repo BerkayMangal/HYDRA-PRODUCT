@@ -1,0 +1,12 @@
+{
+  "endpoint": "Hyperliquid public userFillsByTime",
+  "recorded_evidence": true,
+  "coin": "ENA",
+  "side": "B",
+  "direction": "Open Long",
+  "optional_liquidation_object_fields": [
+    "liquidatedUser",
+    "markPx",
+    "method"
+  ]
+}

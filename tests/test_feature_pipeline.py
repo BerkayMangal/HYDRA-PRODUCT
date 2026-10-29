@@ -44,6 +44,9 @@ def _make_df(n: int = 250, seed: int = 42, include_macro: bool = True) -> pd.Dat
         },
         index=dates,
     )
+    # Synthetic candles must satisfy the same OHLC contract as exchange data.
+    df["high"] = df[["high", "open", "close"]].max(axis=1)
+    df["low"] = df[["low", "open", "close"]].min(axis=1)
     if include_macro:
         df["vix"]        = np.abs(np.random.randn(n) * 4 + 20)
         df["qqq"]        = 480 + np.cumsum(np.random.randn(n) * 1.5)
@@ -177,10 +180,8 @@ class TestTransformLive(unittest.TestCase):
             row = self.df.iloc[i]
             pipe.ingest_candle(
                 {
-                    "timestamp": int(row.name.timestamp() * 1000),
-                    "open": row["open"], "high": row["high"],
-                    "low": row["low"],   "close": row["close"],
-                    "volume": row["volume"],
+                    "hourly_candles": [[int(row.name.timestamp() * 1000), row["open"], row["high"],
+                                        row["low"], row["close"], row["volume"]]],
                 },
                 funding_rate=float(row.get("funding", 0)),
             )

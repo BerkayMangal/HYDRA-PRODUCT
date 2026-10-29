@@ -1,4 +1,5 @@
 # HYDRA Trading Bot — Python Dependencies
+-c constraints.txt
 
 # Core runtime
 loguru>=0.7.0

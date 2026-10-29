@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "description": "Frozen research dataset, staged selections and size-selected public cohort. Restore verifies exact bytes; no network or new wallet selection.",
+  "files": [
+    {
+      "path": "data/btc-usdt-1h.csv",
+      "archive": "frozen/data/btc-usdt-1h.csv.gz",
+      "bytes": 5827257,
+      "sha256": "e34a9d8accb6f2b45e9e0aeea15ac7a6583947d872e4707d57116b05cb5436bf",
+      "archive_sha256": "72fab5d93112cd9aba4db9f828919d9b8e3b6843a9c71463b933601b5a9f519f"
+    },
+    {
+      "path": "data/quality.json",
+      "archive": "frozen/data/quality.json.gz",
+      "bytes": 677,
+      "sha256": "1f59934373e6ea11ee32712cb77af448df2b9ccbf60e4743d0aa938ef8a67719",
+      "archive_sha256": "1d7f78b2870323b5197d75b6d8a4f57302a69b5f1b68519bd3f65ec613c04778"
+    },
+    {
+      "path": "results/discovery.json",
+      "archive": "frozen/results/discovery.json.gz",
+      "bytes": 15105995,
+      "sha256": "5dec04d9714f5430a725a63f5051948a584addaf06833dc0a8566c4cc751d0e1",
+      "archive_sha256": "969499aee34fd90938489178f772b0c94b3acc84223e5daff8fffda0156732d5"
+    },
+    {
+      "path": "results/evaluation-hourly.csv",
+      "archive": "frozen/results/evaluation-hourly.csv.gz",
+      "bytes": 4407490,
+      "sha256": "2ed2b43aa4b0e38ca623469e4527f58a96824a66b9ddf653c23adba25c22b527",
+      "archive_sha256": "f13ba7e2deec329d683af749290f00375529d25f523bc9b90f45c2a8b4e00fa3"
+    },
+    {
+      "path": "results/frozen-discovery-shortlist.json",
+      "archive": "frozen/results/frozen-discovery-shortlist.json.gz",
+      "bytes": 24750,
+      "sha256": "910c284b4325e3d6bd8c5f2c3efaff63d26b937be131592b71359806807a1796",
+      "archive_sha256": "c361b3a4e0f2f10306f89d6943de9ae4ca516705434808c0f7a9afa2b28c0113"
+    },
+    {
+      "path": "results/frozen-selected.json",
+      "archive": "frozen/results/frozen-selected.json.gz",
+      "bytes": 2714,
+      "sha256": "b635fabd2a09c220a2e9a68e1a2429ff8c58d4e0555f49c923d83256e2ef5e8b",
+      "archive_sha256": "cc5339c7cc0f155e49c9fbb6bcad7e3bc31071e737d05e8f2b45aa448cf42507"
+    },
+    {
+      "path": "results/leaderboard-discovery.csv",
+      "archive": "frozen/results/leaderboard-discovery.csv.gz",
+      "bytes": 1484121,
+      "sha256": "f9c3f21ad7b98e1ed91393714286b9e019619888e67bb1db54e01902167b752f",
+      "archive_sha256": "f09cc07fb0faaf47c7741f69b25857bac23834fe121543845ef8c18bb1920d52"
+    },
+    {
+      "path": "results/manifest.json",
+      "archive": "frozen/results/manifest.json.gz",
+      "bytes": 2637166,
+      "sha256": "32d6d70afa57f87ae2b6fdf9c3b925f94ee7aa873df87c382ef0daaec20dbbed",
+      "archive_sha256": "f531a951139d9239b93a862bb40bc1908e07c2b892ee6db67fdfe5f5b814b13e"
+    },
+    {
+      "path": "results/summary.json",
+      "archive": "frozen/results/summary.json.gz",
+      "bytes": 21403,
+      "sha256": "28a32392dbe46764d61cf26868f95c48b7e7d4b9aef95d068d744037e8826758",
+      "archive_sha256": "15346b9be7a6de9171123c32e5988becb6a63bbf517aafbad092cba618e0e6ee"
+    },
+    {
+      "path": "results/validation.json",
+      "archive": "frozen/results/validation.json.gz",
+      "bytes": 12453,
+      "sha256": "f474081eb6c0253540798d34f3eb27f61a0a5494c684d1b43f1aecb0bf898dab",
+      "archive_sha256": "afb00225301d57011879abeb6f9ea150055bef92294e4372692c02af36694de7"
+    },
+    {
+      "path": "hyperliquid/large-wallet-cohort.json",
+      "archive": "frozen/hyperliquid/large-wallet-cohort.json.gz",
+      "bytes": 905,
+      "sha256": "cc300c6c59badcd1626a07cbb949326ebec2edc6f2b28a9ab2e3946fbe18e6dc",
+      "archive_sha256": "c51675d9cd061350f2562ab3e32ab50e09a3b17b34b735087d9fd9e3ab325dd2"
+    },
+    {
+      "path": "hyperliquid/cohort-discovery-spec.json",
+      "archive": "frozen/hyperliquid/cohort-discovery-spec.json.gz",
+      "bytes": 363,
+      "sha256": "1d0eef6fc497360f8b1840fb46bbb6d7198be8e47d9ceea578a4e358cad2c96f",
+      "archive_sha256": "47a570593ce85305754cbe7db8c0110f76d599d57f66ae4ce5666692d17f0e71"
+    },
+    {
+      "path": "hyperliquid/specification.json",
+      "archive": "frozen/hyperliquid/specification.json.gz",
+      "bytes": 1022,
+      "sha256": "b689c84a512d3ca133fb2f9a04e4faacfc155b0e1f8a23bd6a371032eb666724",
+      "archive_sha256": "63b8c29d7c803c44aa318af02a74d3e4a237119ec9ee2ceaf792f67c4c5b179b"
+    }
+  ]
+}

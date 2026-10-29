@@ -1,0 +1,19 @@
+{
+  "source": "OKX public history-candles, BTC-USDT spot, 1H",
+  "fetched_at": "2026-10-27T19:53:41.061498+00:00",
+  "rows": 59802,
+  "first": "2020-01-01 00:00:00+00:00",
+  "last": "2026-10-27 17:00:00+00:00",
+  "sha256": "e34a9d8accb6f2b45e9e0aeea15ac7a6583947d872e4707d57116b05cb5436bf",
+  "checks": {
+    "no_duplicates": true,
+    "hourly_continuity": true,
+    "finite": true,
+    "positive_prices": true,
+    "valid_ohlc": true,
+    "nonnegative_volume": true,
+    "closed_only": true
+  },
+  "seed": "Audited 365-day dataset; additional historical raw pages appended as gzip JSONL",
+  "units": "vol=BTC base volume; volCcy/volCcyQuote preserve API quote-volume fields"
+}

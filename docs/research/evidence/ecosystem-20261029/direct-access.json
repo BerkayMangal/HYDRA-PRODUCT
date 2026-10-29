@@ -1,0 +1,50 @@
+[
+  {
+    "id": "hypertracker",
+    "url": "https://hypertracker.io/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "hyperdash",
+    "url": "https://hyperdash.com/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "asxn",
+    "url": "https://hyperscreener.asxn.xyz/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "cryptoanimon",
+    "url": "https://cryptoanimon.com/en/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "hydromancer",
+    "url": "https://hydromancer.xyz/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "archive",
+    "url": "https://www.0xarchive.io/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "coinalyze",
+    "url": "https://coinalyze.net/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  },
+  {
+    "id": "laevitas",
+    "url": "https://laevitas.ch/",
+    "error_type": "ProxyError",
+    "proxy_tunnel_status": 403
+  }
+]

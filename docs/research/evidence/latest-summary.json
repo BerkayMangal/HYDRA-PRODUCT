@@ -1,0 +1,4285 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-29T06:19:07.224764+00:00",
+  "generated_at_istanbul": "2026-10-29T09:19:07.224764+03:00",
+  "status": "research_only_alpha_unproven",
+  "orders_enabled": false,
+  "collection_state": "recorded_snapshot",
+  "missing_inputs": [],
+  "historical_search": {
+    "declared_variants": 13368,
+    "distinct_discovery_paths": 10941,
+    "shortlisted_before_validation": 18,
+    "selected_before_test": 4,
+    "promotion_eligible_count": 0,
+    "completed_at": "2026-10-27T19:56:17.759489+00:00",
+    "manifest_sha256": "32d6d70afa57f87ae2b6fdf9c3b925f94ee7aa873df87c382ef0daaec20dbbed"
+  },
+  "okx": {
+    "first_observed_at": "2026-10-27T19:57:31.637000+00:00",
+    "last_observed_at": "2026-10-29T04:59:50.662000+00:00",
+    "cycles": 3467,
+    "degraded_cycles": 210,
+    "error_cycle_counts": {
+      "forecast": 1,
+      "coverage:BTC-USDT-SWAP": 209,
+      "coverage:BTC-USDT": 15
+    },
+    "trade_rows": {
+      "BTC-USDT": 371685,
+      "BTC-USDT-SWAP": 2323049
+    },
+    "forecast_rows": 174,
+    "all_comparison_rows": 23,
+    "comparison_specification_sha256": "5fac1078d45f1e0712678e872618848bc07fce702d9d3e26dc24e1ab4278cafd",
+    "comparison": {
+      "observations": 22,
+      "confirmation_available": 19,
+      "cost_per_side": 0.0012,
+      "portfolios": {
+        "baseline": {
+          "cash": 1.0,
+          "btc": 0.0,
+          "entries": 0,
+          "exits": 0,
+          "fees": 0.0,
+          "marked_equity": 1.0,
+          "net_return": 0.0
+        },
+        "confirmed": {
+          "cash": 1.0,
+          "btc": 0.0,
+          "entries": 0,
+          "exits": 0,
+          "fees": 0.0,
+          "marked_equity": 1.0,
+          "net_return": 0.0
+        }
+      },
+      "limits": "Hypothetical reference-price accounting; no executable fills; limited prospective sample"
+    },
+    "comparison_cost_stress": {
+      "observations": 22,
+      "confirmation_available": 19,
+      "cost_per_side": 0.0022,
+      "portfolios": {
+        "baseline": {
+          "cash": 1.0,
+          "btc": 0.0,
+          "entries": 0,
+          "exits": 0,
+          "fees": 0.0,
+          "marked_equity": 1.0,
+          "net_return": 0.0
+        },
+        "confirmed": {
+          "cash": 1.0,
+          "btc": 0.0,
+          "entries": 0,
+          "exits": 0,
+          "fees": 0.0,
+          "marked_equity": 1.0,
+          "net_return": 0.0
+        }
+      },
+      "limits": "Hypothetical reference-price accounting; no executable fills; limited prospective sample"
+    },
+    "limits": "Observed sampled trades; coverage failures abstain. Flat portfolios are not evidence of predictive skill."
+  },
+  "hyperliquid": {
+    "first_observed_at": "2026-10-28T09:34:08.334000+00:00",
+    "last_observed_at": "2026-10-29T04:59:57.202000+00:00",
+    "cycles": 525,
+    "feature_snapshots": 525,
+    "all_wallets_successful_cycles": 525,
+    "error_cycle_counts": {
+      "fills:0xf5d81a135f756ca16544e53c20fc20643ec3ad53": 1
+    },
+    "fill_truncation_cycles": 7,
+    "raw_snapshots": 3675,
+    "unique_fills": 237018,
+    "explicit_liquidation_fills": 144,
+    "liquidation_fills_by_asset": {
+      "AAVE": 1,
+      "BTC": 60,
+      "ENA": 22,
+      "ETH": 18,
+      "FARTCOIN": 2,
+      "HYPE": 1,
+      "NEAR": 6,
+      "PUMP": 20,
+      "SOL": 2,
+      "WLD": 3,
+      "XRP": 5,
+      "ZEC": 4
+    },
+    "requested_wallets": 6,
+    "latest_successful_wallets": 6,
+    "latest_position_rows": 236,
+    "latest_btc_sample": {
+      "sampled_gross_notional_usd": 50895474.62573401,
+      "sampled_net_base": -476.11209,
+      "sampled_accounts_with_position": 6,
+      "missing_liquidation_levels": 0,
+      "largest_account_gross_share": 0.7879286016729166,
+      "effective_account_count_by_gross": 1.5680925875548735,
+      "sampled_long_inventory_within_0.005": 0,
+      "sampled_short_inventory_within_0.005": 0,
+      "sampled_long_inventory_within_0.010": 0,
+      "sampled_short_inventory_within_0.010": 0,
+      "sampled_long_inventory_within_0.020": 0,
+      "sampled_short_inventory_within_0.020": 0
+    },
+    "latest_inventory_change": {
+      "OP": 0.0,
+      "ICP": 0.0,
+      "IOTA": 0.0,
+      "POPCAT": 0.0,
+      "MORPHO": 0.0,
+      "ASTER": 0.0,
+      "ATOM": 0.0,
+      "PEOPLE": 0.0,
+      "BOME": 0.0,
+      "PONS": -3128.0,
+      "SOL": 1287.7599999999984,
+      "SKY": 0.0,
+      "HEMI": 0.0,
+      "RUNE": 0.0,
+      "LDO": 0.0,
+      "BNB": 0.0,
+      "kPEPE": 0.0,
+      "NXPC": 0.0,
+      "ORDI": 0.0,
+      "ZRO": 283.09999999999127,
+      "ENS": 0.0,
+      "DOGE": 0.0,
+      "AR": 0.0,
+      "HYPE": -344.5,
+      "ZEN": 0.0,
+      "MOVE": 0.0,
+      "BERA": 0.0,
+      "BTC": -18.676140000000032,
+      "CASHCAT": 0.0,
+      "AERO": 0.0,
+      "PUMP": -938122.0,
+      "PENGU": 0.0,
+      "MELANIA": 0.0,
+      "XPL": -3319.0,
+      "SNX": 0.0,
+      "ZEC": -34.75,
+      "VVV": 98.60000000000036,
+      "GMT": 0.0,
+      "MON": 0.0,
+      "ANIME": 0.0,
+      "ETC": 0.0,
+      "AVAX": 0.0,
+      "LTC": 0.0,
+      "PROVE": 0.0,
+      "REZ": 0.0,
+      "TURBO": 0.0,
+      "AIXBT": 0.0,
+      "SAGA": 0.0,
+      "EIGEN": 0.0,
+      "FARTCOIN": 10324.0,
+      "DOT": 0.0,
+      "PYTH": 0.0,
+      "WLFI": 0.0,
+      "W": 0.0,
+      "ME": 0.0,
+      "IMX": 0.0,
+      "BABY": 0.0,
+      "MERL": 0.0,
+      "MET": -6093.0,
+      "TRUMP": 0.0,
+      "HYPER": 0.0,
+      "BRETT": 0.0,
+      "WLD": 129.19999999995343,
+      "WIF": 0.0,
+      "FET": 0.0,
+      "GMX": 0.0,
+      "kBONK": 0.0,
+      "GRASS": 0.0,
+      "MINA": 0.0,
+      "RSR": 0.0,
+      "POLYX": 0.0,
+      "POL": 0.0,
+      "ENA": -24465.0,
+      "2Z": 0.0,
+      "SEI": 0.0,
+      "ARB": 0.0,
+      "XLM": 0.0,
+      "APE": 0.0,
+      "DASH": 0.0,
+      "INIT": 0.0,
+      "LINEA": 0.0,
+      "LIT": 0.0,
+      "TAO": -5.585000000000036,
+      "TRX": 0.0,
+      "MEME": 0.0,
+      "STBL": 0.0,
+      "CC": 0.0,
+      "CFX": 0.0,
+      "ONDO": 414.0,
+      "MNT": 0.0,
+      "AZTEC": 0.0,
+      "BCH": 0.0,
+      "JTO": 0.0,
+      "FIL": 0.0,
+      "ALT": 0.0,
+      "AVNT": 0.0,
+      "SUPER": 0.0,
+      "ETH": -449.03869999999733,
+      "JUP": 0.0,
+      "ADA": 0.0,
+      "ZETA": 0.0,
+      "BIO": 0.0,
+      "XMR": 0.0,
+      "AAVE": 7.970000000000255,
+      "ETHFI": 0.0,
+      "KAITO": 0.0,
+      "TIA": 0.0,
+      "XRP": 31685.0,
+      "IO": 0.0,
+      "STRK": 0.0,
+      "STX": 0.0,
+      "INJ": 0.0,
+      "APT": 0.0,
+      "PNUT": 0.0,
+      "NEAR": 6681.100000000035,
+      "MEGA": 0.0,
+      "BLUR": 0.0,
+      "USELESS": 640.0,
+      "SUI": -44.29999999998836,
+      "LINK": 117.0,
+      "0G": 0.0,
+      "GRAM": 0.0,
+      "RENDER": 0.0,
+      "ALGO": 0.0,
+      "ZK": 0.0,
+      "SYRUP": 0.0,
+      "DYM": 0.0,
+      "CHIP": 0.0,
+      "PAXG": 0.0,
+      "CRV": 0.0,
+      "SAND": 0.0,
+      "SKR": 0.0,
+      "VIRTUAL": 0.0,
+      "GALA": 0.0,
+      "GOAT": 0.0,
+      "SPX": 0.0,
+      "S": 0.0,
+      "UNI": -965.1999999999825,
+      "TRB": 0.0,
+      "DYDX": 0.0,
+      "ZORA": 0.0,
+      "APEX": 0.0,
+      "CAKE": 0.0,
+      "RESOLV": 0.0,
+      "SOPH": 0.0,
+      "BSV": 0.0,
+      "KAS": 0.0,
+      "NIL": 0.0,
+      "XAI": 0.0,
+      "AXS": 0.0,
+      "PENDLE": 0.0,
+      "COMP": 0.0,
+      "HBAR": 0.0
+    },
+    "specification_sha256": "4f925621e3d0c5750e8062bcff2466e4f153fa0fd24b42d3ed64c948205577c9",
+    "scope": "Frozen, currently active public-wallet sample on the default perp DEX; not all traders",
+    "limits": "Size-selected frozen default-DEX cohort; incomplete market coverage, concentrated accounts, unknown external hedges."
+  },
+  "receipt_replay": {
+    "specification": {
+      "version": "receipt_replay_v1",
+      "design": "Retrospective analysis of prospectively journaled public data; not prospective strategy validation",
+      "liquidation_groups": "BTC fills grouped by first-receipt UTC minute and liquidated side; decide at the next minute boundary",
+      "spot_confirmation": "5m and 15m as-of spot imbalance both oppose the forced trade; unknown coverage abstains",
+      "inventory_sampling": "Earliest usable recorded BTC base-inventory change in each UTC quarter hour; unchanged frozen cohort",
+      "price_reference": "First recorded OKX spot ticker with event and receipt at/after decision, within 120 seconds; no historical price fetch",
+      "forward_horizons_minutes": [
+        15,
+        60,
+        240
+      ],
+      "illustrative_round_trip_cost": 0.0024,
+      "statistics": "Report all available movements and greedy non-overlapping interval counts; no significance or promotion claim",
+      "orders_enabled": false
+    },
+    "specification_sha256": "432e2833a5ad317f9dadb63800b4f9fd7d90e7e813e66e39b3a3acdb5d380e0b",
+    "liquidations": {
+      "receipt_minute_side_groups": 12,
+      "rejected_precohort_or_future_events": 0,
+      "spot_absorption_groups": 0,
+      "unknown_spot_coverage_groups": 5,
+      "all_reversals": {
+        "15": {
+          "observed_groups": 12,
+          "missing_groups": 0,
+          "nonoverlapping_intervals": 5,
+          "mean_signed_gross_price_move": 0.0014854125023061697,
+          "median_signed_gross_price_move": 0.0018531413151667842,
+          "positive_move_fraction": 0.6666666666666666,
+          "mean_move_less_illustrative_cost_hurdle": -0.0009145874976938301
+        },
+        "60": {
+          "observed_groups": 12,
+          "missing_groups": 0,
+          "nonoverlapping_intervals": 3,
+          "mean_signed_gross_price_move": 0.00013852828192151279,
+          "median_signed_gross_price_move": -4.506474909038438e-05,
+          "positive_move_fraction": 0.5,
+          "mean_move_less_illustrative_cost_hurdle": -0.002261471718078487
+        },
+        "240": {
+          "observed_groups": 4,
+          "missing_groups": 8,
+          "nonoverlapping_intervals": 2,
+          "mean_signed_gross_price_move": 0.0008793736731641244,
+          "median_signed_gross_price_move": 0.000914510253448908,
+          "positive_move_fraction": 0.5,
+          "mean_move_less_illustrative_cost_hurdle": -0.0015206263268358754
+        }
+      },
+      "spot_absorption_reversals": {
+        "15": {
+          "observed_groups": 0,
+          "missing_groups": 0,
+          "nonoverlapping_intervals": 0,
+          "mean_signed_gross_price_move": null,
+          "median_signed_gross_price_move": null,
+          "positive_move_fraction": null,
+          "mean_move_less_illustrative_cost_hurdle": null
+        },
+        "60": {
+          "observed_groups": 0,
+          "missing_groups": 0,
+          "nonoverlapping_intervals": 0,
+          "mean_signed_gross_price_move": null,
+          "median_signed_gross_price_move": null,
+          "positive_move_fraction": null,
+          "mean_move_less_illustrative_cost_hurdle": null
+        },
+        "240": {
+          "observed_groups": 0,
+          "missing_groups": 0,
+          "nonoverlapping_intervals": 0,
+          "mean_signed_gross_price_move": null,
+          "median_signed_gross_price_move": null,
+          "positive_move_fraction": null,
+          "mean_move_less_illustrative_cost_hurdle": null
+        }
+      },
+      "rows": [
+        {
+          "decision_ms": 1793191800000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 4,
+          "victims_observed": 4,
+          "sampled_notional_usd": 1220.70353,
+          "median_receipt_delay_seconds": 111.1665,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.7456143342649454,
+              "buy_quote": 831166.439443239,
+              "sell_quote": 5703529.114581473,
+              "trades": 1173,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            }
+          },
+          "spot_absorption": null,
+          "entry_reference": {
+            "observed_ms": 1793191829876,
+            "event_ms": 1793191828670,
+            "price": 80770.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793192755939,
+                "event_ms": 1793192754964,
+                "price": 80764.4
+              },
+              "signed_gross_price_move": -7.55226227397987e-05,
+              "move_less_illustrative_cost_hurdle": -0.0024755226227397985
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793195434479,
+                "event_ms": 1793195433570,
+                "price": 80464.9
+              },
+              "signed_gross_price_move": -0.0037835595916826392,
+              "move_less_illustrative_cost_hurdle": -0.006183559591682639
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793206247304,
+                "event_ms": 1793206246966,
+                "price": 80463.2
+              },
+              "signed_gross_price_move": -0.0038046068799871824,
+              "move_less_illustrative_cost_hurdle": -0.006204606879987182
+            }
+          }
+        },
+        {
+          "decision_ms": 1793193960000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 3,
+          "victims_observed": 3,
+          "sampled_notional_usd": 5682.13704,
+          "median_receipt_delay_seconds": 47.583,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.3433049066272181,
+              "buy_quote": 246612.722963816,
+              "sell_quote": 504459.503561327,
+              "trades": 1184,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.5531545932004793,
+              "buy_quote": 3112177.51951503,
+              "sell_quote": 10817371.591465643,
+              "trades": 3614,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793193983000,
+            "event_ms": 1793193981968,
+            "price": 80661.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793194903462,
+                "event_ms": 1793194902973,
+                "price": 80861.2
+              },
+              "signed_gross_price_move": 0.0024795068756726657,
+              "move_less_illustrative_cost_hurdle": 7.950687567266591e-05
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793197594772,
+                "event_ms": 1793197593969,
+                "price": 80511.6
+              },
+              "signed_gross_price_move": -0.0018546711430029728,
+              "move_less_illustrative_cost_hurdle": -0.004254671143002972
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793208409143,
+                "event_ms": 1793208407971,
+                "price": 80644.7
+              },
+              "signed_gross_price_move": -0.00020455931724294718,
+              "move_less_illustrative_cost_hurdle": -0.002604559317242947
+            }
+          }
+        },
+        {
+          "decision_ms": 1793217480000,
+          "liquidated_position_side": "short",
+          "fills_known_at_decision": 16,
+          "victims_observed": 13,
+          "sampled_notional_usd": 57780.0178,
+          "median_receipt_delay_seconds": 35.534,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": 0.06660382457735091,
+              "buy_quote": 1552359.615550503,
+              "sell_quote": 1358486.15450969,
+              "trades": 1689,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            }
+          },
+          "spot_absorption": null,
+          "entry_reference": {
+            "observed_ms": 1793217491773,
+            "event_ms": 1793217490664,
+            "price": 81531.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793218423397,
+                "event_ms": 1793218422769,
+                "price": 81326.8
+              },
+              "signed_gross_price_move": 0.0025057922682265588,
+              "move_less_illustrative_cost_hurdle": 0.00010579226822655897
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793221122823,
+                "event_ms": 1793221122073,
+                "price": 81317.4
+              },
+              "signed_gross_price_move": 0.002621085696133285,
+              "move_less_illustrative_cost_hurdle": 0.00022108569613328534
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793231905865,
+                "event_ms": 1793231905362,
+                "price": 81365.3
+              },
+              "signed_gross_price_move": 0.002033579824140763,
+              "move_less_illustrative_cost_hurdle": -0.0003664201758592366
+            }
+          }
+        },
+        {
+          "decision_ms": 1793217720000,
+          "liquidated_position_side": "short",
+          "fills_known_at_decision": 3,
+          "victims_observed": 2,
+          "sampled_notional_usd": 57778.374540000004,
+          "median_receipt_delay_seconds": 111.295,
+          "spot_flow": {
+            "5": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            },
+            "15": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            }
+          },
+          "spot_absorption": null,
+          "entry_reference": {
+            "observed_ms": 1793217723756,
+            "event_ms": 1793217723135,
+            "price": 81775.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793218640358,
+                "event_ms": 1793218639270,
+                "price": 81271.1
+              },
+              "signed_gross_price_move": 0.006169321900420188,
+              "move_less_illustrative_cost_hurdle": 0.0037693219004201885
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793221328094,
+                "event_ms": 1793221326975,
+                "price": 81297.4
+              },
+              "signed_gross_price_move": 0.005847710074888046,
+              "move_less_illustrative_cost_hurdle": 0.0034477100748880464
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793232127330,
+                "event_ms": 1793232127067,
+                "price": 81326.4
+              },
+              "signed_gross_price_move": 0.005493081065745864,
+              "move_less_illustrative_cost_hurdle": 0.003093081065745864
+            }
+          }
+        },
+        {
+          "decision_ms": 1793238600000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 8,
+          "victims_observed": 8,
+          "sampled_notional_usd": 263701.2079,
+          "median_receipt_delay_seconds": 79.021,
+          "spot_flow": {
+            "5": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            },
+            "15": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            }
+          },
+          "spot_absorption": null,
+          "entry_reference": {
+            "observed_ms": 1793238631048,
+            "event_ms": 1793238630659,
+            "price": 80210.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793239540362,
+                "event_ms": 1793239540003,
+                "price": 80001.3
+              },
+              "signed_gross_price_move": -0.0026081373386277473,
+              "move_less_illustrative_cost_hurdle": -0.005008137338627747
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242256775,
+                "event_ms": 1793242255974,
+                "price": 79916.7
+              },
+              "signed_gross_price_move": -0.003662862094114927,
+              "move_less_illustrative_cost_hurdle": -0.006062862094114926
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793239260000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 1,
+          "victims_observed": 1,
+          "sampled_notional_usd": 3313.66035,
+          "median_receipt_delay_seconds": 25.843,
+          "spot_flow": {
+            "5": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            },
+            "15": {
+              "usable": false,
+              "reason": "unverified_trade_coverage"
+            }
+          },
+          "spot_absorption": null,
+          "entry_reference": {
+            "observed_ms": 1793239300350,
+            "event_ms": 1793239299138,
+            "price": 80042.0
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793240220783,
+                "event_ms": 1793240220069,
+                "price": 79966.6
+              },
+              "signed_gross_price_move": -0.0009420054471401818,
+              "move_less_illustrative_cost_hurdle": -0.0033420054471401815
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242903754,
+                "event_ms": 1793242902969,
+                "price": 80012.0
+              },
+              "signed_gross_price_move": -0.0003748032283051872,
+              "move_less_illustrative_cost_hurdle": -0.002774803228305187
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241120000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 3,
+          "victims_observed": 3,
+          "sampled_notional_usd": 1788.0576,
+          "median_receipt_delay_seconds": 50.908,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.5243061213055413,
+              "buy_quote": 473113.264072701,
+              "sell_quote": 1516036.839650138,
+              "trades": 2571,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.32922933839055607,
+              "buy_quote": 1242999.068268368,
+              "sell_quote": 2463182.90840283,
+              "trades": 4127,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793241127356,
+            "event_ms": 1793241126370,
+            "price": 79869.0
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242041922,
+                "event_ms": 1793242041172,
+                "price": 79792.3
+              },
+              "signed_gross_price_move": -0.0009603225281398231,
+              "move_less_illustrative_cost_hurdle": -0.003360322528139823
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793244746926,
+                "event_ms": 1793244746472,
+                "price": 79860.6
+              },
+              "signed_gross_price_move": -0.00010517221950934186,
+              "move_less_illustrative_cost_hurdle": -0.0025051722195093416
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241420000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 10,
+          "victims_observed": 10,
+          "sampled_notional_usd": 4671.50688,
+          "median_receipt_delay_seconds": 14.491,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.6086771465160924,
+              "buy_quote": 734224.218108436,
+              "sell_quote": 3018299.875854962,
+              "trades": 2196,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.5346955562199419,
+              "buy_quote": 1473142.602814941,
+              "sell_quote": 4858808.972146899,
+              "trades": 5516,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793241448043,
+            "event_ms": 1793241447368,
+            "price": 79832.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242363533,
+                "event_ms": 1793242362767,
+                "price": 79927.4
+              },
+              "signed_gross_price_move": 0.0011899930354091204,
+              "move_less_illustrative_cost_hurdle": -0.0012100069645908794
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245070309,
+                "event_ms": 1793245069270,
+                "price": 79809.2
+              },
+              "signed_gross_price_move": -0.00029060882548936906,
+              "move_less_illustrative_cost_hurdle": -0.002690608825489369
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241540000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 3,
+          "victims_observed": 3,
+          "sampled_notional_usd": 859.72656,
+          "median_receipt_delay_seconds": 105.012,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.7230861504927624,
+              "buy_quote": 607578.493547419,
+              "sell_quote": 3780634.624926735,
+              "trades": 2471,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.5945432421369408,
+              "buy_quote": 1539018.208247757,
+              "sell_quote": 6052510.004817823,
+              "trades": 5858,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793241557754,
+            "event_ms": 1793241556769,
+            "price": 79795.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242463988,
+                "event_ms": 1793242463368,
+                "price": 79934.2
+              },
+              "signed_gross_price_move": 0.0017381932565119218,
+              "move_less_illustrative_cost_hurdle": -0.000661806743488078
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245170496,
+                "event_ms": 1793245170271,
+                "price": 79811.5
+              },
+              "signed_gross_price_move": 0.00020051256023201347,
+              "move_less_illustrative_cost_hurdle": -0.0021994874397679863
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241660000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 1,
+          "victims_observed": 1,
+          "sampled_notional_usd": 7663.42696,
+          "median_receipt_delay_seconds": 104.834,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.7463815664460853,
+              "buy_quote": 554670.905305344,
+              "sell_quote": 3819387.380071069,
+              "trades": 2433,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.5787633855282698,
+              "buy_quote": 1642672.94263464,
+              "sell_quote": 6156615.562685366,
+              "trades": 5987,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793241668187,
+            "event_ms": 1793241667268,
+            "price": 79772.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242591870,
+                "event_ms": 1793242591071,
+                "price": 79929.8
+              },
+              "signed_gross_price_move": 0.0019680893738216465,
+              "move_less_illustrative_cost_hurdle": -0.0004319106261783533
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245269315,
+                "event_ms": 1793245268472,
+                "price": 79774.0
+              },
+              "signed_gross_price_move": 1.5042721328573094e-05,
+              "move_less_illustrative_cost_hurdle": -0.0023849572786714267
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241780000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 7,
+          "victims_observed": 7,
+          "sampled_notional_usd": 23717.69382,
+          "median_receipt_delay_seconds": 70.643,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.6571110139826951,
+              "buy_quote": 294961.361925394,
+              "sell_quote": 1425486.7944963349,
+              "trades": 1361,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.5670292321585783,
+              "buy_quote": 1708994.039924212,
+              "sell_quote": 6185275.813185786,
+              "trades": 6404,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793241809987,
+            "event_ms": 1793241808864,
+            "price": 79742.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242729385,
+                "event_ms": 1793242728568,
+                "price": 79990.8
+              },
+              "signed_gross_price_move": 0.0031125145154533573,
+              "move_less_illustrative_cost_hurdle": 0.0007125145154533575
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245436062,
+                "event_ms": 1793245435671,
+                "price": 79895.7
+              },
+              "signed_gross_price_move": 0.0019199273663008665,
+              "move_less_illustrative_cost_hurdle": -0.0004800726336991333
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241960000,
+          "liquidated_position_side": "long",
+          "fills_known_at_decision": 1,
+          "victims_observed": 1,
+          "sampled_notional_usd": 1283.009,
+          "median_receipt_delay_seconds": 30.768,
+          "spot_flow": {
+            "5": {
+              "usable": true,
+              "imbalance": -0.28431380759238467,
+              "buy_quote": 698449.210125995,
+              "sell_quote": 1253381.68317758,
+              "trades": 2189,
+              "window_minutes": 5
+            },
+            "15": {
+              "usable": true,
+              "imbalance": -0.475221739252357,
+              "buy_quote": 2188316.018323652,
+              "sell_quote": 6151648.42763489,
+              "trades": 6026,
+              "window_minutes": 15
+            }
+          },
+          "spot_absorption": false,
+          "entry_reference": {
+            "observed_ms": 1793241968955,
+            "event_ms": 1793241968269,
+            "price": 79753.0
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242903754,
+                "event_ms": 1793242902969,
+                "price": 80012.0
+              },
+              "signed_gross_price_move": 0.003247526738806128,
+              "move_less_illustrative_cost_hurdle": 0.0008475267388061282
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245597967,
+                "event_ms": 1793245597076,
+                "price": 79843.1
+              },
+              "signed_gross_price_move": 0.0011297380662798062,
+              "move_less_illustrative_cost_hurdle": -0.0012702619337201936
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        }
+      ]
+    },
+    "inventory": {
+      "quarter_hour_observations": 77,
+      "unchanged_inventory_observations": 0,
+      "all_inventory_directions": {
+        "15": {
+          "observed_groups": 76,
+          "missing_groups": 1,
+          "nonoverlapping_intervals": 56,
+          "mean_signed_gross_price_move": -1.3240330601929493e-05,
+          "median_signed_gross_price_move": -2.6594887004849355e-05,
+          "positive_move_fraction": 0.4868421052631579,
+          "mean_move_less_illustrative_cost_hurdle": -0.002413240330601929
+        },
+        "60": {
+          "observed_groups": 73,
+          "missing_groups": 4,
+          "nonoverlapping_intervals": 16,
+          "mean_signed_gross_price_move": 0.0002893670368864688,
+          "median_signed_gross_price_move": -8.315089778143658e-05,
+          "positive_move_fraction": 0.4931506849315068,
+          "mean_move_less_illustrative_cost_hurdle": -0.002110632963113531
+        },
+        "240": {
+          "observed_groups": 61,
+          "missing_groups": 16,
+          "nonoverlapping_intervals": 4,
+          "mean_signed_gross_price_move": 0.0019170026490476872,
+          "median_signed_gross_price_move": 0.00029162447135377967,
+          "positive_move_fraction": 0.5409836065573771,
+          "mean_move_less_illustrative_cost_hurdle": -0.00048299735095231255
+        }
+      },
+      "rows": [
+        {
+          "decision_ms": 1793180891282,
+          "sampled_btc_base_change": 35.34994999999998,
+          "actual_window_minutes": 14.049133333333334,
+          "largest_account_gross_share": 0.818497374460305,
+          "entry_reference": {
+            "observed_ms": 1793180920073,
+            "event_ms": 1793180919467,
+            "price": 81529.7
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793181834023,
+                "event_ms": 1793181833466,
+                "price": 81557.9
+              },
+              "signed_gross_price_move": 0.00034588622305742334,
+              "move_less_illustrative_cost_hurdle": -0.0020541137769425765
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793184551063,
+                "event_ms": 1793184550371,
+                "price": 81577.3
+              },
+              "signed_gross_price_move": 0.0005838363197705476,
+              "move_less_illustrative_cost_hurdle": -0.0018161636802294522
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793195347152,
+                "event_ms": 1793195346669,
+                "price": 80490.9
+              },
+              "signed_gross_price_move": -0.012741369096169852,
+              "move_less_illustrative_cost_hurdle": -0.015141369096169852
+            }
+          }
+        },
+        {
+          "decision_ms": 1793181690219,
+          "sampled_btc_base_change": -6.2887699999999995,
+          "actual_window_minutes": 15.521033333333333,
+          "largest_account_gross_share": 0.8250763802373365,
+          "entry_reference": {
+            "observed_ms": 1793181706809,
+            "event_ms": 1793181705570,
+            "price": 81552.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793182636632,
+                "event_ms": 1793182636069,
+                "price": 81521.1
+              },
+              "signed_gross_price_move": 0.0003862537797690857,
+              "move_less_illustrative_cost_hurdle": -0.002013746220230914
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793185336277,
+                "event_ms": 1793185335372,
+                "price": 81463.9
+              },
+              "signed_gross_price_move": 0.0010876415957310481,
+              "move_less_illustrative_cost_hurdle": -0.0013123584042689517
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793196114787,
+                "event_ms": 1793196113568,
+                "price": 80703.5
+              },
+              "signed_gross_price_move": 0.010411685219110178,
+              "move_less_illustrative_cost_hurdle": 0.008011685219110179
+            }
+          }
+        },
+        {
+          "decision_ms": 1793182618988,
+          "sampled_btc_base_change": -0.8058599999999956,
+          "actual_window_minutes": 15.479483333333333,
+          "largest_account_gross_share": 0.8261158079719932,
+          "entry_reference": {
+            "observed_ms": 1793182636632,
+            "event_ms": 1793182636069,
+            "price": 81521.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793183545233,
+                "event_ms": 1793183544869,
+                "price": 81515.3
+              },
+              "signed_gross_price_move": 7.114722446088795e-05,
+              "move_less_illustrative_cost_hurdle": -0.002328852775539112
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793186261188,
+                "event_ms": 1793186260074,
+                "price": 81353.3
+              },
+              "signed_gross_price_move": 0.0020583628042311064,
+              "move_less_illustrative_cost_hurdle": -0.0003416371957688934
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793197054705,
+                "event_ms": 1793197053569,
+                "price": 80569.5
+              },
+              "signed_gross_price_move": 0.011673051516723931,
+              "move_less_illustrative_cost_hurdle": 0.009273051516723932
+            }
+          }
+        },
+        {
+          "decision_ms": 1793183427889,
+          "sampled_btc_base_change": -5.873300000000029,
+          "actual_window_minutes": 15.676916666666667,
+          "largest_account_gross_share": 0.8339069791230019,
+          "entry_reference": {
+            "observed_ms": 1793183451525,
+            "event_ms": 1793183450768,
+            "price": 81514.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793184360604,
+                "event_ms": 1793184360271,
+                "price": 81573.1
+              },
+              "signed_gross_price_move": -0.000717662848127798,
+              "move_less_illustrative_cost_hurdle": -0.003117662848127798
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793187074692,
+                "event_ms": 1793187074271,
+                "price": 81404.7
+              },
+              "signed_gross_price_move": 0.0013482247352009091,
+              "move_less_illustrative_cost_hurdle": -0.0010517752647990907
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793197854364,
+                "event_ms": 1793197853575,
+                "price": 80622.2
+              },
+              "signed_gross_price_move": 0.010947732062722593,
+              "move_less_illustrative_cost_hurdle": 0.008547732062722593
+            }
+          }
+        },
+        {
+          "decision_ms": 1793184358660,
+          "sampled_btc_base_change": -3.862519999999961,
+          "actual_window_minutes": 15.51285,
+          "largest_account_gross_share": 0.8393565333904462,
+          "entry_reference": {
+            "observed_ms": 1793184360604,
+            "event_ms": 1793184360271,
+            "price": 81573.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793185273064,
+                "event_ms": 1793185272073,
+                "price": 81474.2
+              },
+              "signed_gross_price_move": 0.001212409483028254,
+              "move_less_illustrative_cost_hurdle": -0.0011875905169717459
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793187981419,
+                "event_ms": 1793187980968,
+                "price": 81398.6
+              },
+              "signed_gross_price_move": 0.0021391855893670986,
+              "move_less_illustrative_cost_hurdle": -0.0002608144106329012
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793198771764,
+                "event_ms": 1793198771271,
+                "price": 80591.4
+              },
+              "signed_gross_price_move": 0.0120346045448807,
+              "move_less_illustrative_cost_hurdle": 0.009634604544880701
+            }
+          }
+        },
+        {
+          "decision_ms": 1793185284606,
+          "sampled_btc_base_change": -11.712920000000054,
+          "actual_window_minutes": 15.432433333333334,
+          "largest_account_gross_share": 0.8260511176183816,
+          "entry_reference": {
+            "observed_ms": 1793185304653,
+            "event_ms": 1793185304074,
+            "price": 81464.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793186229977,
+                "event_ms": 1793186228771,
+                "price": 81367.4
+              },
+              "signed_gross_price_move": 0.0011956084100127606,
+              "move_less_illustrative_cost_hurdle": -0.0012043915899872392
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793188932333,
+                "event_ms": 1793188931578,
+                "price": 81305.1
+              },
+              "signed_gross_price_move": 0.0019603558837681945,
+              "move_less_illustrative_cost_hurdle": -0.0004396441162318053
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793199733784,
+                "event_ms": 1793199732970,
+                "price": 80675.7
+              },
+              "signed_gross_price_move": 0.009686392159558577,
+              "move_less_illustrative_cost_hurdle": 0.007286392159558577
+            }
+          }
+        },
+        {
+          "decision_ms": 1793186208398,
+          "sampled_btc_base_change": 4.404170000000022,
+          "actual_window_minutes": 15.396533333333334,
+          "largest_account_gross_share": 0.8323031718066528,
+          "entry_reference": {
+            "observed_ms": 1793186229977,
+            "event_ms": 1793186228771,
+            "price": 81367.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793187137130,
+                "event_ms": 1793187135970,
+                "price": 81394.2
+              },
+              "signed_gross_price_move": 0.00032937023918666597,
+              "move_less_illustrative_cost_hurdle": -0.002070629760813334
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793189832405,
+                "event_ms": 1793189832137,
+                "price": 81034.1
+              },
+              "signed_gross_price_move": -0.004096235101527013,
+              "move_less_illustrative_cost_hurdle": -0.006496235101527012
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793200663858,
+                "event_ms": 1793200663465,
+                "price": 80688.6
+              },
+              "signed_gross_price_move": -0.008342407401489838,
+              "move_less_illustrative_cost_hurdle": -0.010742407401489837
+            }
+          }
+        },
+        {
+          "decision_ms": 1793187011385,
+          "sampled_btc_base_change": -5.5605299999999716,
+          "actual_window_minutes": 15.573833333333333,
+          "largest_account_gross_share": 0.8221150245802951,
+          "entry_reference": {
+            "observed_ms": 1793187043446,
+            "event_ms": 1793187042773,
+            "price": 81405.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793187950188,
+                "event_ms": 1793187949968,
+                "price": 81391.8
+              },
+              "signed_gross_price_move": 0.00017197791803535978,
+              "move_less_illustrative_cost_hurdle": -0.00222802208196464
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793190664422,
+                "event_ms": 1793190663369,
+                "price": 80917.2
+              },
+              "signed_gross_price_move": 0.006002029339432835,
+              "move_less_illustrative_cost_hurdle": 0.0036020293394328352
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793201459487,
+                "event_ms": 1793201458965,
+                "price": 80672.0
+              },
+              "signed_gross_price_move": 0.009014099732451486,
+              "move_less_illustrative_cost_hurdle": 0.006614099732451487
+            }
+          }
+        },
+        {
+          "decision_ms": 1793187939798,
+          "sampled_btc_base_change": -4.84346000000005,
+          "actual_window_minutes": 15.47355,
+          "largest_account_gross_share": 0.8155319353554247,
+          "entry_reference": {
+            "observed_ms": 1793187950188,
+            "event_ms": 1793187949968,
+            "price": 81391.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793188868700,
+                "event_ms": 1793188868373,
+                "price": 81341.5
+              },
+              "signed_gross_price_move": 0.0006179983733005656,
+              "move_less_illustrative_cost_hurdle": -0.0017820016266994342
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793191556809,
+                "event_ms": 1793191556099,
+                "price": 80779.9
+              },
+              "signed_gross_price_move": 0.007517956354325728,
+              "move_less_illustrative_cost_hurdle": 0.005117956354325728
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793202359983,
+                "event_ms": 1793202359566,
+                "price": 80628.8
+              },
+              "signed_gross_price_move": 0.009374408724220351,
+              "move_less_illustrative_cost_hurdle": 0.006974408724220352
+            }
+          }
+        },
+        {
+          "decision_ms": 1793188869359,
+          "sampled_btc_base_change": -3.3879199999999514,
+          "actual_window_minutes": 15.492683333333334,
+          "largest_account_gross_share": 0.8110022255363281,
+          "entry_reference": {
+            "observed_ms": 1793188900289,
+            "event_ms": 1793188899869,
+            "price": 81310.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793189832405,
+                "event_ms": 1793189832137,
+                "price": 81034.1
+              },
+              "signed_gross_price_move": 0.003394412256288004,
+              "move_less_illustrative_cost_hurdle": 0.0009944122562880043
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793192527074,
+                "event_ms": 1793192526264,
+                "price": 80746.0
+              },
+              "signed_gross_price_move": 0.006937637513666939,
+              "move_less_illustrative_cost_hurdle": 0.0045376375136669395
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793203315464,
+                "event_ms": 1793203314763,
+                "price": 80576.4
+              },
+              "signed_gross_price_move": 0.009023479247965649,
+              "move_less_illustrative_cost_hurdle": 0.00662347924796565
+            }
+          }
+        },
+        {
+          "decision_ms": 1793189800981,
+          "sampled_btc_base_change": 29.22285999999997,
+          "actual_window_minutes": 15.527033333333334,
+          "largest_account_gross_share": 0.8300325129362877,
+          "entry_reference": {
+            "observed_ms": 1793189832405,
+            "event_ms": 1793189832137,
+            "price": 81034.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793190741903,
+                "event_ms": 1793190741440,
+                "price": 80897.1
+              },
+              "signed_gross_price_move": -0.0016906462834781477,
+              "move_less_illustrative_cost_hurdle": -0.004090646283478147
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793193457989,
+                "event_ms": 1793193457667,
+                "price": 80752.0
+              },
+              "signed_gross_price_move": -0.0034812504859066395,
+              "move_less_illustrative_cost_hurdle": -0.005881250485906639
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793204233097,
+                "event_ms": 1793204232666,
+                "price": 80548.3
+              },
+              "signed_gross_price_move": -0.005995007040246025,
+              "move_less_illustrative_cost_hurdle": -0.008395007040246025
+            }
+          }
+        },
+        {
+          "decision_ms": 1793190602596,
+          "sampled_btc_base_change": 8.689170000000047,
+          "actual_window_minutes": 15.619916666666667,
+          "largest_account_gross_share": 0.8384690093228293,
+          "entry_reference": {
+            "observed_ms": 1793190626512,
+            "event_ms": 1793190625567,
+            "price": 80907.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793191556809,
+                "event_ms": 1793191556099,
+                "price": 80779.9
+              },
+              "signed_gross_price_move": -0.001578343690827655,
+              "move_less_illustrative_cost_hurdle": -0.003978343690827654
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793194248610,
+                "event_ms": 1793194247571,
+                "price": 80721.1
+              },
+              "signed_gross_price_move": -0.0023050986557504594,
+              "move_less_illustrative_cost_hurdle": -0.004705098655750459
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793205054262,
+                "event_ms": 1793205053470,
+                "price": 80549.8
+              },
+              "signed_gross_price_move": -0.004422328681112808,
+              "move_less_illustrative_cost_hurdle": -0.0068223286811128075
+            }
+          }
+        },
+        {
+          "decision_ms": 1793191537136,
+          "sampled_btc_base_change": -15.818800000000067,
+          "actual_window_minutes": 15.575666666666667,
+          "largest_account_gross_share": 0.8164600830672728,
+          "entry_reference": {
+            "observed_ms": 1793191556809,
+            "event_ms": 1793191556099,
+            "price": 80779.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793192460504,
+                "event_ms": 1793192459564,
+                "price": 80758.0
+              },
+              "signed_gross_price_move": 0.00027110704519306417,
+              "move_less_illustrative_cost_hurdle": -0.0021288929548069356
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793195174579,
+                "event_ms": 1793195174078,
+                "price": 80664.3
+              },
+              "signed_gross_price_move": 0.0014310490604716453,
+              "move_less_illustrative_cost_hurdle": -0.0009689509395283545
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793205965399,
+                "event_ms": 1793205964368,
+                "price": 80458.8
+              },
+              "signed_gross_price_move": 0.003974998731119839,
+              "move_less_illustrative_cost_hurdle": 0.001574998731119839
+            }
+          }
+        },
+        {
+          "decision_ms": 1793192462589,
+          "sampled_btc_base_change": 12.05660000000006,
+          "actual_window_minutes": 15.424216666666666,
+          "largest_account_gross_share": 0.8359583715810742,
+          "entry_reference": {
+            "observed_ms": 1793192493890,
+            "event_ms": 1793192492965,
+            "price": 80736.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793193395517,
+                "event_ms": 1793193395138,
+                "price": 80750.5
+              },
+              "signed_gross_price_move": 0.00016844837986118577,
+              "move_less_illustrative_cost_hurdle": -0.002231551620138814
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793196114787,
+                "event_ms": 1793196113568,
+                "price": 80703.5
+              },
+              "signed_gross_price_move": -0.00041368940348207595,
+              "move_less_illustrative_cost_hurdle": -0.0028136894034820757
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793206910915,
+                "event_ms": 1793206910169,
+                "price": 80546.4
+              },
+              "signed_gross_price_move": -0.0023595159090824547,
+              "move_less_illustrative_cost_hurdle": -0.004759515909082454
+            }
+          }
+        },
+        {
+          "decision_ms": 1793193394655,
+          "sampled_btc_base_change": 5.4778199999999515,
+          "actual_window_minutes": 15.534433333333334,
+          "largest_account_gross_share": 0.838845590837189,
+          "entry_reference": {
+            "observed_ms": 1793193395517,
+            "event_ms": 1793193395138,
+            "price": 80750.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793194333962,
+                "event_ms": 1793194333468,
+                "price": 80741.8
+              },
+              "signed_gross_price_move": -0.00010773927096419111,
+              "move_less_illustrative_cost_hurdle": -0.002507739270964191
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793197015697,
+                "event_ms": 1793197014448,
+                "price": 80553.2
+              },
+              "signed_gross_price_move": -0.0024433285242816405,
+              "move_less_illustrative_cost_hurdle": -0.00484332852428164
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793207826918,
+                "event_ms": 1793207826270,
+                "price": 80519.1
+              },
+              "signed_gross_price_move": -0.002865616931164494,
+              "move_less_illustrative_cost_hurdle": -0.0052656169311644935
+            }
+          }
+        },
+        {
+          "decision_ms": 1793194324165,
+          "sampled_btc_base_change": 10.317459999999983,
+          "actual_window_minutes": 15.491833333333334,
+          "largest_account_gross_share": 0.8242641400868312,
+          "entry_reference": {
+            "observed_ms": 1793194333962,
+            "event_ms": 1793194333468,
+            "price": 80741.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793195257508,
+                "event_ms": 1793195256571,
+                "price": 80555.0
+              },
+              "signed_gross_price_move": -0.002313547629604562,
+              "move_less_illustrative_cost_hurdle": -0.004713547629604561
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793197958785,
+                "event_ms": 1793197958074,
+                "price": 80539.1
+              },
+              "signed_gross_price_move": -0.0025104716516104464,
+              "move_less_illustrative_cost_hurdle": -0.004910471651610446
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793208757502,
+                "event_ms": 1793208756768,
+                "price": 80617.9
+              },
+              "signed_gross_price_move": -0.0015345211526125446,
+              "move_less_illustrative_cost_hurdle": -0.003934521152612544
+            }
+          }
+        },
+        {
+          "decision_ms": 1793195124377,
+          "sampled_btc_base_change": -4.766940000000034,
+          "actual_window_minutes": 15.555833333333334,
+          "largest_account_gross_share": 0.838838254367359,
+          "entry_reference": {
+            "observed_ms": 1793195139541,
+            "event_ms": 1793195138671,
+            "price": 80736.7
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793196040434,
+                "event_ms": 1793196040170,
+                "price": 80672.0
+              },
+              "signed_gross_price_move": 0.000801370380508426,
+              "move_less_illustrative_cost_hurdle": -0.0015986296194915738
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793198771764,
+                "event_ms": 1793198771271,
+                "price": 80591.4
+              },
+              "signed_gross_price_move": 0.001799677222378504,
+              "move_less_illustrative_cost_hurdle": -0.0006003227776214958
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793209555064,
+                "event_ms": 1793209554372,
+                "price": 80739.3
+              },
+              "signed_gross_price_move": -3.220344651211349e-05,
+              "move_less_illustrative_cost_hurdle": -0.0024322034465121133
+            }
+          }
+        },
+        {
+          "decision_ms": 1793196067291,
+          "sampled_btc_base_change": -30.68662999999998,
+          "actual_window_minutes": 15.715233333333334,
+          "largest_account_gross_share": 0.7972422954393273,
+          "entry_reference": {
+            "observed_ms": 1793196074904,
+            "event_ms": 1793196073967,
+            "price": 80630.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793196981243,
+                "event_ms": 1793196980168,
+                "price": 80618.6
+              },
+              "signed_gross_price_move": 0.00014386669014820885,
+              "move_less_illustrative_cost_hurdle": -0.002256133309851791
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793199702213,
+                "event_ms": 1793199701869,
+                "price": 80680.1
+              },
+              "signed_gross_price_move": -0.0006188748136555233,
+              "move_less_illustrative_cost_hurdle": -0.003018874813655523
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793210511148,
+                "event_ms": 1793210510569,
+                "price": 80884.5
+              },
+              "signed_gross_price_move": -0.003153905112476485,
+              "move_less_illustrative_cost_hurdle": -0.005553905112476484
+            }
+          }
+        },
+        {
+          "decision_ms": 1793197006273,
+          "sampled_btc_base_change": -2.3402300000000196,
+          "actual_window_minutes": 15.6497,
+          "largest_account_gross_share": 0.7942492143171913,
+          "entry_reference": {
+            "observed_ms": 1793197015697,
+            "event_ms": 1793197014448,
+            "price": 80553.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793197925656,
+                "event_ms": 1793197924381,
+                "price": 80555.1
+              },
+              "signed_gross_price_move": -2.358689661008384e-05,
+              "move_less_illustrative_cost_hurdle": -0.0024235868966100836
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793200630756,
+                "event_ms": 1793200629967,
+                "price": 80695.9
+              },
+              "signed_gross_price_move": -0.0017715000769678024,
+              "move_less_illustrative_cost_hurdle": -0.004171500076967802
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793211451977,
+                "event_ms": 1793211450976,
+                "price": 80734.4
+              },
+              "signed_gross_price_move": -0.002249445087221913,
+              "move_less_illustrative_cost_hurdle": -0.004649445087221912
+            }
+          }
+        },
+        {
+          "decision_ms": 1793197819810,
+          "sampled_btc_base_change": -15.17271999999997,
+          "actual_window_minutes": 15.762866666666667,
+          "largest_account_gross_share": 0.7779061241536598,
+          "entry_reference": {
+            "observed_ms": 1793197822769,
+            "event_ms": 1793197822470,
+            "price": 80582.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793198739499,
+                "event_ms": 1793198738572,
+                "price": 80589.1
+              },
+              "signed_gross_price_move": -8.190363912774501e-05,
+              "move_less_illustrative_cost_hurdle": -0.002481903639127745
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793201427882,
+                "event_ms": 1793201427266,
+                "price": 80692.4
+              },
+              "signed_gross_price_move": -0.0013638196878973385,
+              "move_less_illustrative_cost_hurdle": -0.0037638196878973383
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793212235916,
+                "event_ms": 1793212235170,
+                "price": 80981.3
+              },
+              "signed_gross_price_move": -0.004948965346073919,
+              "move_less_illustrative_cost_hurdle": -0.0073489653460739185
+            }
+          }
+        },
+        {
+          "decision_ms": 1793198753130,
+          "sampled_btc_base_change": 9.645109999999988,
+          "actual_window_minutes": 15.555333333333333,
+          "largest_account_gross_share": 0.7899709921302608,
+          "entry_reference": {
+            "observed_ms": 1793198771764,
+            "event_ms": 1793198771271,
+            "price": 80591.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793199702213,
+                "event_ms": 1793199701869,
+                "price": 80680.1
+              },
+              "signed_gross_price_move": 0.0011006137131257532,
+              "move_less_illustrative_cost_hurdle": -0.0012993862868742466
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793202391286,
+                "event_ms": 1793202390564,
+                "price": 80616.1
+              },
+              "signed_gross_price_move": 0.0003064843147035923,
+              "move_less_illustrative_cost_hurdle": -0.0020935156852964075
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793213209039,
+                "event_ms": 1793213208373,
+                "price": 80932.3
+              },
+              "signed_gross_price_move": 0.004229979873783263,
+              "move_less_illustrative_cost_hurdle": 0.001829979873783263
+            }
+          }
+        },
+        {
+          "decision_ms": 1793199688911,
+          "sampled_btc_base_change": 0.7359299999999962,
+          "actual_window_minutes": 15.59635,
+          "largest_account_gross_share": 0.790990077684588,
+          "entry_reference": {
+            "observed_ms": 1793199702213,
+            "event_ms": 1793199701869,
+            "price": 80680.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793200630756,
+                "event_ms": 1793200629967,
+                "price": 80695.9
+              },
+              "signed_gross_price_move": 0.00019583515637666693,
+              "move_less_illustrative_cost_hurdle": -0.002204164843623333
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793203315464,
+                "event_ms": 1793203314763,
+                "price": 80576.4
+              },
+              "signed_gross_price_move": -0.0012853231466001258,
+              "move_less_illustrative_cost_hurdle": -0.0036853231466001256
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793214135440,
+                "event_ms": 1793214134573,
+                "price": 81073.2
+              },
+              "signed_gross_price_move": 0.00487232911213531,
+              "move_less_illustrative_cost_hurdle": 0.00247232911213531
+            }
+          }
+        },
+        {
+          "decision_ms": 1793200623009,
+          "sampled_btc_base_change": -19.722399999999993,
+          "actual_window_minutes": 15.5683,
+          "largest_account_gross_share": 0.7668304354827471,
+          "entry_reference": {
+            "observed_ms": 1793200630756,
+            "event_ms": 1793200629967,
+            "price": 80695.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793201533195,
+                "event_ms": 1793201532565,
+                "price": 80580.3
+              },
+              "signed_gross_price_move": 0.0014325387039488824,
+              "move_less_illustrative_cost_hurdle": -0.0009674612960511174
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793204233097,
+                "event_ms": 1793204232666,
+                "price": 80548.3
+              },
+              "signed_gross_price_move": 0.001829089210232393,
+              "move_less_illustrative_cost_hurdle": -0.0005709107897676068
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793215052973,
+                "event_ms": 1793215051770,
+                "price": 81070.8
+              },
+              "signed_gross_price_move": -0.004645837025177402,
+              "move_less_illustrative_cost_hurdle": -0.007045837025177401
+            }
+          }
+        },
+        {
+          "decision_ms": 1793201426831,
+          "sampled_btc_base_change": 11.14525999999995,
+          "actual_window_minutes": 15.634666666666666,
+          "largest_account_gross_share": 0.7805469726254582,
+          "entry_reference": {
+            "observed_ms": 1793201427882,
+            "event_ms": 1793201427266,
+            "price": 80692.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793202328757,
+                "event_ms": 1793202328065,
+                "price": 80620.9
+              },
+              "signed_gross_price_move": -0.0008860809692115001,
+              "move_less_illustrative_cost_hurdle": -0.0032860809692115
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793205054262,
+                "event_ms": 1793205053470,
+                "price": 80549.8
+              },
+              "signed_gross_price_move": -0.0017672048420915853,
+              "move_less_illustrative_cost_hurdle": -0.004167204842091585
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793215829723,
+                "event_ms": 1793215828473,
+                "price": 81189.8
+              },
+              "signed_gross_price_move": 0.006164149287913201,
+              "move_less_illustrative_cost_hurdle": 0.003764149287913201
+            }
+          }
+        },
+        {
+          "decision_ms": 1793202368349,
+          "sampled_btc_base_change": 13.16001,
+          "actual_window_minutes": 15.691966666666668,
+          "largest_account_gross_share": 0.7972416831875675,
+          "entry_reference": {
+            "observed_ms": 1793202391286,
+            "event_ms": 1793202390564,
+            "price": 80616.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793203315464,
+                "event_ms": 1793203314763,
+                "price": 80576.4
+              },
+              "signed_gross_price_move": -0.0004924574619711297,
+              "move_less_illustrative_cost_hurdle": -0.0028924574619711295
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793205997018,
+                "event_ms": 1793205996568,
+                "price": 80397.2
+              },
+              "signed_gross_price_move": -0.0027153384993817697,
+              "move_less_illustrative_cost_hurdle": -0.005115338499381769
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793216821759,
+                "event_ms": 1793216821259,
+                "price": 81344.6
+              },
+              "signed_gross_price_move": 0.009036656449518121,
+              "move_less_illustrative_cost_hurdle": 0.006636656449518122
+            }
+          }
+        },
+        {
+          "decision_ms": 1793203297481,
+          "sampled_btc_base_change": 10.972780000000057,
+          "actual_window_minutes": 15.485533333333333,
+          "largest_account_gross_share": 0.811717136288552,
+          "entry_reference": {
+            "observed_ms": 1793203315464,
+            "event_ms": 1793203314763,
+            "price": 80576.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793204233097,
+                "event_ms": 1793204232666,
+                "price": 80548.3
+              },
+              "signed_gross_price_move": -0.0003487373474118094,
+              "move_less_illustrative_cost_hurdle": -0.002748737347411809
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793206942498,
+                "event_ms": 1793206942167,
+                "price": 80569.7
+              },
+              "signed_gross_price_move": -8.315089778143658e-05,
+              "move_less_illustrative_cost_hurdle": -0.0024831508977814364
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793217723756,
+                "event_ms": 1793217723135,
+                "price": 81775.6
+              },
+              "signed_gross_price_move": 0.014882769644710026,
+              "move_less_illustrative_cost_hurdle": 0.012482769644710026
+            }
+          }
+        },
+        {
+          "decision_ms": 1793204106975,
+          "sampled_btc_base_change": 0.4194299999999771,
+          "actual_window_minutes": 15.697533333333332,
+          "largest_account_gross_share": 0.8113553384779147,
+          "entry_reference": {
+            "observed_ms": 1793204137938,
+            "event_ms": 1793204137073,
+            "price": 80583.3
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793205054262,
+                "event_ms": 1793205053470,
+                "price": 80549.8
+              },
+              "signed_gross_price_move": -0.00041571888964586634,
+              "move_less_illustrative_cost_hurdle": -0.002815718889645866
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793207764495,
+                "event_ms": 1793207764073,
+                "price": 80506.1
+              },
+              "signed_gross_price_move": -0.000958014874049562,
+              "move_less_illustrative_cost_hurdle": -0.0033580148740495618
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793218565807,
+                "event_ms": 1793218564868,
+                "price": 81268.9
+              },
+              "signed_gross_price_move": 0.00850796629078232,
+              "move_less_illustrative_cost_hurdle": 0.006107966290782321
+            }
+          }
+        },
+        {
+          "decision_ms": 1793205044515,
+          "sampled_btc_base_change": 5.3368600000000015,
+          "actual_window_minutes": 15.625666666666667,
+          "largest_account_gross_share": 0.8186060684956263,
+          "entry_reference": {
+            "observed_ms": 1793205054262,
+            "event_ms": 1793205053470,
+            "price": 80549.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793205965399,
+                "event_ms": 1793205964368,
+                "price": 80458.8
+              },
+              "signed_gross_price_move": -0.0011297358900953514,
+              "move_less_illustrative_cost_hurdle": -0.003529735890095351
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793208663778,
+                "event_ms": 1793208663271,
+                "price": 80593.6
+              },
+              "signed_gross_price_move": 0.0005437629888591644,
+              "move_less_illustrative_cost_hurdle": -0.0018562370111408354
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793219487970,
+                "event_ms": 1793219487042,
+                "price": 81174.1
+              },
+              "signed_gross_price_move": 0.00775048479325835,
+              "move_less_illustrative_cost_hurdle": 0.0053504847932583505
+            }
+          }
+        },
+        {
+          "decision_ms": 1793205975692,
+          "sampled_btc_base_change": -0.22192000000001144,
+          "actual_window_minutes": 15.519616666666666,
+          "largest_account_gross_share": 0.8183508397795328,
+          "entry_reference": {
+            "observed_ms": 1793205997018,
+            "event_ms": 1793205996568,
+            "price": 80397.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793206910915,
+                "event_ms": 1793206910169,
+                "price": 80546.4
+              },
+              "signed_gross_price_move": -0.0018557860223986644,
+              "move_less_illustrative_cost_hurdle": -0.004255786022398664
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793209623769,
+                "event_ms": 1793209623571,
+                "price": 80717.3
+              },
+              "signed_gross_price_move": -0.0039814819421573056,
+              "move_less_illustrative_cost_hurdle": -0.006381481942157305
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793220428305,
+                "event_ms": 1793220428074,
+                "price": 80992.7
+              },
+              "signed_gross_price_move": -0.0074069743722418036,
+              "move_less_illustrative_cost_hurdle": -0.009806974372241803
+            }
+          }
+        },
+        {
+          "decision_ms": 1793206910065,
+          "sampled_btc_base_change": -5.42814999999996,
+          "actual_window_minutes": 15.572883333333333,
+          "largest_account_gross_share": 0.8111232748417515,
+          "entry_reference": {
+            "observed_ms": 1793206910915,
+            "event_ms": 1793206910169,
+            "price": 80546.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793207826918,
+                "event_ms": 1793207826270,
+                "price": 80519.1
+              },
+              "signed_gross_price_move": 0.00033893507344817664,
+              "move_less_illustrative_cost_hurdle": -0.002061064926551823
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793210552618,
+                "event_ms": 1793210552074,
+                "price": 80983.6
+              },
+              "signed_gross_price_move": -0.0054279272568360515,
+              "move_less_illustrative_cost_hurdle": -0.00782792725683605
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793221328094,
+                "event_ms": 1793221326975,
+                "price": 81297.4
+              },
+              "signed_gross_price_move": -0.009323818320868371,
+              "move_less_illustrative_cost_hurdle": -0.01172381832086837
+            }
+          }
+        },
+        {
+          "decision_ms": 1793207705935,
+          "sampled_btc_base_change": 36.86122,
+          "actual_window_minutes": 15.517983333333333,
+          "largest_account_gross_share": 0.8283571133137382,
+          "entry_reference": {
+            "observed_ms": 1793207733267,
+            "event_ms": 1793207732972,
+            "price": 80490.3
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793208663778,
+                "event_ms": 1793208663271,
+                "price": 80593.6
+              },
+              "signed_gross_price_move": 0.0012833844575061981,
+              "move_less_illustrative_cost_hurdle": -0.0011166155424938017
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793211336179,
+                "event_ms": 1793211335772,
+                "price": 80793.7
+              },
+              "signed_gross_price_move": 0.00376939830016787,
+              "move_less_illustrative_cost_hurdle": 0.0013693983001678701
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793222151472,
+                "event_ms": 1793222150763,
+                "price": 81375.3
+              },
+              "signed_gross_price_move": 0.010995113696929959,
+              "move_less_illustrative_cost_hurdle": 0.00859511369692996
+            }
+          }
+        },
+        {
+          "decision_ms": 1793208632886,
+          "sampled_btc_base_change": -31.77557999999999,
+          "actual_window_minutes": 15.449183333333334,
+          "largest_account_gross_share": 0.7916508434496115,
+          "entry_reference": {
+            "observed_ms": 1793208663778,
+            "event_ms": 1793208663271,
+            "price": 80593.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793209590634,
+                "event_ms": 1793209589569,
+                "price": 80723.9
+              },
+              "signed_gross_price_move": -0.0016167536876374733,
+              "move_less_illustrative_cost_hurdle": -0.004016753687637473
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793212274408,
+                "event_ms": 1793212273773,
+                "price": 80990.7
+              },
+              "signed_gross_price_move": -0.004927190248356972,
+              "move_less_illustrative_cost_hurdle": -0.007327190248356971
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793223086338,
+                "event_ms": 1793223085960,
+                "price": 81166.0
+              },
+              "signed_gross_price_move": -0.007102300927120719,
+              "move_less_illustrative_cost_hurdle": -0.009502300927120719
+            }
+          }
+        },
+        {
+          "decision_ms": 1793209563012,
+          "sampled_btc_base_change": 6.258050000000026,
+          "actual_window_minutes": 15.5021,
+          "largest_account_gross_share": 0.7996494666967371,
+          "entry_reference": {
+            "observed_ms": 1793209590634,
+            "event_ms": 1793209589569,
+            "price": 80723.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793210511148,
+                "event_ms": 1793210510569,
+                "price": 80884.5
+              },
+              "signed_gross_price_move": 0.0019894975341876453,
+              "move_less_illustrative_cost_hurdle": -0.0004105024658123545
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793213209039,
+                "event_ms": 1793213208373,
+                "price": 80932.3
+              },
+              "signed_gross_price_move": 0.0025816393905646606,
+              "move_less_illustrative_cost_hurdle": 0.00018163939056466084
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793224000010,
+                "event_ms": 1793223999361,
+                "price": 81312.7
+              },
+              "signed_gross_price_move": 0.0072939984316913176,
+              "move_less_illustrative_cost_hurdle": 0.004893998431691318
+            }
+          }
+        },
+        {
+          "decision_ms": 1793210496697,
+          "sampled_btc_base_change": -3.1596100000000433,
+          "actual_window_minutes": 15.561416666666666,
+          "largest_account_gross_share": 0.795584274568369,
+          "entry_reference": {
+            "observed_ms": 1793210511148,
+            "event_ms": 1793210510569,
+            "price": 80884.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793211413215,
+                "event_ms": 1793211412572,
+                "price": 80725.3
+              },
+              "signed_gross_price_move": 0.001968238661300914,
+              "move_less_illustrative_cost_hurdle": -0.00043176133869908583
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793214135440,
+                "event_ms": 1793214134573,
+                "price": 81073.2
+              },
+              "signed_gross_price_move": -0.0023329562524339043,
+              "move_less_illustrative_cost_hurdle": -0.004732956252433904
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793224940593,
+                "event_ms": 1793224939462,
+                "price": 81275.4
+              },
+              "signed_gross_price_move": -0.004832817165216996,
+              "move_less_illustrative_cost_hurdle": -0.007232817165216995
+            }
+          }
+        },
+        {
+          "decision_ms": 1793211428992,
+          "sampled_btc_base_change": -14.91194999999999,
+          "actual_window_minutes": 15.53825,
+          "largest_account_gross_share": 0.776963409976459,
+          "entry_reference": {
+            "observed_ms": 1793211451977,
+            "event_ms": 1793211450976,
+            "price": 80734.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793212354673,
+                "event_ms": 1793212354374,
+                "price": 80826.8
+              },
+              "signed_gross_price_move": -0.0011444935492181951,
+              "move_less_illustrative_cost_hurdle": -0.003544493549218195
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793215091448,
+                "event_ms": 1793215091177,
+                "price": 81065.5
+              },
+              "signed_gross_price_move": -0.004101101884698588,
+              "move_less_illustrative_cost_hurdle": -0.006501101884698587
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793225876316,
+                "event_ms": 1793225875368,
+                "price": 81236.9
+              },
+              "signed_gross_price_move": -0.006224112645910607,
+              "move_less_illustrative_cost_hurdle": -0.008624112645910606
+            }
+          }
+        },
+        {
+          "decision_ms": 1793212225743,
+          "sampled_btc_base_change": -22.65677000000005,
+          "actual_window_minutes": 15.526666666666667,
+          "largest_account_gross_share": 0.758898618912902,
+          "entry_reference": {
+            "observed_ms": 1793212235916,
+            "event_ms": 1793212235170,
+            "price": 80981.3
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793213166605,
+                "event_ms": 1793213166275,
+                "price": 81023.1
+              },
+              "signed_gross_price_move": -0.0005161685475536526,
+              "move_less_illustrative_cost_hurdle": -0.0029161685475536524
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793215864226,
+                "event_ms": 1793215863274,
+                "price": 81194.2
+              },
+              "signed_gross_price_move": -0.002629002004166381,
+              "move_less_illustrative_cost_hurdle": -0.00502900200416638
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793226663870,
+                "event_ms": 1793226663371,
+                "price": 81297.0
+              },
+              "signed_gross_price_move": -0.0038984308723124528,
+              "move_less_illustrative_cost_hurdle": -0.006298430872312452
+            }
+          }
+        },
+        {
+          "decision_ms": 1793213170710,
+          "sampled_btc_base_change": 30.802970000000073,
+          "actual_window_minutes": 15.74945,
+          "largest_account_gross_share": 0.796731435193701,
+          "entry_reference": {
+            "observed_ms": 1793213209039,
+            "event_ms": 1793213208373,
+            "price": 80932.3
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793214135440,
+                "event_ms": 1793214134573,
+                "price": 81073.2
+              },
+              "signed_gross_price_move": 0.0017409612725696189,
+              "move_less_illustrative_cost_hurdle": -0.0006590387274303809
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793216821759,
+                "event_ms": 1793216821259,
+                "price": 81344.6
+              },
+              "signed_gross_price_move": 0.005094381353303978,
+              "move_less_illustrative_cost_hurdle": 0.0026943813533039786
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793227621957,
+                "event_ms": 1793227621674,
+                "price": 81352.6
+              },
+              "signed_gross_price_move": 0.005193229402846722,
+              "move_less_illustrative_cost_hurdle": 0.002793229402846722
+            }
+          }
+        },
+        {
+          "decision_ms": 1793214102173,
+          "sampled_btc_base_change": 3.955259999999953,
+          "actual_window_minutes": 15.524383333333333,
+          "largest_account_gross_share": 0.8021628800578456,
+          "entry_reference": {
+            "observed_ms": 1793214135440,
+            "event_ms": 1793214134573,
+            "price": 81073.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793215052973,
+                "event_ms": 1793215051770,
+                "price": 81070.8
+              },
+              "signed_gross_price_move": -2.960287739961487e-05,
+              "move_less_illustrative_cost_hurdle": -0.0024296028773996147
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793217771104,
+                "event_ms": 1793217770671,
+                "price": 81727.6
+              },
+              "signed_gross_price_move": 0.008071717904313713,
+              "move_less_illustrative_cost_hurdle": 0.005671717904313714
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793228541341,
+                "event_ms": 1793228540768,
+                "price": 81179.5
+              },
+              "signed_gross_price_move": 0.001311160778161069,
+              "move_less_illustrative_cost_hurdle": -0.0010888392218389308
+            }
+          }
+        },
+        {
+          "decision_ms": 1793214906720,
+          "sampled_btc_base_change": -2.3151899999999728,
+          "actual_window_minutes": 15.6071,
+          "largest_account_gross_share": 0.7992270062111926,
+          "entry_reference": {
+            "observed_ms": 1793214915778,
+            "event_ms": 1793214915075,
+            "price": 81115.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793215829723,
+                "event_ms": 1793215828473,
+                "price": 81189.8
+              },
+              "signed_gross_price_move": -0.0009209136153440767,
+              "move_less_illustrative_cost_hurdle": -0.0033209136153440765
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793218527320,
+                "event_ms": 1793218526971,
+                "price": 81285.8
+              },
+              "signed_gross_price_move": -0.0021044170567501297,
+              "move_less_illustrative_cost_hurdle": -0.004504417056750129
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793229334186,
+                "event_ms": 1793229333565,
+                "price": 81335.5
+              },
+              "signed_gross_price_move": -0.002717126650894741,
+              "move_less_illustrative_cost_hurdle": -0.0051171266508947405
+            }
+          }
+        },
+        {
+          "decision_ms": 1793215838607,
+          "sampled_btc_base_change": -2.1617600000000152,
+          "actual_window_minutes": 15.53145,
+          "largest_account_gross_share": 0.7966628744785741,
+          "entry_reference": {
+            "observed_ms": 1793215864226,
+            "event_ms": 1793215863274,
+            "price": 81194.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793216790166,
+                "event_ms": 1793216789071,
+                "price": 81328.9
+              },
+              "signed_gross_price_move": -0.0016589854940376458,
+              "move_less_illustrative_cost_hurdle": -0.004058985494037645
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793219487970,
+                "event_ms": 1793219487042,
+                "price": 81174.1
+              },
+              "signed_gross_price_move": 0.000247554628286184,
+              "move_less_illustrative_cost_hurdle": -0.0021524453717138158
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793230276536,
+                "event_ms": 1793230275463,
+                "price": 81328.2
+              },
+              "signed_gross_price_move": -0.0016503641885750042,
+              "move_less_illustrative_cost_hurdle": -0.004050364188575004
+            }
+          }
+        },
+        {
+          "decision_ms": 1793216781702,
+          "sampled_btc_base_change": -5.292909999999949,
+          "actual_window_minutes": 15.71825,
+          "largest_account_gross_share": 0.7899875763659877,
+          "entry_reference": {
+            "observed_ms": 1793216790166,
+            "event_ms": 1793216789071,
+            "price": 81328.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793217723756,
+                "event_ms": 1793217723135,
+                "price": 81775.6
+              },
+              "signed_gross_price_move": -0.005492512501706237,
+              "move_less_illustrative_cost_hurdle": -0.007892512501706236
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793220428305,
+                "event_ms": 1793220428074,
+                "price": 80992.7
+              },
+              "signed_gross_price_move": 0.004133831885098638,
+              "move_less_illustrative_cost_hurdle": 0.001733831885098638
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793231213805,
+                "event_ms": 1793231213064,
+                "price": 81317.8
+              },
+              "signed_gross_price_move": 0.0001364828492699255,
+              "move_less_illustrative_cost_hurdle": -0.0022635171507300743
+            }
+          }
+        },
+        {
+          "decision_ms": 1793217718592,
+          "sampled_btc_base_change": -10.263960000000054,
+          "actual_window_minutes": 15.614833333333333,
+          "largest_account_gross_share": 0.7771853818113231,
+          "entry_reference": {
+            "observed_ms": 1793217723756,
+            "event_ms": 1793217723135,
+            "price": 81775.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793218640358,
+                "event_ms": 1793218639270,
+                "price": 81271.1
+              },
+              "signed_gross_price_move": 0.006169321900420188,
+              "move_less_illustrative_cost_hurdle": 0.0037693219004201885
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793221328094,
+                "event_ms": 1793221326975,
+                "price": 81297.4
+              },
+              "signed_gross_price_move": 0.005847710074888046,
+              "move_less_illustrative_cost_hurdle": 0.0034477100748880464
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793232127330,
+                "event_ms": 1793232127067,
+                "price": 81326.4
+              },
+              "signed_gross_price_move": 0.005493081065745864,
+              "move_less_illustrative_cost_hurdle": 0.003093081065745864
+            }
+          }
+        },
+        {
+          "decision_ms": 1793218531460,
+          "sampled_btc_base_change": 60.41687000000002,
+          "actual_window_minutes": 15.787633333333334,
+          "largest_account_gross_share": 0.742002815887043,
+          "entry_reference": {
+            "observed_ms": 1793218565807,
+            "event_ms": 1793218564868,
+            "price": 81268.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793219487970,
+                "event_ms": 1793219487042,
+                "price": 81174.1
+              },
+              "signed_gross_price_move": -0.0011664978854147856,
+              "move_less_illustrative_cost_hurdle": -0.0035664978854147854
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793222182820,
+                "event_ms": 1793222181663,
+                "price": 81411.7
+              },
+              "signed_gross_price_move": 0.0017571297261314012,
+              "move_less_illustrative_cost_hurdle": -0.0006428702738685986
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793232976967,
+                "event_ms": 1793232976268,
+                "price": 81292.6
+              },
+              "signed_gross_price_move": 0.00029162447135377967,
+              "move_less_illustrative_cost_hurdle": -0.00210837552864622
+            }
+          }
+        },
+        {
+          "decision_ms": 1793219477225,
+          "sampled_btc_base_change": 18.237070000000017,
+          "actual_window_minutes": 15.76275,
+          "largest_account_gross_share": 0.7317643168595842,
+          "entry_reference": {
+            "observed_ms": 1793219487970,
+            "event_ms": 1793219487042,
+            "price": 81174.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793220428305,
+                "event_ms": 1793220428074,
+                "price": 80992.7
+              },
+              "signed_gross_price_move": -0.0022347029409628405,
+              "move_less_illustrative_cost_hurdle": -0.00463470294096284
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793223117571,
+                "event_ms": 1793223116965,
+                "price": 81157.8
+              },
+              "signed_gross_price_move": -0.00020080296547797527,
+              "move_less_illustrative_cost_hurdle": -0.002600802965477975
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793233897716,
+                "event_ms": 1793233897171,
+                "price": 81195.1
+              },
+              "signed_gross_price_move": 0.0002587032070573425,
+              "move_less_illustrative_cost_hurdle": -0.0021412967929426573
+            }
+          }
+        },
+        {
+          "decision_ms": 1793220418982,
+          "sampled_btc_base_change": -3.7853299999999876,
+          "actual_window_minutes": 15.69595,
+          "largest_account_gross_share": 0.7371344132667969,
+          "entry_reference": {
+            "observed_ms": 1793220428305,
+            "event_ms": 1793220428074,
+            "price": 80992.7
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793221359338,
+                "event_ms": 1793221358272,
+                "price": 81301.5
+              },
+              "signed_gross_price_move": -0.003812689291750937,
+              "move_less_illustrative_cost_hurdle": -0.006212689291750936
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793224031592,
+                "event_ms": 1793224031172,
+                "price": 81310.9
+              },
+              "signed_gross_price_move": -0.003928749134181286,
+              "move_less_illustrative_cost_hurdle": -0.006328749134181286
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793234848462,
+                "event_ms": 1793234847871,
+                "price": 81171.2
+              },
+              "signed_gross_price_move": -0.0022039023269997404,
+              "move_less_illustrative_cost_hurdle": -0.00460390232699974
+            }
+          }
+        },
+        {
+          "decision_ms": 1793221221771,
+          "sampled_btc_base_change": 5.237570000000005,
+          "actual_window_minutes": 15.60185,
+          "largest_account_gross_share": 0.7325447843746202,
+          "entry_reference": {
+            "observed_ms": 1793221228381,
+            "event_ms": 1793221227769,
+            "price": 81283.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793222151472,
+                "event_ms": 1793222150763,
+                "price": 81375.3
+              },
+              "signed_gross_price_move": 0.0011281488516747817,
+              "move_less_illustrative_cost_hurdle": -0.001271851148325218
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793224846104,
+                "event_ms": 1793224845165,
+                "price": 81334.5
+              },
+              "signed_gross_price_move": 0.0006262025796099913,
+              "move_less_illustrative_cost_hurdle": -0.0017737974203900085
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793235630624,
+                "event_ms": 1793235629773,
+                "price": 81084.1
+              },
+              "signed_gross_price_move": -0.0024543696391400305,
+              "move_less_illustrative_cost_hurdle": -0.00485436963914003
+            }
+          }
+        },
+        {
+          "decision_ms": 1793222158013,
+          "sampled_btc_base_change": -4.839940000000013,
+          "actual_window_minutes": 15.604033333333334,
+          "largest_account_gross_share": 0.7378105938126492,
+          "entry_reference": {
+            "observed_ms": 1793222182820,
+            "event_ms": 1793222181663,
+            "price": 81411.7
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793223086338,
+                "event_ms": 1793223085960,
+                "price": 81166.0
+              },
+              "signed_gross_price_move": 0.0030179937281741287,
+              "move_less_illustrative_cost_hurdle": 0.0006179937281741289
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793225813009,
+                "event_ms": 1793225812769,
+                "price": 81254.3
+              },
+              "signed_gross_price_move": 0.0019333830395384943,
+              "move_less_illustrative_cost_hurdle": -0.00046661696046150546
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793236589717,
+                "event_ms": 1793236588761,
+                "price": 81001.1
+              },
+              "signed_gross_price_move": 0.005043501118389471,
+              "move_less_illustrative_cost_hurdle": 0.002643501118389471
+            }
+          }
+        },
+        {
+          "decision_ms": 1793223104525,
+          "sampled_btc_base_change": 6.683499999999981,
+          "actual_window_minutes": 15.7752,
+          "largest_account_gross_share": 0.7305397078807856,
+          "entry_reference": {
+            "observed_ms": 1793223117571,
+            "event_ms": 1793223116965,
+            "price": 81157.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793224031592,
+                "event_ms": 1793224031172,
+                "price": 81310.9
+              },
+              "signed_gross_price_move": 0.0018864483758800343,
+              "move_less_illustrative_cost_hurdle": -0.0005135516241199655
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793226726655,
+                "event_ms": 1793226725974,
+                "price": 81414.6
+              },
+              "signed_gross_price_move": 0.003164206028256178,
+              "move_less_illustrative_cost_hurdle": 0.0007642060282561781
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793237525541,
+                "event_ms": 1793237524760,
+                "price": 80795.5
+              },
+              "signed_gross_price_move": -0.004464142694848849,
+              "move_less_illustrative_cost_hurdle": -0.006864142694848849
+            }
+          }
+        },
+        {
+          "decision_ms": 1793223908345,
+          "sampled_btc_base_change": -50.32836000000003,
+          "actual_window_minutes": 15.63485,
+          "largest_account_gross_share": 0.7960717469786253,
+          "entry_reference": {
+            "observed_ms": 1793223935825,
+            "event_ms": 1793223934764,
+            "price": 81269.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793224846104,
+                "event_ms": 1793224845165,
+                "price": 81334.5
+              },
+              "signed_gross_price_move": -0.0007985765895242025,
+              "move_less_illustrative_cost_hurdle": -0.0031985765895242023
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793227559554,
+                "event_ms": 1793227558970,
+                "price": 81345.7
+              },
+              "signed_gross_price_move": -0.0009363894986562649,
+              "move_less_illustrative_cost_hurdle": -0.0033363894986562647
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793238338305,
+                "event_ms": 1793238337859,
+                "price": 80500.8
+              },
+              "signed_gross_price_move": 0.009459871833994549,
+              "move_less_illustrative_cost_hurdle": 0.007059871833994549
+            }
+          }
+        },
+        {
+          "decision_ms": 1793224844079,
+          "sampled_btc_base_change": -2.612199999999973,
+          "actual_window_minutes": 15.595566666666667,
+          "largest_account_gross_share": 0.792718436319256,
+          "entry_reference": {
+            "observed_ms": 1793224846104,
+            "event_ms": 1793224845165,
+            "price": 81334.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793225750479,
+                "event_ms": 1793225749477,
+                "price": 81257.7
+              },
+              "signed_gross_price_move": 0.0009442487505302299,
+              "move_less_illustrative_cost_hurdle": -0.0014557512494697698
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793228473170,
+                "event_ms": 1793228472165,
+                "price": 81161.9
+              },
+              "signed_gross_price_move": 0.0021221007075719056,
+              "move_less_illustrative_cost_hurdle": -0.0002778992924280942
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793239249433,
+                "event_ms": 1793239249164,
+                "price": 79998.6
+              },
+              "signed_gross_price_move": 0.016424764398871305,
+              "move_less_illustrative_cost_hurdle": 0.014024764398871306
+            }
+          }
+        },
+        {
+          "decision_ms": 1793225780409,
+          "sampled_btc_base_change": -2.323970000000031,
+          "actual_window_minutes": 15.6055,
+          "largest_account_gross_share": 0.7897554046811874,
+          "entry_reference": {
+            "observed_ms": 1793225781701,
+            "event_ms": 1793225780768,
+            "price": 81254.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793226695083,
+                "event_ms": 1793226694569,
+                "price": 81312.6
+              },
+              "signed_gross_price_move": -0.0007113425914531124,
+              "move_less_illustrative_cost_hurdle": -0.003111342591453112
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793229396561,
+                "event_ms": 1793229395966,
+                "price": 81352.0
+              },
+              "signed_gross_price_move": -0.001196237022305091,
+              "move_less_illustrative_cost_hurdle": -0.003596237022305091
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793240182694,
+                "event_ms": 1793240181968,
+                "price": 79922.4
+              },
+              "signed_gross_price_move": 0.01639780049917061,
+              "move_less_illustrative_cost_hurdle": 0.013997800499170612
+            }
+          }
+        },
+        {
+          "decision_ms": 1793226719837,
+          "sampled_btc_base_change": -4.59314999999998,
+          "actual_window_minutes": 15.657133333333332,
+          "largest_account_gross_share": 0.7839880839663796,
+          "entry_reference": {
+            "observed_ms": 1793226726655,
+            "event_ms": 1793226725974,
+            "price": 81414.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793227653166,
+                "event_ms": 1793227652672,
+                "price": 81332.3
+              },
+              "signed_gross_price_move": 0.0010108751992886633,
+              "move_less_illustrative_cost_hurdle": -0.0013891248007113365
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793230338918,
+                "event_ms": 1793230338563,
+                "price": 81311.7
+              },
+              "signed_gross_price_move": 0.0012639010693414887,
+              "move_less_illustrative_cost_hurdle": -0.001136098930658511
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793241168138,
+                "event_ms": 1793241167968,
+                "price": 79913.1
+              },
+              "signed_gross_price_move": 0.01844263805263424,
+              "move_less_illustrative_cost_hurdle": 0.016042638052634242
+            }
+          }
+        },
+        {
+          "decision_ms": 1793227524565,
+          "sampled_btc_base_change": -0.24189000000001215,
+          "actual_window_minutes": 15.688616666666666,
+          "largest_account_gross_share": 0.7808873099488991,
+          "entry_reference": {
+            "observed_ms": 1793227528366,
+            "event_ms": 1793227527568,
+            "price": 81330.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793228434562,
+                "event_ms": 1793228434270,
+                "price": 81205.5
+              },
+              "signed_gross_price_move": 0.0015369387868019446,
+              "move_less_illustrative_cost_hurdle": -0.0008630612131980552
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793231151467,
+                "event_ms": 1793231150563,
+                "price": 81330.4
+              },
+              "signed_gross_price_move": 1.2295510295468048e-06,
+              "move_less_illustrative_cost_hurdle": -0.002398770448970453
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793241968955,
+                "event_ms": 1793241968269,
+                "price": 79753.0
+              },
+              "signed_gross_price_move": 0.019396167489441285,
+              "move_less_illustrative_cost_hurdle": 0.016996167489441286
+            }
+          }
+        },
+        {
+          "decision_ms": 1793228459030,
+          "sampled_btc_base_change": 7.973440000000039,
+          "actual_window_minutes": 15.574416666666666,
+          "largest_account_gross_share": 0.7908088402650566,
+          "entry_reference": {
+            "observed_ms": 1793228473170,
+            "event_ms": 1793228472165,
+            "price": 81161.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793229396561,
+                "event_ms": 1793229395966,
+                "price": 81352.0
+              },
+              "signed_gross_price_move": 0.0023422320078756442,
+              "move_less_illustrative_cost_hurdle": -5.776799212435556e-05
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793232093286,
+                "event_ms": 1793232092067,
+                "price": 81351.8
+              },
+              "signed_gross_price_move": 0.0023397677974519304,
+              "move_less_illustrative_cost_hurdle": -6.023220254806937e-05
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242903754,
+                "event_ms": 1793242902969,
+                "price": 80012.0
+              },
+              "signed_gross_price_move": -0.014167977831962997,
+              "move_less_illustrative_cost_hurdle": -0.016567977831962996
+            }
+          }
+        },
+        {
+          "decision_ms": 1793229390695,
+          "sampled_btc_base_change": 7.1244499999999675,
+          "actual_window_minutes": 15.52775,
+          "largest_account_gross_share": 0.7922120920071354,
+          "entry_reference": {
+            "observed_ms": 1793229396561,
+            "event_ms": 1793229395966,
+            "price": 81352.0
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793230307695,
+                "event_ms": 1793230306581,
+                "price": 81316.6
+              },
+              "signed_gross_price_move": -0.0004351460320581868,
+              "move_less_illustrative_cost_hurdle": -0.0028351460320581866
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793233008095,
+                "event_ms": 1793233007372,
+                "price": 81283.4
+              },
+              "signed_gross_price_move": -0.0008432490903728107,
+              "move_less_illustrative_cost_hurdle": -0.0032432490903728105
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793243818353,
+                "event_ms": 1793243817272,
+                "price": 79915.9
+              },
+              "signed_gross_price_move": -0.017652915724260088,
+              "move_less_illustrative_cost_hurdle": -0.020052915724260087
+            }
+          }
+        },
+        {
+          "decision_ms": 1793230330800,
+          "sampled_btc_base_change": -3.5616399999999544,
+          "actual_window_minutes": 15.668416666666667,
+          "largest_account_gross_share": 0.7952869533379702,
+          "entry_reference": {
+            "observed_ms": 1793230338918,
+            "event_ms": 1793230338563,
+            "price": 81311.7
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793231245007,
+                "event_ms": 1793231243864,
+                "price": 81320.1
+              },
+              "signed_gross_price_move": -0.00010330616627141076,
+              "move_less_illustrative_cost_hurdle": -0.0025033061662714105
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793233960493,
+                "event_ms": 1793233959771,
+                "price": 81184.9
+              },
+              "signed_gross_price_move": 0.0015594311765712021,
+              "move_less_illustrative_cost_hurdle": -0.0008405688234287977
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793244746926,
+                "event_ms": 1793244746472,
+                "price": 79860.6
+              },
+              "signed_gross_price_move": 0.017846140223362617,
+              "move_less_illustrative_cost_hurdle": 0.015446140223362617
+            }
+          }
+        },
+        {
+          "decision_ms": 1793231128396,
+          "sampled_btc_base_change": -5.886049999999955,
+          "actual_window_minutes": 15.571733333333333,
+          "largest_account_gross_share": 0.7925208671251598,
+          "entry_reference": {
+            "observed_ms": 1793231151467,
+            "event_ms": 1793231150563,
+            "price": 81330.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793232062101,
+                "event_ms": 1793232061565,
+                "price": 81373.2
+              },
+              "signed_gross_price_move": -0.0005262484876504825,
+              "move_less_illustrative_cost_hurdle": -0.0029262484876504823
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793234783300,
+                "event_ms": 1793234782626,
+                "price": 81160.6
+              },
+              "signed_gross_price_move": 0.002087780215023982,
+              "move_less_illustrative_cost_hurdle": -0.00031221978497601765
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245566726,
+                "event_ms": 1793245566169,
+                "price": 79844.7
+              },
+              "signed_gross_price_move": 0.01826746210519059,
+              "move_less_illustrative_cost_hurdle": 0.01586746210519059
+            }
+          }
+        },
+        {
+          "decision_ms": 1793232056019,
+          "sampled_btc_base_change": 3.3405799999999886,
+          "actual_window_minutes": 15.460383333333333,
+          "largest_account_gross_share": 0.7967283769664701,
+          "entry_reference": {
+            "observed_ms": 1793232062101,
+            "event_ms": 1793232061565,
+            "price": 81373.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793232976967,
+                "event_ms": 1793232976268,
+                "price": 81292.6
+              },
+              "signed_gross_price_move": -0.0009904981001114255,
+              "move_less_illustrative_cost_hurdle": -0.0033904981001114253
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793235664636,
+                "event_ms": 1793235663468,
+                "price": 81103.5
+              },
+              "signed_gross_price_move": -0.0033143590272963763,
+              "move_less_illustrative_cost_hurdle": -0.005714359027296376
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793246474627,
+                "event_ms": 1793246473572,
+                "price": 79809.7
+              },
+              "signed_gross_price_move": -0.019213942674000783,
+              "move_less_illustrative_cost_hurdle": -0.021613942674000783
+            }
+          }
+        },
+        {
+          "decision_ms": 1793232998100,
+          "sampled_btc_base_change": 0.8061599999999771,
+          "actual_window_minutes": 15.70135,
+          "largest_account_gross_share": 0.7964382636509336,
+          "entry_reference": {
+            "observed_ms": 1793233008095,
+            "event_ms": 1793233007372,
+            "price": 81283.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793233928934,
+                "event_ms": 1793233927771,
+                "price": 81200.4
+              },
+              "signed_gross_price_move": -0.0010211187032038715,
+              "move_less_illustrative_cost_hurdle": -0.0034211187032038713
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793236621707,
+                "event_ms": 1793236621060,
+                "price": 80995.2
+              },
+              "signed_gross_price_move": -0.0035456194007632558,
+              "move_less_illustrative_cost_hurdle": -0.005945619400763255
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793247417746,
+                "event_ms": 1793247417065,
+                "price": 79849.0
+              },
+              "signed_gross_price_move": -0.017646899612959066,
+              "move_less_illustrative_cost_hurdle": -0.020046899612959065
+            }
+          }
+        },
+        {
+          "decision_ms": 1793233928567,
+          "sampled_btc_base_change": 12.657470000000046,
+          "actual_window_minutes": 15.507783333333334,
+          "largest_account_gross_share": 0.7806520009937574,
+          "entry_reference": {
+            "observed_ms": 1793233960493,
+            "event_ms": 1793233959771,
+            "price": 81184.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793234879655,
+                "event_ms": 1793234879268,
+                "price": 81169.8
+              },
+              "signed_gross_price_move": -0.00018599517890627304,
+              "move_less_illustrative_cost_hurdle": -0.002585995178906273
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793237566239,
+                "event_ms": 1793237565562,
+                "price": 80815.7
+              },
+              "signed_gross_price_move": -0.004547643712069616,
+              "move_less_illustrative_cost_hurdle": -0.006947643712069615
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793248377628,
+                "event_ms": 1793248377066,
+                "price": 79920.0
+              },
+              "signed_gross_price_move": -0.015580483562829928,
+              "move_less_illustrative_cost_hurdle": -0.017980483562829927
+            }
+          }
+        },
+        {
+          "decision_ms": 1793234725421,
+          "sampled_btc_base_change": -4.970430000000022,
+          "actual_window_minutes": 15.4913,
+          "largest_account_gross_share": 0.7740719948716703,
+          "entry_reference": {
+            "observed_ms": 1793234752166,
+            "event_ms": 1793234751374,
+            "price": 81137.7
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793235664636,
+                "event_ms": 1793235663468,
+                "price": 81103.5
+              },
+              "signed_gross_price_move": 0.00042150566259580025,
+              "move_less_illustrative_cost_hurdle": -0.0019784943374041995
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793238372260,
+                "event_ms": 1793238371767,
+                "price": 80492.3
+              },
+              "signed_gross_price_move": 0.007954378790623773,
+              "move_less_illustrative_cost_hurdle": 0.0055543787906237735
+            },
+            "240": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793249159002,
+                "event_ms": 1793249158065,
+                "price": 80088.4
+              },
+              "signed_gross_price_move": 0.012932336016426405,
+              "move_less_illustrative_cost_hurdle": 0.010532336016426405
+            }
+          }
+        },
+        {
+          "decision_ms": 1793235652789,
+          "sampled_btc_base_change": -0.9389499999999771,
+          "actual_window_minutes": 15.456133333333334,
+          "largest_account_gross_share": 0.7752823345414805,
+          "entry_reference": {
+            "observed_ms": 1793235664636,
+            "event_ms": 1793235663468,
+            "price": 81103.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793236589717,
+                "event_ms": 1793236588761,
+                "price": 81001.1
+              },
+              "signed_gross_price_move": 0.0012625842287939948,
+              "move_less_illustrative_cost_hurdle": -0.001137415771206005
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793239300350,
+                "event_ms": 1793239299138,
+                "price": 80042.0
+              },
+              "signed_gross_price_move": 0.013088214442040114,
+              "move_less_illustrative_cost_hurdle": 0.010688214442040114
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793236580373,
+          "sampled_btc_base_change": -0.7055599999999913,
+          "actual_window_minutes": 15.459733333333334,
+          "largest_account_gross_share": 0.7787391146943745,
+          "entry_reference": {
+            "observed_ms": 1793236589717,
+            "event_ms": 1793236588761,
+            "price": 81001.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793237525541,
+                "event_ms": 1793237524760,
+                "price": 80795.5
+              },
+              "signed_gross_price_move": 0.0025382371350513022,
+              "move_less_illustrative_cost_hurdle": 0.00013823713505130243
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793240220783,
+                "event_ms": 1793240220069,
+                "price": 79966.6
+              },
+              "signed_gross_price_move": 0.012771431499078445,
+              "move_less_illustrative_cost_hurdle": 0.010371431499078446
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793237508851,
+          "sampled_btc_base_change": 4.437039999999911,
+          "actual_window_minutes": 15.474633333333333,
+          "largest_account_gross_share": 0.7733316565388249,
+          "entry_reference": {
+            "observed_ms": 1793237525541,
+            "event_ms": 1793237524760,
+            "price": 80795.5
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793238450797,
+                "event_ms": 1793238450359,
+                "price": 80511.2
+              },
+              "signed_gross_price_move": -0.0035187603269984935,
+              "move_less_illustrative_cost_hurdle": -0.005918760326998493
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793241127356,
+                "event_ms": 1793241126370,
+                "price": 79869.0
+              },
+              "signed_gross_price_move": -0.011467222803250188,
+              "move_less_illustrative_cost_hurdle": -0.013867222803250187
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793238307154,
+          "sampled_btc_base_change": 11.093819999999937,
+          "actual_window_minutes": 15.494216666666667,
+          "largest_account_gross_share": 0.7706011209114637,
+          "entry_reference": {
+            "observed_ms": 1793238338305,
+            "event_ms": 1793238337859,
+            "price": 80500.8
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793239249433,
+                "event_ms": 1793239249164,
+                "price": 79998.6
+              },
+              "signed_gross_price_move": -0.006238447319778184,
+              "move_less_illustrative_cost_hurdle": -0.008638447319778184
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793241968955,
+                "event_ms": 1793241968269,
+                "price": 79753.0
+              },
+              "signed_gross_price_move": -0.009289348677280262,
+              "move_less_illustrative_cost_hurdle": -0.011689348677280262
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793239242907,
+          "sampled_btc_base_change": 23.20509000000004,
+          "actual_window_minutes": 15.595883333333333,
+          "largest_account_gross_share": 0.7438338339972694,
+          "entry_reference": {
+            "observed_ms": 1793239249433,
+            "event_ms": 1793239249164,
+            "price": 79998.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793240182694,
+                "event_ms": 1793240181968,
+                "price": 79922.4
+              },
+              "signed_gross_price_move": -0.0009525166690418363,
+              "move_less_illustrative_cost_hurdle": -0.003352516669041836
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242868548,
+                "event_ms": 1793242868267,
+                "price": 79972.4
+              },
+              "signed_gross_price_move": -0.0003275057313504304,
+              "move_less_illustrative_cost_hurdle": -0.00272750573135043
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793240177736,
+          "sampled_btc_base_change": -34.12541999999996,
+          "actual_window_minutes": 15.580483333333333,
+          "largest_account_gross_share": 0.7836078944846175,
+          "entry_reference": {
+            "observed_ms": 1793240182694,
+            "event_ms": 1793240181968,
+            "price": 79922.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793241127356,
+                "event_ms": 1793241126370,
+                "price": 79869.0
+              },
+              "signed_gross_price_move": 0.0006681481036604486,
+              "move_less_illustrative_cost_hurdle": -0.0017318518963395512
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793243786305,
+                "event_ms": 1793243785469,
+                "price": 79964.9
+              },
+              "signed_gross_price_move": -0.0005317658128385361,
+              "move_less_illustrative_cost_hurdle": -0.002931765812838536
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241110317,
+          "sampled_btc_base_change": 3.771319999999946,
+          "actual_window_minutes": 15.543016666666666,
+          "largest_account_gross_share": 0.7789244579542639,
+          "entry_reference": {
+            "observed_ms": 1793241127356,
+            "event_ms": 1793241126370,
+            "price": 79869.0
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242041922,
+                "event_ms": 1793242041172,
+                "price": 79792.3
+              },
+              "signed_gross_price_move": -0.0009603225281398231,
+              "move_less_illustrative_cost_hurdle": -0.003360322528139823
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793244746926,
+                "event_ms": 1793244746472,
+                "price": 79860.6
+              },
+              "signed_gross_price_move": -0.00010517221950934186,
+              "move_less_illustrative_cost_hurdle": -0.0025051722195093416
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793241908829,
+          "sampled_btc_base_change": 25.313229999999976,
+          "actual_window_minutes": 15.515183333333333,
+          "largest_account_gross_share": 0.7467937947473536,
+          "entry_reference": {
+            "observed_ms": 1793241927789,
+            "event_ms": 1793241927369,
+            "price": 79786.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793242868548,
+                "event_ms": 1793242868267,
+                "price": 79972.4
+              },
+              "signed_gross_price_move": 0.0023249430670950755,
+              "move_less_illustrative_cost_hurdle": -7.505693290492431e-05
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245535557,
+                "event_ms": 1793245534870,
+                "price": 79854.7
+              },
+              "signed_gross_price_move": 0.0008497635576767415,
+              "move_less_illustrative_cost_hurdle": -0.0015502364423232583
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793242836128,
+          "sampled_btc_base_change": -44.29960999999997,
+          "actual_window_minutes": 15.454983333333333,
+          "largest_account_gross_share": 0.7997394611668716,
+          "entry_reference": {
+            "observed_ms": 1793242868548,
+            "event_ms": 1793242868267,
+            "price": 79972.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793243786305,
+                "event_ms": 1793243785469,
+                "price": 79964.9
+              },
+              "signed_gross_price_move": 9.378235491241949e-05,
+              "move_less_illustrative_cost_hurdle": -0.0023062176450875803
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793246474627,
+                "event_ms": 1793246473572,
+                "price": 79809.7
+              },
+              "signed_gross_price_move": 0.002034451885900568,
+              "move_less_illustrative_cost_hurdle": -0.000365548114099432
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793243763158,
+          "sampled_btc_base_change": 35.46823999999998,
+          "actual_window_minutes": 15.4505,
+          "largest_account_gross_share": 0.7567177418144685,
+          "entry_reference": {
+            "observed_ms": 1793243786305,
+            "event_ms": 1793243785469,
+            "price": 79964.9
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793244714129,
+                "event_ms": 1793244713972,
+                "price": 79864.4
+              },
+              "signed_gross_price_move": -0.0012568014216237655,
+              "move_less_illustrative_cost_hurdle": -0.0036568014216237653
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793247417746,
+                "event_ms": 1793247417065,
+                "price": 79849.0
+              },
+              "signed_gross_price_move": -0.001449385918071533,
+              "move_less_illustrative_cost_hurdle": -0.0038493859180715327
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793244694724,
+          "sampled_btc_base_change": -2.4713499999999726,
+          "actual_window_minutes": 15.5261,
+          "largest_account_gross_share": 0.7675525545083121,
+          "entry_reference": {
+            "observed_ms": 1793244714129,
+            "event_ms": 1793244713972,
+            "price": 79864.4
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793245629515,
+                "event_ms": 1793245628473,
+                "price": 79868.6
+              },
+              "signed_gross_price_move": -5.2589138590075635e-05,
+              "move_less_illustrative_cost_hurdle": -0.0024525891385900754
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793248315221,
+                "event_ms": 1793248314568,
+                "price": 79900.1
+              },
+              "signed_gross_price_move": -0.00044700767801431063,
+              "move_less_illustrative_cost_hurdle": -0.0028470076780143104
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793245622997,
+          "sampled_btc_base_change": -8.049779999999998,
+          "actual_window_minutes": 15.471216666666667,
+          "largest_account_gross_share": 0.7803863455500708,
+          "entry_reference": {
+            "observed_ms": 1793245629515,
+            "event_ms": 1793245628473,
+            "price": 79868.6
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793246537344,
+                "event_ms": 1793246536271,
+                "price": 79804.8
+              },
+              "signed_gross_price_move": 0.0007988120487901762,
+              "move_less_illustrative_cost_hurdle": -0.0016011879512098236
+            },
+            "60": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793249266023,
+                "event_ms": 1793249265364,
+                "price": 80209.9
+              },
+              "signed_gross_price_move": -0.004273268844076306,
+              "move_less_illustrative_cost_hurdle": -0.006673268844076305
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793246415760,
+          "sampled_btc_base_change": -16.85266999999999,
+          "actual_window_minutes": 15.462166666666667,
+          "largest_account_gross_share": 0.7985312140795178,
+          "entry_reference": {
+            "observed_ms": 1793246443446,
+            "event_ms": 1793246442378,
+            "price": 79835.2
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793247354985,
+                "event_ms": 1793247353762,
+                "price": 79860.1
+              },
+              "signed_gross_price_move": -0.0003118924985470173,
+              "move_less_illustrative_cost_hurdle": -0.002711892498547017
+            },
+            "60": {
+              "status": "missing_reference",
+              "exit_reference": null
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793247344706,
+          "sampled_btc_base_change": -3.7787999999999897,
+          "actual_window_minutes": 15.482433333333333,
+          "largest_account_gross_share": 0.8021589140633636,
+          "entry_reference": {
+            "observed_ms": 1793247354985,
+            "event_ms": 1793247353762,
+            "price": 79860.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793248283997,
+                "event_ms": 1793248283066,
+                "price": 79900.1
+              },
+              "signed_gross_price_move": -0.000500875906741971,
+              "move_less_illustrative_cost_hurdle": -0.002900875906741971
+            },
+            "60": {
+              "status": "missing_reference",
+              "exit_reference": null
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793248277707,
+          "sampled_btc_base_change": 1.5183799999999792,
+          "actual_window_minutes": 15.550016666666666,
+          "largest_account_gross_share": 0.8002054637374979,
+          "entry_reference": {
+            "observed_ms": 1793248283997,
+            "event_ms": 1793248283066,
+            "price": 79900.1
+          },
+          "horizons": {
+            "15": {
+              "status": "observed",
+              "exit_reference": {
+                "observed_ms": 1793249190182,
+                "event_ms": 1793249189163,
+                "price": 80099.0
+              },
+              "signed_gross_price_move": 0.0024893585865348733,
+              "move_less_illustrative_cost_hurdle": 8.935858653487351e-05
+            },
+            "60": {
+              "status": "missing_reference",
+              "exit_reference": null
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        },
+        {
+          "decision_ms": 1793249200431,
+          "sampled_btc_base_change": -0.7930499999999938,
+          "actual_window_minutes": 15.378733333333333,
+          "largest_account_gross_share": 0.8012236493744325,
+          "entry_reference": {
+            "observed_ms": 1793249221428,
+            "event_ms": 1793249220610,
+            "price": 80212.1
+          },
+          "horizons": {
+            "15": {
+              "status": "missing_reference",
+              "exit_reference": null
+            },
+            "60": {
+              "status": "missing_reference",
+              "exit_reference": null
+            },
+            "240": {
+              "status": "missing_reference",
+              "exit_reference": null
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -24,6 +24,7 @@ FIXES vs v1:
 
 import time
 import requests
+from copy import deepcopy
 
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
@@ -43,6 +44,7 @@ class BaseCollector(ABC):
         self.consecutive_errors: int             = 0
         self.max_retries: int                    = 3
         self.retry_delay: float                  = 2.0   # base for exponential backoff
+        self.field_timestamps: Dict[str, float] = {}
 
         logger.info("[{}] Collector initialized", self.name)
 
@@ -60,17 +62,39 @@ class BaseCollector(ABC):
         """Verify API connectivity and auth."""
         pass
 
-    def safe_fetch(self) -> Dict[str, Any]:
+    def observation_times(self, data: Dict[str, Any], fetched_at: float) -> Dict[str, float]:
+        """Receipt times by default; sources with caches override this method."""
+        times = {key: fetched_at for key in data}
+        # Closed OKX candles carry their event time independently of receipt time.
+        if self.name == "OKX" and isinstance(data.get("timestamp"), (int, float)):
+            ts = float(data["timestamp"])
+            ts = ts / 1000 if ts > 1e12 else ts
+            for key in ("timestamp", "open", "high", "low", "close", "volume", "close_pct_5m", "volume_change_pct"):
+                if key in data:
+                    times[key] = ts + 300
+        if self.name == "OKX" and "last_price" in data:
+            try:
+                event_time = float(data["last_price_event_ms"]) / 1000
+            except (KeyError, TypeError, ValueError):
+                event_time = None
+            for key in ("last_price", "last_price_event_ms", "volume_24h", "price_change_24h"):
+                if key in data:
+                    times[key] = event_time
+        return times
+
+    def safe_fetch(self, **kwargs) -> Dict[str, Any]:
         """Fetch with exponential backoff and error tracking."""
         for attempt in range(self.max_retries):
             try:
-                data = self.fetch()
+                data = self.fetch(**kwargs)
                 if data:
                     self.last_fetch_time    = datetime.now(timezone.utc)
-                    self.last_data          = data
+                    self.last_data          = deepcopy(data)
+                    self.field_timestamps = self.observation_times(data, self.last_fetch_time.timestamp())
                     self.consecutive_errors = 0
-                    return data
+                    return deepcopy(data)
                 else:
+                    self.consecutive_errors += 1
                     logger.warning("[{}] Empty data on attempt {}", self.name, attempt + 1)
             except Exception as e:
                 self.consecutive_errors += 1
@@ -82,12 +106,8 @@ class BaseCollector(ABC):
                 logger.debug("[{}] Retrying in {:.1f}s", self.name, wait)
                 time.sleep(wait)
 
-        # All retries failed — return stale data if available
-        if self.last_data:
-            logger.warning("[{}] All retries failed. Using stale data from {}",
-                           self.name, self.last_fetch_time)
-            return self.last_data
-
+        # The orchestrator retains the prior observation with its original age.
+        # Returning the cache here would misrepresent a failed poll as new data.
         return {}
 
     def _api_get(

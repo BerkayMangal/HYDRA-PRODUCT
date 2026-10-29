@@ -13,10 +13,10 @@ countdown from "expected" FOMC dates. This caused two problems:
 
 THIS MODULE
 -----------
-Maintains a live event calendar sourced from FRED API (FOMC dates)
-and a fallback hardcoded calendar for when the API is unavailable.
+Maintains a declared event calendar; daily FRED rate observations are rejected
+and retains a legacy estimated schedule, explicitly marked unconfirmed.
 All events carry:
-  - exact UTC timestamp of the release
+  - declared UTC timestamp; source confirmation is separate
   - pre-event blackout window (hours before release)
   - post-event reaction window (hours after release)
 
@@ -28,7 +28,7 @@ The event status for any given UTC time is:
 USAGE
 -----
 >>> cal = EventCalendar()
->>> cal.refresh()   # fetch FRED data (call once at startup + daily)
+>>> cal.refresh()   # refresh the declared schedule (not daily rate observations)
 >>> status = cal.get_status()
 >>> if status.is_pre_event:
 ...     dampen_signals()
@@ -78,7 +78,7 @@ class EventStatus:
 
 # ---------------------------------------------------------------------------
 # Fallback hardcoded 2025–2026 FOMC / CPI schedule
-# (Updated to actual Fed press releases — accurate to within ±1H)
+# (Legacy estimates; official source verification is required)
 # ---------------------------------------------------------------------------
 
 _FOMC_DATES_UTC = [
@@ -134,7 +134,7 @@ class EventCalendar:
     """
     Maintains a list of macro events with exact UTC timestamps.
 
-    Refreshes from FRED API when an API key is available.
+    FRED target-rate observations cannot confirm scheduled release dates.
     Falls back to the hardcoded schedule above otherwise.
     """
 
@@ -167,7 +167,7 @@ class EventCalendar:
 
     def refresh(self, force: bool = False) -> None:
         """
-        Refresh event calendar from FRED. Falls back to hardcoded schedule.
+        Refresh the declared schedule; reject unsupported source inference.
 
         Should be called once at startup and then once daily.
 
@@ -274,40 +274,8 @@ class EventCalendar:
     # ------------------------------------------------------------------
 
     def _fetch_fred(self) -> None:
-        """
-        Fetch FOMC meeting dates from FRED series FOMC.
-        FRED doesn't have CPI dates; those remain hardcoded.
-        """
-        import requests
-        url = "https://api.stlouisfed.org/fred/series/observations"
-        params = {
-            "series_id":       "FEDTARMD",   # FOMC target rate midpoint — gives meeting dates
-            "api_key":         self.fred_key,
-            "file_type":       "json",
-            "observation_start": "2024-01-01",
-        }
-        resp = requests.get(url, params=params, timeout=15)
-        resp.raise_for_status()
-        data = resp.json().get("observations", [])
-
-        fomc_events = []
-        for obs in data:
-            try:
-                dt = datetime.fromisoformat(obs["date"]).replace(
-                    hour=19, minute=0, tzinfo=timezone.utc
-                )
-                fomc_events.append(ScheduledEvent(
-                    event_type="FOMC", release_utc=dt,
-                    pre_blackout_h=24, post_reaction_h=4,
-                    source="FRED", confirmed=True,
-                ))
-            except Exception:
-                continue
-
-        # Keep FRED FOMC dates + hardcoded CPI dates
-        cpi_events = [e for e in self._events if e.event_type == "CPI"]
-        self._events = fomc_events + cpi_events
-        logger.info("[EventCal] FRED: {} FOMC dates loaded", len(fomc_events))
+        """Reject daily target-rate observations as a scheduled-meeting feed."""
+        raise ValueError("FEDTARMD is a daily rate series, not a confirmed future event calendar")
 
     # ------------------------------------------------------------------
     # Hardcoded baseline
@@ -321,7 +289,7 @@ class EventCalendar:
                 events.append(ScheduledEvent(
                     event_type="FOMC", release_utc=dt,
                     pre_blackout_h=24, post_reaction_h=4,
-                    source="HARDCODED", confirmed=True,
+                    source="HARDCODED", confirmed=False,
                 ))
             except Exception:
                 continue
@@ -331,7 +299,7 @@ class EventCalendar:
                 events.append(ScheduledEvent(
                     event_type="CPI", release_utc=dt,
                     pre_blackout_h=6, post_reaction_h=2,
-                    source="HARDCODED", confirmed=True,
+                    source="HARDCODED", confirmed=False,
                 ))
             except Exception:
                 continue

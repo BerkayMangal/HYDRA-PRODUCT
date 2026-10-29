@@ -1,0 +1,20 @@
+{
+  "nansen_hl_commands": {
+    "url": "https://raw.githubusercontent.com/nansen-ai/nansen-skills/main/references/commands.md",
+    "http": 200,
+    "sha256": "43a3ea291197bd9e653701994010cff32eeda75b150a9238cf4b9aba49a1de41",
+    "bytes": 16644
+  },
+  "nansen_smart_labels": {
+    "url": "https://raw.githubusercontent.com/nansen-ai/nansen-skills/main/references/smart-money-labels.md",
+    "http": 200,
+    "sha256": "2f0b802fa3f34e74be93bc28fb31b00cdc08b64c2dcdfaf13be9dfa5547468e3",
+    "bytes": 908
+  },
+  "hl_info_pinned": {
+    "url": "https://raw.githubusercontent.com/hyperliquid-dex/hyperliquid-python-sdk/2fdb18f9517675ea03695a0962bd19eece9c83f0/hyperliquid/info.py",
+    "http": 200,
+    "sha256": "fc36d225a2b865d474e5682ad4f095d9917e84ef5dba9c80de3d4600467f4882",
+    "bytes": 27783
+  }
+}

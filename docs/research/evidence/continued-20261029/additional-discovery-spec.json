@@ -1,0 +1,40 @@
+{
+  "declared_at_ms": 1793258045106,
+  "specification": {
+    "version": "additional_activity_size_cohort_v1",
+    "coins": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "HYPE",
+      "DOGE",
+      "XRP",
+      "AVAX",
+      "LINK",
+      "SUI",
+      "AAVE"
+    ],
+    "candidate_order": "Lexicographic public recentTrades participants; exclude original frozen accounts",
+    "maximum_states_inspected": 96,
+    "btc_notional_strata_usd": [
+      [
+        10000,
+        100000
+      ],
+      [
+        100000,
+        1000000
+      ],
+      [
+        1000000,
+        null
+      ]
+    ],
+    "maximum_selected_per_stratum": 6,
+    "selection_within_stratum": "Lexicographic address; no historical/future PnL or performance labels",
+    "maximum_concurrent_reads": 3,
+    "scope": "Additional active, size-stratified default-DEX BTC accounts; not representative of all traders",
+    "orders_enabled": false
+  },
+  "specification_sha256": "ed5d40d9506a12f4224875af4a355dc78d7a3bbf514b9c6d46fb85d25138ccc6"
+}
