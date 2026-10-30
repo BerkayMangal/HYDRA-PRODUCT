@@ -1,0 +1,33 @@
+{
+  "frozen_at": "2026-10-30T07:05:44.707550+00:00",
+  "purpose": "Prospective operational cadence verification, not strategy performance selection",
+  "target_poll_seconds": {
+    "primary": 120,
+    "additional": 240
+  },
+  "unchanged_inventory_reference_minutes": [
+    14,
+    18
+  ],
+  "success_criteria": "Observe at least five new successful cycles and a real same-cohort 14-18 minute reference after warmup; retain all missing/error rows",
+  "worker_stop_budget": "2026-10-30T19:00:00+00:00",
+  "orders_enabled": false,
+  "sources": {
+    "primary": {
+      "path": "data/research/hyperliquid/observations.sqlite3",
+      "existing_feature_rows": 1135,
+      "existing_cutoff_ms": 1793336386233,
+      "existing_feature_prefix_sha256": "3dc565c530de0771bc613b213b82ab7eeea27f5d80e7a96a82c7949a0c447931"
+    },
+    "additional": {
+      "path": "data/research-wide/hyperliquid/observations.sqlite3",
+      "existing_feature_rows": 289,
+      "existing_cutoff_ms": 1793336255774,
+      "existing_feature_prefix_sha256": "e08054d36851ca3d4afb45924e89bc2b921d74c7af2028e71c37d02fbd65e540"
+    }
+  },
+  "implementation_sha256": {
+    "research/lab/runtime.py": "1515897a7eda0e4bcf149b40baebaaaa0683b63c6b9fdf97cd3aeb94a32e3810",
+    "research/lab/hyperliquid_shadow.py": "8a912ad034890c1113795443b290d10f3afc26c245ecfe54aa4217df97a3ccbb"
+  }
+}

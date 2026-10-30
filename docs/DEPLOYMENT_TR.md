@@ -1,6 +1,6 @@
-# Canlı izleme sürümü — 29 Ekim 2026
+# Canlı izleme sürümü — 30 Ekim 2026
 
-Sürüm kimliği: `hydra-research-20261029.1`. Bu paket mevcut HYDRA uygulamasına
+Sürüm kimliği: `hydra-research-20261030.1`. Bu paket mevcut HYDRA uygulamasına
 22 public hesabın canlı BTC pozisyon görünümünü, kaynak kataloğunu ve veri
 bütünlüğü düzeltmelerini ekler. Cüzdanlar iki donmuş örneklem olarak kalır.
 Hesap sahiplerinin bağımsızlığı ve dış hedge'leri bilinmiyor. Tahmini liquidation
@@ -50,6 +50,13 @@ servis denemesi yapılmamış kayıtlar API ve arayüzde böyle etiketlenir.
 - `/api/research`: tarihli deney raporu; deployment sırasında bundled snapshot
   kullanılabilir. Canlı wallet verisi ayrıca `/api/wallets` üzerinden gelir.
 - `/api/research/tools`: 16 ürün + 3 bağımsız araç, kaynak incelemesi etiketleri.
+- `/api/research/costs`: kayıtlı ilk örneklem fiyat hareketleri için varsayımsal
+  maliyet senaryosu. `fee_per_side_bps=8`, `slippage_per_side_bps=4`,
+  `funding_allowance_bps=0` varsayılanları 24 bp gidiş-geliş eşik oluşturur.
+  Her giriş 0–100 bp aralığındadır; 1 bp = %0,01. Kullanıcı girdileri istek
+  bazındadır; ortak uygulama ayarını, örneklemi veya strateji kararını değiştirmez.
+  Pozitif sonuç, gerçekleşmiş net getiri veya alfa onayı değildir. Funding
+  allowance her ufka uygulanır; kaynakta ölçülmüş tahakkuk değildir.
 
 Yayın doğrulamasında `release_id`, yeni API'ler, kaynak zamanları ve gerçek
 wallet okumaları birlikte kontrol edilmelidir. HTTP 200 tek başına alfa,
@@ -74,3 +81,36 @@ kapsamı varmış gibi sonuç çıkarılmaz.
 Railway'nin [Dockerfile rehberi](https://github.com/railwayapp/docs/blob/main/content/docs/builds/dockerfiles.md)
 ve [healthcheck rehberi](https://github.com/railwayapp/docs/blob/main/content/docs/deployments/healthchecks.md)
 bu dağıtım yolu için incelendi.
+
+## 30 Ekim zamanlama düzeltmesi
+
+16 hesaplık araştırma toplayıcısında 240 saniyelik bekleme, API çevriminden sonra
+başlıyordu. Yaklaşık 32 saniye kaynak süresiyle gözlem aralığı 4,53 dakikaya
+çıkıyor, üçüncü eski snapshot 14 dakikadan genç ve dördüncüsü 18 dakikadan yaşlı
+kalabiliyordu. 289 eski kaydın 247'sinde geçerli fark penceresi yoktu.
+
+Yeni zamanlama çevrimin başlangıcından itibaren sabit aralık kullanır. Kaynak
+işi bir periyodu aşarsa geçmiş slotlar atlanır; art arda telafi istekleri
+gönderilmez. 14–18 dakika sınırı, donmuş cüzdanlar ve sonuçlara bakmayan seçim
+kuralları korunur. Eski satırlar sonradan tamamlanmaz. Özellik ve health
+kaydında toplama protokolü, hedef aralık ve `inventory_window_status` görünür.
+`warmup`, `missing_reference`, `accounts_unavailable` sıfır işlem sayılmaz.
+
+`/api/research` örneklem başına mevcut/eksik fark pencerelerini gösterir.
+Bu sayılar tüm tarihli raporu kapsar; yeni zamanlama eski %85 eksikliği ortadan
+kaldırmış gibi sunulmaz. Son canlı pencere ayrıca `/api/wallets` içinde görünür.
+Maliyet senaryoları Cost Scenarios alanında ayrı, varsayımsal ve salt okunurdur.
+
+## Native TWAP veri denemesi
+
+`python -m research.lab.twap_probe` bir kez çalışır ve mevcut 22 donmuş public
+hesabı native `userTwapSliceFills` üzerinden okur. Kendi benzersiz çıktı dizinine
+ham yanıt, receipt zamanı, SHA-256 ve BTC alt kümesi yazar; önceki dizini ezmez.
+İmzalama, ödeme, yeni adres seçimi veya emir gönderimi yoktur. Public query
+whitelist'ine yalnız bu dokümante read türü eklendi; emir türleri reddedilir.
+
+30 Ekim ilk gerçek denemede 22/22 yanıt başarılı, iki hesapta BTC TWAP fill'leri
+vardı. İki yanıt 2.000 satır sınırındaydı; eksiksiz tarih veya piyasa kapsamı
+iddiası yoktur. Geçmiş fill receipt anında yeni gerçekleşmiş işlem diye
+etiketlenmez. Bu endpoint parent programın kalan miktarını ve iptal durumunu
+vermez. Kanıtlar `docs/research/evidence/twap-20261030/` altındadır.

@@ -55,6 +55,30 @@ def load_summary():
         ):
             if key in report:
                 result[key] = report[key]
+        replay = report.get("receipt_replay", {})
+        result["price_movement_diagnostics"] = {
+            "inventory": replay.get("inventory", {}).get("all_inventory_directions", {}),
+            "liquidation_reversal": replay.get("liquidations", {}).get("all_reversals", {}),
+            "spot_absorption": replay.get("liquidations", {}).get("spot_absorption_reversals", {}),
+        }
+        result["native_twap_probe"] = load_twap_probe(repo)
         return result
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
         return unavailable
+
+
+def load_twap_probe(repo):
+    """A dated native API trial, separate from current wallet/strategy results."""
+    try:
+        path = repo / 'docs/research/evidence/twap-20261030/manifest.json'
+        if path.stat().st_size > 100_000:
+            raise ValueError('Oversized trial manifest')
+        probe = json.loads(path.read_text())
+        if probe['orders_enabled'] is not False or probe['alpha_validated'] is not False:
+            raise ValueError('Read-only unvalidated trial required')
+        return {'status': 'recorded_native_probe', **{key: probe[key] for key in (
+            'started_at', 'completed_at', 'query', 'requested_accounts',
+            'successful_accounts', 'accounts_with_btc_slices',
+            'possibly_truncated_accounts', 'orders_enabled', 'alpha_validated', 'limits')}}
+    except (OSError, ValueError, KeyError, TypeError):
+        return {'status': 'unavailable'}

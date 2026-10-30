@@ -99,6 +99,11 @@ body{min-height:100dvh;overflow-x:hidden}
 .acc-b{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--card);border:1px solid var(--brd);border-top:none;border-radius:0 0 10px 10px;margin-bottom:8px}
 .acc-b.open{max-height:600px}
 .acc-in{padding:12px 16px}
+.cost-form{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}
+.cost-form label{display:grid;gap:5px;color:var(--t2);font-size:10px;flex:1;min-width:120px}
+.cost-form input,.cost-form button{padding:8px;border:1px solid var(--brd);border-radius:6px;background:var(--card2);color:var(--t1);font:12px var(--mono);width:100%}
+.cost-form button{width:auto;cursor:pointer}
+#cost-panel.open{max-height:1000px}
 .coll{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px}
 .coll-d{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .coll-d.ok{background:var(--g)}.coll-d.err{background:var(--r)}.coll-d.stl{background:var(--a)}
@@ -174,6 +179,19 @@ body{min-height:100dvh;overflow-x:hidden}
   <div class="acc-b"><div class="acc-in" id="health-list">Loading…</div></div>
   <div class="acc-h" onclick="tog(this)"><div class="acc-t">Research Evidence</div><div class="acc-arr">▾</div></div>
   <div class="acc-b"><div class="acc-in" id="research-summary" style="font-size:11px;color:var(--t2);line-height:1.7;white-space:pre-line" aria-live="polite">Loading recorded research…</div></div>
+  <div class="acc-h" onclick="tog(this)"><div class="acc-t">Cost Scenarios</div><div class="acc-arr">▾</div></div>
+  <div class="acc-b" id="cost-panel"><div class="acc-in">
+    <div style="font-size:11px;color:var(--t2);line-height:1.6">Compare recorded price movements with your assumed costs. These are scenarios, not executed returns. 1 bp = 0.01%.</div>
+    <form id="cost-form" class="cost-form">
+      <label>Fee per side (bp)<input id="cost-fee" name="fee" type="number" min="0" max="100" step="0.1" value="8" required></label>
+      <label>Slippage per side (bp)<input id="cost-slippage" name="slippage" type="number" min="0" max="100" step="0.1" value="4" required></label>
+      <label>Funding allowance (bp)<input id="cost-funding" name="funding" type="number" min="0" max="100" step="0.1" value="0" required></label>
+      <button type="submit">Recalculate</button>
+    </form>
+    <div id="cost-summary" style="font-size:11px;color:var(--t2);line-height:1.6" aria-live="polite">Loading recorded movements…</div>
+    <div style="overflow:auto;max-height:250px;margin-top:10px"><table style="width:100%;font-size:10px;text-align:left;border-collapse:collapse;white-space:nowrap"><thead style="color:var(--t3)"><tr><th>Recorded hypothesis</th><th>Horizon</th><th>Groups</th><th>Non-overlap</th><th>Gross avg. bp</th><th>Less costs bp</th></tr></thead><tbody id="cost-rows"></tbody></table></div>
+    <div style="font-size:10px;color:var(--t3);line-height:1.6;margin-top:10px">Defaults are illustrative. Funding is an allowance for each horizon, not measured payments. Overlapping observations and positive differences do not establish alpha.</div>
+  </div></div>
   <div class="acc-h" onclick="tog(this)"><div class="acc-t">Wallet &amp; Data Tools</div><div class="acc-arr">▾</div></div>
   <div class="acc-b"><div class="acc-in" style="max-height:390px;overflow:auto"><div style="font-size:10px;color:var(--t3);margin-bottom:10px">Source review · service coverage and pricing trials pending</div><div id="research-tools">Loading sources…</div></div></div>
   <div class="acc-h" onclick="tog(this)"><div class="acc-t">ℹ️ About HYDRA</div><div class="acc-arr">▾</div></div>
@@ -242,9 +260,12 @@ async function pollResearch(){
     const okx=data.okx;
     if(okx){lines.push(Object.values(okx.trade_rows).reduce((a,b)=>a+b,0).toLocaleString()+' observed spot/perp trades');lines.push('OKX observations through '+new Date(okx.last_observed_at).toLocaleString())}
     const hl=data.hyperliquid;
-    if(hl){lines.push(hl.requested_wallets+' sampled accounts · '+hl.explicit_liquidation_fills+' explicit liquidation fills');lines.push('Hyperliquid observations through '+new Date(hl.last_observed_at).toLocaleString())}
-    for(const sample of data.additional_wallet_samples||[]){lines.push('Additional frozen sample: '+sample.requested_wallets+' accounts · observed through '+new Date(sample.last_observed_at).toLocaleString())}
+    const windowLine=sample=>{const q=sample.inventory_window_quality;if(q)lines.push('15m changes available: '+q.comparable_14_18m_snapshots+'/'+q.snapshots+' recorded snapshots · latest: '+q.latest_status.replaceAll('_',' '))};
+    if(hl){lines.push(hl.requested_wallets+' sampled accounts · '+hl.explicit_liquidation_fills+' explicit liquidation fills');lines.push('Hyperliquid observations through '+new Date(hl.last_observed_at).toLocaleString());windowLine(hl)}
+    for(const sample of data.additional_wallet_samples||[]){lines.push('Additional frozen sample: '+sample.requested_wallets+' accounts · observed through '+new Date(sample.last_observed_at).toLocaleString());windowLine(sample)}
     if(data.wallet_sample_coverage)lines.push(data.wallet_sample_coverage.distinct_public_accounts+' distinct public accounts across samples · partial market coverage');
+    const twap=data.native_twap_probe;
+    if(twap?.status==='recorded_native_probe')lines.push('Recorded native TWAP trial: '+twap.successful_accounts+'/'+twap.requested_accounts+' account reads · '+twap.accounts_with_btc_slices+' with BTC slice history · '+twap.possibly_truncated_accounts+' capped responses · '+new Date(twap.completed_at).toLocaleString()+' · remaining program unknown');
     lines.push('Research findings do not place orders.');
     el.textContent=lines.join('\n');
   }catch(e){el.textContent='Research evidence is temporarily unavailable.'}
@@ -259,6 +280,8 @@ async function pollWallets(){
     for(const [name,cohort] of Object.entries(data.cohorts||{})){
       const btc=cohort.sampled_btc;
       if(btc)lines.push(name+' sample: largest BTC account '+fmt(btc.largest_account_gross_share*100,1)+'%');
+      const change=cohort.btc_inventory_change;
+      lines.push(name+' 15m change: '+(change?fmt(change.sampled_net_base_change,4)+' BTC · '+change.accounts_buying+' buying / '+change.accounts_selling+' selling · '+fmt(cohort.change_window_minutes,1)+'m window':(cohort.inventory_window_status||'unknown').replaceAll('_',' ')));
     }
     summary.textContent=lines.join(' · ');
     tbody.replaceChildren();
@@ -284,6 +307,25 @@ async function loadResearchTools(){
     if(!el.childNodes.length)el.textContent='Research sources unavailable';
   }catch(e){el.textContent='Research sources temporarily unavailable'}
 }
+let costRequest=0;
+async function loadCosts(){
+  const request=++costRequest,summary=$('cost-summary'),tbody=$('cost-rows');
+  const params=new URLSearchParams({fee_per_side_bps:$('cost-fee').value,slippage_per_side_bps:$('cost-slippage').value,funding_allowance_bps:$('cost-funding').value});
+  try{
+    const data=await readApi('/api/research/costs?'+params);
+    if(request!==costRequest)return;
+    tbody.replaceChildren();
+    if(data.status==='unavailable'){summary.textContent='Recorded movements unavailable; no result calculated.';return}
+    summary.textContent='Assumed round-trip hurdle: '+fmt(data.assumptions.round_trip_hurdle_bps,1)+' bp · '+data.cohort_accounts+' accounts in the recorded primary sample · report '+new Date(data.report_generated_at).toLocaleString()+'. Alpha remains unproven.';
+    const names={inventory:'Inventory direction',liquidation_reversal:'Liquidation reversal',spot_absorption:'Spot absorption'};
+    for(const row of data.rows){
+      const tr=document.createElement('tr');
+      [names[row.hypothesis]||row.hypothesis,row.horizon_minutes+'m',row.observed_groups,row.nonoverlapping_intervals,fmt(row.mean_signed_gross_move_bps,2),fmt(row.mean_move_less_assumed_cost_bps,2)].forEach(value=>{const td=document.createElement('td');td.textContent=value;td.style.padding='7px 10px 7px 0';tr.appendChild(td)});
+      tbody.appendChild(tr);
+    }
+  }catch(e){if(request===costRequest){summary.textContent='Cost scenario unavailable; check costs are between 0 and 100 bp.';tbody.replaceChildren()}}
+}
+$('cost-form').addEventListener('submit',event=>{event.preventDefault();loadCosts()});
 async function poll(){
   try{
     const [sigR,statR,pulseR,decR,evR]=await Promise.allSettled([
@@ -376,6 +418,7 @@ poll();setInterval(poll,10000);
 pollResearch();setInterval(pollResearch,60000);
 pollWallets();setInterval(pollWallets,30000);
 loadResearchTools();
+loadCosts();setInterval(loadCosts,60000);
 })();
 </script>
 </body>

@@ -16,6 +16,7 @@ import time
 from collectors.hyperliquid_research import PublicHyperliquid
 from research.hyperliquid_features import market_contexts, sampled_positions
 from research.wallet_breadth import btc_wallet_change
+from research.lab.runtime import next_poll_deadline
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -188,11 +189,19 @@ class WalletMonitor:
                 else None
             )
             change = btc_wallet_change(previous[1], features) if previous else None
+            history = self.history[name]
+            window_status = (
+                "observed" if change is not None
+                else "accounts_unavailable" if previous is not None
+                else "warmup" if not history or as_of - history[0][0] < 14 * 60000
+                else "missing_reference"
+            )
             summaries[name] = {
                 "requested_accounts": features["requested_wallets"],
                 "successful_accounts": features["successful_wallets"],
                 "sampled_btc": features["sampled_assets"].get("BTC"),
                 "btc_inventory_change": change,
+                "inventory_window_status": window_status,
                 "change_window_minutes": (
                     (as_of - previous[0]) / 60000 if previous else None
                 ),
@@ -275,7 +284,8 @@ class WalletMonitor:
                             "errors": {"cycle": type(exc).__name__},
                         }
                 self.stop_event.wait(
-                    max(1, self.interval - (time.monotonic() - started))
+                    max(0, next_poll_deadline(started, time.monotonic(), self.interval)
+                        - time.monotonic())
                 )
 
         self.thread = threading.Thread(

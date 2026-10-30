@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .paths import ROOT as LAB_ROOT, write_json
-from .runtime import validate_budget
+from .runtime import next_poll_deadline, validate_budget
 
 ROOT = LAB_ROOT / "hyperliquid"
 from collectors.hyperliquid_research import PublicHyperliquid
@@ -47,7 +47,7 @@ def save_raw(db, kind, wallet, body, observed):
     )
 
 
-def cycle(db, client, cohort, lookback_seconds=180):
+def cycle(db, client, cohort, lookback_seconds=180, poll_interval_seconds=None):
     if lookback_seconds < 180:
         raise ValueError("At least 180 seconds of fill lookback required")
     errors = {}
@@ -142,6 +142,22 @@ def cycle(db, client, cohort, lookback_seconds=180):
     features["inventory_change_actual_window_minutes"] = (
         (now - previous[0]) / 60000 if previous else None
     )
+    first_observed = db.execute("SELECT MIN(observed_ms) FROM features").fetchone()[0]
+    window_status = (
+        "observed"
+        if features["sampled_inventory_change"] is not None
+        else "accounts_unavailable"
+        if previous is not None
+        else "warmup"
+        if first_observed is None or now - first_observed < 14 * 60000
+        else "missing_reference"
+    )
+    features["inventory_window_status"] = window_status
+    features["collection_protocol"] = {
+        "scheduler": "fixed_start_v1" if poll_interval_seconds is not None else "single_cycle",
+        "target_interval_seconds": poll_interval_seconds,
+        "inventory_reference_minutes": [14, 18],
+    }
     events = realized_liquidation_fills(wallet_fills)
     for event in events:
         event["collection_phase"] = (
@@ -170,6 +186,9 @@ def cycle(db, client, cohort, lookback_seconds=180):
         "explicit_liquidation_fills_in_window": len(events),
         "fills_may_be_truncated": len(truncated),
         "fills_requested_lookback_seconds": lookback_seconds,
+        "inventory_window_status": window_status,
+        "inventory_change_actual_window_minutes": features["inventory_change_actual_window_minutes"],
+        "collection_protocol": features["collection_protocol"],
         "errors": errors,
         "orders_enabled": False,
         "scope": cohort["scope"],
@@ -241,8 +260,10 @@ def main():
     while not stop and (until is None or datetime.now(timezone.utc) < until):
         if shutil.disk_usage(ROOT).free < 1024**3:
             raise RuntimeError("Less than 1GiB free; journal stopped")
+        started = time.monotonic()
         try:
-            cycle(db, client, cohort, lookback_seconds=max(180, args.interval + 120))
+            cycle(db, client, cohort, lookback_seconds=max(180, args.interval + 120),
+                  poll_interval_seconds=args.interval)
         except Exception as e:
             db.rollback()
             failed = {
@@ -262,12 +283,13 @@ def main():
                 raise
         if args.once:
             break
-        deadline = time.monotonic() + args.interval
+        deadline = next_poll_deadline(started, time.monotonic(), args.interval)
         while not stop and time.monotonic() < deadline:
             if until is not None and datetime.now(timezone.utc) >= until:
                 break
             time.sleep(0.5)
     db.close()
+    client.close()
     status_path = ROOT / "status.json"
     status = json.loads(status_path.read_text()) if status_path.exists() else {}
     status.update(

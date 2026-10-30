@@ -181,7 +181,7 @@ def test_public_dashboard_has_release_wallets_and_reviewed_sources(
     monkeypatch.setattr(dashboard, "_wallet_monitor", monitor)
     with TestClient(dashboard.app) as client:
         version = client.get("/api/version").json()
-        assert version["release_id"] == "hydra-research-20261029.1"
+        assert version["release_id"] == "hydra-research-20261030.1"
         assert version["orders_enabled"] is False
         wallets = client.get("/api/wallets").json()
         assert wallets["successful_accounts"] == 2

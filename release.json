@@ -1,5 +1,5 @@
 {
-  "release_id": "hydra-research-20261029.1",
-  "capabilities": ["source_time_quality", "public_wallet_monitor", "research_evidence", "source_catalog"],
+  "release_id": "hydra-research-20261030.1",
+  "capabilities": ["source_time_quality", "public_wallet_monitor", "research_evidence", "source_catalog", "fixed_wallet_cadence", "cost_scenarios", "native_twap_probe"],
   "orders_enabled": false
 }

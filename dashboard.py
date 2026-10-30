@@ -8,7 +8,7 @@ Mobile-first responsive, clean typography
 import json,numpy as np
 from datetime import datetime,timezone
 from typing import Dict
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse,JSONResponse
 from fastapi.staticfiles import StaticFiles
 from loguru import logger
@@ -151,6 +151,22 @@ def api_research_tools():
 def api_research():
     from research.dashboard_summary import load_summary
     return JSONResponse(content=load_summary(), headers={"Cache-Control": "no-store"})
+
+@app.get("/api/research/costs")
+def api_research_costs(
+    fee_per_side_bps: float = Query(8.0, ge=0, le=100),
+    slippage_per_side_bps: float = Query(4.0, ge=0, le=100),
+    funding_allowance_bps: float = Query(0.0, ge=0, le=100),
+):
+    from research.dashboard_summary import load_summary
+    from research.cost_scenarios import cost_scenario
+    try:
+        body = cost_scenario(load_summary(), fee_per_side_bps,
+                             slippage_per_side_bps, funding_allowance_bps)
+    except (ValueError, TypeError, AttributeError):
+        body = {"status": "unavailable", "orders_enabled": False,
+                "alpha_validated": False, "rows": []}
+    return JSONResponse(content=body, headers={"Cache-Control": "no-store"})
 @app.get("/api/ml")
 async def api_ml():
     if _ml_cfg is not None and getattr(_ml_cfg, "enabled", False) is False:

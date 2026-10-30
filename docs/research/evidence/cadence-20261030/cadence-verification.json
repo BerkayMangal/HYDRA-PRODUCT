@@ -1,0 +1,52 @@
+{
+  "verified_at": "2026-10-30T07:22:35.760566+00:00",
+  "design": "Prospective operational timing check; not alpha validation",
+  "orders_enabled": false,
+  "samples": {
+    "primary": {
+      "old_feature_prefix_unchanged": true,
+      "new_snapshots": 9,
+      "fully_observed_account_snapshots": 9,
+      "observed_14_18m_windows": 2,
+      "unknown_window_snapshots": 7,
+      "target_interval_seconds": 120,
+      "receipt_intervals_seconds": [
+        119.283,
+        119.437,
+        122.075,
+        117.822,
+        123.275,
+        119.273,
+        119.78,
+        119.591
+      ],
+      "median_receipt_interval_seconds": 119.514,
+      "first_new_observed_at": "2026-10-30T07:06:05.359000+00:00",
+      "last_new_observed_at": "2026-10-30T07:22:05.895000+00:00",
+      "first_valid_window_minutes": 14.01575,
+      "latest_window_status": "observed",
+      "criteria_passed": true
+    },
+    "additional": {
+      "old_feature_prefix_unchanged": true,
+      "new_snapshots": 5,
+      "fully_observed_account_snapshots": 5,
+      "observed_14_18m_windows": 1,
+      "unknown_window_snapshots": 4,
+      "target_interval_seconds": 240,
+      "receipt_intervals_seconds": [
+        242.154,
+        240.419,
+        239.221,
+        235.854
+      ],
+      "median_receipt_interval_seconds": 239.82,
+      "first_new_observed_at": "2026-10-30T07:06:20.825000+00:00",
+      "last_new_observed_at": "2026-10-30T07:22:18.473000+00:00",
+      "first_valid_window_minutes": 15.9608,
+      "latest_window_status": "observed",
+      "criteria_passed": true
+    }
+  },
+  "all_criteria_passed": true
+}

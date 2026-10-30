@@ -95,6 +95,17 @@ def hyperliquid_summary(db):
         if row.get("cycle_error"):
             errors.update(["cycle:" + row["cycle_error"]])
     latest = features[-1][1] if features else {}
+    window_rows = [row for _, row in features]
+    valid_windows = sum(
+        isinstance(row.get("inventory_change_actual_window_minutes"), (int, float))
+        and 14 <= row["inventory_change_actual_window_minutes"] <= 18
+        and row.get("sampled_inventory_change") is not None
+        for row in window_rows
+    )
+    protocol_counts = Counter(
+        row.get("collection_protocol", {}).get("scheduler", "legacy_unclassified")
+        for row in window_rows
+    )
     return {
         "first_observed_at": iso(features[0][0]) if features else None,
         "last_observed_at": iso(features[-1][0]) if features else None,
@@ -120,6 +131,14 @@ def hyperliquid_summary(db):
         "latest_position_rows": len(latest.get("positions", [])),
         "latest_btc_sample": latest.get("sampled_assets", {}).get("BTC"),
         "latest_inventory_change": latest.get("sampled_inventory_change"),
+        "inventory_window_quality": {
+            "snapshots": len(window_rows),
+            "comparable_14_18m_snapshots": valid_windows,
+            "unknown_change_snapshots": len(window_rows) - valid_windows,
+            "latest_status": latest.get("inventory_window_status", "legacy_unclassified"),
+            "latest_window_minutes": latest.get("inventory_change_actual_window_minutes"),
+            "collection_protocol_counts": dict(protocol_counts),
+        },
         "specification_sha256": HL_SPEC_HASH,
         "scope": latest.get("scope"),
         "cohort_sha256": latest.get("cohort_sha256"),
@@ -176,6 +195,13 @@ def markdown(report):
                 "Bu, bütün piyasanın veya bağımsız akıllı paranın görüşü değildir."
             ]
         lines += [""]
+        quality = hl.get("inventory_window_quality")
+        if quality:
+            lines += [
+                f"14–18 dakikalık karşılaştırılabilir snapshot: {quality['comparable_14_18m_snapshots']}/{quality['snapshots']}; "
+                f"bilinmeyen değişim: {quality['unknown_change_snapshots']}. Son pencere durumu: {quality['latest_status']}.",
+                "",
+            ]
     for sample in report.get("additional_wallet_samples", []):
         lines += [
             f"Ek, ayrı dondurulmuş örneklem: {sample['requested_wallets']} hesap; "
@@ -188,6 +214,13 @@ def markdown(report):
             lines += [
                 f"Bu ek örneklemde en büyük hesabın BTC gross payı %{100 * btc['largest_account_gross_share']:.1f}. "
                 "Hesap sayısı artışı, notional yoğunlaşmasının azaldığını göstermez.",
+                "",
+            ]
+        quality = sample.get("inventory_window_quality")
+        if quality:
+            lines += [
+                f"Ek örneklemde 14–18 dakikalık karşılaştırılabilir snapshot: {quality['comparable_14_18m_snapshots']}/{quality['snapshots']}; "
+                f"bilinmeyen değişim: {quality['unknown_change_snapshots']}. Son pencere durumu: {quality['latest_status']}.",
                 "",
             ]
     if report.get("wallet_sample_coverage"):

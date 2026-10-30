@@ -101,6 +101,7 @@ See `.env.example` for full list. Key groups:
 | `GET /api/events` | Upcoming macro events |
 | `GET /api/health` | Process liveness; not data readiness |
 | `GET /api/research` | Dated research evidence; separate from live signals |
+| `GET /api/research/costs` | Recorded movements less editable assumed costs; not executed returns |
 | `GET /api/wallets` | Live public BTC wallet snapshots and source health |
 | `GET /api/research/tools` | Reviewed wallet/data tools and trial status |
 | `GET /api/version` | Release identity and optional build commit |
@@ -209,6 +210,10 @@ python -m pytest tests/ -v
 ```
 
 ## Research delivery — 29 October 2026
+
+[30 October update](docs/research/RELEASE_20261030_TR.md) fixes research poll drift
+without widening the inventory window, adds per-request cost scenarios and
+records a native public TWAP slice trial. These remain unvalidated research.
 
 [Current findings in Turkish](docs/research/FINAL_TR.md) cover the data audit,
 13,368 historical variants, EMA/spot shadow observations, public Hyperliquid

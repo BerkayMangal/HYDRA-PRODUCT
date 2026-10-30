@@ -1,0 +1,20 @@
+{
+  "reviewed_at": "2026-10-30T07:13:19.392323+00:00",
+  "publisher": "hyperliquid-dex/hyperliquid-python-sdk",
+  "method": "Info.user_twap_slice_fills",
+  "request_type": "userTwapSliceFills",
+  "documented_max_rows": 2000,
+  "files": [
+    {
+      "file": "info.py",
+      "source_url": "https://raw.githubusercontent.com/hyperliquid-dex/hyperliquid-python-sdk/master/hyperliquid/info.py",
+      "sha256": "fc36d225a2b865d474e5682ad4f095d9917e84ef5dba9c80de3d4600467f4882"
+    },
+    {
+      "file": "types.py",
+      "source_url": "https://raw.githubusercontent.com/hyperliquid-dex/hyperliquid-python-sdk/master/hyperliquid/utils/types.py",
+      "sha256": "5161dfcfc5ea39f1540d4e68ffd79520b9f5ab7aff9ce88a8440d6e6dabb88ba"
+    }
+  ],
+  "note": "Official source read only. SDK not installed or executed; parent remaining size is not provided by this method."
+}

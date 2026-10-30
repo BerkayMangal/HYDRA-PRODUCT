@@ -1,5 +1,13 @@
 # HYDRA araştırma teslimi ve çalıştırma
 
+30 Ekim güncellemesi: en yeni sürüm/dağıtım komutları için
+[dağıtım kılavuzu](../DEPLOYMENT_TR.md). Aşağıdaki eski bitiş örneklerini yeniden
+başlatmayın; yeni açık `--until` bütçesi gerekir. Hyperliquid worker artık API
+süresini poll aralığına eklemeyen sabit başlangıç zamanlaması kullanır. Eksik
+14–18 dakika referansı sıfıra çevrilmez; `inventory_window_status` incelenir.
+Güncel kayıt raporları pencere kapsamını da içerir. Native TWAP için
+`python -m research.lab.twap_probe` bir defalık salt okunur deneme yapar.
+
 29 Ekim 2026. Bu dosya güncel operasyon kılavuzudur. [Sonuç raporu](FINAL_TR.md)
 gerçekte ölçülen bulguları; diğer tarihli raporlar önceki audit ve deneyleri kapsar.
 
@@ -174,4 +182,6 @@ kapsam, gecikme ve fiyat incelemesi tamamlanabilir. Bu erişim olmadan inceleme
 yapılmış gibi rapor üretilmez.
 
 Kodun yerel doğrulaması, uzaktaki CI çalışması veya Railway deploy kanıtı
-değildir. Git push, merge ve Railway yayını bu teslimde yapılmadı.
+değildir. 29 Ekim kod teslimi `74bb83c` ile GitHub main'e gönderildi ve CI
+başarılı oldu. Sonraki sürümün bilgisi dağıtım kılavuzundadır. Railway üzerinde
+`/api/version` ve yeni API'ler görülmeden yayın doğrulanmış sayılmaz.

@@ -6,7 +6,8 @@ import requests
 
 class PublicHyperliquid:
     ALLOWED_TYPES = frozenset({"metaAndAssetCtxs", "recentTrades", "clearinghouseState",
-                               "userFillsByTime", "userNonFundingLedgerUpdates", "fundingHistory", "candleSnapshot"})
+                               "userFillsByTime", "userNonFundingLedgerUpdates", "fundingHistory", "candleSnapshot",
+                               "userTwapSliceFills"})
 
     def __init__(self, session=None):
         self.session = session or requests.Session()
