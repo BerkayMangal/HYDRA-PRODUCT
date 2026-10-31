@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "status": "funding_feasibility_only",
+  "orders_enabled": false,
+  "alpha_validated": false,
+  "completed_at": "2026-10-31T11:41:49.538123+00:00",
+  "declaration_sha256": "ee3cfe5408bb67c7ebcd2452f50e008252595fea7107cef0d48da6ce09a45bcf",
+  "window_start_ms": 1792842104861,
+  "window_end_ms": 1793446904861,
+  "assumptions": {
+    "version": "public_funding_cost_screen_v1",
+    "assets": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "HYPE"
+    ],
+    "lookback_hours": 168,
+    "spot_fee_per_side_bps": 8,
+    "perp_fee_per_side_bps": 4.5,
+    "slippage_per_leg_bps": 4,
+    "trade_legs": 4,
+    "design": "Predeclared descriptive funding-only feasibility screen, not a selected trading rule or backtest.",
+    "position_assumption": "Long spot and short an equal constant perp notional; positive funding is received by the short.",
+    "source": "Native public Hyperliquid fundingHistory; hourly records must cover every expected funding bucket.",
+    "unknown_costs": [
+      "Executable spot/perp spread and basis entry/exit",
+      "Spot venue and asset availability",
+      "Financing and collateral opportunity cost",
+      "Stablecoin conversion and transfers",
+      "Margin, liquidation and venue risk"
+    ],
+    "orders_enabled": false,
+    "alpha_validated": false
+  },
+  "results": [
+    {
+      "coin": "BTC",
+      "status": "complete_funding_history",
+      "expected_hourly_payments": 168,
+      "observed_hourly_payments": 168,
+      "missing_hourly_buckets": [],
+      "observed_funding_sum_bps": 19.32481,
+      "full_window_short_received_funding_bps": 19.32481,
+      "last_24h_short_received_funding_bps": 3.0000000000000004,
+      "positive_payment_hours": 165,
+      "negative_payment_hours": 3,
+      "simple_annualized_observed_funding_on_perp_notional": 0.10076508071428572,
+      "assumed_entry_exit_cost_bps_before_unknown_costs": 41.0,
+      "full_window_funding_less_assumed_cost_bps": -21.67519,
+      "screen": "funding_did_not_cover_assumed_costs",
+      "orders_enabled": false,
+      "alpha_validated": false,
+      "limits": "Past funding on constant perp notional, not realized PnL or return on total capital. Basis changes, spreads and financing are unknown. Future funding may reverse; passing this lower-bound cost screen is not alpha."
+    },
+    {
+      "coin": "ETH",
+      "status": "complete_funding_history",
+      "expected_hourly_payments": 168,
+      "observed_hourly_payments": 168,
+      "missing_hourly_buckets": [],
+      "observed_funding_sum_bps": 8.748888,
+      "full_window_short_received_funding_bps": 8.748888,
+      "last_24h_short_received_funding_bps": 1.317553,
+      "positive_payment_hours": 143,
+      "negative_payment_hours": 25,
+      "simple_annualized_observed_funding_on_perp_notional": 0.04561920171428572,
+      "assumed_entry_exit_cost_bps_before_unknown_costs": 41.0,
+      "full_window_funding_less_assumed_cost_bps": -32.251112,
+      "screen": "funding_did_not_cover_assumed_costs",
+      "orders_enabled": false,
+      "alpha_validated": false,
+      "limits": "Past funding on constant perp notional, not realized PnL or return on total capital. Basis changes, spreads and financing are unknown. Future funding may reverse; passing this lower-bound cost screen is not alpha."
+    },
+    {
+      "coin": "SOL",
+      "status": "complete_funding_history",
+      "expected_hourly_payments": 168,
+      "observed_hourly_payments": 168,
+      "missing_hourly_buckets": [],
+      "observed_funding_sum_bps": 17.598139,
+      "full_window_short_received_funding_bps": 17.598139,
+      "last_24h_short_received_funding_bps": 2.198371,
+      "positive_payment_hours": 158,
+      "negative_payment_hours": 10,
+      "simple_annualized_observed_funding_on_perp_notional": 0.0917617247857143,
+      "assumed_entry_exit_cost_bps_before_unknown_costs": 41.0,
+      "full_window_funding_less_assumed_cost_bps": -23.401861,
+      "screen": "funding_did_not_cover_assumed_costs",
+      "orders_enabled": false,
+      "alpha_validated": false,
+      "limits": "Past funding on constant perp notional, not realized PnL or return on total capital. Basis changes, spreads and financing are unknown. Future funding may reverse; passing this lower-bound cost screen is not alpha."
+    },
+    {
+      "coin": "HYPE",
+      "status": "complete_funding_history",
+      "expected_hourly_payments": 168,
+      "observed_hourly_payments": 168,
+      "missing_hourly_buckets": [],
+      "observed_funding_sum_bps": 35.519575,
+      "full_window_short_received_funding_bps": 35.519575,
+      "last_24h_short_received_funding_bps": 7.95101,
+      "positive_payment_hours": 161,
+      "negative_payment_hours": 7,
+      "simple_annualized_observed_funding_on_perp_notional": 0.18520921250000003,
+      "assumed_entry_exit_cost_bps_before_unknown_costs": 41.0,
+      "full_window_funding_less_assumed_cost_bps": -5.480424999999997,
+      "screen": "funding_did_not_cover_assumed_costs",
+      "orders_enabled": false,
+      "alpha_validated": false,
+      "limits": "Past funding on constant perp notional, not realized PnL or return on total capital. Basis changes, spreads and financing are unknown. Future funding may reverse; passing this lower-bound cost screen is not alpha."
+    }
+  ],
+  "archives": {
+    "BTC.json.gz": {
+      "sha256": "2e7cd3a47feec5cb54003a9a4b7618d248b1200221b7b38418aa1e347e110930",
+      "decoded_sha256": "87d134ef8a1c357aa26bcf601d0c91d3803368f2fa7985f1a1d11dab54f61791"
+    },
+    "ETH.json.gz": {
+      "sha256": "123cbec227fd386dc86b105c46f38e6cafbde391b7d270e08d58161736658ae7",
+      "decoded_sha256": "b50e94ccbb3d31ab0bb6f61cb694bda0e38bfc451ae37aff765f92e6eb5c8bef"
+    },
+    "SOL.json.gz": {
+      "sha256": "88a21b38fae3e3223330f6f30fdf73081ad20c7a0620b2e91b116d2351368bb6",
+      "decoded_sha256": "83707751416e21c1b48f9327f0fc2fd1ab73868c78a574f6ac8d6dcc310afe78"
+    },
+    "HYPE.json.gz": {
+      "sha256": "3946d16c0446ed51ed2ec0411259c3b1b45d514f3e70d2b1a992b44de6df8559",
+      "decoded_sha256": "4cf30f753314d04e561d0af0c49bfb877c04e368781af003e5a3670ac594d9c7"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "status": "recorded_forward_diagnostics",
+  "recorded_through": "2026-10-31T11:48:02.076000+00:00",
+  "started_at": "2026-10-31T10:19:15.845000+00:00",
+  "protocol_sha256": "d135ed5d3fd91613bd6d1452f025de3ea57a76582081541866d1b1bb3c0b55d1",
+  "orders_enabled": false,
+  "alpha_validated": false,
+  "analysis_design": "Post-start descriptive diagnostics; no new trading rule, parameter search or alpha validation.",
+  "signal_activity": {
+    "active_accounts": 1,
+    "observed_parent_ids": 1,
+    "observed_slices": 30,
+    "account_side_gross_notional_usd": 729.05968,
+    "account_side_signed_notional_usd": 729.05968,
+    "net_base": 0.009410000000000003,
+    "largest_account_share": 1.0,
+    "effective_account_count": 1.0,
+    "net_base_without_largest_account": 0.0,
+    "accounts": [
+      {
+        "wallet": "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b",
+        "slices": 30,
+        "gross_base": 0.009410000000000003,
+        "net_base": 0.009410000000000003,
+        "gross_notional_usd": 729.05968,
+        "signed_notional_usd": 729.05968
+      }
+    ],
+    "limits": "Observed sampled account-side activity, not venue volume or independent owners. Parent IDs reveal no remaining quantity or schedule.",
+    "window_start_ms": 1793446339135,
+    "window_end_ms": 1793447239135,
+    "source_window_usable": true,
+    "source_reasons": []
+  },
+  "results": {
+    "strategy": {
+      "valid_flat_decisions": 0,
+      "pending_active": 1,
+      "unknown_active": 0,
+      "abstentions": 3,
+      "completed_trades": 3,
+      "mean": {
+        "gross_mid_return_bps": 6.921889451440012,
+        "gross_bid_ask_return_bps": 6.9089650988810964,
+        "spread_drag_bps": 0.01292435255891474,
+        "assumed_fee_slippage_drag_bps": 23.98778849395137,
+        "modeled_net_return_bps": -17.078823395070277
+      }
+    },
+    "control": {
+      "valid_flat_decisions": 3,
+      "pending_active": 1,
+      "unknown_active": 0,
+      "abstentions": 3,
+      "completed_trades": 0,
+      "mean": {
+        "gross_mid_return_bps": null,
+        "gross_bid_ask_return_bps": null,
+        "spread_drag_bps": null,
+        "assumed_fee_slippage_drag_bps": null,
+        "modeled_net_return_bps": null
+      }
+    }
+  },
+  "recent_events": [
+    {
+      "decision_id": 1,
+      "observed_ms": 1793441969981,
+      "strategy_long": null,
+      "control_long": null,
+      "outcome_status": "abstain",
+      "economics": {}
+    },
+    {
+      "decision_id": 2,
+      "observed_ms": 1793442691941,
+      "strategy_long": null,
+      "control_long": null,
+      "outcome_status": "abstain",
+      "economics": {}
+    },
+    {
+      "decision_id": 3,
+      "observed_ms": 1793443652259,
+      "strategy_long": true,
+      "control_long": false,
+      "outcome_status": "completed",
+      "economics": {
+        "strategy": {
+          "gross_mid_return_bps": -4.04295869659177,
+          "gross_bid_ask_return_bps": -4.055872878094835,
+          "spread_drag_bps": 0.012914181503065336,
+          "assumed_fee_slippage_drag_bps": 23.961504432090663,
+          "modeled_net_return_bps": -28.0173773101855,
+          "max_break_even_fee_per_side_bps_at_assumed_slippage": null,
+          "costs_exceed_gross_quote_move": true
+        }
+      }
+    },
+    {
+      "decision_id": 4,
+      "observed_ms": 1793444610632,
+      "strategy_long": true,
+      "control_long": false,
+      "outcome_status": "completed",
+      "economics": {
+        "strategy": {
+          "gross_mid_return_bps": 3.7860946950107888,
+          "gross_bid_ask_return_bps": 3.773170432299633,
+          "spread_drag_bps": 0.012924262711155876,
+          "assumed_fee_slippage_drag_bps": 23.980271609418402,
+          "modeled_net_return_bps": -20.20710117711877,
+          "max_break_even_fee_per_side_bps_at_assumed_slippage": null,
+          "costs_exceed_gross_quote_move": true
+        }
+      }
+    },
+    {
+      "decision_id": 5,
+      "observed_ms": 1793445332391,
+      "strategy_long": null,
+      "control_long": null,
+      "outcome_status": "abstain",
+      "economics": {}
+    },
+    {
+      "decision_id": 6,
+      "observed_ms": 1793446292709,
+      "strategy_long": true,
+      "control_long": false,
+      "outcome_status": "completed",
+      "economics": {
+        "strategy": {
+          "gross_mid_return_bps": 21.022532355901014,
+          "gross_bid_ask_return_bps": 21.00959774243849,
+          "spread_drag_bps": 0.012934613462523004,
+          "assumed_fee_slippage_drag_bps": 24.021589440345046,
+          "modeled_net_return_bps": -3.0119916979065575,
+          "max_break_even_fee_per_side_bps_at_assumed_slippage": 6.493778097021195,
+          "costs_exceed_gross_quote_move": true
+        }
+      }
+    },
+    {
+      "decision_id": 7,
+      "observed_ms": 1793447253652,
+      "strategy_long": true,
+      "control_long": true,
+      "outcome_status": "pending",
+      "economics": {}
+    }
+  ],
+  "required_bid_over_entry_ask_gain_bps_at_assumed_costs": 24.02882690305752,
+  "assumptions": {
+    "notional_usdt": 1000,
+    "fee_per_side_bps": 8,
+    "slippage_per_side_bps": 4,
+    "entry_latency_seconds": 1,
+    "hold_seconds": 900
+  },
+  "unknown_active_outcomes": 0,
+  "paired_completed_events": 3,
+  "paired_mean_net_difference_bps": -17.078823395069904,
+  "limits": "Fixed-notional paper events, not portfolio NAV or actual fills. Tiny dependent samples do not establish alpha. Flat controls are not completed trades. Gross/net decomposition is descriptive, not a newly tested strategy."
+}

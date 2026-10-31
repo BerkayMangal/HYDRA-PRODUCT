@@ -1,0 +1,82 @@
+{
+  "audited_at": "2026-10-31T11:46:20.040083+00:00",
+  "method": "Read-only transaction: quick_check, every decoded payload SHA256, temporal and OKX arithmetic diagnostics",
+  "limits": "Integrity diagnostics do not certify upstream truth, full source coverage, independent accounts or alpha.",
+  "journals": {
+    "okx": {
+      "sqlite_quick_check": [
+        "ok"
+      ],
+      "raw_payloads_checked": 108452,
+      "raw_digest_mismatches": 0,
+      "trade_rows": {
+        "BTC-USDT": 1496939,
+        "BTC-USDT-SWAP": 6824999
+      },
+      "invalid_trade_times": 0,
+      "invalid_trade_arithmetic": 0,
+      "base_conversion_ratios": [
+        [
+          "BTC-USDT",
+          1.0,
+          1496939
+        ],
+        [
+          "BTC-USDT-SWAP",
+          0.01,
+          6824999
+        ]
+      ],
+      "collecting_cycle_counts": {
+        "collecting": 5912,
+        "degraded": 1009
+      },
+      "integrity_checks_passed": true,
+      "coverage_certified_complete": false
+    },
+    "primary": {
+      "sqlite_quick_check": [
+        "ok"
+      ],
+      "raw_payloads_checked": 10451,
+      "raw_digest_mismatches": 0,
+      "fills": 966776,
+      "invalid_fill_times": 0,
+      "inventory_windows": {
+        "legacy": {
+          "snapshots": 1135,
+          "valid_inventory_windows": 1122
+        },
+        "fixed_start_v1": {
+          "snapshots": 358,
+          "valid_inventory_windows": 349
+        }
+      },
+      "capped_fill_cycles": 153,
+      "integrity_checks_passed": true,
+      "coverage_certified_complete": false
+    },
+    "additional": {
+      "sqlite_quick_check": [
+        "ok"
+      ],
+      "raw_payloads_checked": 7972,
+      "raw_digest_mismatches": 0,
+      "fills": 1624500,
+      "invalid_fill_times": 0,
+      "inventory_windows": {
+        "legacy": {
+          "snapshots": 289,
+          "valid_inventory_windows": 42
+        },
+        "fixed_start_v1": {
+          "snapshots": 180,
+          "valid_inventory_windows": 173
+        }
+      },
+      "capped_fill_cycles": 51,
+      "integrity_checks_passed": true,
+      "coverage_certified_complete": false
+    }
+  }
+}

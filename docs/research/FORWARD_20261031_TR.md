@@ -1,5 +1,8 @@
 # 31 Ekim: veri bütünlüğü ve donmuş TWAP forward deneyi
 
+> Bu ilk teslimin 10:36 UTC kaydı korunmuştur. Tamamlanan işlemler, yeni kaynak
+> taramaları ve veri toplamanın yeniden başlaması [sonraki incelemededir](ALPHA_REVIEW_20261031_TR.md).
+
 Henüz doğrulanmış alfa yok. Bu teslim, tek bir hipotezi gerçek zamanlı
 gözlemler üzerinde sınamak ve her kararı daha sonra aynı kayıttan doğrulamak
 için hazırlandı. Önceki 13.368 varyasyonun sonuçları yeni deneye eğitim veya

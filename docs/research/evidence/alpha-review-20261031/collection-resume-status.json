@@ -1,0 +1,125 @@
+{
+  "okx": {
+    "old_endpoint_digests_unchanged": true,
+    "new_raw_rows": 162,
+    "status": {
+      "observed_at": "2026-10-31T11:48:03.447443+00:00",
+      "pid": 219838,
+      "public_data_only": true,
+      "orders_enabled": false,
+      "new_trades": {
+        "BTC-USDT": 17,
+        "BTC-USDT-SWAP": 180
+      },
+      "coverage": {
+        "BTC-USDT": {
+          "previous_event_ms": 1793447246564,
+          "earliest_returned_ms": 1793447103082,
+          "overlaps_previous_window": true,
+          "backfill_pages": 0,
+          "status": "overlap_observed"
+        },
+        "BTC-USDT-SWAP": {
+          "previous_event_ms": 1793447250304,
+          "earliest_returned_ms": 1793447206777,
+          "overlaps_previous_window": true,
+          "backfill_pages": 0,
+          "status": "overlap_observed"
+        }
+      },
+      "flow_5m_observed": {
+        "BTC-USDT": {
+          "buy_quote_usdt": 1776826.542615575,
+          "sell_quote_usdt": 113823.303001196,
+          "net_quote_usdt": 1663003.2396143791,
+          "imbalance": 0.8795934601374437,
+          "warning": "Observed sample only; 5-minute completeness not certified. Inspect coverage/gap history."
+        },
+        "BTC-USDT-SWAP": {
+          "buy_quote_usdt": 14721355.85946,
+          "sell_quote_usdt": 6916775.36659,
+          "net_quote_usdt": 7804580.49287,
+          "imbalance": 0.36068643873802364,
+          "warning": "Observed sample only; 5-minute completeness not certified. Inspect coverage/gap history."
+        }
+      },
+      "new_forecasts": 0,
+      "errors": {}
+    }
+  },
+  "primary": {
+    "old_endpoint_digests_unchanged": true,
+    "new_raw_rows": 21,
+    "status": {
+      "observed_at": "2026-10-31T11:47:48.937058+00:00",
+      "pid": 219835,
+      "wallets_requested": 6,
+      "wallets_successful": 6,
+      "position_count": 237,
+      "explicit_liquidation_fills_in_window": 0,
+      "fills_may_be_truncated": 0,
+      "fills_requested_lookback_seconds": 240,
+      "inventory_window_status": "missing_reference",
+      "inventory_change_actual_window_minutes": null,
+      "collection_protocol": {
+        "scheduler": "fixed_start_v1",
+        "target_interval_seconds": 120,
+        "inventory_reference_minutes": [
+          14,
+          18
+        ]
+      },
+      "errors": {},
+      "orders_enabled": false,
+      "scope": "Size-selected current active default-DEX accounts, not a market-wide or performance-selected sample",
+      "specification_sha256": "4f925621e3d0c5750e8062bcff2466e4f153fa0fd24b42d3ed64c948205577c9",
+      "cohort_sha256": "f4fa67bf608ce5d105bb4f2fcbba290dabf273e424d52eadd1488b3efcfafe50"
+    }
+  },
+  "additional": {
+    "old_endpoint_digests_unchanged": true,
+    "new_raw_rows": 17,
+    "status": {
+      "observed_at": "2026-10-31T11:44:04.632849+00:00",
+      "pid": 219841,
+      "wallets_requested": 16,
+      "wallets_successful": 16,
+      "position_count": 803,
+      "explicit_liquidation_fills_in_window": 0,
+      "fills_may_be_truncated": 0,
+      "fills_requested_lookback_seconds": 360,
+      "inventory_window_status": "missing_reference",
+      "inventory_change_actual_window_minutes": null,
+      "collection_protocol": {
+        "scheduler": "fixed_start_v1",
+        "target_interval_seconds": 240,
+        "inventory_reference_minutes": [
+          14,
+          18
+        ]
+      },
+      "errors": {
+        "fill_window_gap:0x033352b410f1e4835b4e47cf042d44155bec32c2": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x08d01ebad78c6dc1dffc7c244d90c1143e906feb": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x0d438ba1817d0958ae3bf70b23faaf1d0117c930": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x1bf629cd9f4dbcc9fca616ccf7a19891007f5bfa": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x2ca4927174ba283d8a57f60ef3589844035a2930": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x31ca8395cf837de08b24da3f660e77761dfb974b": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x3d7a23552dfddc40b5872cbd148f4f1b4f055c36": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x4c226d5a21ae3b9883f98cbda1a3be63e565f308": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x4e60e3a4a32d63d245aa4e4ce304b4254b088f95": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x5b5d51203a0f9079f8aeb098a6523a13f298c060": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x63f6411ca61733af716c9a50a56a84ea38a0af59": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x6dd3146cead144385974e958305d7e4c352846b7": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x850362c2fcfee55962be453e01a6c4d9b813276f": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0x9d81a3adf84bd66528b62f2bda03e2e24bed3416": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0xd0956a1eba0a9060baf5f73ee26b9601dc47ec43": "A source interval was not requested; history remains sampled",
+        "fill_window_gap:0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00": "A source interval was not requested; history remains sampled"
+      },
+      "orders_enabled": false,
+      "scope": "Additional active, size-stratified default-DEX BTC accounts; not representative of all traders",
+      "specification_sha256": "4f925621e3d0c5750e8062bcff2466e4f153fa0fd24b42d3ed64c948205577c9",
+      "cohort_sha256": "5d30fc0512027523e18f9acc89609e198a42f9d9af3da1883f609c919be43e18"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "local_tests_passed": 221,
+  "warnings": 2,
+  "synthetic_tests_are_not_performance_evidence": true,
+  "javascript_syntax_passed": true,
+  "offline_report_and_diagnostics_reproduced": true,
+  "orders_enabled": false,
+  "alpha_validated": false
+}

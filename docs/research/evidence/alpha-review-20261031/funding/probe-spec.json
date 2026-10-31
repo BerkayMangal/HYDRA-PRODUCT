@@ -1,0 +1,36 @@
+{
+  "declared_at_ms": 1793446904861,
+  "window_start_ms": 1792842104861,
+  "window_end_ms": 1793446904861,
+  "specification": {
+    "version": "public_funding_cost_screen_v1",
+    "assets": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "HYPE"
+    ],
+    "lookback_hours": 168,
+    "spot_fee_per_side_bps": 8,
+    "perp_fee_per_side_bps": 4.5,
+    "slippage_per_leg_bps": 4,
+    "trade_legs": 4,
+    "design": "Predeclared descriptive funding-only feasibility screen, not a selected trading rule or backtest.",
+    "position_assumption": "Long spot and short an equal constant perp notional; positive funding is received by the short.",
+    "source": "Native public Hyperliquid fundingHistory; hourly records must cover every expected funding bucket.",
+    "unknown_costs": [
+      "Executable spot/perp spread and basis entry/exit",
+      "Spot venue and asset availability",
+      "Financing and collateral opportunity cost",
+      "Stablecoin conversion and transfers",
+      "Margin, liquidation and venue risk"
+    ],
+    "orders_enabled": false,
+    "alpha_validated": false
+  },
+  "implementation_sha256": {
+    "research/funding_feasibility.py": "3f6a9499458013194312d7cde5060a818a9d125a5b58e5b1956b98341e942a31",
+    "research/lab/funding_probe.py": "1e3db4d566c1de34e12374c8e347a42afce5d960f2fbfe79a6a81cb07f98efd7"
+  },
+  "source_commit": "5b618cde6ff8b51d62a34ff29fea25692c9f77b0"
+}

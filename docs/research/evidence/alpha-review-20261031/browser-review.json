@@ -1,0 +1,27 @@
+{
+  "desktop": {
+    "summary": "Recorded report · 10/31/2026, 11:47:33 AM\nCollection: collecting · current source reads fresh\nTrial started 10/31/2026, 10:19:15 AM · 22 frozen accounts\nProtocol d135ed5d3fd91613… · alpha unproven\n7 decisions · 3 quality/pending abstentions · 0 valid paired-flat decisions\nTWAP: 3 completed model trades · mean net -0.171%\nMomentum control: 0 completed model trades · mean net unknown\n1 pending events · 0 unknown active outcomes\nSource history: 0 request errors · 46 capped responses · 0 rejected quotes\nLatest flow-window gate: observed · 30 observed eligible BTC slices · 1 active sampled account · net sampled BTC 0.00941000\nAssumed costs: 8 bp fee + 4 bp slippage per side; observed spread included. Fixed $1000 event size.\nReview requires at least 100 completed strategy trades and 14 elapsed days, with no unknown active outcomes.",
+    "economics": "Economics snapshot · 10/31/2026, 11:47:41 AM\nTWAP completed events: 3\nAverage mid-price move 6.92 bp · observed spread drag 0.01 bp\nAssumed fee/slippage drag 23.99 bp · model net -17.08 bp\nMomentum control: 3 valid flat decisions · 0 completed trades\nObserved activity window ends 10/31/2026, 11:47:19 AM · source-window checks passed\nSampled signed activity $729 · 1 active accounts · 1 observed parent IDs\nLargest account share 100.0% · effective account count 1.00\nAll observed flow comes from one account; this does not show broad market agreement.\nDescriptive diagnostics; sampled accounts may share owners. Tiny samples and positive gross moves do not validate alpha.",
+    "rows": [
+      "10/31/2026, 11:47:33 AMLONGLONGpendingObservedunknownunknown",
+      "10/31/2026, 11:31:32 AMLONGFLATcompletedObserved-0.030%unknown",
+      "10/31/2026, 11:15:32 AMUNKNOWNUNKNOWNabstainPrevious event still pendingunknownunknown",
+      "10/31/2026, 11:03:30 AMLONGFLATcompletedObserved-0.202%unknown",
+      "10/31/2026, 10:47:32 AMLONGFLATcompletedObserved-0.280%unknown",
+      "10/31/2026, 10:31:31 AMUNKNOWNUNKNOWNabstain15m source history incomplete; Momentum quotes unavailableunknownunknown",
+      "10/31/2026, 10:19:29 AMUNKNOWNUNKNOWNabstain15m source history incomplete; Momentum quotes unavailableunknownunknown"
+    ],
+    "width": 1440,
+    "document_width": 1436
+  },
+  "mobile": {
+    "width": 390,
+    "document_width": 390,
+    "panel_content_height": 953,
+    "panel_visible_height": 953
+  },
+  "javascript_exceptions": [],
+  "captured_at": "2026-10-31T11:47:43.271367+00:00",
+  "orders_enabled": false,
+  "production_deployment": false
+}

@@ -1,0 +1,57 @@
+{
+  "declared_at": "2026-10-31T11:43:34.989297+00:00",
+  "purpose": "Resume source observations for later liquidation/spot research, not a new forward strategy or alpha validation",
+  "stop_at": "2026-11-01T09:00:00+00:00",
+  "intervals_seconds": {
+    "okx": 30,
+    "primary": 120,
+    "additional": 240
+  },
+  "historical_gap_policy": "Keep missing source interval and immutable first receipt; no retroactive decisions or zero-filled gaps",
+  "orders_enabled": false,
+  "alpha_validated": false,
+  "baseline": {
+    "okx": {
+      "path": "data/research/data/shadow.sqlite3",
+      "table": "snapshots",
+      "first_id_and_digest": [
+        1,
+        "1a6eeb4c4cc625067010d0110718feaee4a6f03becc60f661b800acb4f5ac4e2"
+      ],
+      "last_id_digest_receipt": [
+        108327,
+        "fef2ac4c1feb5d5c76924e4ff2e1956a4f0afb85dca220b8fec6ad33ccc29dd7",
+        1793386764064
+      ],
+      "raw_rows_before": 108327
+    },
+    "primary": {
+      "path": "data/research/hyperliquid/observations.sqlite3",
+      "table": "raw_snapshots",
+      "first_id_and_digest": [
+        1,
+        "d3adee1937042a2270f2cd60e181eb12cfff8f4bb52b7f288678abf4ceff78bf"
+      ],
+      "last_id_digest_receipt": [
+        10437,
+        "e687c152544b9e73bd6d1fc53c770be21dd9eba8cd712b5816641984e663bd01",
+        1793386771307
+      ],
+      "raw_rows_before": 10437
+    },
+    "additional": {
+      "path": "data/research-wide/hyperliquid/observations.sqlite3",
+      "table": "raw_snapshots",
+      "first_id_and_digest": [
+        1,
+        "d620968f39caf025e862072c8a628326a0dcfbf5e0bca4cfdc33625c0982bb58"
+      ],
+      "last_id_digest_receipt": [
+        7955,
+        "430430d963aa0994f3898a6e5a953df0138bdb3ac985a43a9446b474ab4594b1",
+        1793386741121
+      ],
+      "raw_rows_before": 7955
+    }
+  }
+}

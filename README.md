@@ -71,6 +71,9 @@ Set `HYDRA_MODE` environment variable:
 | `python -m research.lab.data_audit` | Read-only full payload, time and OKX unit diagnostics |
 | `python -m research.lab.twap_forward --once --out <new-trial>` | Bootstrap a frozen, public-data TWAP trial; no orders |
 | `python -m research.lab.forward_report --trial <recorded-trial>` | Reproduce a forward ledger report offline without settling trades |
+| `python -m research.lab.forward_diagnostics --trial <recorded-trial>` | Explain recorded costs, flat controls and account concentration |
+| `python -m research.lab.twap_discovery --out <new-directory>` | Predeclared public active-TWAP source screen; no PnL selection |
+| `python -m research.lab.funding_probe --out <new-directory>` | Fixed historical funding-versus-cost feasibility screen |
 | `python -m ml.research.run_v2` | Legacy ML research; unresolved validation defects |
 | `python -m ml.research.run_v2 --synthetic` | Pipeline validation (no API needed) |
 | `python -m ml.research.evidence` | Full evidence package (needs OKX) |
@@ -106,6 +109,7 @@ See `.env.example` for full list. Key groups:
 | `GET /api/research` | Dated research evidence; separate from live signals |
 | `GET /api/research/costs` | Recorded movements less editable assumed costs; not executed returns |
 | `GET /api/research/forward` | Recorded prospective TWAP ledger, quality gates and modeled outcomes |
+| `GET /api/research/forward/diagnostics` | Read-only cost attribution and concentration; configure `HYDRA_FORWARD_TRIAL` |
 | `GET /api/wallets` | Live public BTC wallet snapshots and source health |
 | `GET /api/research/tools` | Reviewed wallet/data tools and trial status |
 | `GET /api/version` | Release identity and optional build commit |
@@ -222,6 +226,10 @@ records a native public TWAP slice trial. These remain unvalidated research.
 [The 31 October forward trial](docs/research/FORWARD_20261031_TR.md) freezes one
 TWAP hypothesis before collection, preserves first receipt times, and exposes a
 read-only signal ledger. Sample thresholds permit review, never automatic orders.
+
+[The subsequent economics review](docs/research/ALPHA_REVIEW_20261031_TR.md)
+records the first modeled losses, an 81-account source screen, historical funding
+cost hurdles, and resumed source collection. No validated alpha has been found.
 
 [Current findings in Turkish](docs/research/FINAL_TR.md) cover the earlier data audit,
 13,368 historical variants, EMA/spot shadow observations, public Hyperliquid

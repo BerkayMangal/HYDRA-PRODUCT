@@ -1,0 +1,1793 @@
+{
+  "schema_version": 1,
+  "status": "source_discovery_only",
+  "orders_enabled": false,
+  "alpha_validated": false,
+  "declared_at": "2026-10-31T11:37:21.501335+00:00",
+  "completed_at": "2026-10-31T11:39:03.216245+00:00",
+  "declaration_sha256": "4ddf98b3a916aaf0b579b2582ce44a0d998f386a0da6e74441293fe8de4d1016",
+  "window_end_ms": 1793446700078,
+  "window_start_ms": 1793445800078,
+  "distinct_sampled_participants": 86,
+  "existing_accounts_excluded": 5,
+  "accounts_probed": 81,
+  "successful_accounts": 81,
+  "economic_activity_eligible": 0,
+  "selected_accounts": [],
+  "accounts": [
+    {
+      "wallet": "0x023a3d058020fb76cca98f01b3c48c8938a22355",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1733119311114,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x03c918b3572b7c67a8e49309a3436a86cd332cc2",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x0b5a0354eff79f2a18b6e02c3fac2dd2cd83fb84",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1787571146054,
+      "window_btc_slices": 28,
+      "gross_notional_usd": 322.13472,
+      "signed_notional_usd": 322.13472,
+      "last_window_slice_ms": 1793446697008,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x0c684f333a7e120bce61383da670bbb0157e82d0",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793432735056,
+      "window_btc_slices": 33,
+      "gross_notional_usd": 3650.22504,
+      "signed_notional_usd": -3650.22504,
+      "last_window_slice_ms": 1793446696002,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x0eecd62efb05009e2b72964b4bcdbcf653afd4c5",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x11559c400316f8e4ae906155c706cd40c1dd5442",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x17c3c8fdbcb7d1b240ce08965e09b1fc91cba868",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x1dc67adaf9f163c5b1a95043addbdfa1af58e512",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1774427561040,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x1ec15e24896f4feb55dd70d22dc3620ae3cc990c",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x21427906ec203bb2b1c910cb3e40629ab8245287",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x25773676902085225ae5751075e4161369334897",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1784282720024,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x2a964fc6685577d153d40a5dd1b051225fc04aad",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793396466050,
+      "window_btc_slices": 30,
+      "gross_notional_usd": 371.68848,
+      "signed_notional_usd": 371.68848,
+      "last_window_slice_ms": 1793446690086,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x2cffce91b4e0c81df18726ff66b31b2b1545e1ad",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x3196580696972bfe11e0e107fb27b06a5d478249",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x36d9b4cde8d52ad44eb693bf5b81f6d7b75eca50",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x3819661bfe87018b62c302c128b8fb7cf2958ebc",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1792630218015,
+      "window_btc_slices": 6,
+      "gross_notional_usd": 74.33776,
+      "signed_notional_usd": 74.33776,
+      "last_window_slice_ms": 1793446652039,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x43acc3b0b25418d90668fbfbfaced8d721ed5eff",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793337630002,
+      "window_btc_slices": 31,
+      "gross_notional_usd": 561.39151,
+      "signed_notional_usd": -561.39151,
+      "last_window_slice_ms": 1793446685000,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x44133c92cf08a13807f560b9b6e5c44ef37274c5",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x4588595ee0047982cd5ca4a82ab69c3174fbc832",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x4c6988b39fc0904628c2959e7606ef5f8518c152",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x58829a2244b909cbf2aef12c624762c34338a533",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x5d371c63358aa6a10aee3dba0afd3d30828d521c",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x5faf61d3f60eeaf5b9b6e0edd311bd6cbd79c701",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x6753f24d73bf566d5409f8646c942874f310400e",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x68d017f8c75d22af6a48aa6f2f697c658ec15599",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x6938b39d24949f15376b844419ecd1a02da9f32b",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x6978e7917dffd1f1815c858ca1528e51a3af1cb5",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1764780220014,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x6ce8a609b7e76d22b3cf477c16453ef9ec9a188a",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x6e6f2ca77afaee5a22dc3cf0f903f39a548a82a6",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x6e8bc7cd0978397b06a14af2a8c31f5daeffea79",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7050a9abd4f06372247d19c39e5d718636f35fff",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793440507027,
+      "window_btc_slices": 76,
+      "gross_notional_usd": 11385.13313,
+      "signed_notional_usd": 11385.13313,
+      "last_window_slice_ms": 1793446685000,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x718a93d1de978be62a0d3f77c73db05add3a97e9",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1753800419051,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7824e1e7e38c91fb02d75c7938d9ff33a299c2d4",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x78dce96236804d6958bf3c4598cf5efbc371629c",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7aa11aafdfc46ebedbb3adabea180cce3607e8c2",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793345268044,
+      "window_btc_slices": 17,
+      "gross_notional_usd": 210.61952000000002,
+      "signed_notional_usd": 210.61952000000002,
+      "last_window_slice_ms": 1793446698070,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x7ac3ea09071c62bfb692fc7cbee87d778af78b55",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7b458b536ed5f190ec4a7ce7dccb79be81dac940",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7b7f72a28fe109fa703eeed7984f2a8a68fedee2",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x7c4a5a6909300e04fa13a88771424f66f7dfbe50",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1793031532036,
+      "window_btc_slices": 2,
+      "gross_notional_usd": 24.77984,
+      "signed_notional_usd": 24.77984,
+      "last_window_slice_ms": 1793446651013,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x7f5653ec60fc5d3c1373e423239184c94c5e0989",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x80afc1341eda5c5a15432d3d83a2a2fd39897457",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x83636568c060ad391d907fda62730bed66e1fb69",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x856f7cb643fca326f475039702b10a9cbc2bd31a",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1787676772088,
+      "window_btc_slices": 14,
+      "gross_notional_usd": 173.45872000000003,
+      "signed_notional_usd": 173.45872000000003,
+      "last_window_slice_ms": 1793446680053,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x862f072fd06a2540dd18615c4fc0bd8e70f01382",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x8655d3d8a3de5c1008360a4f93e1d8c8dd87dba2",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793391780107,
+      "window_btc_slices": 32,
+      "gross_notional_usd": 2564.64494,
+      "signed_notional_usd": 2564.64494,
+      "last_window_slice_ms": 1793446680053,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x86e9a2e6895b5b0bf1daf9980f91694a35bece26",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x8f63c88fccae90c1f9eb8b447f830bce7b71dd74",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x960b2f3e61ab9d559ebbf172a700f8d19a9f9a81",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793312272080,
+      "window_btc_slices": 26,
+      "gross_notional_usd": 322.11632000000003,
+      "signed_notional_usd": -322.11632000000003,
+      "last_window_slice_ms": 1793446683012,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0x9638e5f4f208e7e10aed7c785853ad150197058b",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x97aa709982d7e50e646cfed305e85b924598112c",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0x9ebb4366da81ae7d48e2fdf93b21246d6fdf5afd",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xa09c0f245c46c6ca558f273c1f7365116b8ba9e4",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1791810401003,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xa1975952db8afa87bbe9c3b379937813f6d88888",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xa1d22621c9b077ce4ac468908114a82b2de4a8db",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xa62b923a112d50d03e1e096bbd53422490dac104",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xa886bc185eb8d0e4367932c83c59c213f623bd98",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xb2a7131040bd752a98861dc8b2089a5ccf767836",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xbbfb6566ad064c233af6314aeb1eee4c26a5f921",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793432027032,
+      "window_btc_slices": 32,
+      "gross_notional_usd": 806.09398,
+      "signed_notional_usd": 806.09398,
+      "last_window_slice_ms": 1793446683012,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0xbc0bd2de9231d951f64c2980bfb38fc73ec4122b",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793421278059,
+      "window_btc_slices": 18,
+      "gross_notional_usd": 223.01104,
+      "signed_notional_usd": -223.01104,
+      "last_window_slice_ms": 1793446696002,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0xbcd420d13362532756c968f663f96ba95e240dd2",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1778353067029,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xc176034d3f88c427320aee65d1eeb4740ac439d6",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xc5e9aa7c58d6ecc12922cc263a3d6fd8cd901e6e",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1761708510016,
+      "window_btc_slices": 28,
+      "gross_notional_usd": 334.50656000000004,
+      "signed_notional_usd": 334.50656000000004,
+      "last_window_slice_ms": 1793446648055,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0xcdbbf8cbb7d6c0815323c115014c58c65f9af002",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xcf3f419d08a5bdc2c6e5fbd9ad70904c5420f95f",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xd391633140d10d301c14c333b40fdf7da2e60325",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xd3b1b5299cd4d6725617cb485542562bb005a888",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": 1793379272067,
+      "window_btc_slices": 7,
+      "gross_notional_usd": 86.72848,
+      "signed_notional_usd": 86.72848,
+      "last_window_slice_ms": 1793446672022,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0xd7b214eb4cc1b7f631aac7d8f64e0ec9fd3dc9c7",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xdc7e13cd6a262102551ce4533a893f5ee106636e",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xdc8baab4006a13f12d2db20c812c18af63a19fbf",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xdd53c5297309130ab5fe5623dc905752e3342b13",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xe1b0fa4806a68725d7aac04639e53e0aadf50fd0",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793292781001,
+      "window_btc_slices": 30,
+      "gross_notional_usd": 511.07012000000003,
+      "signed_notional_usd": 511.07012000000003,
+      "last_window_slice_ms": 1793446694056,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0xe2b87289c7396c63afe05ec76248aec70e41cf91",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xe3e7ca378a902c3535f014b1da15022835a47e95",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xe642e0504b53c3d06438e57b90bc8fca6f2fa603",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": true,
+      "oldest_returned_event_ms": 1793383209101,
+      "window_btc_slices": 31,
+      "gross_notional_usd": 727.8867,
+      "signed_notional_usd": 727.8867,
+      "last_window_slice_ms": 1793446696002,
+      "recent_slice": true,
+      "economic_activity_eligible": false,
+      "reason": "below_activity_floor"
+    },
+    {
+      "wallet": "0xeb473272fe8aff61d97fb974422966391f3c25be",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xec3cd467fb087cff6af95e5b286712b2859aa707",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xf065d4c282c188990d37efc1033685474c6ddaaf",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xfe1fccb7f954050a4b0ca4bea43c8287b190c55a",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    },
+    {
+      "wallet": "0xfeee942a06d2f8012823ccde7bf7bcbcaa29a09f",
+      "selected_for_future_study": false,
+      "observation_phase": "history_at_first_observation",
+      "status": "observed",
+      "capped": false,
+      "oldest_returned_event_ms": null,
+      "window_btc_slices": 0,
+      "gross_notional_usd": 0,
+      "signed_notional_usd": 0,
+      "last_window_slice_ms": null,
+      "recent_slice": false,
+      "economic_activity_eligible": false,
+      "reason": "no_recent_btc_slice"
+    }
+  ],
+  "errors": [],
+  "archives": {
+    "trades-00.json.gz": {
+      "sha256": "5b72fed1e20e8be4f44dc9855703a18505f42ef113a6211deb4cedf3c60bf232",
+      "decoded_sha256": "6be43aaa8688484a73f76a07ac38a26285c8942c91e33b2e3f722002c4e2fbaf",
+      "bytes": 765
+    },
+    "trades-01.json.gz": {
+      "sha256": "c60b3cd046b757f71ba939fe0a396db2ce770a490d51593d4b031e099861ec86",
+      "decoded_sha256": "a818cd7d591560296d419a49dfd58684365d97eb43cee663da3eb09bd21f7394",
+      "bytes": 756
+    },
+    "trades-02.json.gz": {
+      "sha256": "b94b4b321abc64ad23c10eae338acd23228ee954252454fb184150d42d869b70",
+      "decoded_sha256": "3ae0c584f51870511d01b239607f245f8fde8abab6d937bdf924c92646147b65",
+      "bytes": 758
+    },
+    "trades-03.json.gz": {
+      "sha256": "665140a358abb96f65ff2bbd1b8564e0531a1ab83ffae43e1392842c1b6f821e",
+      "decoded_sha256": "b2b1730dd74aad4f7f5d95f207d6c40b217b9a3bb594d80938c196b7e5be59cb",
+      "bytes": 721
+    },
+    "trades-04.json.gz": {
+      "sha256": "e04d3356224eaa3c4c7b286a4df8bc1265b866861b75182e29533eba61afb4cb",
+      "decoded_sha256": "6dc601381484483d2dcfedc1f5c7d77a747b27b6c4d2aae1b262b852c79cfdd9",
+      "bytes": 682
+    },
+    "trades-05.json.gz": {
+      "sha256": "5ce6c1196cd1ff723258afb195a0634da4de0a6b728ad98451d75e9aed4b3cd2",
+      "decoded_sha256": "80da2d7a6b1298972c87a1e475da9d89623606969d6a6e14216ddad4a83230c1",
+      "bytes": 764
+    },
+    "trades-06.json.gz": {
+      "sha256": "2f688dfbe2dba3168e5b76d646ab69389490469c333b4461310f6b17c70e9075",
+      "decoded_sha256": "36c69fb0438770b509a946f25c2563d6f9e8e233a5efef1cb6740db044f88cf6",
+      "bytes": 807
+    },
+    "trades-07.json.gz": {
+      "sha256": "f5553cc7fe793ebb4fe4b194626e2bf03b34350161b18539441c1dd3f363dc6d",
+      "decoded_sha256": "450fd8a5bead33ad6dd1524835ab3bad2f6215fe7d7048548965a45e2dd6af5c",
+      "bytes": 735
+    },
+    "trades-08.json.gz": {
+      "sha256": "f884cd9e5983a50b02e2688cdc88357cc6c489279d9c69686042b50be165bb8b",
+      "decoded_sha256": "f3679ba72637812a697c9f627a866c346769d8b5278d47484b5c1b392d04f899",
+      "bytes": 776
+    },
+    "trades-09.json.gz": {
+      "sha256": "de855d37ee392e11735375ccf4a0e37a8f336f2b4ce35ad72bb9eca499014a0f",
+      "decoded_sha256": "ad102baf1982e04d51b148d71dc2691138e391f5febe4401efa3cbac47d38451",
+      "bytes": 843
+    },
+    "trades-10.json.gz": {
+      "sha256": "f4f9a782258155ac0a952673963112dd7281fc74ed117a459d2f4fcf9667c911",
+      "decoded_sha256": "b1d1ef587ec00ccc0bc0da44240ff08c6ac24b8bb37adcdb0dc0e654ed9e9f35",
+      "bytes": 789
+    },
+    "trades-11.json.gz": {
+      "sha256": "f32decbf32fe4628ad30b977c7727531f7462c296ff9b4d2019c2e6983c083e5",
+      "decoded_sha256": "0185c7fdb2d762cdb4cfca05034fc3ed24557bcfd5d4779eaf2091f81532bbfb",
+      "bytes": 800
+    },
+    "trades-12.json.gz": {
+      "sha256": "79838982f81e6401e14f01a57b094c91b16c18b21819e6277098e8701a2fdbc3",
+      "decoded_sha256": "c09f71f28ec8c03fb6f5d49b45397bb55d67b8c85d983e856c81b0ca83af6639",
+      "bytes": 747
+    },
+    "trades-13.json.gz": {
+      "sha256": "0eeba0f8f41ac6b06873ef49632b88b2943c08e52d61657c3952c24a30712951",
+      "decoded_sha256": "46ba86a3b88987cca022870861b5effdc6981f061189dad51c46c4254ee4d28f",
+      "bytes": 825
+    },
+    "trades-14.json.gz": {
+      "sha256": "c11dad0f80a062a0f293398f9abba171a84b960f39de14f8ec13455401bc7f78",
+      "decoded_sha256": "8a9f32ef5cfcfb8a841dc036e8f6ca2f91ec67085e113bfb01244b6069b6aec5",
+      "bytes": 826
+    },
+    "trades-15.json.gz": {
+      "sha256": "c898edbb90e044eff95822ff73804e7c8fd8a97b6a91b2bb9eadacd7a7593ad7",
+      "decoded_sha256": "082b0dbc1ec2add3ba344c5a48408276eda3b895c5f4575fc11e136cfb8ed8fe",
+      "bytes": 793
+    },
+    "trades-16.json.gz": {
+      "sha256": "dc59ac6f68c52cb7263d9b666709cd5723b5c0a96bc2f8fa803ce880f7aca09b",
+      "decoded_sha256": "f6f5026a26c8776a8063b06778441874d2beee0423e7d78de990ac948726ba51",
+      "bytes": 720
+    },
+    "trades-17.json.gz": {
+      "sha256": "977d63cd68a3bd481947a16faa6a07f42923f78fdb0dd177d02fbcce3c7dc206",
+      "decoded_sha256": "aaf6468370442638cfed8c7ea3c4cb4dc5ae492909b5de1a02dbdd4aed410acc",
+      "bytes": 721
+    },
+    "trades-18.json.gz": {
+      "sha256": "8c5ab294aacd08eeeb42c2fd251f32fc5e0a9128416afeda37ebaf0b95166b28",
+      "decoded_sha256": "1fdee620b6fe2621c62d67a783fe36f6fe8fd71809d0c25cfd31d286cbe329a5",
+      "bytes": 743
+    },
+    "trades-19.json.gz": {
+      "sha256": "a197c06191f5a6818954e2c484b8b9e9951cbd5c609c993bf17cfee89413ed5c",
+      "decoded_sha256": "6579e8004899131a0eba1907a305271b3691c74e991c64c018157e2bb72be190",
+      "bytes": 781
+    },
+    "trades-20.json.gz": {
+      "sha256": "97bcb9e608056732eac47da3ebf7e003886643da074dda4beb1648cd4ceb14c0",
+      "decoded_sha256": "c696819f772081733b5d83f6160f848e35ab6c8fb29b605fe1e8df3dd18c096b",
+      "bytes": 798
+    },
+    "trades-21.json.gz": {
+      "sha256": "17f045b0737d15535bad8b891d88478b5c5508f84086dbe734f02638c1592b44",
+      "decoded_sha256": "fb97a992d6aea184c5190ad2c4cf127c5ecbc6b27115234c4f9b893a26bde1ec",
+      "bytes": 797
+    },
+    "trades-22.json.gz": {
+      "sha256": "17bea16aceb361656321b75f03b6dd434c37fc52149f813f1206e386dcd74b68",
+      "decoded_sha256": "d935d24181803773735442b14c94e5400c2c9dff8fecf233fa3030c4e07394ee",
+      "bytes": 798
+    },
+    "trades-23.json.gz": {
+      "sha256": "e4446f0a7752754dc73efeb592dc99554d117714b2d0fa2f8a86d7351ac461db",
+      "decoded_sha256": "194b20e21a8572873c288f5829b4f44549e59ae9cfda7983074824e5274a152e",
+      "bytes": 797
+    },
+    "trades-24.json.gz": {
+      "sha256": "452fa8850af9ac29de92c9ed1d975a72c5b3070b21cd45abe4c52ba5145d4518",
+      "decoded_sha256": "214e2d646d303b949bd7b64cf06844c1754ed5511c43c6223d6026b2a4fadf99",
+      "bytes": 870
+    },
+    "trades-25.json.gz": {
+      "sha256": "215305c4de73edf8e99ab1fda8831627bfc52e9578d97b69ff83ad61b0d4049b",
+      "decoded_sha256": "869deb1d9935f3b54c1b04a29d1bc00d08f87bc92abdf756c4fe3ecb8621f0eb",
+      "bytes": 935
+    },
+    "trades-26.json.gz": {
+      "sha256": "66dcf83043e6f397cdd80408397cc503ffbeca9c370f90e27c4d408e4efc13b4",
+      "decoded_sha256": "6f4607ee98106650078ae86c0fe04388a5b07cfa3414b4a2cc4db7b628a697ab",
+      "bytes": 909
+    },
+    "trades-27.json.gz": {
+      "sha256": "d26ad02cad181c1e22987f8a73eeadcbf16192b728801b7ef3ce8337d24e288f",
+      "decoded_sha256": "58ce05ac566203f36a466d78d3a758d640247fdfee4f7801940a9eae36f35626",
+      "bytes": 849
+    },
+    "trades-28.json.gz": {
+      "sha256": "0b0d10986452057933bf169306733c9587584f1da561e26bab103e8e97f7ee7a",
+      "decoded_sha256": "32febacfda43993a7fb11bb2b2f18934ad706f6c4a5334ee19da666fae202b5f",
+      "bytes": 821
+    },
+    "trades-29.json.gz": {
+      "sha256": "21334da62324d24b739f14d5836d1ee999d22cd6f200eba8cf06fe07d7d941cf",
+      "decoded_sha256": "713cde2cb4bcb240778e7b3659b3d1ea9f65fbcfe7c82681c72bdb305fc47f9f",
+      "bytes": 787
+    },
+    "0x023a3d058020fb76cca98f01b3c48c8938a22355.json.gz": {
+      "sha256": "9c4dff29072a0ef1cbad1d03a327aee4927c4e2877fb31523158f67acdb7296a",
+      "decoded_sha256": "c4c08d9c5aa1299d9dff1c27b1924fc11e182bb4e4918abf218cd9cb76d5e579",
+      "bytes": 70873
+    },
+    "0x03c918b3572b7c67a8e49309a3436a86cd332cc2.json.gz": {
+      "sha256": "1e2e2f31936bff5f9958816530a3edcdaf0d645371a1cfcefd60b5522e3d9434",
+      "decoded_sha256": "8fb79caf73a402f41976a8098fb68236ada61d33495f09d43c5a9e3675ecec58",
+      "bytes": 116
+    },
+    "0x0b5a0354eff79f2a18b6e02c3fac2dd2cd83fb84.json.gz": {
+      "sha256": "cc5d963743b75c75eb5a66c9d9c7ffa41c95601e4ad040b898ade0480f45e2c8",
+      "decoded_sha256": "acd33633ed6dd6fa11b25c559301009a19b483403542b9fed5aad2a2a618eff3",
+      "bytes": 39391
+    },
+    "0x0c684f333a7e120bce61383da670bbb0157e82d0.json.gz": {
+      "sha256": "ff8f93c4bebbdf02e30fa690f50b51d92e289efa11c99d78abde62ec4affe3e0",
+      "decoded_sha256": "3149e6ab6dc8da9e06b20839ef9b3cddf29aac5a800d59d0f59579d5c0e7a1f3",
+      "bytes": 61853
+    },
+    "0x0eecd62efb05009e2b72964b4bcdbcf653afd4c5.json.gz": {
+      "sha256": "da41181aa369e57010e850d8809379b0ab7537da95ded59a9256f368c7a70aa6",
+      "decoded_sha256": "67023ecd6225726cd26d503e8ec50174c0784adfa8970d9a642ab50fd3cebec6",
+      "bytes": 116
+    },
+    "0x11559c400316f8e4ae906155c706cd40c1dd5442.json.gz": {
+      "sha256": "59bffb2977ddc527ea39b5afb1486b95299818a8b24fb82af74e5484daebc40b",
+      "decoded_sha256": "f2f7533788679f1b0b4235126d15d39b8f2c7b8e062c76fd87ba7a969aa1b106",
+      "bytes": 116
+    },
+    "0x17c3c8fdbcb7d1b240ce08965e09b1fc91cba868.json.gz": {
+      "sha256": "45b0e5df8da34764447101ae2a6b61301bdc2a3f4f8f8a50cecd3f83a142df21",
+      "decoded_sha256": "969a9fc28ee2cb5ecc791454f7b2d0065278832fbaaa4ca1c7d07394cc61c089",
+      "bytes": 117
+    },
+    "0x1dc67adaf9f163c5b1a95043addbdfa1af58e512.json.gz": {
+      "sha256": "03d4cbffbb00c93dc88ccbf8c356984cf2c4c451a0d5075f41c42931bcc0982e",
+      "decoded_sha256": "b13cfe46f8693f177eb75a7ffbfd82c9091b5acecdc4e3f95919ce46e05cae46",
+      "bytes": 64409
+    },
+    "0x1ec15e24896f4feb55dd70d22dc3620ae3cc990c.json.gz": {
+      "sha256": "53696c70ccc0d87b3b22cad22891aa3461c1edda44a654331a175d92283a32f6",
+      "decoded_sha256": "b4f52ae3db467981d005d7ab4617c750affef1462e49fd0549bcf945f9d14ef8",
+      "bytes": 117
+    },
+    "0x21427906ec203bb2b1c910cb3e40629ab8245287.json.gz": {
+      "sha256": "f2d637d1893a463e440cc1591fa428755aa4ebfbe6f9f9f6df39f009613832a0",
+      "decoded_sha256": "081ae2a48434ea23672c83ab48995f944741a5970e164303c5d06e38ef61c88a",
+      "bytes": 116
+    },
+    "0x25773676902085225ae5751075e4161369334897.json.gz": {
+      "sha256": "08c43b0102fb2cf940dc6da7863deccc16e5ffa6265031d98f91b094b6596e97",
+      "decoded_sha256": "29dba47a76a28a2b35a3d3c3af67265e58acc9af5ce09b1d63440ee3aeeec794",
+      "bytes": 58659
+    },
+    "0x2a964fc6685577d153d40a5dd1b051225fc04aad.json.gz": {
+      "sha256": "8d1239b56973ca58bd0cfd0af1df51ec0f39b3f6d2c639c890cb13ceb7721459",
+      "decoded_sha256": "5937419fb88de0c44e798f92e57d27da430569e186e5dd4c309ba0e604f457ca",
+      "bytes": 63080
+    },
+    "0x2cffce91b4e0c81df18726ff66b31b2b1545e1ad.json.gz": {
+      "sha256": "d5e04037e4f0747d0a8e2f9536cc5abec523a6943134174d4cf0a84951f03db6",
+      "decoded_sha256": "b4c480767b282f698e2c7fefa562566cc86148cad4e1e33364d11d99fc56e9e1",
+      "bytes": 116
+    },
+    "0x3196580696972bfe11e0e107fb27b06a5d478249.json.gz": {
+      "sha256": "260b06960071658cd19de97e0298ddeeaed61ecaf18a61cd206b33e9d0326bfd",
+      "decoded_sha256": "b19a30272f8f5544c5f12d2461212791ca28cb7d3e733a20f0d1de67a35ea4b8",
+      "bytes": 117
+    },
+    "0x36d9b4cde8d52ad44eb693bf5b81f6d7b75eca50.json.gz": {
+      "sha256": "566ce01a207fab676981555339bb01ae8677947dbd77957a40f6c34682231789",
+      "decoded_sha256": "95688c7b3cee7ff6bc6029ee3f8ec066e02e0f2c739d72a8312bbe4b06ccc3ae",
+      "bytes": 117
+    },
+    "0x3819661bfe87018b62c302c128b8fb7cf2958ebc.json.gz": {
+      "sha256": "0f9c98c18683e92594231677e2203690c9be0035a0b8014bf8af51a4ba529805",
+      "decoded_sha256": "876578a4cb6a6db5ca12aeb511ba964190e30cf490dcd9e6e4a7ac641f1cb8b1",
+      "bytes": 64663
+    },
+    "0x43acc3b0b25418d90668fbfbfaced8d721ed5eff.json.gz": {
+      "sha256": "f2f45f5c04246daee8cc0e7910a5a9d67b33cccd50d2f6e56afc4d065a07e300",
+      "decoded_sha256": "fc0e9d08720c08849f132700c49b9463a91c8199f4e53149a80591691312c999",
+      "bytes": 61980
+    },
+    "0x44133c92cf08a13807f560b9b6e5c44ef37274c5.json.gz": {
+      "sha256": "653a814e218ecfc91902023d9336008eeee5d8c83482bef42c977f438ea1868e",
+      "decoded_sha256": "9d2a499ee83940fcb8048067e514b1fb52f0071d207fe631ead70fd63c1b364d",
+      "bytes": 118
+    },
+    "0x4588595ee0047982cd5ca4a82ab69c3174fbc832.json.gz": {
+      "sha256": "0e2dbbc3f90bfad6f7540b408899d6537c461ffbc6ff77039bfa80d5ac99f371",
+      "decoded_sha256": "56496bcded77e65cee52e1801ac9e2568accea1e4c451eae07e8677ba9e85104",
+      "bytes": 117
+    },
+    "0x4c6988b39fc0904628c2959e7606ef5f8518c152.json.gz": {
+      "sha256": "fdca638f925beea68b60845705aa385a0652ecf8577d554860298ea099f3ed95",
+      "decoded_sha256": "ca063917c4df7060082721bf11f28ae64fd16ca34fba59ebc36ff2beed9c73bb",
+      "bytes": 118
+    },
+    "0x58829a2244b909cbf2aef12c624762c34338a533.json.gz": {
+      "sha256": "4cd45132bcd1ed50133336f354c43926358aa8508daeabfe720e654b7ae015fd",
+      "decoded_sha256": "fdbeeb4049261888abc9617d21f0ba943a9dbeecc1d50a81e7c3a4291d3740ea",
+      "bytes": 117
+    },
+    "0x5d371c63358aa6a10aee3dba0afd3d30828d521c.json.gz": {
+      "sha256": "af0e4eaae39d26519e971df8f56a0b4c085b820137b3562b7306ec7864cade85",
+      "decoded_sha256": "5228d314bcff4a2c12ff5787edd945219d2b3e13aaf96de80b20561161c4602f",
+      "bytes": 116
+    },
+    "0x5faf61d3f60eeaf5b9b6e0edd311bd6cbd79c701.json.gz": {
+      "sha256": "6aee26ea4c48f2a03b22ba2716943a132d0d559fe32ff8ce2203e064d79350ab",
+      "decoded_sha256": "6bd7b3d3116fb52dc9ea4133e767e14dfec5c18b7abb718620559fbb3b1b803f",
+      "bytes": 116
+    },
+    "0x6753f24d73bf566d5409f8646c942874f310400e.json.gz": {
+      "sha256": "704ce4def72050592cdec3e3076e913d12b2437577faa944a59e8e713bed62ea",
+      "decoded_sha256": "7c2b6370cb6354069a85ec3c26b3bbfc68d652935bf677398e29c059524b2e21",
+      "bytes": 116
+    },
+    "0x68d017f8c75d22af6a48aa6f2f697c658ec15599.json.gz": {
+      "sha256": "aebdb584176a89a40ced791333066e0a644da1c799f4755824109896e0ba43d0",
+      "decoded_sha256": "d8028f3cfa6472cece0d8756317acc2e0d29bc1bb4ec8815f7dda8b9e2112f76",
+      "bytes": 117
+    },
+    "0x6938b39d24949f15376b844419ecd1a02da9f32b.json.gz": {
+      "sha256": "5be0b2ea7bb59691c487c3796fb399e75b02a3b604e9a14b89b645b78bf6c7d8",
+      "decoded_sha256": "4c08b34c3c9cdcd7abe47acd2c6f2d240ec1bb6d7ce6b483142064e84b66815f",
+      "bytes": 116
+    },
+    "0x6978e7917dffd1f1815c858ca1528e51a3af1cb5.json.gz": {
+      "sha256": "3342b30c1920a38a2189433da9766cc69a0198f754b9fb47e6e487f7a0aa7d92",
+      "decoded_sha256": "05bbeda6171423e1cf588f255302ed48ebe91a2ab2bbb1f6de60672814e96f1f",
+      "bytes": 43118
+    },
+    "0x6ce8a609b7e76d22b3cf477c16453ef9ec9a188a.json.gz": {
+      "sha256": "911de2ce827e2fc418986f481fa0f21958859ca06262eb6ba3b3f135f0275315",
+      "decoded_sha256": "3255b3cdc30eb26ba3d518cc40df5ad50fb3d2cd5cf46eb573430c724b05a519",
+      "bytes": 118
+    },
+    "0x6e6f2ca77afaee5a22dc3cf0f903f39a548a82a6.json.gz": {
+      "sha256": "aaa09ddd62b805a863102230364cbbb5414d39e740ee2fed6ab883658781ea39",
+      "decoded_sha256": "7ee3ce17f642df1825f7a26c4bd24966507655814c0758e387b6b6b84c39bb71",
+      "bytes": 117
+    },
+    "0x6e8bc7cd0978397b06a14af2a8c31f5daeffea79.json.gz": {
+      "sha256": "f225b73418c36208cd7c3253f0ac5202dccb7411abbec6984f0f66369efd7280",
+      "decoded_sha256": "76cfd92e5a1e0fde6feffd60b2f6a6789b9106509dd9c5bc6097572a3498ad5b",
+      "bytes": 117
+    },
+    "0x7050a9abd4f06372247d19c39e5d718636f35fff.json.gz": {
+      "sha256": "caa1cb478d3d900aa73527f00cd522583dda540fde33a888a3115db1f7a6a7ac",
+      "decoded_sha256": "6a986063249e643f2dd1139c7542948f84d7e708945433d6dfac73a642fe3b86",
+      "bytes": 71968
+    },
+    "0x718a93d1de978be62a0d3f77c73db05add3a97e9.json.gz": {
+      "sha256": "8d786ef796481cb8a5a451c0a2e6f4ac945053edf3c903c8f1896eb6597c4def",
+      "decoded_sha256": "5c55d992e9a92199bc0afb16acf9224fe293830fb4c31862d3d4fdd25af5ae42",
+      "bytes": 117
+    },
+    "0x7717a7a245d9f950e586822b8c9b46863ed7bd7e.json.gz": {
+      "sha256": "e011c98da8b9e4ad62e1241ed7b99dd5150f4cfabaee16df005e65a7704a9301",
+      "decoded_sha256": "3c665f91485908d480a8718a14c10aec4e8c230111dbc0af9897a391c234c429",
+      "bytes": 905
+    },
+    "0x7824e1e7e38c91fb02d75c7938d9ff33a299c2d4.json.gz": {
+      "sha256": "6c783bd1cb45b04b9ddb3d6d9d9e83fdbca7e40254dd871c5fe9ec1f222fa670",
+      "decoded_sha256": "87ab3efbaa63547c07fe7f462e767350208565aac241116bec8f47bd05129fc0",
+      "bytes": 117
+    },
+    "0x78dce96236804d6958bf3c4598cf5efbc371629c.json.gz": {
+      "sha256": "c4ce8f19dbf011bba8d4eacfd41b3de7570bce75c91f69d075d073fed0f75d65",
+      "decoded_sha256": "8f9f0306166c83150a5e33c1a267981bbf14088370a8ff5491acc7a7aa110886",
+      "bytes": 116
+    },
+    "0x7aa11aafdfc46ebedbb3adabea180cce3607e8c2.json.gz": {
+      "sha256": "625b8fe85ddcab50d790c66610ead4ed6d16cfdab0a7540ddcbd50b3d989420b",
+      "decoded_sha256": "0dd52451f094a1fb7d3b6314ec8a16fc78814efe4ae5ca1e9b78d9be4d882e33",
+      "bytes": 59765
+    },
+    "0x7ac3ea09071c62bfb692fc7cbee87d778af78b55.json.gz": {
+      "sha256": "57966b32b116c0dcdd0ac380f184ff7c5424cbf023d98547d199be28dfee7aa0",
+      "decoded_sha256": "b63ca445b18da3c6d9659272fe29c09a1ccff2f84cf17b2a49e63eb435be8a10",
+      "bytes": 117
+    },
+    "0x7b458b536ed5f190ec4a7ce7dccb79be81dac940.json.gz": {
+      "sha256": "72e3dfddcb6ac61f19b205ee8f1db9c5ffa8fc7a88571ce1fedc3d4c286465b8",
+      "decoded_sha256": "be7c82b9db0610d13ea66310f1210c7cea767146396fa3f7ccd9095caa5524aa",
+      "bytes": 116
+    },
+    "0x7b7f72a28fe109fa703eeed7984f2a8a68fedee2.json.gz": {
+      "sha256": "d036039a4741d8a573282bf98ea3a5aa639f21b4ec28d339f25c884b3d7a55e7",
+      "decoded_sha256": "1c2b519e100815d6b3c349a2148a4e449e60985e4377c3a1dccb49edb5944937",
+      "bytes": 116
+    },
+    "0x7c4a5a6909300e04fa13a88771424f66f7dfbe50.json.gz": {
+      "sha256": "57f91aef6460e208ceb29f46854ba4abbf70488e4aeea3e6d2594972144e715e",
+      "decoded_sha256": "08c4d451f762d7e69a0e382baabdad4f2000b1c6db173b0fbbc13b869cb9c616",
+      "bytes": 5517
+    },
+    "0x7f5653ec60fc5d3c1373e423239184c94c5e0989.json.gz": {
+      "sha256": "838972d091e8474dd4510aab43d05c948c619229aae77e08aa20345e55c162a2",
+      "decoded_sha256": "e72d45ff8e2c705c3079366949ded7a089591c37c0528a56083d63c75c8e244a",
+      "bytes": 117
+    },
+    "0x80afc1341eda5c5a15432d3d83a2a2fd39897457.json.gz": {
+      "sha256": "158ae92553facb9a0d82299f63b5c0cb0eca2d73edb95e492491a45771acf75d",
+      "decoded_sha256": "792c60eb87655022b4cf8bbadad7c794ea2fa7909b14171e42ff16d18d35df3e",
+      "bytes": 116
+    },
+    "0x83636568c060ad391d907fda62730bed66e1fb69.json.gz": {
+      "sha256": "559a183fe7f32d6b0991449511f17ad6d4f2cba96293b8592e9da07419772b6d",
+      "decoded_sha256": "fb00dcd0b31d843cd49387d167ca89d05918fa999f6a9a7a9796bd24db01cc31",
+      "bytes": 116
+    },
+    "0x856f7cb643fca326f475039702b10a9cbc2bd31a.json.gz": {
+      "sha256": "e1554f07ce1285563bc9dfc136c05322bf3a1f332a886cff6ee3fff183513f94",
+      "decoded_sha256": "6cbd2282a0afc5791183288689db3b4964a43109b172ea199b7433d83dd0ad8b",
+      "bytes": 50708
+    },
+    "0x862f072fd06a2540dd18615c4fc0bd8e70f01382.json.gz": {
+      "sha256": "cfce2009ada365399244154c4d1f727c5f407d839a5d0a7e547aaa13e3ef46d7",
+      "decoded_sha256": "36e2fb2938806c7de37b81b21b5680f18a509b13914c1621502250cb78b61a3c",
+      "bytes": 117
+    },
+    "0x8655d3d8a3de5c1008360a4f93e1d8c8dd87dba2.json.gz": {
+      "sha256": "9d859c2332d418d5a5d23553409b1f57a1387489a0c8497f16c84d230e0ed439",
+      "decoded_sha256": "1c5ed9c20f62713c6a01ebaf27534af1d1e57512b79c02705d2d8d3ab882b651",
+      "bytes": 60921
+    },
+    "0x86e9a2e6895b5b0bf1daf9980f91694a35bece26.json.gz": {
+      "sha256": "68556f6a6f9adc743156c3550c2d74d08e0cbfbd3e7f14f09db22a4072f4f024",
+      "decoded_sha256": "e1b456ee3fcf7769dfffbcd8f0a91b5d0edeb0a8d4c1891a9e4862cae459c78d",
+      "bytes": 117
+    },
+    "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6.json.gz": {
+      "sha256": "4b7e0fdaf6c4b013d23ac68f9ee8929ccf3558a65958dd8f51f9df63188f8fac",
+      "decoded_sha256": "1c04ed84708a148dd70b624983c17be96a72566eb2639220e2710411bf292441",
+      "bytes": 116
+    },
+    "0x8f63c88fccae90c1f9eb8b447f830bce7b71dd74.json.gz": {
+      "sha256": "18d568144cbfeba1cca61e614fc7ae2556ae358aa3853a7c08da276287e8a5e8",
+      "decoded_sha256": "fc5a23070152d2a78441dcf2f89af603f590e6b8ca2d8ba91c93c6e98ea7635e",
+      "bytes": 116
+    },
+    "0x960b2f3e61ab9d559ebbf172a700f8d19a9f9a81.json.gz": {
+      "sha256": "a373f123445d37b0dd718024e11a3a283b9f38f295540c0e1d62a5d09d4c7d1b",
+      "decoded_sha256": "6d5b3a3ee85de4c4379125fb95a48929bca941012f35bc981a7d06843dddcde8",
+      "bytes": 60350
+    },
+    "0x9638e5f4f208e7e10aed7c785853ad150197058b.json.gz": {
+      "sha256": "6df2f7a50dbfd9fd45f66014c02f5fe47061cfda14fa29146e24ae8849284857",
+      "decoded_sha256": "a71a20b449c8a31ce4426475d96c5dea646e6b09166d1388554d5266713e7b02",
+      "bytes": 117
+    },
+    "0x97aa709982d7e50e646cfed305e85b924598112c.json.gz": {
+      "sha256": "f5f4666afce2e25eab5e4fb759d0cd6dd166564b849056300cb5603dff8b9afe",
+      "decoded_sha256": "fc70b3ccc36584417428de92b55b730a49fd0962a2aeae02657f160aebc7a4b4",
+      "bytes": 117
+    },
+    "0x9ebb4366da81ae7d48e2fdf93b21246d6fdf5afd.json.gz": {
+      "sha256": "901c644bbd4386d9deb7a81420014bbcf280b3cb7849d1994e0db9e82dce4746",
+      "decoded_sha256": "91275f3283cd4b80b08e8b591bab53cf988a586b90b32cca6b4dd3ed72679a2b",
+      "bytes": 116
+    },
+    "0xa09c0f245c46c6ca558f273c1f7365116b8ba9e4.json.gz": {
+      "sha256": "570a178ca2af46cff2cd9c79b760eade8de7237270e0952f10b19f016331e942",
+      "decoded_sha256": "318eb0bca76a8799546f5dc7269c2f074d67d7d9e998b52636bd61def4860032",
+      "bytes": 2350
+    },
+    "0xa1975952db8afa87bbe9c3b379937813f6d88888.json.gz": {
+      "sha256": "4b968b6ea48dd8aed717d3abde1e288f9c4b0ed3b11a92b5a395b3d3d988b2e6",
+      "decoded_sha256": "41b55154c2114e9990f409f85e2e03a44c9a1ae102b3265482dff0f1d61d408c",
+      "bytes": 117
+    },
+    "0xa1d22621c9b077ce4ac468908114a82b2de4a8db.json.gz": {
+      "sha256": "a9333d0f64077fe1a5416b8e5d80ed4c6a27594124b935cc90ab28ab9deb8c75",
+      "decoded_sha256": "de5d2b13544e1b0a689a83e68e5ee65ead6bf99e0c2f5a39507ec87f0544e0b0",
+      "bytes": 116
+    },
+    "0xa62b923a112d50d03e1e096bbd53422490dac104.json.gz": {
+      "sha256": "fe9b80ef6c4f764f8ac0cea9f07324577d8d3a7cbf99d0c5345d9a253543fe5b",
+      "decoded_sha256": "3772840dfe8df70f0b47a1e8d8173565f3dc7d558f376e39c1defabbcd3de2f1",
+      "bytes": 115
+    },
+    "0xa886bc185eb8d0e4367932c83c59c213f623bd98.json.gz": {
+      "sha256": "7986b8065e5b007a01052d35cd06542d46b7b749e59eea48114dfe73dec84ee1",
+      "decoded_sha256": "02b29339f3f608f7390cd2c2eab96b03ebbf475f5080639eac3678ab2535fb23",
+      "bytes": 118
+    },
+    "0xb2a7131040bd752a98861dc8b2089a5ccf767836.json.gz": {
+      "sha256": "0e53ca734089f1ec97b5e0f36241529c507573a2dec153d8968108f6fcfbe9be",
+      "decoded_sha256": "03c384090a6c09e0f80731a73dd41b7e9affe7933a4963f9fe4c55773cc6d7a7",
+      "bytes": 117
+    },
+    "0xbbfb6566ad064c233af6314aeb1eee4c26a5f921.json.gz": {
+      "sha256": "150d78f763f88d84c573da39c09508ddbe6fb86862a082e2027b2344dbf1e0f6",
+      "decoded_sha256": "51e35ea850c72e1527bd3f853125f75e0d7d67641075cde2bbb3071f2e70f171",
+      "bytes": 65259
+    },
+    "0xbc0bd2de9231d951f64c2980bfb38fc73ec4122b.json.gz": {
+      "sha256": "cc769957569e09fba9b4f5b77301852f4a5adaca756f8edd6cb03a69478969b6",
+      "decoded_sha256": "464c6508217956f93392816b7b637ba972cead5ea643e9f7964e1057681b5e42",
+      "bytes": 61986
+    },
+    "0xbcd420d13362532756c968f663f96ba95e240dd2.json.gz": {
+      "sha256": "6976bdb06c04a3561eca54b7f91dc0f07379082b2d0d2cbe96a5bb231002336a",
+      "decoded_sha256": "60eaed1d97e7535a7e5d932c6f5680ada5f90057aa632432701720db0dd8f944",
+      "bytes": 61292
+    },
+    "0xc176034d3f88c427320aee65d1eeb4740ac439d6.json.gz": {
+      "sha256": "b3dd6b147b173cfb8a9c3ff1a64b1ba48122fc269f89fb17edca0aa6d24b8ba1",
+      "decoded_sha256": "95cb2d499c26454d4101d4543824140a499a2aafbe4851f1fb4a67ffbfca24c4",
+      "bytes": 117
+    },
+    "0xc5e9aa7c58d6ecc12922cc263a3d6fd8cd901e6e.json.gz": {
+      "sha256": "0d445d7e62ff1153143a725e516493dc2ecb0418f75e4e0f7628345b2ba333a4",
+      "decoded_sha256": "44fdf47dbdfebcbfa9b91bcf63d90ed2b3d773eb01b5b16421b84436adeba329",
+      "bytes": 59706
+    },
+    "0xcdbbf8cbb7d6c0815323c115014c58c65f9af002.json.gz": {
+      "sha256": "85982257e8e2169a0fbd0d99dbd35e13beffc6c89ab3fd40929f722557211ac1",
+      "decoded_sha256": "833a3b428e77cd31bb8c154f1abaa5bf319f58005a5695ba634fae6cd22bb340",
+      "bytes": 117
+    },
+    "0xcf3f419d08a5bdc2c6e5fbd9ad70904c5420f95f.json.gz": {
+      "sha256": "f7b896855c2b50a3b7128a6c837d3c591b348276cc5bf437630fa509a9320087",
+      "decoded_sha256": "1f30bb25d600c1bfe2bea91f638c59bcdcc9bf1f3affb29e90b557e4db44ddb3",
+      "bytes": 117
+    },
+    "0xd391633140d10d301c14c333b40fdf7da2e60325.json.gz": {
+      "sha256": "796a0351e6899651d32b68700d6a02ec1395f5e27375eddc299b531107394df3",
+      "decoded_sha256": "07ae81f9b54882a4fb3e2458eb30ac13009b88cbf409807aad737426511ff74b",
+      "bytes": 116
+    },
+    "0xd3b1b5299cd4d6725617cb485542562bb005a888.json.gz": {
+      "sha256": "a37fcc8c7f57c8181e17e3f4c80d7a1a504b1b447833eced426b1f379e41df15",
+      "decoded_sha256": "89e8bef1e357d17790aaf1f4ec9ded6ed05c310fb97724e268d2d9ef80cbe4b4",
+      "bytes": 11660
+    },
+    "0xd7b214eb4cc1b7f631aac7d8f64e0ec9fd3dc9c7.json.gz": {
+      "sha256": "35c55e8652e3a0eb5c5dd46b16dc0f5fea4f3b90a9f1d776fcd509a215d480c3",
+      "decoded_sha256": "162882f2aa02a99d1a1b5ba127db480c42b61fd5c421027ab462927ba7ee13e9",
+      "bytes": 117
+    },
+    "0xdc7e13cd6a262102551ce4533a893f5ee106636e.json.gz": {
+      "sha256": "16b6de196fc27af4526b199af37faa41b50bd1bc5702ef0f03bb834265303eb1",
+      "decoded_sha256": "2b263474ac0d69664f4e3a26dd8726d3ccab62ea179f0b6a9ba8817925586081",
+      "bytes": 116
+    },
+    "0xdc8baab4006a13f12d2db20c812c18af63a19fbf.json.gz": {
+      "sha256": "122d91da9a9bd7c0423c7109db802e5fefef0bb2fb487cdeca04fb348c2a91dc",
+      "decoded_sha256": "2afcd234d118c3f348cf63215f79f1d0b676548ef542f25d6ceb5c463a6610e0",
+      "bytes": 117
+    },
+    "0xdd53c5297309130ab5fe5623dc905752e3342b13.json.gz": {
+      "sha256": "a166fb47923c11acc9c282ad0e7f1118a266ca097c94ae3f55c80092ed2c8f4f",
+      "decoded_sha256": "2a64774278b925ba3764360829510794bbc309a21fe7aedce68448770a2c034d",
+      "bytes": 117
+    },
+    "0xe1b0fa4806a68725d7aac04639e53e0aadf50fd0.json.gz": {
+      "sha256": "d3b10e58edcc7f35719c088dde15af2a760d47f040f2b2bdf27e2483967d0039",
+      "decoded_sha256": "8629bfba52f876f862401b7e7f5e96e84749e479dcae64c95f4017674463eefb",
+      "bytes": 58832
+    },
+    "0xe2b87289c7396c63afe05ec76248aec70e41cf91.json.gz": {
+      "sha256": "d4ae9f692bd4ae187b938c31786ae5a6c8d0a591a6be7b779ca0c42f9fe1650f",
+      "decoded_sha256": "ce787f8fc0cd9fd3130bcc268a7c565567051c73f6e973a6b5e3dedd8483e1c7",
+      "bytes": 116
+    },
+    "0xe3e7ca378a902c3535f014b1da15022835a47e95.json.gz": {
+      "sha256": "00558c038f188730a7cf7dd0a7edacbf4cec5ac91a51e248c7fc4bfd2ea7215b",
+      "decoded_sha256": "9e8ed5010e239edfdebc426b34b4aca9aa0470cc5e4363e035156c5a76f64dde",
+      "bytes": 117
+    },
+    "0xe642e0504b53c3d06438e57b90bc8fca6f2fa603.json.gz": {
+      "sha256": "4070fb355ce61b3023d489e20a5fa1838e75cfa740b6835d351f4283afc0a6fb",
+      "decoded_sha256": "947adc37bfebaacce0eba034c73bfd696bc5b2b9ad2e049d31c47a0b9265fbb8",
+      "bytes": 65368
+    },
+    "0xeb473272fe8aff61d97fb974422966391f3c25be.json.gz": {
+      "sha256": "d3e523d25c8ee02d989dc446ce522c74b573e6444cbe9482fd88004e788e544a",
+      "decoded_sha256": "c8b4661dd0885f7f6cb5dec1aa64be87b2b6f0af9ebff9f807d849239f1a9f42",
+      "bytes": 116
+    },
+    "0xec3cd467fb087cff6af95e5b286712b2859aa707.json.gz": {
+      "sha256": "78630d78b8e47849d198e0e821aec9d4fd76fff4fe4e2f25be8275a033d4cd95",
+      "decoded_sha256": "6cbf7fd0c13b32b41a5528e3c656179d8911f613eca42f4c4bd8c7c4c7497bbd",
+      "bytes": 117
+    },
+    "0xf065d4c282c188990d37efc1033685474c6ddaaf.json.gz": {
+      "sha256": "6f045fe66b184c07ed26366af3ab9a9d6524e06cf3857efeca992c354405afda",
+      "decoded_sha256": "51e24034716ff5c21a340b5e480435ecbaa0a872d90d743609fa1d8504ad4afd",
+      "bytes": 117
+    },
+    "0xfe1fccb7f954050a4b0ca4bea43c8287b190c55a.json.gz": {
+      "sha256": "7355c0fc1d289ba8ca005e79b8bc2b5fd11fb56f7340e8a3a296cf7f3b1ff252",
+      "decoded_sha256": "29184d9986fd03e81225f34d0a1dc357cc3833859df856b1f586daf8fda45be3",
+      "bytes": 117
+    },
+    "0xfeee942a06d2f8012823ccde7bf7bcbcaa29a09f.json.gz": {
+      "sha256": "954159e40552b2b2afe547fca1c7a704e2f8b9a84e4da5e9b05e9a883335c590",
+      "decoded_sha256": "c54c8a199107c412789c7c2876737a8f90f4b93a7c5b63f2bb22bc8bce3a5bdd",
+      "bytes": 117
+    }
+  },
+  "limits": "Recent-trade participants are a bounded activity sample, not market-wide discovery. Size is not predictive performance. Parent remaining size and independent ownership are unknown. Negative discovery does not prove no large TWAP exists."
+}

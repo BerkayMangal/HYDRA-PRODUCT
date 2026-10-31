@@ -181,6 +181,25 @@ tanım için yeni deney gerekir. İzleme ekranı worker başlatmaz veya sonuç �
 Kurulum, duruş bütçesi, çevrimdışı yeniden üretim ve kaydedilmiş kanıt arşivi
 bu yeni raporda açıklanır.
 
+Sonraki [ekonomik inceleme](ALPHA_REVIEW_20261031_TR.md), kayıtlı fiyat hareketini
+spread ve varsayılan ücret/kayma etkisinden ayırır. Ekrandaki ek analiz için
+`HYDRA_FORWARD_TRIAL` mevcut deney dizinine ayarlanır; API bu SQLite'ı salt
+okunur snapshot transaction'ında açar. Sayfa çağrıları kaynak API sorgulamaz ve
+işlem sonuçlandırmaz. Bu ayar yoksa analiz `not_configured`; bozuk veya eksik
+deneyde `unavailable` döner. Başka bir geçmiş başarı raporu kullanılmaz.
+
+```bash
+python -m research.lab.forward_diagnostics --trial <mevcut-deney> --out /tmp/forward-economics.json
+python -m research.lab.twap_discovery --out <yeni-kaynak-tarama-dizini>
+python -m research.lab.twap_discovery --audit --out <mevcut-kaynak-tarama-dizini>
+python -m research.lab.funding_probe --out <yeni-fonlama-tarama-dizini>
+python -m research.lab.funding_probe --audit --out <mevcut-fonlama-tarama-dizini>
+```
+
+İki tarama ilk ağ çağrısından önce tanım yazar, ham yanıtları hash'li arşivler
+ve var olan çıktı dizinini değiştirmeyi reddeder. İlk tarihsel TWAP yanıtı yeni
+ileriye dönük sinyal değildir. Kaynak taraması başarısı tahmin başarısı değildir.
+
 ## Rakip erişimi ve yayın durumu
 
 [Rakip analizi](COMPETITORS_TR.md) Nansen'in resmî açık referansları ile bağımsız
