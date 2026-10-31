@@ -163,7 +163,7 @@ class SignalLedger:
                     or not 0 < bid < ask or bid_size <= 0 or ask_size <= 0):
                 raise ValueError('Stale, future, crossed or empty quote')
             row = {'event_ms': int(event), 'observed_ms': observed_ms, 'bid': bid, 'ask': ask,
-                   'bid_size': bid_size, 'ask_size': ask_size, 'mid': (bid + ask) / 2}
+                   'bid_size': bid_size, 'ask_size': ask_size, 'mid': bid + (ask - bid) / 2}
         except (KeyError, IndexError, TypeError, ValueError):
             valid, reason = False, 'invalid_or_stale_quote'
         self.db.execute('INSERT INTO quotes(observed_ms,event_ms,valid,reason,payload,raw_gzip,sha256) VALUES(?,?,?,?,?,?,?)',
@@ -259,6 +259,8 @@ class SignalLedger:
             reasons.append('late_slice_in_window')
         eligible = [(row['wallet'], json.loads(row['payload'])) for row in fills if row['eligibility'] == 'eligible']
         net = sum(row['size'] if row['side'] == 'B' else -row['size'] for _, row in eligible)
+        if not math.isfinite(net):
+            reasons.append('invalid_flow_arithmetic')
         keys = sorted((wallet, row['coin'], row['trade_id']) for wallet, row in eligible) if not reasons else []
         return {'window_start_ms': start, 'window_end_ms': end, 'net_btc_base': net if not reasons else None,
                 'eligible_slices': len(eligible), 'active_accounts': len({wallet for wallet, _ in eligible}),
@@ -318,6 +320,9 @@ class SignalLedger:
                 quote = self.reference(decision['entry_due_ms'], now)
                 if quote:
                     quantity = self.spec['notional_usdt'] / (quote['ask'] * (1 + slip) * (1 + fee))
+                    if not math.isfinite(quantity) or quantity <= 0:
+                        self.outcome(row['id'], now, 'arithmetic_unknown', {'strategy': None, 'control': None})
+                        continue
                     if quote['ask_size'] < quantity:
                         self.outcome(row['id'], now, 'entry_depth_unknown', {'strategy': None, 'control': None})
                         continue
@@ -340,6 +345,9 @@ class SignalLedger:
                 net = (entry['quantity'] * exit_quote['bid'] * (1 - slip) * (1 - fee)
                        / self.spec['notional_usdt'] - 1)
                 observed_mids = [json.loads(r[0])['mid'] / original['mid'] - 1 for r in self.db.execute('SELECT payload FROM quotes WHERE valid=1 AND observed_ms BETWEEN ? AND ?', (original['observed_ms'], exit_quote['observed_ms']))]
+                if not math.isfinite(net) or any(not math.isfinite(value) for value in observed_mids):
+                    self.outcome(row['id'], now, 'arithmetic_unknown', {'strategy': None, 'control': None})
+                    continue
                 trade = {'modeled_net_return': net, 'modeled_pnl_usdt': net * self.spec['notional_usdt'],
                          'gross_quote_move': exit_quote['bid'] / original['ask'] - 1,
                          'sampled_mfe': max(observed_mids, default=0),
@@ -354,9 +362,10 @@ class SignalLedger:
 
     def report(self, now=None, runtime_state='collecting'):
         now = int(self.clock() * 1000) if now is None else now
-        decisions = [json.loads(r[0]) for r in self.db.execute('SELECT payload FROM decisions ORDER BY id')]
+        decision_rows = self.db.execute('SELECT id,payload FROM decisions ORDER BY id').fetchall()
+        decisions = [json.loads(row['payload']) for row in decision_rows]
         outcomes = [(r['status'], json.loads(r['payload'])) for r in self.db.execute('SELECT status,payload FROM outcomes ORDER BY decision_id')]
-        last = self.db.execute('SELECT payload FROM batches ORDER BY id DESC LIMIT 1').fetchone()
+        last = self.db.execute('SELECT id,observed_ms,payload FROM batches ORDER BY id DESC LIMIT 1').fetchone()
         last_quote = self.db.execute('SELECT MAX(observed_ms) FROM quotes WHERE valid=1').fetchone()[0]
         completed = [body for status, body in outcomes if status == 'completed']
         unknown = sum(status not in ('completed', 'flat', 'abstain') for status, _ in outcomes)
@@ -370,13 +379,26 @@ class SignalLedger:
         paired_differences = [(body['strategy']['modeled_net_return'] if body['strategy'] else 0)
                               - (body['control']['modeled_net_return'] if body['control'] else 0)
                               for body in completed]
+        recent = []
+        for record in decision_rows[-12:]:
+            decision = json.loads(record['payload'])
+            outcome = self.db.execute('SELECT status,payload FROM outcomes WHERE decision_id=?', (record['id'],)).fetchone()
+            body = json.loads(outcome['payload']) if outcome else {}
+            recent.append({**decision, 'decision_id': record['id'],
+                           'features': {k: v for k, v in decision['features'].items() if k != 'input_fill_keys'},
+                           'outcome_status': outcome['status'] if outcome else 'pending',
+                           'strategy_modeled_net_return': body.get('strategy', {}).get('modeled_net_return') if body.get('strategy') else None,
+                           'control_modeled_net_return': body.get('control', {}).get('modeled_net_return') if body.get('control') else None})
+        from collections import Counter
+        abstention_reasons = Counter(reason for decision in decisions for reason in decision['reasons'])
         return {'schema_version': 1, 'status': 'prospective_research_only', 'orders_enabled': False,
                 'alpha_validated': False, 'protocol_sha256': self.protocol_hash,
                 'created_source_commit': self.protocol.get('created_source_commit'),
                 'started_at': datetime.fromtimestamp(self.started_ms / 1000, timezone.utc).isoformat(),
                 'generated_at': datetime.fromtimestamp(now / 1000, timezone.utc).isoformat(),
                 'runtime_state': runtime_state, 'last_valid_quote_ms': last_quote,
-                'last_batch': json.loads(last[0]) if last else None,
+                'last_batch': json.loads(last['payload']) if last else None,
+                'last_batch_features': {k: v for k, v in self.source_features(last['id'], last['observed_ms']).items() if k != 'input_fill_keys'} if last else None,
                 'account_count': len(self.wallets), 'decisions': len(decisions),
                 'abstentions': sum(d['status'] == 'abstain' for d in decisions),
                 'valid_flat_decisions': sum(d['status'] == 'decision' and not(d['strategy_long'] or d['control_long']) for d in decisions),
@@ -385,9 +407,8 @@ class SignalLedger:
                 'request_errors': self.db.execute('SELECT COUNT(*) FROM requests WHERE ok=0').fetchone()[0],
                 'capped_responses': self.db.execute('SELECT COUNT(*) FROM requests WHERE capped=1').fetchone()[0],
                 'invalid_quotes': self.db.execute('SELECT COUNT(*) FROM quotes WHERE valid=0').fetchone()[0],
-                'results': stats, 'recent_decisions': [
-                    {**d, 'features': {k: v for k, v in d['features'].items() if k != 'input_fill_keys'}}
-                    for d in decisions[-12:]],
+                'results': stats, 'recent_decisions': recent,
+                'abstention_reason_counts': dict(abstention_reasons),
                 'paired_completed_events': len(paired_differences),
                 'paired_mean_net_difference': sum(paired_differences) / len(paired_differences) if paired_differences else None,
                 'assumptions': {k: self.spec[k] for k in ['notional_usdt', 'fee_per_side_bps', 'slippage_per_side_bps', 'entry_latency_seconds', 'hold_seconds']},
