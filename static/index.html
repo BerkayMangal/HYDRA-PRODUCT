@@ -104,6 +104,8 @@ body{min-height:100dvh;overflow-x:hidden}
 .cost-form input,.cost-form button{padding:8px;border:1px solid var(--brd);border-radius:6px;background:var(--card2);color:var(--t1);font:12px var(--mono);width:100%}
 .cost-form button{width:auto;cursor:pointer}
 #cost-panel.open{max-height:1000px}
+#forward-panel.open{max-height:1100px}
+#forward-panel th{padding:7px 12px 7px 0}
 .coll{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px}
 .coll-d{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .coll-d.ok{background:var(--g)}.coll-d.err{background:var(--r)}.coll-d.stl{background:var(--a)}
@@ -191,6 +193,12 @@ body{min-height:100dvh;overflow-x:hidden}
     <div id="cost-summary" style="font-size:11px;color:var(--t2);line-height:1.6" aria-live="polite">Loading recorded movements…</div>
     <div style="overflow:auto;max-height:250px;margin-top:10px"><table style="width:100%;font-size:10px;text-align:left;border-collapse:collapse;white-space:nowrap"><thead style="color:var(--t3)"><tr><th>Recorded hypothesis</th><th>Horizon</th><th>Groups</th><th>Non-overlap</th><th>Gross avg. bp</th><th>Less costs bp</th></tr></thead><tbody id="cost-rows"></tbody></table></div>
     <div style="font-size:10px;color:var(--t3);line-height:1.6;margin-top:10px">Defaults are illustrative. Funding is an allowance for each horizon, not measured payments. Overlapping observations and positive differences do not establish alpha.</div>
+  </div></div>
+  <div class="acc-h" onclick="tog(this)"><div class="acc-t">TWAP Forward Trial</div><div class="acc-arr">▾</div></div>
+  <div class="acc-b" id="forward-panel"><div class="acc-in">
+    <div id="forward-summary" style="font-size:11px;color:var(--t2);line-height:1.7;white-space:pre-line" aria-live="polite">Loading recorded forward trial…</div>
+    <div style="overflow:auto;max-height:270px;margin-top:12px"><table style="width:100%;font-size:10px;text-align:left;border-collapse:collapse;white-space:nowrap"><thead style="color:var(--t3)"><tr><th>Recorded</th><th>TWAP</th><th>Momentum control</th><th>Outcome</th><th>Reason</th><th>TWAP model net</th><th>Control model net</th></tr></thead><tbody id="forward-rows"></tbody></table></div>
+    <div style="font-size:10px;color:var(--t3);line-height:1.6;margin-top:10px">Prospective paper event study. Quote references are not guaranteed fills. Missing outcomes are unknown; flat decisions are not winning trades. Alpha remains unproven; no orders.</div>
   </div></div>
   <div class="acc-h" onclick="tog(this)"><div class="acc-t">Wallet &amp; Data Tools</div><div class="acc-arr">▾</div></div>
   <div class="acc-b"><div class="acc-in" style="max-height:390px;overflow:auto"><div style="font-size:10px;color:var(--t3);margin-bottom:10px">Source review · service coverage and pricing trials pending</div><div id="research-tools">Loading sources…</div></div></div>
@@ -326,6 +334,38 @@ async function loadCosts(){
   }catch(e){if(request===costRequest){summary.textContent='Cost scenario unavailable; check costs are between 0 and 100 bp.';tbody.replaceChildren()}}
 }
 $('cost-form').addEventListener('submit',event=>{event.preventDefault();loadCosts()});
+async function pollForward(){
+  const el=$('forward-summary'),tbody=$('forward-rows');
+  try{
+    const data=await readApi('/api/research/forward');tbody.replaceChildren();
+    if(data.status!=='prospective_research_only'){el.textContent=data.status==='not_started'?'No forward trial is running here.':'Forward report unavailable.';return}
+    const trade=data.results.strategy,control=data.results.control;
+    const pct=value=>value==null?'unknown':(value*100).toFixed(3)+'%';
+    const reasons={coverage_warmup:'15m source history incomplete',source_error_in_window:'Source error in the window',source_poll_gap:'Source gap',current_source_unavailable:'Current source unavailable',capped_history_does_not_reach_window_start:'Recent-list limit hides part of window',late_slice_in_window:'Late source events',invalid_flow_arithmetic:'Invalid source amounts',momentum_reference_unavailable:'Momentum quotes unavailable',previous_paired_event_pending:'Previous event still pending'};
+    const explain=values=>values.map(value=>reasons[value]||value).join('; ');
+    const lines=['Recorded report · '+new Date(data.generated_at).toLocaleString(),
+      'Collection: '+data.collection_state+' · current source reads '+(data.source_current_healthy?'fresh':'not ready'),
+      'Trial started '+new Date(data.started_at).toLocaleString()+' · '+data.account_count+' frozen accounts',
+      'Protocol '+data.protocol_sha256.slice(0,16)+'… · alpha unproven',
+      data.decisions+' decisions · '+data.abstentions+' quality/pending abstentions · '+data.valid_flat_decisions+' valid paired-flat decisions',
+      'TWAP: '+trade.completed_trades+' completed model trades · mean net '+pct(trade.mean_modeled_net_return),
+      'Momentum control: '+control.completed_trades+' completed model trades · mean net '+pct(control.mean_modeled_net_return),
+      data.pending_events+' pending events · '+data.unknown_active_outcomes+' unknown active outcomes',
+      'Source history: '+data.request_errors+' request errors · '+data.capped_responses+' capped responses · '+data.invalid_quotes+' rejected quotes'];
+    const features=data.last_batch_features;
+    if(features)lines.push('Latest flow-window gate: '+(features.reasons.length?explain(features.reasons):'observed')+' · '+features.eligible_slices+' observed eligible BTC slices · '+features.active_accounts+' active sampled account'+(features.active_accounts===1?'':'s')+' · net sampled BTC '+(features.net_btc_base==null?'unknown':features.net_btc_base.toFixed(8)));
+    const costs=data.assumptions;
+    lines.push('Assumed costs: '+costs.fee_per_side_bps+' bp fee + '+costs.slippage_per_side_bps+' bp slippage per side; observed spread included. Fixed $'+costs.notional_usdt+' event size.');
+    lines.push(data.review_sample_thresholds_met?'Sample thresholds met for further review; no automatic promotion.':'Review requires at least 100 completed strategy trades and 14 elapsed days, with no unknown active outcomes.');
+    el.textContent=lines.join('\n');
+    const action=value=>value===true?'LONG':value===false?'FLAT':'UNKNOWN';
+    for(const row of [...data.recent_decisions].reverse()){
+      const tr=document.createElement('tr');
+      [new Date(row.observed_ms).toLocaleString(),action(row.strategy_long),action(row.control_long),row.outcome_status,explain(row.reasons)||'Observed',pct(row.strategy_modeled_net_return),pct(row.control_modeled_net_return)].forEach(value=>{const td=document.createElement('td');td.textContent=value;td.style.padding='7px 10px 7px 0';tr.appendChild(td)});
+      tbody.appendChild(tr);
+    }
+  }catch(e){el.textContent='Forward report temporarily unavailable.';tbody.replaceChildren()}
+}
 async function poll(){
   try{
     const [sigR,statR,pulseR,decR,evR]=await Promise.allSettled([
@@ -419,6 +459,7 @@ pollResearch();setInterval(pollResearch,60000);
 pollWallets();setInterval(pollWallets,30000);
 loadResearchTools();
 loadCosts();setInterval(loadCosts,60000);
+pollForward();setInterval(pollForward,30000);
 })();
 </script>
 </body>

@@ -170,6 +170,13 @@ def api_research_costs(
         body = {"status": "unavailable", "orders_enabled": False,
                 "alpha_validated": False, "rows": []}
     return JSONResponse(content=body, headers={"Cache-Control": "no-store"})
+
+@app.get("/api/research/forward")
+def api_forward_research():
+    from research.forward_summary import load_forward_summary
+    return JSONResponse(content=load_forward_summary(), headers={"Cache-Control": "no-store"})
+
+
 @app.get("/api/ml")
 async def api_ml():
     if _ml_cfg is not None and getattr(_ml_cfg, "enabled", False) is False:
