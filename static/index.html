@@ -104,7 +104,7 @@ body{min-height:100dvh;overflow-x:hidden}
 .cost-form input,.cost-form button{padding:8px;border:1px solid var(--brd);border-radius:6px;background:var(--card2);color:var(--t1);font:12px var(--mono);width:100%}
 .cost-form button{width:auto;cursor:pointer}
 #cost-panel.open{max-height:1000px}
-#forward-panel.open{max-height:1100px}
+#forward-panel.open{max-height:1600px}
 #forward-panel th{padding:7px 12px 7px 0}
 .coll{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px}
 .coll-d{width:6px;height:6px;border-radius:50%;flex-shrink:0}
@@ -198,6 +198,7 @@ body{min-height:100dvh;overflow-x:hidden}
   <div class="acc-b" id="forward-panel"><div class="acc-in">
     <div id="forward-summary" style="font-size:11px;color:var(--t2);line-height:1.7;white-space:pre-line" aria-live="polite">Loading recorded forward trial…</div>
     <div style="overflow:auto;max-height:270px;margin-top:12px"><table style="width:100%;font-size:10px;text-align:left;border-collapse:collapse;white-space:nowrap"><thead style="color:var(--t3)"><tr><th>Recorded</th><th>TWAP</th><th>Momentum control</th><th>Outcome</th><th>Reason</th><th>TWAP model net</th><th>Control model net</th></tr></thead><tbody id="forward-rows"></tbody></table></div>
+    <div id="forward-economics" style="font-size:11px;color:var(--t2);line-height:1.7;white-space:pre-line;margin-top:14px;padding-top:12px;border-top:1px solid var(--brd)" aria-live="polite">Loading recorded economics…</div>
     <div style="font-size:10px;color:var(--t3);line-height:1.6;margin-top:10px">Prospective paper event study. Quote references are not guaranteed fills. Missing outcomes are unknown; flat decisions are not winning trades. Alpha remains unproven; no orders.</div>
   </div></div>
   <div class="acc-h" onclick="tog(this)"><div class="acc-t">Wallet &amp; Data Tools</div><div class="acc-arr">▾</div></div>
@@ -366,6 +367,28 @@ async function pollForward(){
     }
   }catch(e){el.textContent='Forward report temporarily unavailable.';tbody.replaceChildren()}
 }
+async function pollForwardEconomics(){
+  const el=$('forward-economics');
+  try{
+    const data=await readApi('/api/research/forward/diagnostics');
+    if(data.status!=='recorded_forward_diagnostics'){el.textContent='Recorded economics unavailable here.';return}
+    const bp=value=>value==null?'unknown':value.toFixed(2)+' bp';
+    const money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
+    const lines=['Economics snapshot · '+new Date(data.recorded_through).toLocaleString()+(data.is_stale?' · stale record':''),
+      'TWAP completed events: '+data.results.strategy.completed_trades];
+    const mean=data.results.strategy.mean;
+    lines.push('Average mid-price move '+bp(mean.gross_mid_return_bps)+' · observed spread drag '+bp(mean.spread_drag_bps),
+      'Assumed fee/slippage drag '+bp(mean.assumed_fee_slippage_drag_bps)+' · model net '+bp(mean.modeled_net_return_bps),
+      'Momentum control: '+data.results.control.valid_flat_decisions+' valid flat decisions · '+data.results.control.completed_trades+' completed trades');
+    const activity=data.signal_activity;
+    lines.push('Observed activity window ends '+(activity.window_end_ms==null?'unknown':new Date(activity.window_end_ms).toLocaleString())+' · '+(activity.source_window_usable?'source-window checks passed':'source window incomplete'),
+      'Sampled signed activity '+money(activity.account_side_signed_notional_usd)+' · '+activity.active_accounts+' active accounts · '+activity.observed_parent_ids+' observed parent IDs',
+      'Largest account share '+(activity.largest_account_share==null?'unknown':(activity.largest_account_share*100).toFixed(1)+'%')+' · effective account count '+(activity.effective_account_count==null?'unknown':activity.effective_account_count.toFixed(2)));
+    if(activity.active_accounts===1)lines.push('All observed flow comes from one account; this does not show broad market agreement.');
+    lines.push('Descriptive diagnostics; sampled accounts may share owners. Tiny samples and positive gross moves do not validate alpha.');
+    el.textContent=lines.join('\n');
+  }catch(e){el.textContent='Recorded economics temporarily unavailable.'}
+}
 async function poll(){
   try{
     const [sigR,statR,pulseR,decR,evR]=await Promise.allSettled([
@@ -460,6 +483,7 @@ pollWallets();setInterval(pollWallets,30000);
 loadResearchTools();
 loadCosts();setInterval(loadCosts,60000);
 pollForward();setInterval(pollForward,30000);
+pollForwardEconomics();setInterval(pollForwardEconomics,30000);
 })();
 </script>
 </body>

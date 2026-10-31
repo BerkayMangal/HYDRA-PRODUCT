@@ -28,6 +28,8 @@ def concentration(fills):
         parents.add((wallet, row['twap_id']))
     rows = sorted(accounts.values(), key=lambda item: (-item['gross_notional_usd'], item['wallet']))
     gross = sum(row['gross_notional_usd'] for row in rows)
+    if not math.isfinite(gross):
+        raise ValueError('Nonfinite activity arithmetic')
     shares = [row['gross_notional_usd'] / gross for row in rows] if gross else []
     net_base = sum(row['net_base'] for row in rows)
     return {'active_accounts': len(rows), 'observed_parent_ids': len(parents),

@@ -1,4 +1,8 @@
 import pytest
+from fastapi.testclient import TestClient
+
+import dashboard
+from collectors.hyperliquid_research import PublicHyperliquid
 
 from research.forward_diagnostics import concentration, diagnose_trial, load_diagnostics, trade_economics
 from tests.test_forward_ledger import ready_trial, quote
@@ -43,6 +47,7 @@ def test_recorded_diagnostics_keep_flat_control_separate_and_do_not_settle(tmp_p
     assert pending['results']['control']['valid_flat_decisions'] == 1
     assert pending['results']['control']['mean']['modeled_net_return_bps'] is None
     assert ledger.db.total_changes == before
+    assert ledger.db.execute('SELECT COUNT(*) FROM outcomes').fetchone()[0] == 0
     ledger.quote(quote(1963000,100,102),1963000); ledger.advance(1963000)
     ledger.quote(quote(2864000,104,106),2864000); ledger.advance(2864000)
     result = diagnose_trial(ledger.directory)
@@ -61,3 +66,22 @@ def test_diagnostics_missing_or_invalid_trial_never_falls_back(tmp_path, monkeyp
     monkeypatch.setenv('HYDRA_FORWARD_TRIAL',str(tmp_path/'absent'))
     assert load_diagnostics()['status'] == 'unavailable'
     assert not (tmp_path/'absent').exists()
+
+
+def test_diagnostics_api_is_read_only_and_preserves_recorded_time(tmp_path, monkeypatch):
+    ledger, clock, batch_id = ready_trial(tmp_path)
+    ledger.decide(batch_id,1961000)
+    monkeypatch.setenv('HYDRA_FORWARD_TRIAL',str(ledger.directory))
+    def forbidden(*args,**kwargs):
+        raise AssertionError('Diagnostics must never query upstream')
+    monkeypatch.setattr(PublicHyperliquid,'query',forbidden)
+    before=ledger.db.total_changes
+    with TestClient(dashboard.app) as client:
+        response=client.get('/api/research/forward/diagnostics')
+    assert response.status_code==200 and response.headers['cache-control']=='no-store'
+    body=response.json()
+    assert body['results']['strategy']['pending_active']==1
+    assert body['is_stale'] is True
+    assert body['alpha_validated'] is False
+    assert ledger.db.total_changes==before
+    ledger.close()
