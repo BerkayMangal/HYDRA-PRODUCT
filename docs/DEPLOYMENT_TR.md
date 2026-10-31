@@ -1,5 +1,46 @@
 # Canlı izleme sürümü — 30 Ekim 2026
 
+## GitHub üzerinden otomatik yayın — 31 Ekim
+
+`.github/workflows/deploy-railway.yml`, `main` dalındaki **Tests** akışı başarılı
+olunca aynı commit'i yayınlar. Fork/PR testleri dağıtım başlatmaz. Manuel Actions
+çalıştırması yalnız main içindir ve önce testleri çalıştırır. GitHub production
+ortamının mevcut koruma/inceleme kuralları korunur.
+
+Akış repository veya GitHub `production` environment secrets içindeki
+`RAILWAY_TOKEN` (proje/ortam token'ı) ya da `RAILWAY_API_TOKEN` (hesap/workspace
+token'ı) ile çalışır. Token yoksa kimlik doğrulama adımı açık hata verir;
+başarılı veya yayında gibi göstermez. Token değerleri log/artifact'a yazılmaz.
+`RAILWAY_PROJECT_ID`, `RAILWAY_ENVIRONMENT_ID`, `RAILWAY_SERVICE_ID` isteğe bağlı
+Variables veya Secrets olarak kapsamı daraltır; proje token'ında genelde gerekmez.
+
+Yayıncı yalnız `web-production-57fc0.up.railway.app` alan adını taşıyan mevcut
+servisi seçer. Eşleşme sıfır veya birden fazlaysa durur. Yeni Railway hesabı,
+projesi veya servisi oluşturmaz; production değişkenlerini ve diğer servisleri
+değiştirmez. Railway CLI 5.71.0 resmi binary'si SHA-256 ile sabitlenmiştir.
+
+`git archive` ile yalnız test edilmiş commit paketlenir; checkout token'ı,
+`.git`, yerel config ve ham journal'lar taşınmaz. Eski commit sonradan main'i
+ezemez. Paketin `release.json` dosyasına gerçek Git SHA yazılır; bu build stamp,
+Railway'nin önceki kaynaktan kalabilecek Git metadata'sından önceliklidir.
+
+Upload başlatılması yayın başarısı sayılmaz. Yayıncı Railway durumunu ve public
+API'leri kontrol eder: doğru release/SHA, tamamlanan döngü, taze gerçek fiyat,
+22/22 cüzdan, stale olmayan snapshot, başarılı journal, maliyet API'si ve kapalı
+ML/emir durumu. Sonuç GitHub Actions `railway-release-verification` artifact'ına
+yazılır. Native Railway GitHub autodeploy bağlantısı olmasa da aynı repo
+üzerindeki bu akış, mevcut Railway token'ıyla upload yapabilir.
+
+Yerel salt okunur erişim kontrolü:
+
+```bash
+python scripts/railway_deploy.py --check-access
+```
+
+Bu komut token'ı kullanıcıdan okumaz veya oluşturmaz; mevcut güvenli ortam
+binding'ini kullanır. Deployer kimlik doğrulamadan önce login/signup veya yeni
+proje sihirbazı başlatmaz. Kaynak uygulama aynı Dockerfile ile çalışır.
+
 Sürüm kimliği: `hydra-research-20261030.1`. Bu paket mevcut HYDRA uygulamasına
 22 public hesabın canlı BTC pozisyon görünümünü, kaynak kataloğunu ve veri
 bütünlüğü düzeltmelerini ekler. Cüzdanlar iki donmuş örneklem olarak kalır.

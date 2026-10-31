@@ -126,8 +126,11 @@ async def api_health():return{"status":"alive","cycles":state.cycle_count}
 @app.get("/api/version")
 def api_version():
     from pathlib import Path
+    import re
     metadata = json.loads((Path(__file__).parent / 'release.json').read_text())
-    metadata['commit'] = os.environ.get('RAILWAY_GIT_COMMIT_SHA') or os.environ.get('HYDRA_BUILD_SHA') or None
+    stamp = metadata.pop('build_commit', None)
+    metadata['commit'] = (stamp if isinstance(stamp, str) and re.fullmatch('[0-9a-f]{40}', stamp)
+                          else os.environ.get('RAILWAY_GIT_COMMIT_SHA') or os.environ.get('HYDRA_BUILD_SHA') or None)
     return JSONResponse(content=metadata, headers={"Cache-Control": "no-store"})
 
 @app.get("/api/wallets")
