@@ -1,0 +1,98 @@
+{
+  "audited_at": "2026-10-31T10:03:12.310571+00:00",
+  "method": "Read-only SQLite quick_check, every stored raw payload digest, time/unit diagnostics; no historical rows rewritten",
+  "journals": {
+    "okx": {
+      "bytes": 3118989312,
+      "sqlite_quick_check": [
+        [
+          "ok"
+        ]
+      ],
+      "raw_payloads_checked": 108327,
+      "raw_digest_mismatches": 0,
+      "trade_rows": {
+        "BTC-USDT": 1493301,
+        "BTC-USDT-SWAP": 6816485
+      },
+      "future_trade_rows": 0,
+      "invalid_trade_arithmetic_rows": 0,
+      "base_conversion_ratios": [
+        [
+          "BTC-USDT",
+          1.0,
+          1493301
+        ],
+        [
+          "BTC-USDT-SWAP",
+          0.01,
+          6816485
+        ]
+      ],
+      "degraded_cycles": [
+        [
+          "collecting",
+          5910
+        ],
+        [
+          "degraded",
+          1007
+        ]
+      ],
+      "seconds": 14.61
+    },
+    "primary": {
+      "bytes": 1008070656,
+      "sqlite_quick_check": [
+        [
+          "ok"
+        ]
+      ],
+      "raw_payloads_checked": 10437,
+      "raw_digest_mismatches": 0,
+      "fills": 965200,
+      "future_fill_rows": 0,
+      "inventory_windows": [
+        [
+          "fixed_start_v1",
+          356,
+          349
+        ],
+        [
+          "legacy",
+          1135,
+          1122
+        ]
+      ],
+      "capped_fill_cycles": 153,
+      "seconds": 2.35
+    },
+    "additional": {
+      "bytes": 1207382016,
+      "sqlite_quick_check": [
+        [
+          "ok"
+        ]
+      ],
+      "raw_payloads_checked": 7955,
+      "raw_digest_mismatches": 0,
+      "fills": 1622815,
+      "future_fill_rows": 0,
+      "inventory_windows": [
+        [
+          "fixed_start_v1",
+          179,
+          173
+        ],
+        [
+          "legacy",
+          289,
+          42
+        ]
+      ],
+      "capped_fill_cycles": 51,
+      "seconds": 2.5
+    }
+  },
+  "frozen_twap_archives_verified": 22
+}

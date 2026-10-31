@@ -1,0 +1,13 @@
+{
+  "application_tests": {
+    "command": "python -m pytest -q -p no:cacheprovider",
+    "passed": 207,
+    "warnings": 2,
+    "seconds": 4.67
+  },
+  "javascript_syntax_passed": true,
+  "tests_are_synthetic_fixtures_not_performance_evidence": true,
+  "frozen_core_unchanged": true,
+  "orders_enabled": false,
+  "alpha_validated": false
+}

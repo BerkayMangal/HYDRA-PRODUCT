@@ -1,0 +1,16 @@
+{
+  "sqlite_quick_check": [
+    [
+      "ok"
+    ]
+  ],
+  "raw_records_checked": 211,
+  "raw_digest_mismatches": 0,
+  "protocol_hash_matches": true,
+  "future_fills": 0,
+  "retroactive_entries": 0,
+  "entry_reference_violations": 0,
+  "exit_reference_violations": 0,
+  "modeled_return_mismatches": 0,
+  "quote_reference_mismatches": 0
+}

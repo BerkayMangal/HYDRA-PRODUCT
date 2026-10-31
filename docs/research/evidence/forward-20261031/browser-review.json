@@ -1,0 +1,20 @@
+{
+  "desktop": {
+    "summary": "Recorded report · 10/31/2026, 10:35:29 AM\nCollection: collecting · current source reads fresh\nTrial started 10/31/2026, 10:19:15 AM · 22 frozen accounts\nProtocol d135ed5d3fd91613… · alpha unproven\n2 decisions · 2 quality/pending abstentions · 0 valid paired-flat decisions\nTWAP: 0 completed model trades · mean net unknown\nMomentum control: 0 completed model trades · mean net unknown\n0 pending events · 0 unknown active outcomes\nSource history: 0 request errors · 10 capped responses · 0 rejected quotes\nLatest flow-window gate: observed · 33 observed eligible BTC slices · 1 active sampled account · net sampled BTC 0.00941000\nAssumed costs: 8 bp fee + 4 bp slippage per side; observed spread included. Fixed $1000 event size.\nReview requires at least 100 completed strategy trades and 14 elapsed days, with no unknown active outcomes.",
+    "rows": [
+      "10/31/2026, 10:31:31 AMUNKNOWNUNKNOWNabstain15m source history incomplete; Momentum quotes unavailableunknownunknown",
+      "10/31/2026, 10:19:29 AMUNKNOWNUNKNOWNabstain15m source history incomplete; Momentum quotes unavailableunknownunknown"
+    ],
+    "width": 1440,
+    "document_width": 1436
+  },
+  "mobile": {
+    "width": 390,
+    "document_width": 390,
+    "table_scrollable": true
+  },
+  "javascript_exceptions": [],
+  "captured_at": "2026-10-31T10:35:33.029827+00:00",
+  "orders_enabled": false,
+  "production_deployment": false
+}

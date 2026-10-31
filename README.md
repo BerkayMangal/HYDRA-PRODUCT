@@ -68,6 +68,9 @@ Set `HYDRA_MODE` environment variable:
 | `python -m research.lab.restore` | Restore the frozen research data and selections offline |
 | `python -m research.lab.verify` | Verify data, staged selections and equity accounting |
 | `python -m research.lab.report` | Summarize existing journals without network access |
+| `python -m research.lab.data_audit` | Read-only full payload, time and OKX unit diagnostics |
+| `python -m research.lab.twap_forward --once --out <new-trial>` | Bootstrap a frozen, public-data TWAP trial; no orders |
+| `python -m research.lab.forward_report --trial <recorded-trial>` | Reproduce a forward ledger report offline without settling trades |
 | `python -m ml.research.run_v2` | Legacy ML research; unresolved validation defects |
 | `python -m ml.research.run_v2 --synthetic` | Pipeline validation (no API needed) |
 | `python -m ml.research.evidence` | Full evidence package (needs OKX) |
@@ -102,6 +105,7 @@ See `.env.example` for full list. Key groups:
 | `GET /api/health` | Process liveness; not data readiness |
 | `GET /api/research` | Dated research evidence; separate from live signals |
 | `GET /api/research/costs` | Recorded movements less editable assumed costs; not executed returns |
+| `GET /api/research/forward` | Recorded prospective TWAP ledger, quality gates and modeled outcomes |
 | `GET /api/wallets` | Live public BTC wallet snapshots and source health |
 | `GET /api/research/tools` | Reviewed wallet/data tools and trial status |
 | `GET /api/version` | Release identity and optional build commit |
@@ -215,7 +219,11 @@ python -m pytest tests/ -v
 without widening the inventory window, adds per-request cost scenarios and
 records a native public TWAP slice trial. These remain unvalidated research.
 
-[Current findings in Turkish](docs/research/FINAL_TR.md) cover the data audit,
+[The 31 October forward trial](docs/research/FORWARD_20261031_TR.md) freezes one
+TWAP hypothesis before collection, preserves first receipt times, and exposes a
+read-only signal ledger. Sample thresholds permit review, never automatic orders.
+
+[Current findings in Turkish](docs/research/FINAL_TR.md) cover the earlier data audit,
 13,368 historical variants, EMA/spot shadow observations, public Hyperliquid
 wallets/liquidations, and documented competitor capabilities. No strategy has
 met the promotion criteria. The small wallet sample is concentrated and does

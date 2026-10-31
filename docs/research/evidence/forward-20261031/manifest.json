@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-31T10:36:03.088967+00:00",
+  "method": "Read-only source connection and SQLite backup API; complete consistent transaction checkpoint, no historical recomputation or settlement",
+  "recorded_through": "2026-10-31T10:36:02.561000+00:00",
+  "trial_started_at": "2026-10-31T10:19:15.845000+00:00",
+  "protocol_sha256": "d135ed5d3fd91613bd6d1452f025de3ea57a76582081541866d1b1bb3c0b55d1",
+  "created_source_commit": "d703297477d022146d20419c01a55a5092383364",
+  "reproduction_source_commit": "1c412834abc0d77c76ad93daaec746b6cb78cd1f",
+  "source_worker_until": "2026-11-01T09:00:00+00:00",
+  "orders_enabled": false,
+  "alpha_validated": false,
+  "uncompressed_ledger": {
+    "sha256": "c748ff2edafb211ac1c180261bea15fd81c8b5c972ed8b016a0322c223c6516b",
+    "bytes": 1896448
+  },
+  "files": {
+    "browser-review.json": {
+      "sha256": "8a478688be441567102ca2f25e7404fa00a5d10714f4622b0b596f1a237fceb9",
+      "bytes": 1462
+    },
+    "forward-audit.json": {
+      "sha256": "e9178df0b33bd62d3f0e972c84744769e963efe7a5ebb84a2dfe6af337d9c7a1",
+      "bytes": 337
+    },
+    "historical-data-audit.json": {
+      "sha256": "a0e2b0fa041748e9220564791a87c07c1cade1bdd82a018b87e464c6d1c0822b",
+      "bytes": 1956
+    },
+    "ledger.sqlite3.gz": {
+      "sha256": "e0050169c33469b724c5e73d9cc2e6ce27632307bdda24b6be59c023664521e0",
+      "bytes": 984530
+    },
+    "protocol.json": {
+      "sha256": "16ecabb91008316913c95281dabde95f7459cd3a60339d01c86f18a45adc58e6",
+      "bytes": 8290
+    },
+    "recorded-report.json": {
+      "sha256": "5f1c4a0a5fa7a787f26be5f1b382dbced918b1ecf1dc87c21cb53411da6b0b33",
+      "bytes": 8999
+    },
+    "reproducible-data-audit.json": {
+      "sha256": "6b2b17d9c6b78c7d592e1383ae81c7ed415f15507e84017697767078a6730900",
+      "bytes": 2127
+    },
+    "validation.json": {
+      "sha256": "9da68b291a28dd70a10aa39f2f406b2e1d8a91952cf6865640101b8b876164a9",
+      "bytes": 338
+    }
+  }
+}

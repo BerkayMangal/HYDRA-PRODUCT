@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "status": "prospective_research_only",
+  "orders_enabled": false,
+  "alpha_validated": false,
+  "protocol_sha256": "d135ed5d3fd91613bd6d1452f025de3ea57a76582081541866d1b1bb3c0b55d1",
+  "created_source_commit": "d703297477d022146d20419c01a55a5092383364",
+  "started_at": "2026-10-31T10:19:15.845000+00:00",
+  "generated_at": "2026-10-31T10:36:02.561000+00:00",
+  "runtime_state": "recorded_snapshot",
+  "last_valid_quote_ms": 1793442962561,
+  "last_batch": {
+    "capped_accounts": 2,
+    "errors": [],
+    "feature_end_ms": 1793442916275,
+    "observed_ms": 1793442929661,
+    "requested_accounts": 22,
+    "requests": [
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x033352b410f1e4835b4e47cf042d44155bec32c2"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x08d01ebad78c6dc1dffc7c244d90c1143e906feb"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x0d438ba1817d0958ae3bf70b23faaf1d0117c930"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x0dd5db9c3748486e747c6a123727f472668cf6ee"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x1bf629cd9f4dbcc9fca616ccf7a19891007f5bfa"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x2ca4927174ba283d8a57f60ef3589844035a2930"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x31ca8395cf837de08b24da3f660e77761dfb974b"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x34705cb69ac83cd65d4710259151665ab0ce6fa6"
+      },
+      {
+        "capped": true,
+        "error": null,
+        "ok": true,
+        "oldest_ms": 1793234920066,
+        "wallet": "0x3d7a23552dfddc40b5872cbd148f4f1b4f055c36"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": 1787243056052,
+        "wallet": "0x4c226d5a21ae3b9883f98cbda1a3be63e565f308"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x4e60e3a4a32d63d245aa4e4ce304b4254b088f95"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x5b5d51203a0f9079f8aeb098a6523a13f298c060"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x63f6411ca61733af716c9a50a56a84ea38a0af59"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x6dd3146cead144385974e958305d7e4c352846b7"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x850362c2fcfee55962be453e01a6c4d9b813276f"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0x9d81a3adf84bd66528b62f2bda03e2e24bed3416"
+      },
+      {
+        "capped": true,
+        "error": null,
+        "ok": true,
+        "oldest_ms": 1793413250010,
+        "wallet": "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0xd0956a1eba0a9060baf5f73ee26b9601dc47ec43"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0xdf954bbe619273a56e0cfa90dad8382195dc7d72"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0xe90bf24e807df04f1513d50002d78bfc22ee84d9"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": 1732937512043,
+        "wallet": "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00"
+      },
+      {
+        "capped": false,
+        "error": null,
+        "ok": true,
+        "oldest_ms": null,
+        "wallet": "0xf5d81a135f756ca16544e53c20fc20643ec3ad53"
+      }
+    ],
+    "successful_accounts": 22
+  },
+  "last_batch_features": {
+    "window_start_ms": 1793442016275,
+    "window_end_ms": 1793442916275,
+    "net_btc_base": 0.00941,
+    "eligible_slices": 33,
+    "active_accounts": 1,
+    "source_lag_seconds": 13.386,
+    "reasons": [],
+    "input_fill_keys_sha256": "2b117781239d13c185a8aed82a90f7dec5f27bb375325788412762d1a764b29d"
+  },
+  "account_count": 22,
+  "decisions": 2,
+  "abstentions": 2,
+  "valid_flat_decisions": 0,
+  "pending_events": 0,
+  "unknown_active_outcomes": 0,
+  "fill_eligibility_counts": {
+    "bootstrap": 2510,
+    "eligible": 35
+  },
+  "request_errors": 0,
+  "capped_responses": 10,
+  "invalid_quotes": 0,
+  "results": {
+    "strategy": {
+      "completed_trades": 0,
+      "mean_modeled_net_return": null,
+      "sum_modeled_pnl_usdt": null
+    },
+    "control": {
+      "completed_trades": 0,
+      "mean_modeled_net_return": null,
+      "sum_modeled_pnl_usdt": null
+    }
+  },
+  "recent_decisions": [
+    {
+      "batch_id": 1,
+      "bucket": 1992713,
+      "control_long": null,
+      "entry_due_ms": 1793441970981,
+      "features": {
+        "active_accounts": 0,
+        "eligible_slices": 0,
+        "input_fill_keys_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "net_btc_base": null,
+        "reasons": [
+          "coverage_warmup"
+        ],
+        "source_lag_seconds": 14.123,
+        "window_end_ms": 1793441955858,
+        "window_start_ms": 1793441055858
+      },
+      "momentum_references": {
+        "current": {
+          "ask": 77472.8,
+          "ask_size": 0.21232179,
+          "bid": 77472.7,
+          "bid_size": 3.33283788,
+          "event_ms": 1793441965771,
+          "mid": 77472.75,
+          "observed_ms": 1793441966348,
+          "quote_id": 2
+        },
+        "past": null
+      },
+      "observed_ms": 1793441969981,
+      "orders_enabled": false,
+      "protocol_sha256": "d135ed5d3fd91613bd6d1452f025de3ea57a76582081541866d1b1bb3c0b55d1",
+      "reasons": [
+        "coverage_warmup",
+        "momentum_reference_unavailable"
+      ],
+      "status": "abstain",
+      "strategy_long": null,
+      "decision_id": 1,
+      "outcome_status": "abstain",
+      "strategy_modeled_net_return": null,
+      "control_modeled_net_return": null
+    },
+    {
+      "batch_id": 4,
+      "bucket": 1992714,
+      "control_long": null,
+      "entry_due_ms": 1793442692941,
+      "features": {
+        "active_accounts": 1,
+        "eligible_slices": 27,
+        "input_fill_keys_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "net_btc_base": null,
+        "reasons": [
+          "coverage_warmup"
+        ],
+        "source_lag_seconds": 15.834,
+        "window_end_ms": 1793442676107,
+        "window_start_ms": 1793441776107
+      },
+      "momentum_references": {
+        "current": {
+          "ask": 77469.6,
+          "ask_size": 0.20708287,
+          "bid": 77469.5,
+          "bid_size": 3.24291119,
+          "event_ms": 1793442690369,
+          "mid": 77469.55,
+          "observed_ms": 1793442690971,
+          "quote_id": 74
+        },
+        "past": null
+      },
+      "observed_ms": 1793442691941,
+      "orders_enabled": false,
+      "protocol_sha256": "d135ed5d3fd91613bd6d1452f025de3ea57a76582081541866d1b1bb3c0b55d1",
+      "reasons": [
+        "coverage_warmup",
+        "momentum_reference_unavailable"
+      ],
+      "status": "abstain",
+      "strategy_long": null,
+      "decision_id": 2,
+      "outcome_status": "abstain",
+      "strategy_modeled_net_return": null,
+      "control_modeled_net_return": null
+    }
+  ],
+  "abstention_reason_counts": {
+    "coverage_warmup": 2,
+    "momentum_reference_unavailable": 2
+  },
+  "paired_completed_events": 0,
+  "paired_mean_net_difference": null,
+  "assumptions": {
+    "notional_usdt": 1000,
+    "fee_per_side_bps": 8,
+    "slippage_per_side_bps": 4,
+    "entry_latency_seconds": 1,
+    "hold_seconds": 900
+  },
+  "review_sample_thresholds_met": false,
+  "limits": "Sampled accounts are not independent owners or the whole market. Recent-list source coverage is inferred under the vendor contract, not venue-wide completeness. Parent TWAP remaining size/cancellation and external hedges are unknown. Fixed-notional nonoverlapping paired event study, not a funded portfolio NAV. Quote spread, assumed slippage and entry/exit fees are charged. Unknown active outcomes are not zero returns and block readiness for review."
+}

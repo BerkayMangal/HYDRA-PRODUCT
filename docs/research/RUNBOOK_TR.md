@@ -171,6 +171,16 @@ bölgesel HTTP 403 gözlendi. Takvim ve üçüncü taraf verilerin her alanına 
 doğruluk onayı verilmedi. Sıfır/az işlem veya çok sayıda fill, bağımsız alfa
 örneklemi sayılmaz. İzlenen hesapların başka yerlerdeki hedge'leri bilinmiyor.
 
+## TWAP forward deneyi
+
+31 Ekim'de eklenen [TWAP forward deneyi](FORWARD_20261031_TR.md), emir göndermeyen
+ayrı bir worker ve değiştirilemeyen karar günlüğü kullanır. Hipotez, kaynak
+kodunun hash'leri, maliyetler ve 22 hesap ilk ağ çağrısından önce dondurulur.
+Canlı deney dizininde protokol veya çekirdek uygulama değiştirilmez; farklı
+tanım için yeni deney gerekir. İzleme ekranı worker başlatmaz veya sonuç üretmez.
+Kurulum, duruş bütçesi, çevrimdışı yeniden üretim ve kaydedilmiş kanıt arşivi
+bu yeni raporda açıklanır.
+
 ## Rakip erişimi ve yayın durumu
 
 [Rakip analizi](COMPETITORS_TR.md) Nansen'in resmî açık referansları ile bağımsız
