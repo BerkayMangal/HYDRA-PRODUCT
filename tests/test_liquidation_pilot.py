@@ -146,6 +146,20 @@ def test_conflicting_metadata_inside_one_frame_rejects_entire_frame(tmp_path):
     p.close()
 
 
+def test_same_liquidation_seen_by_both_counterparties_is_one_matched_case(tmp_path):
+    p=PilotJournal(tmp_path/'paired',{'wallets':[WALLET,VICTIM]},clock=lambda:1000)
+    p.ingest('hl_ws',[fill()],1002000,wallet=WALLET)
+    victim=fill();victim['side']='A'
+    p.ingest('hl_ws',[victim],1002001,wallet=VICTIM)
+    p.ingest('hl_rest',[fill(liquidation=True)],1003000,wallet=WALLET)
+    victim['liquidation']={'liquidatedUser':VICTIM,'method':'market'}
+    p.ingest('hl_rest',[victim],1003001,wallet=VICTIM)
+    report=p.report()
+    assert report['rest_explicit_with_live_ws_fill']==1
+    assert report['matched_rest_liquidations_without_ws_flag']==1
+    p.close()
+
+
 def test_receiver_handles_missing_snapshot_flag_conservatively(tmp_path,monkeypatch):
     import asyncio
     from datetime import datetime,timedelta,timezone

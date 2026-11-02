@@ -405,6 +405,7 @@ async function pollDataPilot(){
     const latency=data.live_latency_seconds,info=data.explicit_information_latency_seconds;
     const lines=['Recorded data pilot · '+new Date(data.generated_at).toLocaleString(),
       'Collection: '+data.collection_state+' · '+data.wallet_count+' frozen public accounts',
+      'Hyperliquid stream: '+(data.feeds.hyperliquid.state||'unknown'),
       'Budget ends '+(data.worker.until?new Date(data.worker.until).toLocaleString():'unknown'),
       'Trading disabled · alpha unproven · protocol '+data.protocol_sha256.slice(0,16)+'…',
       'New unique BTC wallet fills: '+data.live_ws_unique_btc_fills+' · bootstrap records: '+count(data.fill_phases.hl_ws,'bootstrap'),

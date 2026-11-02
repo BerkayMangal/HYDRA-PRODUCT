@@ -287,14 +287,14 @@ class PilotJournal:
         per_source = dict(self.db.execute('SELECT source,COUNT(*) FROM frames GROUP BY source'))
         last = dict(self.db.execute('SELECT source,MAX(observed_ms) FROM frames WHERE valid=1 GROUP BY source'))
         phases = {name: dict(self.db.execute('SELECT phase,COUNT(*) FROM fills WHERE source=? GROUP BY phase', (name,))) for name in ('hl_ws', 'hl_rest', 'spot', 'hl_market')}
-        matches = self.db.execute('''SELECT COUNT(*) FROM annotations r JOIN fills w
+        matches = self.db.execute('''SELECT COUNT(*) FROM (SELECT DISTINCT r.coin,r.tid FROM annotations r JOIN fills w
              ON w.source='hl_ws' AND w.wallet=r.wallet AND w.coin=r.coin AND w.tid=r.tid AND w.phase='live'
-             WHERE r.source='hl_rest' AND r.phase='live' ''').fetchone()[0]
-        missing_flags = self.db.execute('''SELECT COUNT(*) FROM annotations r JOIN fills w
+             WHERE r.source='hl_rest' AND r.phase='live') ''').fetchone()[0]
+        missing_flags = self.db.execute('''SELECT COUNT(*) FROM (SELECT DISTINCT r.coin,r.tid FROM annotations r JOIN fills w
              ON w.source='hl_ws' AND w.wallet=r.wallet AND w.coin=r.coin AND w.tid=r.tid AND w.phase='live'
              LEFT JOIN annotations a ON a.source='hl_ws' AND a.wallet=r.wallet AND a.coin=r.coin AND a.tid=r.tid
                   AND a.phase='live'
-             WHERE r.source='hl_rest' AND r.phase='live' AND a.tid IS NULL''').fetchone()[0]
+             WHERE r.source='hl_rest' AND r.phase='live' AND a.tid IS NULL)''').fetchone()[0]
         explicit = dict(self.db.execute("SELECT source,COUNT(*) FROM annotations WHERE phase='live' GROUP BY source"))
         metadata_latency = {}
         for source in ('hl_ws', 'hl_rest'):
