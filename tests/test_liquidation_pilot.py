@@ -190,3 +190,18 @@ def test_receiver_handles_missing_snapshot_flag_conservatively(tmp_path,monkeypa
     assert phases=={'1':'bootstrap','2':'live','3':'bootstrap'}
     assert all(row['method']=='subscribe' for row in sent)
     p.close()
+
+
+def test_offline_report_is_identical_and_uses_recorded_worker_and_time(tmp_path):
+    from research.lab.pilot_report import recorded_report
+    p=journal(tmp_path)
+    p.run_event({'state':'started','pid':123,'until':'2026-11-03T10:00:00+00:00'})
+    p.ingest('hl_ws',[fill()],1002000,wallet=WALLET)
+    p.close()
+    before=(tmp_path/'pilot/protocol.json').read_bytes()
+    a=recorded_report(tmp_path/'pilot');b=recorded_report(tmp_path/'pilot')
+    assert a==b
+    assert a['generated_at']=='1970-01-01T00:16:42+00:00'
+    assert a['worker']['pid']==123
+    assert a['runtime_state']=='recorded_snapshot'
+    assert (tmp_path/'pilot/protocol.json').read_bytes()==before

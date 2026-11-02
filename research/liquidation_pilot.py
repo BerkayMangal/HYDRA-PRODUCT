@@ -16,7 +16,7 @@ SPEC = {
     'maximum_wallets': 8, 'maximum_hyperliquid_connections': 1,
     'wallet_selection': 'Observed recent BTC fill count, then address; no PnL ranking',
     'spot_instrument': 'OKX BTC-USDT spot', 'spot_poll_seconds': 5,
-    'quote_poll_seconds': 5, 'rest_sentinel_seconds': 60,
+    'quote_poll_seconds': 2, 'rest_sentinel_seconds': 60,
     'rest_concurrency': 2, 'rest_lookback_seconds': 120,
     'max_live_latency_seconds_for_review': 10, 'max_quote_age_seconds': 5,
     'max_spot_poll_gap_seconds': 20, 'max_spot_trade_age_seconds': 15,
@@ -282,6 +282,11 @@ class PilotJournal:
 
     def report(self, state='collecting', until=None, error=None):
         now = int(self.clock() * 1000)
+        recorded_pid = None
+        for record in self.db.execute('SELECT payload FROM run_events ORDER BY id DESC'):
+            event = json.loads(record[0])
+            if event.get('state') == 'started':
+                recorded_pid = event.get('pid'); break
         live_total = self.db.execute("SELECT COUNT(*) FROM fills WHERE source='hl_ws' AND phase='live' AND event_ms>=?", (self.started_ms,)).fetchone()[0]
         latencies = sorted(row[0] / 1000 for row in self.db.execute("SELECT observed_ms-event_ms FROM fills WHERE source='hl_ws' AND phase='live' AND event_ms>=? ORDER BY observed_ms DESC LIMIT 10000", (self.started_ms,)))
         per_source = dict(self.db.execute('SELECT source,COUNT(*) FROM frames GROUP BY source'))
@@ -323,7 +328,7 @@ class PilotJournal:
                 'started_at': datetime.fromtimestamp(self.started_ms / 1000, timezone.utc).isoformat(),
                 'protocol_sha256': self.protocol_hash, 'wallet_count': len(self.wallets),
                 'orders_enabled': False, 'strategy_enabled': False, 'alpha_validated': False,
-                'worker': {'pid': __import__('os').getpid(), 'until': until, 'error': error},
+                'worker': {'pid': recorded_pid, 'until': until, 'error': error},
                 'frames': per_source, 'last_valid_ingress_ms': last, 'rejected_frames': failures,
                 'capped_rest_responses': self.db.execute("SELECT COUNT(*) FROM frames WHERE source='hl_rest' AND capped=1").fetchone()[0],
                 'fill_phases': phases, 'live_ws_unique_btc_fills': live_total,
