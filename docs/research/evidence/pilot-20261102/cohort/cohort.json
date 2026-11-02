@@ -1,0 +1,27 @@
+{
+  "wallets": [
+    "0x4588595ee0047982cd5ca4a82ab69c3174fbc832",
+    "0x7fdafde5cfb5465924316eced2d3715494c517d1",
+    "0x850362c2fcfee55962be453e01a6c4d9b813276f",
+    "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6",
+    "0xa62b923a112d50d03e1e096bbd53422490dac104",
+    "0xe90bf24e807df04f1513d50002d78bfc22ee84d9",
+    "0xeb67e031761277c26df8c78b814f2b75c1745b35",
+    "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00"
+  ],
+  "frozen_at_ms": 1793613375513,
+  "scope": "Current active BTC public-account sample, not independent owners or market-wide coverage",
+  "selection_specification": {
+    "version": "pilot_activity_cohort_v1",
+    "maximum_candidates": 32,
+    "maximum_selected": 8,
+    "lookback_seconds": 120,
+    "concurrency": 2,
+    "candidates": "Existing frozen public cohorts plus current BTC recentTrades participants; first 32 lexicographic addresses",
+    "selection": "Observed BTC fill count in fixed source window descending, then address; no PnL fields used",
+    "caps": "Capped histories are activity lower bounds, not certified total counts",
+    "orders_enabled": false
+  },
+  "discovery_sha256": "9b5af98706cbdccdaba9bfc1788720e41e4570d5d0a5713bede8b1efe23fb005",
+  "orders_enabled": false
+}

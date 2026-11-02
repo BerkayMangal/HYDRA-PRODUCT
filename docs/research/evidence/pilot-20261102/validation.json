@@ -1,0 +1,9 @@
+{
+  "local_tests_passed": 237,
+  "warnings": 2,
+  "pip_check_passed": true,
+  "javascript_syntax_passed": true,
+  "synthetic_fixtures_are_not_performance_evidence": true,
+  "offline_report_and_audit_reproduced": true,
+  "orders_enabled": false
+}

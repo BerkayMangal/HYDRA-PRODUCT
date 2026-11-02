@@ -1,0 +1,11 @@
+{
+  "quick_check": [
+    "ok"
+  ],
+  "raw_frames_checked": 2347,
+  "raw_digest_mismatches": 0,
+  "protocol_hash_matches": true,
+  "future_fills": 0,
+  "metadata_before_fill_receipt": 0,
+  "orders_enabled": false
+}

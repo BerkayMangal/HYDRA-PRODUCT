@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "status": "liquidation_data_pilot",
+  "runtime_state": "recorded_snapshot",
+  "generated_at": "2026-11-02T10:10:39.735000+00:00",
+  "started_at": "2026-11-02T10:01:57.065000+00:00",
+  "protocol_sha256": "fe4578182a882c064b37d95d6efed3f005ded4e3a4eca3bd959356742f6510d8",
+  "wallet_count": 8,
+  "orders_enabled": false,
+  "strategy_enabled": false,
+  "alpha_validated": false,
+  "worker": {
+    "pid": 316915,
+    "until": "2026-11-03T10:00:00+00:00",
+    "error": null
+  },
+  "frames": {
+    "control": 21,
+    "hl_market": 540,
+    "hl_rest": 72,
+    "hl_ws": 1347,
+    "quote": 262,
+    "spot": 105
+  },
+  "last_valid_ingress_ms": {
+    "control": 1793614204193,
+    "hl_market": 1793614239596,
+    "hl_rest": 1793614202740,
+    "hl_ws": 1793614239595,
+    "quote": 1793614239735,
+    "spot": 1793614237568
+  },
+  "rejected_frames": 0,
+  "capped_rest_responses": 0,
+  "fill_phases": {
+    "hl_ws": {
+      "bootstrap": 165,
+      "live": 174
+    },
+    "hl_rest": {
+      "bootstrap": 45,
+      "live": 156
+    },
+    "spot": {
+      "bootstrap": 500,
+      "live": 2038
+    },
+    "hl_market": {
+      "bootstrap": 30,
+      "live": 1078
+    }
+  },
+  "live_ws_unique_btc_fills": 174,
+  "live_latency_seconds": {
+    "sample": "Latest at most 10000 eligible unique BTC fills",
+    "sample_count": 174,
+    "p50": 0.521,
+    "p95": 0.845
+  },
+  "explicit_live_metadata_by_source": {},
+  "rest_explicit_with_live_ws_fill": 0,
+  "explicit_information_latency_seconds": {
+    "hl_ws": {
+      "sample_count": 0,
+      "p95": null
+    },
+    "hl_rest": {
+      "sample_count": 0,
+      "p95": null
+    }
+  },
+  "matched_rest_liquidations_without_ws_flag": 0,
+  "feeds": {
+    "hyperliquid": {
+      "connection": "hl-1793613717077928787",
+      "state": "subscribed",
+      "observed_ms": 1793613719867,
+      "payload": "{\"admitted_wallets\":[\"0x4588595ee0047982cd5ca4a82ab69c3174fbc832\",\"0x7fdafde5cfb5465924316eced2d3715494c517d1\",\"0x850362c2fcfee55962be453e01a6c4d9b813276f\",\"0x8cc19cee19cd24de7b1d27caec812deb4aa280d6\",\"0xa62b923a112d50d03e1e096bbd53422490dac104\",\"0xe90bf24e807df04f1513d50002d78bfc22ee84d9\",\"0xeb67e031761277c26df8c78b814f2b75c1745b35\",\"0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00\"],\"expected_wallets\":8}"
+    }
+  },
+  "quote_age_seconds": 0.571,
+  "spot_flow": {
+    "5": {
+      "usable": true,
+      "reason": null,
+      "minutes": 5,
+      "imbalance": -0.24763738743373223
+    },
+    "15": {
+      "usable": false,
+      "reason": "warmup_or_stale",
+      "minutes": 15,
+      "imbalance": null
+    }
+  },
+  "readiness_blockers": [
+    "published_provider_limits_not_freshly_verified",
+    "liquidation_coverage_is_sampled",
+    "insufficient_matched_liquidation_metadata_cases",
+    "explicit_liquidation_information_latency_not_passed",
+    "spot_flow_window_not_ready"
+  ],
+  "source_review_ready": false,
+  "limits": "Sampled accounts and connection-observed public BTC trades. No venue-wide liquidation coverage or independent ownership claim. One connection, at most eight user subscriptions and one public BTC subscription. Admission/errors measured. Current published provider contract was unreachable; contract review remains a readiness blocker."
+}

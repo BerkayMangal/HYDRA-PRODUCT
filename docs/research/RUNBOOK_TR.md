@@ -200,6 +200,13 @@ python -m research.lab.funding_probe --audit --out <mevcut-fonlama-tarama-dizini
 ve var olan çıktı dizinini değiştirmeyi reddeder. İlk tarihsel TWAP yanıtı yeni
 ileriye dönük sinyal değildir. Kaynak taraması başarısı tahmin başarısı değildir.
 
+## Likidasyon veri pilotu
+
+[2 Kasım veri pilotu](PILOT_20261102_TR.md), yeni kaynak kurulumu ve durum
+ekranının güncel kılavuzudur. Bu pilotta WS başlangıç snapshot'ı, yeni fill ve
+sonradan öğrenilen liquidation metadata'sı ayrı saklanır; eski TWAP deneyi
+ve eski ilk receipt kayıtları değiştirilmez.
+
 ## Rakip erişimi ve yayın durumu
 
 [Rakip analizi](COMPETITORS_TR.md) Nansen'in resmî açık referansları ile bağımsız

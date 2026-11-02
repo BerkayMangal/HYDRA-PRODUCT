@@ -1,0 +1,40 @@
+{
+  "recorded_through": "2026-11-02T10:10:39.735000+00:00",
+  "active_btc_accounts": 8,
+  "unique_live_ws_btc_trade_ids": 171,
+  "account_side_fill_counts": [
+    {
+      "wallet": "0x4588595ee0047982cd5ca4a82ab69c3174fbc832",
+      "live_btc_account_fills": 29
+    },
+    {
+      "wallet": "0x7fdafde5cfb5465924316eced2d3715494c517d1",
+      "live_btc_account_fills": 1
+    },
+    {
+      "wallet": "0x850362c2fcfee55962be453e01a6c4d9b813276f",
+      "live_btc_account_fills": 23
+    },
+    {
+      "wallet": "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6",
+      "live_btc_account_fills": 5
+    },
+    {
+      "wallet": "0xa62b923a112d50d03e1e096bbd53422490dac104",
+      "live_btc_account_fills": 31
+    },
+    {
+      "wallet": "0xe90bf24e807df04f1513d50002d78bfc22ee84d9",
+      "live_btc_account_fills": 47
+    },
+    {
+      "wallet": "0xeb67e031761277c26df8c78b814f2b75c1745b35",
+      "live_btc_account_fills": 25
+    },
+    {
+      "wallet": "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00",
+      "live_btc_account_fills": 13
+    }
+  ],
+  "limits": "Accounts may share owners. Fill observations and distinct trade IDs are not independent liquidation episodes or market-wide coverage."
+}

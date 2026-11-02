@@ -74,6 +74,9 @@ Set `HYDRA_MODE` environment variable:
 | `python -m research.lab.forward_diagnostics --trial <recorded-trial>` | Explain recorded costs, flat controls and account concentration |
 | `python -m research.lab.twap_discovery --out <new-directory>` | Predeclared public active-TWAP source screen; no PnL selection |
 | `python -m research.lab.funding_probe --out <new-directory>` | Fixed historical funding-versus-cost feasibility screen |
+| `python -m research.lab.pilot_cohort --out <new-directory>` | Freeze an activity-only public BTC cohort for the data pilot |
+| `python -m research.lab.liquidation_pilot --cohort <json> --out <new-pilot> --until <ISO-time>` | Bounded public WS/REST source-capability pilot; no trading |
+| `python -m research.lab.pilot_report --pilot <recorded-pilot>` | Reproduce a recorded pilot checkpoint offline |
 | `python -m ml.research.run_v2` | Legacy ML research; unresolved validation defects |
 | `python -m ml.research.run_v2 --synthetic` | Pipeline validation (no API needed) |
 | `python -m ml.research.evidence` | Full evidence package (needs OKX) |
@@ -110,6 +113,7 @@ See `.env.example` for full list. Key groups:
 | `GET /api/research/costs` | Recorded movements less editable assumed costs; not executed returns |
 | `GET /api/research/forward` | Recorded prospective TWAP ledger, quality gates and modeled outcomes |
 | `GET /api/research/forward/diagnostics` | Read-only cost attribution and concentration; configure `HYDRA_FORWARD_TRIAL` |
+| `GET /api/research/pilot` | New liquidation data pilot: latency, metadata support, source gaps; never orders |
 | `GET /api/wallets` | Live public BTC wallet snapshots and source health |
 | `GET /api/research/tools` | Reviewed wallet/data tools and trial status |
 | `GET /api/version` | Release identity and optional build commit |
@@ -230,6 +234,11 @@ read-only signal ledger. Sample thresholds permit review, never automatic orders
 [The subsequent economics review](docs/research/ALPHA_REVIEW_20261031_TR.md)
 records the first modeled losses, an 81-account source screen, historical funding
 cost hurdles, and resumed source collection. No validated alpha has been found.
+
+[The 2 November data pilot](docs/research/PILOT_20261102_TR.md) measures live
+wallet-fill latency separately from explicit liquidation-information latency,
+with a bounded eight-account cohort, REST cross-checks and spot-flow gates.
+It does not start a new trading strategy.
 
 [Current findings in Turkish](docs/research/FINAL_TR.md) cover the earlier data audit,
 13,368 historical variants, EMA/spot shadow observations, public Hyperliquid

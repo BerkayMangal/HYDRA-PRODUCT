@@ -1,0 +1,16 @@
+{
+  "created_ms": 1793613355898,
+  "specification": {
+    "version": "pilot_activity_cohort_v1",
+    "maximum_candidates": 32,
+    "maximum_selected": 8,
+    "lookback_seconds": 120,
+    "concurrency": 2,
+    "candidates": "Existing frozen public cohorts plus current BTC recentTrades participants; first 32 lexicographic addresses",
+    "selection": "Observed BTC fill count in fixed source window descending, then address; no PnL fields used",
+    "caps": "Capped histories are activity lower bounds, not certified total counts",
+    "orders_enabled": false
+  },
+  "implementation_sha256": "b3f72f62504927da1d99307e21359afae2cbcc1ea9a9316b9087c4c6615fb376",
+  "source_commit": "4708fdf22de666f1aefafef23843dedb2937c3c9"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "draft_not_armed",
+  "orders_enabled": false,
+  "strategy_enabled": false,
+  "hypothesis": "Observed large forced long selling followed by positive as-of spot absorption adds information about the next 60-minute fully funded BTC spot long movement after costs.",
+  "instrument": "OKX BTC-USDT spot, fully funded long/flat",
+  "observed_episode_notional_floor_usd": 100000,
+  "hold_minutes": 60,
+  "confirmation": "Both 5m and 15m source-quality-gated spot buy-minus-sell quote-flow imbalances positive",
+  "controls": ["Same eligible forced-selling episodes without spot filter", "Price-momentum-only on the same eligible episodes"],
+  "cost_policy": "Document actual fees when supplied; otherwise freeze explicit fee scenarios before the trial. Include observed bid/ask, slippage, displayed size and a stress scenario. No assumed maker fills.",
+  "source_gate": "Review the data pilot's real live-event latency, explicit liquidation information timestamps, matched REST/WS metadata cases, source completeness assumptions, provider limits and event yield. A fast fill notification without liquidation metadata does not pass.",
+  "trial_gate": "Only start after a reviewed source-gate document and a separate frozen protocol/code/cohort. No retrospective decisions or automatic enabling from pilot metrics.",
+  "review_gate": "At least 14 days and 100 non-overlapping completed episodes across days; review paired net benefit, uncertainty, costs, concentration and missing/censored outcomes. This is permission for analysis, never automatic orders."
+}

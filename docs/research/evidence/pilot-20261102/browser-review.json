@@ -1,0 +1,17 @@
+{
+  "desktop": {
+    "summary": "Recorded data pilot · 11/2/2026, 10:09:27 AM\nCollection: collecting · 8 frozen public accounts\nHyperliquid stream: subscribed\nBudget ends 11/3/2026, 10:00:00 AM\nTrading disabled · alpha unproven · protocol fe4578182a882c06…\nNew unique BTC wallet fills: 150 · bootstrap records: 165\nWallet fill latency: median 0.521s · p95 0.871s · latest 150 observations\nExplicit live liquidation annotations: WS 0 · REST 0\nExplicit information latency p95: WS unknown · REST unknown\nREST liquidations matched to live WS fills: 0 · WS flag absent in 0 cases\nSpot flow: 5m observed · 15m unknown (warmup_or_stale)\nQuote source age at report: 0.570s · rejected payloads 0 · capped REST responses 0\nNo matched liquidation cases yet; metadata support remains unknown.\nSource review: Provider contract review pending; Liquidation coverage remains sampled; Fewer than 3 matched liquidation cases; Timely explicit liquidation information not established; Spot flow window incomplete",
+    "width": 1440,
+    "document_width": 1436
+  },
+  "mobile": {
+    "width": 390,
+    "document_width": 390,
+    "panel_height": 495,
+    "content_height": 495
+  },
+  "javascript_exceptions": [],
+  "captured_at": "2026-11-02T10:09:45.653434+00:00",
+  "orders_enabled": false,
+  "production_deployment": false
+}

@@ -1,0 +1,251 @@
+{
+  "specification": {
+    "version": "pilot_activity_cohort_v1",
+    "maximum_candidates": 32,
+    "maximum_selected": 8,
+    "lookback_seconds": 120,
+    "concurrency": 2,
+    "candidates": "Existing frozen public cohorts plus current BTC recentTrades participants; first 32 lexicographic addresses",
+    "selection": "Observed BTC fill count in fixed source window descending, then address; no PnL fields used",
+    "caps": "Capped histories are activity lower bounds, not certified total counts",
+    "orders_enabled": false
+  },
+  "observations": [
+    {
+      "wallet": "0x033352b410f1e4835b4e47cf042d44155bec32c2",
+      "observed_ms": 1793613358650,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x0405b6fe11f41ea3f28cbba3fd3015be402bfba9",
+      "observed_ms": 1793613358232,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x08d01ebad78c6dc1dffc7c244d90c1143e906feb",
+      "observed_ms": 1793613359805,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x0d438ba1817d0958ae3bf70b23faaf1d0117c930",
+      "observed_ms": 1793613359316,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x0dd5db9c3748486e747c6a123727f472668cf6ee",
+      "observed_ms": 1793613361008,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x1bf629cd9f4dbcc9fca616ccf7a19891007f5bfa",
+      "observed_ms": 1793613361397,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x2ca4927174ba283d8a57f60ef3589844035a2930",
+      "observed_ms": 1793613362373,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x3196580696972bfe11e0e107fb27b06a5d478249",
+      "observed_ms": 1793613362792,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x31ca8395cf837de08b24da3f660e77761dfb974b",
+      "observed_ms": 1793613363886,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x34705cb69ac83cd65d4710259151665ab0ce6fa6",
+      "observed_ms": 1793613363930,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x3d7a23552dfddc40b5872cbd148f4f1b4f055c36",
+      "observed_ms": 1793613365461,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x4588595ee0047982cd5ca4a82ab69c3174fbc832",
+      "observed_ms": 1793613365257,
+      "btc_fill_count": 5,
+      "capped": false
+    },
+    {
+      "wallet": "0x4c226d5a21ae3b9883f98cbda1a3be63e565f308",
+      "observed_ms": 1793613365816,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x4e60e3a4a32d63d245aa4e4ce304b4254b088f95",
+      "observed_ms": 1793613366106,
+      "btc_fill_count": 1,
+      "capped": false
+    },
+    {
+      "wallet": "0x59dbd22a4c595c0bf54540ac8cff35cccc3c7b28",
+      "observed_ms": 1793613366458,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x5b5d51203a0f9079f8aeb098a6523a13f298c060",
+      "observed_ms": 1793613367662,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x63f6411ca61733af716c9a50a56a84ea38a0af59",
+      "observed_ms": 1793613367068,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x6dd3146cead144385974e958305d7e4c352846b7",
+      "observed_ms": 1793613368134,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0x7fdafde5cfb5465924316eced2d3715494c517d1",
+      "observed_ms": 1793613368428,
+      "btc_fill_count": 7,
+      "capped": false
+    },
+    {
+      "wallet": "0x821221842fd8c25f124165df51a684a1c433f36e",
+      "observed_ms": 1793613369179,
+      "btc_fill_count": 1,
+      "capped": false
+    },
+    {
+      "wallet": "0x850362c2fcfee55962be453e01a6c4d9b813276f",
+      "observed_ms": 1793613369969,
+      "btc_fill_count": 6,
+      "capped": false
+    },
+    {
+      "wallet": "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6",
+      "observed_ms": 1793613369913,
+      "btc_fill_count": 2,
+      "capped": false
+    },
+    {
+      "wallet": "0x9d81a3adf84bd66528b62f2bda03e2e24bed3416",
+      "observed_ms": 1793613370967,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0xa62b923a112d50d03e1e096bbd53422490dac104",
+      "observed_ms": 1793613371012,
+      "btc_fill_count": 4,
+      "capped": false
+    },
+    {
+      "wallet": "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b",
+      "observed_ms": 1793613371598,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0xd0956a1eba0a9060baf5f73ee26b9601dc47ec43",
+      "observed_ms": 1793613372075,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0xd90dffcf6a185794bdf81dca1c1c7067bc49d7f0",
+      "observed_ms": 1793613373078,
+      "btc_fill_count": 2,
+      "capped": false
+    },
+    {
+      "wallet": "0xdf954bbe619273a56e0cfa90dad8382195dc7d72",
+      "observed_ms": 1793613372749,
+      "btc_fill_count": 0,
+      "capped": false
+    },
+    {
+      "wallet": "0xe90bf24e807df04f1513d50002d78bfc22ee84d9",
+      "observed_ms": 1793613373366,
+      "btc_fill_count": 18,
+      "capped": false
+    },
+    {
+      "wallet": "0xeb67e031761277c26df8c78b814f2b75c1745b35",
+      "observed_ms": 1793613374151,
+      "btc_fill_count": 5,
+      "capped": false
+    },
+    {
+      "wallet": "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00",
+      "observed_ms": 1793613374702,
+      "btc_fill_count": 6,
+      "capped": false
+    },
+    {
+      "wallet": "0xedbb1abc196330fef074b3ba04da93dfc35e922f",
+      "observed_ms": 1793613375511,
+      "btc_fill_count": 2,
+      "capped": false
+    }
+  ],
+  "archives": {
+    "0x033352b410f1e4835b4e47cf042d44155bec32c2.json.gz": "c54b56f3eade72a1c307e60ec066fc771221aba5b34d427fd44c20e075925f0b",
+    "0x0405b6fe11f41ea3f28cbba3fd3015be402bfba9.json.gz": "da52de3114e86c3f8b99a481d75b3b728688dfe2bdbe274cc4bd835b1ba66089",
+    "0x08d01ebad78c6dc1dffc7c244d90c1143e906feb.json.gz": "d638c19ccf0833610d88aab87a38cff47caed3f271625a2b7dbaebff248a16d3",
+    "0x0d438ba1817d0958ae3bf70b23faaf1d0117c930.json.gz": "028c351efd48cee86c291052bdd9439b49cc64d84f84480599d573cd07b62567",
+    "0x0dd5db9c3748486e747c6a123727f472668cf6ee.json.gz": "3147888ec7668fdc7ca37eb01b1cf747cf2abb5bc1cb17b753510bca4fbf4e7b",
+    "0x1bf629cd9f4dbcc9fca616ccf7a19891007f5bfa.json.gz": "c91814a8822795293f5821718f3c4472ecf4947e23a1cf3346b694de43d774b7",
+    "0x2ca4927174ba283d8a57f60ef3589844035a2930.json.gz": "dbd7ada4cc254288f63e55b6a3b78c6235f3f663d0fb12c2dbb556163b5fb697",
+    "0x3196580696972bfe11e0e107fb27b06a5d478249.json.gz": "af75597bb98f2407391e6bb4a7aac91599b0bd5e5acae1c535f7b0ebb17dd002",
+    "0x31ca8395cf837de08b24da3f660e77761dfb974b.json.gz": "2d264c81b01afe146f1920c8a4ec856c257610c488611e3f6a2b7b220481162f",
+    "0x34705cb69ac83cd65d4710259151665ab0ce6fa6.json.gz": "3e5e4cbf823da0902937adfde6bfb79ed9fc80fd5376a841f09529d96c2d11b0",
+    "0x3d7a23552dfddc40b5872cbd148f4f1b4f055c36.json.gz": "dba674c10ffb1931409f22af34af8fcb45cdb5af8453e6f8946a6039bb0ad635",
+    "0x4588595ee0047982cd5ca4a82ab69c3174fbc832.json.gz": "5fd5360bfb75ad751ba37c6a9e23db6592172f8776b0d6c79c603af14528bb99",
+    "0x4c226d5a21ae3b9883f98cbda1a3be63e565f308.json.gz": "780da52ac28b018bedc09642d265c5a4ce95d9bf8df343e2f71cc60e069f81e7",
+    "0x4e60e3a4a32d63d245aa4e4ce304b4254b088f95.json.gz": "3ef215d090cfc0145211f1d4ba73471d6b24f4a1b5b2ef1cb14848dd0eda782d",
+    "0x59dbd22a4c595c0bf54540ac8cff35cccc3c7b28.json.gz": "5782d1643cd0cebec78be737a545c04a2ba9e146c7351f5e11f036371d1d60fa",
+    "0x5b5d51203a0f9079f8aeb098a6523a13f298c060.json.gz": "7288aa5e6302071a3f850b25207e550681c093cf17bbb2350969e1eedb0aef50",
+    "0x63f6411ca61733af716c9a50a56a84ea38a0af59.json.gz": "c78cfe081c79c6397f62da391a8b9f084f8e9eac28e1e9686ae57eaa836935f7",
+    "0x6dd3146cead144385974e958305d7e4c352846b7.json.gz": "2575b0a0f02fa75f5df8950cab93734f0c7231e8367587f3e10b4b4caf4066b0",
+    "0x7fdafde5cfb5465924316eced2d3715494c517d1.json.gz": "04dc8d67a4629ba9b8bffa47967063df1b600ae8c954b401094c70aaa970ab83",
+    "0x821221842fd8c25f124165df51a684a1c433f36e.json.gz": "ed865dfd1e9690fe50dc09fe85c15f6be52f6b76ce36c797484451374117936d",
+    "0x850362c2fcfee55962be453e01a6c4d9b813276f.json.gz": "3e6032c76f4ebacf65f6b42e9d30dd6cfff5e69889a3f1ded6049e94f0b49439",
+    "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6.json.gz": "45d097d54f00ecc7b425e6b6cfe5f3dbc682dc4d014d56bef9f44507d2195232",
+    "0x9d81a3adf84bd66528b62f2bda03e2e24bed3416.json.gz": "620c1ac3df715dcd5b474f70c3faa04d637fa67edb08618d242761c18619c84f",
+    "0xa62b923a112d50d03e1e096bbd53422490dac104.json.gz": "03e8c7d989f2154eef0487b7257f8f74e70960c31c74ebbd41d788168b6c715f",
+    "0xcafe9392d902f6f517b1573371923ebf7ffa7b3b.json.gz": "d379ba8e0d269226a4f7511fe19f4feb63bd0f1a4c26bf71f775c6c62ce556cc",
+    "0xd0956a1eba0a9060baf5f73ee26b9601dc47ec43.json.gz": "a672f6409444f79306b2161d782cd6ddec1f4561a40325d3183d8ba6689e2bb3",
+    "0xd90dffcf6a185794bdf81dca1c1c7067bc49d7f0.json.gz": "294b2112af912751f5706de235e64c9cba41ac35b386d64fe9cc6b975f36dd47",
+    "0xdf954bbe619273a56e0cfa90dad8382195dc7d72.json.gz": "023e4e7338ab95b59a09f4ed7e98a115428f3f2962cd2b4048ada01afcf78a52",
+    "0xe90bf24e807df04f1513d50002d78bfc22ee84d9.json.gz": "cd28bd3f0a621aa556b8869a4d8ae2b40d76a14504af1368210a0972ec035f53",
+    "0xeb67e031761277c26df8c78b814f2b75c1745b35.json.gz": "bfd0a3c7bc7a8575cd898f0c9fec7a4f7419fcf2167f4efee05c9c795dbc716e",
+    "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00.json.gz": "812f90334627509d31ae3a0012a1764bd05d1da39fd57ca33cadbc669a74373c",
+    "0xedbb1abc196330fef074b3ba04da93dfc35e922f.json.gz": "13fbe5d32d05e5eb0a741685df3bc2bee2312f92aa263bc4479eb09f66ba01e5"
+  },
+  "selected": [
+    "0xe90bf24e807df04f1513d50002d78bfc22ee84d9",
+    "0x7fdafde5cfb5465924316eced2d3715494c517d1",
+    "0x850362c2fcfee55962be453e01a6c4d9b813276f",
+    "0xecb63caa47c7c4e77f60f1ce858cf28dc2b82b00",
+    "0x4588595ee0047982cd5ca4a82ab69c3174fbc832",
+    "0xeb67e031761277c26df8c78b814f2b75c1745b35",
+    "0xa62b923a112d50d03e1e096bbd53422490dac104",
+    "0x8cc19cee19cd24de7b1d27caec812deb4aa280d6"
+  ]
+}
