@@ -183,6 +183,12 @@ def api_forward_diagnostics():
     return JSONResponse(content=load_diagnostics(), headers={"Cache-Control": "no-store"})
 
 
+@app.get("/api/research/pilot")
+def api_liquidation_data_pilot():
+    from research.pilot_summary import load_pilot_summary
+    return JSONResponse(content=load_pilot_summary(), headers={"Cache-Control": "no-store"})
+
+
 @app.get("/api/ml")
 async def api_ml():
     if _ml_cfg is not None and getattr(_ml_cfg, "enabled", False) is False:

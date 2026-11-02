@@ -106,6 +106,7 @@ body{min-height:100dvh;overflow-x:hidden}
 #cost-panel.open{max-height:1000px}
 #forward-panel.open{max-height:1600px}
 #forward-panel th{padding:7px 12px 7px 0}
+#pilot-panel.open{max-height:1500px}
 .coll{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px}
 .coll-d{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .coll-d.ok{background:var(--g)}.coll-d.err{background:var(--r)}.coll-d.stl{background:var(--a)}
@@ -200,6 +201,11 @@ body{min-height:100dvh;overflow-x:hidden}
     <div style="overflow:auto;max-height:270px;margin-top:12px"><table style="width:100%;font-size:10px;text-align:left;border-collapse:collapse;white-space:nowrap"><thead style="color:var(--t3)"><tr><th>Recorded</th><th>TWAP</th><th>Momentum control</th><th>Outcome</th><th>Reason</th><th>TWAP model net</th><th>Control model net</th></tr></thead><tbody id="forward-rows"></tbody></table></div>
     <div id="forward-economics" style="font-size:11px;color:var(--t2);line-height:1.7;white-space:pre-line;margin-top:14px;padding-top:12px;border-top:1px solid var(--brd)" aria-live="polite">Loading recorded economics…</div>
     <div style="font-size:10px;color:var(--t3);line-height:1.6;margin-top:10px">Prospective paper event study. Quote references are not guaranteed fills. Missing outcomes are unknown; flat decisions are not winning trades. Alpha remains unproven; no orders.</div>
+  </div></div>
+  <div class="acc-h" onclick="tog(this)"><div class="acc-t">Liquidation Data Pilot</div><div class="acc-arr">▾</div></div>
+  <div class="acc-b" id="pilot-panel"><div class="acc-in">
+    <div id="pilot-summary" style="font-size:11px;color:var(--t2);line-height:1.7;white-space:pre-line" aria-live="polite">Loading recorded data pilot…</div>
+    <div style="font-size:10px;color:var(--t3);line-height:1.6;margin-top:12px">Data capability measurement only. Fast wallet fills do not prove fast liquidation information. Initial snapshots are historical bootstrap; account coverage is sampled. No strategy or orders are enabled.</div>
   </div></div>
   <div class="acc-h" onclick="tog(this)"><div class="acc-t">Wallet &amp; Data Tools</div><div class="acc-arr">▾</div></div>
   <div class="acc-b"><div class="acc-in" style="max-height:390px;overflow:auto"><div style="font-size:10px;color:var(--t3);margin-bottom:10px">Source review · service coverage and pricing trials pending</div><div id="research-tools">Loading sources…</div></div></div>
@@ -389,6 +395,31 @@ async function pollForwardEconomics(){
     el.textContent=lines.join('\n');
   }catch(e){el.textContent='Recorded economics temporarily unavailable.'}
 }
+async function pollDataPilot(){
+  const el=$('pilot-summary');
+  try{
+    const data=await readApi('/api/research/pilot');
+    if(data.status!=='liquidation_data_pilot'){el.textContent=data.status==='not_started'?'No data pilot is running here.':'Data pilot report unavailable.';return}
+    const seconds=value=>value==null?'unknown':value.toFixed(3)+'s';
+    const count=(body,key)=>body?.[key]??0;
+    const latency=data.live_latency_seconds,info=data.explicit_information_latency_seconds;
+    const lines=['Recorded data pilot · '+new Date(data.generated_at).toLocaleString(),
+      'Collection: '+data.collection_state+' · '+data.wallet_count+' frozen public accounts',
+      'Budget ends '+(data.worker.until?new Date(data.worker.until).toLocaleString():'unknown'),
+      'Trading disabled · alpha unproven · protocol '+data.protocol_sha256.slice(0,16)+'…',
+      'New unique BTC wallet fills: '+data.live_ws_unique_btc_fills+' · bootstrap records: '+count(data.fill_phases.hl_ws,'bootstrap'),
+      'Wallet fill latency: median '+seconds(latency.p50)+' · p95 '+seconds(latency.p95)+' · latest '+latency.sample_count+' observations',
+      'Explicit live liquidation annotations: WS '+count(data.explicit_live_metadata_by_source,'hl_ws')+' · REST '+count(data.explicit_live_metadata_by_source,'hl_rest'),
+      'Explicit information latency p95: WS '+seconds(info.hl_ws.p95)+' · REST '+seconds(info.hl_rest.p95),
+      'REST liquidations matched to live WS fills: '+data.rest_explicit_with_live_ws_fill+' · WS flag absent in '+data.matched_rest_liquidations_without_ws_flag+' cases',
+      'Spot flow: 5m '+(data.spot_flow['5'].usable?'observed':'unknown ('+data.spot_flow['5'].reason+')')+' · 15m '+(data.spot_flow['15'].usable?'observed':'unknown ('+data.spot_flow['15'].reason+')'),
+      'Quote source age at report: '+seconds(data.quote_age_seconds)+' · rejected payloads '+data.rejected_frames+' · capped REST responses '+data.capped_rest_responses];
+    if(data.rest_explicit_with_live_ws_fill===0)lines.push('No matched liquidation cases yet; metadata support remains unknown.');
+    const labels={published_provider_limits_not_freshly_verified:'Provider contract review pending',liquidation_coverage_is_sampled:'Liquidation coverage remains sampled',insufficient_live_latency_sample:'Fewer than 100 live latency observations',live_latency_not_passed:'Wallet fill latency not established',insufficient_matched_liquidation_metadata_cases:'Fewer than 3 matched liquidation cases',explicit_liquidation_information_latency_not_passed:'Timely explicit liquidation information not established',ws_liquidation_metadata_missing_in_matched_cases:'Some matched liquidations lack WS metadata',spot_flow_window_not_ready:'Spot flow window incomplete',quote_not_fresh:'Fresh quote unavailable'};
+    lines.push('Source review: '+data.readiness_blockers.map(value=>labels[value]||value).join('; '));
+    el.textContent=lines.join('\n');
+  }catch(e){el.textContent='Data pilot report temporarily unavailable.'}
+}
 async function poll(){
   try{
     const [sigR,statR,pulseR,decR,evR]=await Promise.allSettled([
@@ -484,6 +515,7 @@ loadResearchTools();
 loadCosts();setInterval(loadCosts,60000);
 pollForward();setInterval(pollForward,30000);
 pollForwardEconomics();setInterval(pollForwardEconomics,30000);
+pollDataPilot();setInterval(pollDataPilot,30000);
 })();
 </script>
 </body>
