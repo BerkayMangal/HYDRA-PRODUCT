@@ -1,0 +1,10 @@
+{
+  "mobile_width": 390,
+  "no_overflow": true,
+  "wallet_connection": "mock verified",
+  "preview_asset": 10142,
+  "signing_chain_mismatch": "blocked before exchange",
+  "exchange_requests": 0,
+  "account_change": "quote invalidated",
+  "browser_exceptions": []
+}

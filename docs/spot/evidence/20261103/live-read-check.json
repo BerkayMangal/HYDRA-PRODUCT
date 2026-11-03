@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-03T16:01:02.095943+00:00",
+  "market": {
+    "tokens": [
+      197,
+      0
+    ],
+    "name": "@142",
+    "index": 142,
+    "isCanonical": false
+  },
+  "asset": 10142,
+  "base_identity": "0x8f254b963e8468305d409b33aa137c67",
+  "quote_identity": "0x6d1e7cde53ba9467b783cb7c530ce054",
+  "book_time": 1793721659739,
+  "best_bid": {
+    "px": "77561.0",
+    "sz": "0.00023",
+    "n": 1
+  },
+  "best_ask": {
+    "px": "77562.0",
+    "sz": "2.35216",
+    "n": 8
+  },
+  "info_cors": "*",
+  "exchange_preflight_status": 200,
+  "exchange_cors": "*",
+  "exchange_allow_methods": "*",
+  "exchange_post_requests": 0
+}
