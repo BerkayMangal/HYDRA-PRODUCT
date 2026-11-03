@@ -39,9 +39,10 @@ npm run build
 
 The locked build writes committed files to `static/spot/`, so the existing Python
 Docker image requires no Node runtime. FastAPI serves that directory at `/spot/`.
-The GitHub Pages workflow builds a separate HTTPS phone preview from the feature
-branch. It requires repository Pages access and deployment permission. This does
-not update the Railway service.
+The GitHub Pages workflow runs from main, respecting its protected environment,
+and builds a pinned, reviewed UI source revision. The verified phone preview is
+https://berkaymangal.github.io/HYDRA-PRODUCT/spot/. This does not update the Railway
+service. See docs/spot/PHONE_PREVIEW_TR.md for deployment evidence.
 
 Tests use generated, unfunded, ephemeral identities and mocked wallets. Automated
 tests must never submit an exchange request or fund a wallet. Public `/info`

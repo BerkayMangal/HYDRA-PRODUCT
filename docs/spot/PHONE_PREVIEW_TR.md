@@ -34,28 +34,40 @@ alanını reddeder. Böyle bir cüzdanda bağlantı ve önizleme kullanılabilir
 emir gönderilmez. Sırf bu engeli aşmak için sahte ağ veya geniş işlem yetkisi
 isteyen API agent eklenmedi. WalletConnect proje kimliği yapılandırılmadı.
 
-## Yayın durumu ve gereken son adım
+## Yayın durumu — başarılı
 
-[GitHub Actions derlemesi ve 10 test başarılı](https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41669259036).
-[Ayrı Python CI başarılı](https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41669258696).
+**3 Kasım 2026, yaklaşık 17:41 Londra/UTC:**
+https://berkaymangal.github.io/HYDRA-PRODUCT/spot/
 
-Pages yayın işi site oluştururken HTTP 403 döndürdü:
-`Resource not accessible by integration`. Depoda Pages sitesi bulunamadı;
-Actions'ın GITHUB_TOKEN'ı ilk siteyi açma yönetim yetkisine sahip değil.
+[Başarılı Pages yayını ve HTTPS/sürüm kontrolü](https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41686433897).
+[Main Python CI başarılı](https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41686433903).
+[Railway yayın işi beklendiği gibi atlandı](https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41686591338).
 
-Depo sahibi için kalan adım:
+İlk yayın site oluşturma yetkisinden, sonraki deneme Pages ortamının yalnızca
+`main` dalına izin vermesinden dolayı reddedilmişti. Kullanıcı Pages kaynağını
+GitHub Actions olarak etkinleştirdi. Ortam koruması korunarak yayın akışı `main`
+dalına eklendi; gözden geçirilmiş UI kaynağı sabit commit'ten derleniyor.
 
-1. [Settings → Pages](https://github.com/BerkayMangal/HYDRA-PRODUCT/settings/pages)
-   sayfasında Build and deployment → Source: **GitHub Actions** seç.
-2. Yukarıdaki Spot phone preview işinde **Re-run failed jobs** çalıştır.
-3. İşteki HTTPS doğrulaması başarılı olduktan sonra çıktıda verilen `/spot/`
-   adresini MetaMask/Rabby uygulamasının tarayıcısında aç.
+- Yayın akışı commit'i: `3457ada` (`main`).
+- UI kaynak commit'i: `ab44d58e756b7c1e6eb8fdcf68d65e49601400e7`.
+- Yayın sonrası iş, `/spot/` HTML'ini ve `/spot/release.json` içindeki kaynak
+  commit'ini HTTPS üzerinden doğruladı. Bu çalışma alanının ağ politikası Pages
+  alan adına doğrudan okumaya izin vermiyor; doğrulama normal yayın işinde yapıldı.
+- Build/test işi 10 TypeScript testi çalıştırdı. Main'deki ayrı Python CI geçti;
+  main kod tabanında yerel olarak 186 test geçti. Feature dalındaki 238 testlik
+  önceki sonuç ayrı kaynak revizyonuna aittir.
+- Gerçek cüzdan imzası veya gerçek alım otomasyonda denenmedi.
 
-Beklenen adres `https://berkaymangal.github.io/HYDRA-PRODUCT/spot/`;
-**bu rapor yazıldığında yayınlanmış/çalışır olarak doğrulanmadı**. Railway üretim
-adresi güncellenmedi. Ayrıca çalışan sitedeki `/api/scalp` model kaynakları ve
-`/assets/hydra.js`, bu checkout ile eşleşmiyor; üretime eski dosyalarla yazılmadı.
-Railway yönetim anahtarı bu oturumda mevcut değil.
+Telefonda bu adresi MetaMask/Rabby uygulama içi tarayıcısında aç veya sayfadaki
+MetaMask bağlantısını kullan. İlk adım bağlantı, spot bakiye ve alım önizlemesi.
+Gerçek alım kullanıcının ayrı cüzdan imzasını gerektirir; imza alanı uyumluluğu
+sınırlamaları yukarıda açıklanmıştır.
+
+Railway üretim uygulaması bu yayınla güncellenmedi. Çalışan BTC/ETH model servisi
+17:40 UTC kontrolünde HTTP 200, `state=active`, `error=null` döndürdü. Bu checkout'ta
+bulunmayan model kaynakları ve `/assets/hydra.js` nedeniyle uygulamayı eski kodla
+değiştirecek bir dağıtım yapılmadı. Yalnız spot yayın commit'leri `[spot-preview]`
+önekini kullanır; Railway otomatik yayın koşulu bunları dışlar, Python CI çalışır.
 
 ## Gelir modeli sorusu
 

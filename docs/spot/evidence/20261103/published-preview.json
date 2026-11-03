@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-11-03T17:42:25.225335+00:00",
+  "public_url": "https://berkaymangal.github.io/HYDRA-PRODUCT/spot/",
+  "workflow_run": "https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41686433897",
+  "workflow_status": "Success",
+  "workflow_commit": "3457ada",
+  "ui_source_commit": "ab44d58e756b7c1e6eb8fdcf68d65e49601400e7",
+  "https_html_and_source_commit_check": "passed in deployment job",
+  "verification_vantage": "GitHub Actions deployment runner; Pages host is not allowed by this workspace network policy",
+  "environment_protection": "unchanged; published from main",
+  "railway_deployment_run": "https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41686591338",
+  "railway_deployment_status": "Skipped",
+  "automated_financial_transactions": 0,
+  "real_mobile_wallet_signing_tested": false
+}

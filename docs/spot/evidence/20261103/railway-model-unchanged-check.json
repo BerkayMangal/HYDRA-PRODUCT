@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-03T17:40:32.679856+00:00",
+  "http_status": 200,
+  "model_state": "active",
+  "setups": [
+    "ml15-ens-h2-long",
+    "ml15-hgb-c1x2-long",
+    "swing-xgb-p3x5-long"
+  ],
+  "last_bar": "2026-11-03T17:35:00+00:00",
+  "error": null
+}
