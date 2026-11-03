@@ -1,0 +1,14 @@
+{
+  "status": "disabled",
+  "label": "Disabled",
+  "reason": "ML is disabled in config. Set ml.enabled: true to activate.",
+  "is_trained": false,
+  "probability": 0.5,
+  "recommendation": "N/A",
+  "state": "OUT",
+  "equity_pct": 0,
+  "win_rate": 0,
+  "total_trades": 0,
+  "feature_quality": null,
+  "ring_buffer_bars": 0
+}

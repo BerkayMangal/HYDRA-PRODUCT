@@ -1,0 +1,62 @@
+{
+  "score": -0.8,
+  "direction": "NEUTRAL",
+  "confidence": "HIGH",
+  "state": "NEUTRAL",
+  "agreement": "CONFLICT",
+  "suppressed_reason": null,
+  "engines": {
+    "microstructure": 17.21,
+    "flow": -43.67,
+    "macro": -11.75
+  },
+  "regime": "normal",
+  "event_outcome": "no_event",
+  "session": "unknown",
+  "feature_completeness": 0.91,
+  "data_maturity": 0.91,
+  "timestamp": "2026-11-03T15:54:11.783284+00:00",
+  "decision_explanation": {
+    "timestamp_utc": "2026-11-03T15:54:11.783284+00:00",
+    "state": "NEUTRAL",
+    "composite_score": -0.83,
+    "confidence": "HIGH",
+    "consensus_strength": 0.67,
+    "conflict_score": 0.47,
+    "engine_scores": {
+      "microstructure": 17.21,
+      "flow": -43.67,
+      "macro": -11.75
+    },
+    "engine_confidences": {
+      "microstructure": "HIGH",
+      "flow": "HIGH",
+      "macro": "HIGH"
+    },
+    "engine_suppressions": {
+      "microstructure": null,
+      "flow": null,
+      "macro": null
+    },
+    "engine_weights_used": {
+      "microstructure": 0.45,
+      "flow": 0.3,
+      "macro": 0.25
+    },
+    "quality_gate_passed": true,
+    "quality_gate_reason": "ok [GREEN]",
+    "data_completeness": 0.91,
+    "decision_grade_evidence": 1.0,
+    "suppression_reasons": [],
+    "regime": "normal",
+    "event_outcome": "no_event",
+    "session": "unknown",
+    "direction": "NEUTRAL",
+    "suppressed": false,
+    "suppression_reason": null,
+    "conviction": "HIGH",
+    "score": -0.83
+  },
+  "circuit_breaker": "GREEN",
+  "confidence_multiplier": 0.91
+}

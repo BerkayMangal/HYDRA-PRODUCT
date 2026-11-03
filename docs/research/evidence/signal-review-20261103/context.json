@@ -1,0 +1,154 @@
+{
+  "captured_at_utc": "2026-11-03T15:54:00Z",
+  "snapshot_interval_note": "Endpoints requested separately around 15:54–15:55 UTC, not an atomic snapshot.",
+  "source": "https://web-production-57fc0.up.railway.app",
+  "uptime": "1 day, 16:08:36",
+  "cycle_count": 1362,
+  "tracker": {
+    "total": 0,
+    "pending": 0,
+    "hit_rate_1h": 0,
+    "hit_rate_4h": 0,
+    "hit_rate_24h": 0,
+    "avg_pnl_1h": 0,
+    "avg_pnl_4h": 0,
+    "avg_pnl_24h": 0,
+    "sharpe_proxy": 0,
+    "recent": []
+  },
+  "price_history_points_returned": 200,
+  "selected_prices": {
+    "last_price": 77599.9,
+    "close": 77635.1,
+    "bybit_mark_price": 3.052620909280163e-19,
+    "bybit_index_price": 3.0539810151877427e-19
+  },
+  "collectors": {
+    "okx": {
+      "name": "OKX",
+      "last_fetch": "2026-11-03 15:51:18.074060+00:00",
+      "freshness_seconds": 173.676515,
+      "is_stale": false,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "etf": {
+      "name": "ETFFlow",
+      "last_fetch": "2026-11-03 15:53:28.909307+00:00",
+      "freshness_seconds": 42.841283,
+      "is_stale": false,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "polymarket": {
+      "name": "Predictions",
+      "last_fetch": "2026-11-03 15:53:49.274828+00:00",
+      "freshness_seconds": 22.475768,
+      "is_stale": false,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "kalshi": {
+      "name": "Kalshi",
+      "last_fetch": "2026-11-03 15:53:49.345813+00:00",
+      "freshness_seconds": 22.404787,
+      "is_stale": false,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "macro": {
+      "name": "Macro",
+      "last_fetch": "2026-11-03 15:00:50.442755+00:00",
+      "freshness_seconds": 3201.30785,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "fear_greed": {
+      "name": "FearGreed",
+      "last_fetch": "2026-11-03 15:00:50.712092+00:00",
+      "freshness_seconds": 3201.038518,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "binance": {
+      "name": "BinanceGlobal",
+      "last_fetch": "2026-11-03 15:00:51.531541+00:00",
+      "freshness_seconds": 3200.219074,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "sentiment": {
+      "name": "Sentiment",
+      "last_fetch": "2026-11-03 15:53:59.826766+00:00",
+      "freshness_seconds": 11.923853,
+      "is_stale": false,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "defi": {
+      "name": "DeFiLlama",
+      "last_fetch": "2026-11-03 15:00:53.873480+00:00",
+      "freshness_seconds": 3197.877144,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "venom": {
+      "name": "Venom",
+      "last_fetch": "2026-11-03 15:54:11.746628+00:00",
+      "freshness_seconds": 0.004,
+      "is_stale": false,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "mempool": {
+      "name": "Mempool",
+      "last_fetch": "2026-11-03 15:00:55.008853+00:00",
+      "freshness_seconds": 3196.741779,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "bybit": {
+      "name": "Bybit",
+      "last_fetch": "2026-11-03 15:00:55.921032+00:00",
+      "freshness_seconds": 3195.829605,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "coingecko_trending": {
+      "name": "CoinGeckoTrending",
+      "last_fetch": "2026-11-03 15:00:56.211284+00:00",
+      "freshness_seconds": 3195.539357,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    },
+    "cg_plus": {
+      "name": "CoinGeckoPlus",
+      "last_fetch": "2026-11-03 15:00:56.176524+00:00",
+      "freshness_seconds": 3195.57412,
+      "is_stale": true,
+      "consecutive_errors": 0,
+      "has_data": true,
+      "circuit_state": "CLOSED"
+    }
+  }
+}

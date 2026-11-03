@@ -1,0 +1,24 @@
+{
+  "state": "NEUTRAL",
+  "direction": "NEUTRAL",
+  "score": -0.83,
+  "confidence": "HIGH",
+  "consensus": 0.67,
+  "conflict": 0.47,
+  "engines": {
+    "microstructure": 17.21,
+    "flow": -43.67,
+    "macro": -11.75
+  },
+  "engine_confidences": {
+    "microstructure": "HIGH",
+    "flow": "HIGH",
+    "macro": "HIGH"
+  },
+  "suppressions": [],
+  "quality": 0.91,
+  "decision_evidence": 1.0,
+  "regime": "normal",
+  "session": "unknown",
+  "timestamp": "2026-11-03T15:54:11.783284+00:00"
+}

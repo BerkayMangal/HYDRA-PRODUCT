@@ -1,0 +1,12 @@
+{
+  "win_rate_1h": 0,
+  "win_rate_4h": 0,
+  "win_rate_24h": 0,
+  "avg_return_1h": 0,
+  "avg_return_4h": 0,
+  "avg_return_24h": 0,
+  "sharpe_proxy_24h": 0,
+  "total_signals": 0,
+  "pending": 0,
+  "recent": []
+}
