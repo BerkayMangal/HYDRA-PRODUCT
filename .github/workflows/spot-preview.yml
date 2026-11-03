@@ -32,6 +32,14 @@ jobs:
           cp -r static/spot/. /tmp/spot-pages/spot/
           printf '<!doctype html><meta http-equiv="refresh" content="0;url=./spot/">' > /tmp/spot-pages/index.html
           touch /tmp/spot-pages/.nojekyll
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          Path('/tmp/spot-pages/spot/release.json').write_text(json.dumps({
+              'commit': os.environ['GITHUB_SHA'],
+              'product': 'HYDRA Spot preview',
+          }) + '\n')
+          PY
       - uses: actions/upload-pages-artifact@v3
         with:
           path: /tmp/spot-pages
@@ -45,7 +53,7 @@ jobs:
     steps:
       - uses: actions/configure-pages@v5
         with:
-          enablement: true
+          enablement: false
       - uses: actions/deploy-pages@v4
         id: deployment
       - name: Verify public preview
@@ -53,12 +61,25 @@ jobs:
           PREVIEW_URL: ${{ steps.deployment.outputs.page_url }}spot/
         run: |
           python - <<'PY'
-          import os, urllib.request
+          import json, os, time, urllib.request
+          from urllib.parse import urljoin
           url=os.environ['PREVIEW_URL']
-          with urllib.request.urlopen(url, timeout=30) as r:
-              html=r.read().decode()
-              assert r.status==200 and 'HYDRA · Spot' in html and 'assets/' in html
+          assert url.startswith('https://')
+          for attempt in range(12):
+              try:
+                  with urllib.request.urlopen(url, timeout=20) as r:
+                      html=r.read().decode()
+                      assert r.status==200 and 'HYDRA · Spot' in html and 'assets/' in html
+                  with urllib.request.urlopen(urljoin(url, 'release.json'), timeout=20) as r:
+                      release=json.load(r)
+                      assert release['commit']==os.environ['GITHUB_SHA']
+                  break
+              except Exception:
+                  if attempt==11:
+                      raise
+                  time.sleep(5)
           print('Verified HTTPS phone preview:',url)
+          print('Verified commit:',release['commit'])
           with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
-              f.write('Phone preview: '+url+'\n\nNo financial transactions were executed by this workflow.\n')
+              f.write('Phone preview: '+url+'\n\nVerified commit: '+release['commit']+'\n\nNo financial transactions were executed by this workflow.\n')
           PY
