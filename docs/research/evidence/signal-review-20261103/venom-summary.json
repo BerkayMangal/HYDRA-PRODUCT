@@ -1,0 +1,81 @@
+{
+  "ts": "2026-11-03T16:03:10+00:00",
+  "coverage": {
+    "rows": 15,
+    "with_1h": 15,
+    "with_24h": 15,
+    "with_volume": 15,
+    "with_trending": 2,
+    "with_funding": 0
+  },
+  "data_health": {
+    "status": "ok",
+    "headline": "Prices 2m old · 15/15 sources live · BTC agrees across 2 venues",
+    "prices_as_of": "2026-11-03T16:00:30.750160+00:00",
+    "prices_age_s": 160,
+    "prices_stale": false,
+    "price_check": "agree"
+  },
+  "top5": [
+    {
+      "symbol": "HYPE",
+      "venom_score": 51.2,
+      "score_percentile": 94.6,
+      "forward_edge_24h": {
+        "n": 376,
+        "win_rate": null,
+        "avg_pct": -1.052,
+        "median_pct": -0.951,
+        "sharpe_proxy": -4.991
+      }
+    },
+    {
+      "symbol": "BTC",
+      "venom_score": 40.0,
+      "score_percentile": 39.5,
+      "forward_edge_24h": {
+        "n": 376,
+        "win_rate": null,
+        "avg_pct": -1.052,
+        "median_pct": -0.951,
+        "sharpe_proxy": -4.991
+      }
+    },
+    {
+      "symbol": "BCH",
+      "venom_score": 35.3,
+      "score_percentile": 67.5,
+      "forward_edge_24h": {
+        "n": 376,
+        "win_rate": null,
+        "avg_pct": -1.052,
+        "median_pct": -0.951,
+        "sharpe_proxy": -4.991
+      }
+    },
+    {
+      "symbol": "SOL",
+      "venom_score": 35.2,
+      "score_percentile": 48.1,
+      "forward_edge_24h": {
+        "n": 376,
+        "win_rate": null,
+        "avg_pct": -1.052,
+        "median_pct": -0.951,
+        "sharpe_proxy": -4.991
+      }
+    },
+    {
+      "symbol": "ETH",
+      "venom_score": 34.5,
+      "score_percentile": 50.6,
+      "forward_edge_24h": {
+        "n": 376,
+        "win_rate": null,
+        "avg_pct": -1.052,
+        "median_pct": -0.951,
+        "sharpe_proxy": -4.991
+      }
+    }
+  ]
+}

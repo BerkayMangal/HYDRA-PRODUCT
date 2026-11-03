@@ -42,7 +42,6 @@ isteyen API agent eklenmedi. WalletConnect proje kimliği yapılandırılmadı.
 Pages yayın işi site oluştururken HTTP 403 döndürdü:
 `Resource not accessible by integration`. Depoda Pages sitesi bulunamadı;
 Actions'ın GITHUB_TOKEN'ı ilk siteyi açma yönetim yetkisine sahip değil.
-Bu hata otomatik güvenlik onayının reddi değil, GitHub API yetki hatasıdır.
 
 Depo sahibi için kalan adım:
 
@@ -54,7 +53,9 @@ Depo sahibi için kalan adım:
 
 Beklenen adres `https://berkaymangal.github.io/HYDRA-PRODUCT/spot/`;
 **bu rapor yazıldığında yayınlanmış/çalışır olarak doğrulanmadı**. Railway üretim
-adresi güncellenmedi. Railway yönetim anahtarı bu oturumda mevcut değil.
+adresi güncellenmedi. Ayrıca çalışan sitedeki `/api/scalp` model kaynakları ve
+`/assets/hydra.js`, bu checkout ile eşleşmiyor; üretime eski dosyalarla yazılmadı.
+Railway yönetim anahtarı bu oturumda mevcut değil.
 
 ## Gelir modeli sorusu
 

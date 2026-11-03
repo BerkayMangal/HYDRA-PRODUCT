@@ -1,0 +1,3384 @@
+{
+  "as_of": "2026-11-03T16:04:06Z",
+  "min_samples": 30,
+  "rules": {
+    "sample": "excess return vs same-venue BTC (TVL: vs aggregate DeFi TVL), signed by the expected direction, minus round-trip cost",
+    "cost_bps": {
+      "default": 30,
+      "small_cap_or_new_or_krw": 60,
+      "tvl": 0
+    },
+    "clustering": "same entity and type within 72h counts once",
+    "fill_window": "now >= t0+h and <= t0+1.25h, else missed",
+    "collecting": "n < 30",
+    "proven": "n >= min, 90% CI lower bound of mean net excess > 0, both halves > 0",
+    "failed": "n >= min and CI upper bound < 0, or halves disagree in sign",
+    "inconclusive": "otherwise"
+  },
+  "rows": [
+    {
+      "type": "attention.coingecko_trending",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 414,
+      "clustered_repeats": 2,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 412,
+      "mean_net_pct": 0.4178,
+      "median_net_pct": -0.5321,
+      "mean_gross_pct": 1.0047,
+      "hit_rate": 0.3519,
+      "hit_rate_ci90": [
+        0.3143,
+        0.3915
+      ],
+      "mean_ci90_pct": [
+        -0.4965,
+        1.3321
+      ],
+      "first_half_mean_pct": 0.0677,
+      "second_half_mean_pct": 0.7679,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "attention.coingecko_trending",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 414,
+      "clustered_repeats": 2,
+      "pending": 2,
+      "missed": 3,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 407,
+      "mean_net_pct": 0.2636,
+      "median_net_pct": -0.4685,
+      "mean_gross_pct": 0.8511,
+      "hit_rate": 0.4103,
+      "hit_rate_ci90": [
+        0.3709,
+        0.4509
+      ],
+      "mean_ci90_pct": [
+        -0.9016,
+        1.4289
+      ],
+      "first_half_mean_pct": -0.4583,
+      "second_half_mean_pct": 0.9821,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "attention.coingecko_trending",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 414,
+      "clustered_repeats": 2,
+      "pending": 6,
+      "missed": 4,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 402,
+      "mean_net_pct": -6.8492,
+      "median_net_pct": -1.8984,
+      "mean_gross_pct": -6.2627,
+      "hit_rate": 0.3483,
+      "hit_rate_ci90": [
+        0.3103,
+        0.3882
+      ],
+      "mean_ci90_pct": [
+        -9.1073,
+        -4.5912
+      ],
+      "first_half_mean_pct": -6.5895,
+      "second_half_mean_pct": -7.109,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "attention.coingecko_trending",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 414,
+      "clustered_repeats": 2,
+      "pending": 23,
+      "missed": 13,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 376,
+      "mean_net_pct": -9.7426,
+      "median_net_pct": -3.5672,
+      "mean_gross_pct": -9.157,
+      "hit_rate": 0.3324,
+      "hit_rate_ci90": [
+        0.2938,
+        0.3735
+      ],
+      "mean_ci90_pct": [
+        -12.3367,
+        -7.1486
+      ],
+      "first_half_mean_pct": -10.2313,
+      "second_half_mean_pct": -9.254,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "attention.coingecko_trending",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 414,
+      "clustered_repeats": 2,
+      "pending": 63,
+      "missed": 20,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 329,
+      "mean_net_pct": -8.9926,
+      "median_net_pct": -5.9313,
+      "mean_gross_pct": -8.4063,
+      "hit_rate": 0.3009,
+      "hit_rate_ci90": [
+        0.2611,
+        0.344
+      ],
+      "mean_ci90_pct": [
+        -12.2642,
+        -5.7211
+      ],
+      "first_half_mean_pct": -9.5439,
+      "second_half_mean_pct": -8.4447,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "attention.dex_trending",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 358,
+      "clustered_repeats": 23,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 114,
+      "neutral_direction": 0,
+      "n": 105,
+      "mean_net_pct": 32.0183,
+      "median_net_pct": -2.5206,
+      "mean_gross_pct": 34.0183,
+      "hit_rate": 0.2952,
+      "hit_rate_ci90": [
+        0.2279,
+        0.3729
+      ],
+      "mean_ci90_pct": [
+        -24.215,
+        88.2517
+      ],
+      "first_half_mean_pct": 68.4256,
+      "second_half_mean_pct": -3.702,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "attention.dex_trending",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 358,
+      "clustered_repeats": 23,
+      "pending": 1,
+      "missed": 3,
+      "no_t0": 114,
+      "neutral_direction": 0,
+      "n": 101,
+      "mean_net_pct": 31.1034,
+      "median_net_pct": -4.8076,
+      "mean_gross_pct": 33.1034,
+      "hit_rate": 0.2574,
+      "hit_rate_ci90": [
+        0.1929,
+        0.3347
+      ],
+      "mean_ci90_pct": [
+        -28.0742,
+        90.281
+      ],
+      "first_half_mean_pct": 66.911,
+      "second_half_mean_pct": -4.002,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "attention.dex_trending",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 358,
+      "clustered_repeats": 23,
+      "pending": 2,
+      "missed": 3,
+      "no_t0": 114,
+      "neutral_direction": 0,
+      "n": 100,
+      "mean_net_pct": -17.4341,
+      "median_net_pct": -14.4963,
+      "mean_gross_pct": -15.4341,
+      "hit_rate": 0.21,
+      "hit_rate_ci90": [
+        0.1511,
+        0.2842
+      ],
+      "mean_ci90_pct": [
+        -25.5687,
+        -9.2995
+      ],
+      "first_half_mean_pct": -18.398,
+      "second_half_mean_pct": -16.4703,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "attention.dex_trending",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 358,
+      "clustered_repeats": 23,
+      "pending": 7,
+      "missed": 10,
+      "no_t0": 114,
+      "neutral_direction": 0,
+      "n": 88,
+      "mean_net_pct": -31.7874,
+      "median_net_pct": -24.7036,
+      "mean_gross_pct": -29.7874,
+      "hit_rate": 0.1818,
+      "hit_rate_ci90": [
+        0.124,
+        0.2586
+      ],
+      "mean_ci90_pct": [
+        -39.2725,
+        -24.3023
+      ],
+      "first_half_mean_pct": -37.2995,
+      "second_half_mean_pct": -26.2754,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "attention.dex_trending",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 358,
+      "clustered_repeats": 23,
+      "pending": 20,
+      "missed": 9,
+      "no_t0": 114,
+      "neutral_direction": 0,
+      "n": 76,
+      "mean_net_pct": -38.5713,
+      "median_net_pct": -38.0018,
+      "mean_gross_pct": -36.5713,
+      "hit_rate": 0.1184,
+      "hit_rate_ci90": [
+        0.0702,
+        0.1929
+      ],
+      "mean_ci90_pct": [
+        -46.9146,
+        -30.228
+      ],
+      "first_half_mean_pct": -39.4098,
+      "second_half_mean_pct": -37.7327,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "confluence.x2",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 91,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 90,
+      "mean_net_pct": -0.8221,
+      "median_net_pct": -1.0588,
+      "mean_gross_pct": -0.2221,
+      "hit_rate": 0.3667,
+      "hit_rate_ci90": [
+        0.2881,
+        0.453
+      ],
+      "mean_ci90_pct": [
+        -2.512,
+        0.8678
+      ],
+      "first_half_mean_pct": -0.8296,
+      "second_half_mean_pct": -0.8147,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "confluence.x2",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 91,
+      "clustered_repeats": 0,
+      "pending": 1,
+      "missed": 1,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 88,
+      "mean_net_pct": -0.732,
+      "median_net_pct": -0.9396,
+      "mean_gross_pct": -0.132,
+      "hit_rate": 0.4545,
+      "hit_rate_ci90": [
+        0.3699,
+        0.5419
+      ],
+      "mean_ci90_pct": [
+        -2.9305,
+        1.4665
+      ],
+      "first_half_mean_pct": 0.7858,
+      "second_half_mean_pct": -2.2498,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "confluence.x2",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 91,
+      "clustered_repeats": 0,
+      "pending": 1,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 89,
+      "mean_net_pct": -1.8152,
+      "median_net_pct": -2.7824,
+      "mean_gross_pct": -1.2152,
+      "hit_rate": 0.3933,
+      "hit_rate_ci90": [
+        0.3124,
+        0.4804
+      ],
+      "mean_ci90_pct": [
+        -5.3489,
+        1.7185
+      ],
+      "first_half_mean_pct": 0.4739,
+      "second_half_mean_pct": -4.0535,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "confluence.x2",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 91,
+      "clustered_repeats": 0,
+      "pending": 1,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 89,
+      "mean_net_pct": -4.832,
+      "median_net_pct": -6.477,
+      "mean_gross_pct": -4.232,
+      "hit_rate": 0.3596,
+      "hit_rate_ci90": [
+        0.2812,
+        0.4462
+      ],
+      "mean_ci90_pct": [
+        -9.0732,
+        -0.5908
+      ],
+      "first_half_mean_pct": -2.1712,
+      "second_half_mean_pct": -7.4336,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "confluence.x2",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 91,
+      "clustered_repeats": 0,
+      "pending": 7,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 83,
+      "mean_net_pct": -3.2328,
+      "median_net_pct": -9.0341,
+      "mean_gross_pct": -2.6328,
+      "hit_rate": 0.3133,
+      "hit_rate_ci90": [
+        0.2365,
+        0.4018
+      ],
+      "mean_ci90_pct": [
+        -9.6059,
+        3.1403
+      ],
+      "first_half_mean_pct": -0.1258,
+      "second_half_mean_pct": -6.2658,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "confluence.x3",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": -0.0934,
+      "median_net_pct": -1.5173,
+      "mean_gross_pct": 0.5066,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1824,
+        0.8176
+      ],
+      "mean_ci90_pct": [
+        -8.616,
+        8.4293
+      ],
+      "first_half_mean_pct": 5.4472,
+      "second_half_mean_pct": -5.634,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "confluence.x3",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": 1.2498,
+      "median_net_pct": 3.0337,
+      "mean_gross_pct": 1.8498,
+      "hit_rate": 0.75,
+      "hit_rate_ci90": [
+        0.3562,
+        0.9421
+      ],
+      "mean_ci90_pct": [
+        -5.2937,
+        7.7934
+      ],
+      "first_half_mean_pct": 5.164,
+      "second_half_mean_pct": -2.6643,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "confluence.x3",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": -4.3166,
+      "median_net_pct": -6.2036,
+      "mean_gross_pct": -3.7166,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1824,
+        0.8176
+      ],
+      "mean_ci90_pct": [
+        -21.3334,
+        12.7003
+      ],
+      "first_half_mean_pct": 7.869,
+      "second_half_mean_pct": -16.5021,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "confluence.x3",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": -13.3404,
+      "median_net_pct": -10.0403,
+      "mean_gross_pct": -12.7404,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.4035
+      ],
+      "mean_ci90_pct": [
+        -24.9456,
+        -1.7351
+      ],
+      "first_half_mean_pct": -7.0394,
+      "second_half_mean_pct": -19.6413,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "confluence.x3",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": -14.3443,
+      "median_net_pct": -15.3413,
+      "mean_gross_pct": -13.7443,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.4035
+      ],
+      "mean_ci90_pct": [
+        -25.6934,
+        -2.9952
+      ],
+      "first_half_mean_pct": -15.3413,
+      "second_half_mean_pct": -13.3473,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "delisting.upbit_notice",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": 5.0606,
+      "median_net_pct": 7.8196,
+      "mean_gross_pct": 5.6606,
+      "hit_rate": 0.75,
+      "hit_rate_ci90": [
+        0.3562,
+        0.9421
+      ],
+      "mean_ci90_pct": [
+        -4.4662,
+        14.5875
+      ],
+      "first_half_mean_pct": 8.0713,
+      "second_half_mean_pct": 2.05,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "delisting.upbit_notice",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": -1.9358,
+      "median_net_pct": -1.7419,
+      "mean_gross_pct": -1.3358,
+      "hit_rate": 0.25,
+      "hit_rate_ci90": [
+        0.0579,
+        0.6438
+      ],
+      "mean_ci90_pct": [
+        -16.9563,
+        13.0847
+      ],
+      "first_half_mean_pct": -1.7419,
+      "second_half_mean_pct": -2.1297,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "delisting.upbit_notice",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": 7.7037,
+      "median_net_pct": 12.2403,
+      "mean_gross_pct": 8.3037,
+      "hit_rate": 0.75,
+      "hit_rate_ci90": [
+        0.3562,
+        0.9421
+      ],
+      "mean_ci90_pct": [
+        -13.4837,
+        28.8911
+      ],
+      "first_half_mean_pct": 14.4484,
+      "second_half_mean_pct": 0.9589,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "delisting.upbit_notice",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 4,
+      "mean_net_pct": 14.9928,
+      "median_net_pct": 20.0202,
+      "mean_gross_pct": 15.5928,
+      "hit_rate": 0.75,
+      "hit_rate_ci90": [
+        0.3562,
+        0.9421
+      ],
+      "mean_ci90_pct": [
+        -2.9495,
+        32.9351
+      ],
+      "first_half_mean_pct": 20.0202,
+      "second_half_mean_pct": 9.9653,
+      "status": "collecting",
+      "status_reason": "4/30 independent samples"
+    },
+    {
+      "type": "discovery.cash_flow_vs_valuation",
+      "metric": "price",
+      "horizon": "1d",
+      "benchmark": "BTC, same venue",
+      "events": 280,
+      "clustered_repeats": 0,
+      "pending": 8,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 271,
+      "mean_net_pct": -0.529,
+      "median_net_pct": -1.0564,
+      "mean_gross_pct": 0.0699,
+      "hit_rate": 0.3948,
+      "hit_rate_ci90": [
+        0.3473,
+        0.4445
+      ],
+      "mean_ci90_pct": [
+        -1.4139,
+        0.3559
+      ],
+      "first_half_mean_pct": -0.4842,
+      "second_half_mean_pct": -0.5734,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.cash_flow_vs_valuation",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 280,
+      "clustered_repeats": 0,
+      "pending": 58,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 221,
+      "mean_net_pct": 0.5265,
+      "median_net_pct": -1.9637,
+      "mean_gross_pct": 1.1251,
+      "hit_rate": 0.3982,
+      "hit_rate_ci90": [
+        0.3456,
+        0.4533
+      ],
+      "mean_ci90_pct": [
+        -1.9844,
+        3.0373
+      ],
+      "first_half_mean_pct": -0.311,
+      "second_half_mean_pct": 1.3564,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "discovery.cash_flow_vs_valuation",
+      "metric": "price",
+      "horizon": "30d",
+      "benchmark": "BTC, same venue",
+      "events": 280,
+      "clustered_repeats": 0,
+      "pending": 223,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 56,
+      "mean_net_pct": -2.5402,
+      "median_net_pct": -2.8845,
+      "mean_gross_pct": -1.9402,
+      "hit_rate": 0.3929,
+      "hit_rate_ci90": [
+        0.2928,
+        0.5028
+      ],
+      "mean_ci90_pct": [
+        -9.5667,
+        4.4864
+      ],
+      "first_half_mean_pct": -1.4346,
+      "second_half_mean_pct": -3.6458,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.cash_flow_vs_valuation",
+      "metric": "tvl",
+      "horizon": "7d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 280,
+      "clustered_repeats": 0,
+      "pending": 32,
+      "missed": 0,
+      "no_t0": 133,
+      "neutral_direction": 0,
+      "n": 115,
+      "mean_net_pct": -3.1691,
+      "median_net_pct": -1.0609,
+      "mean_gross_pct": -3.1691,
+      "hit_rate": 0.4261,
+      "hit_rate_ci90": [
+        0.3528,
+        0.5028
+      ],
+      "mean_ci90_pct": [
+        -5.1155,
+        -1.2227
+      ],
+      "first_half_mean_pct": -2.2459,
+      "second_half_mean_pct": -4.0764,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "discovery.cash_flow_vs_valuation",
+      "metric": "tvl",
+      "horizon": "30d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 280,
+      "clustered_repeats": 0,
+      "pending": 117,
+      "missed": 0,
+      "no_t0": 133,
+      "neutral_direction": 0,
+      "n": 30,
+      "mean_net_pct": -9.2703,
+      "median_net_pct": -8.9596,
+      "mean_gross_pct": -9.2703,
+      "hit_rate": 0.3333,
+      "hit_rate_ci90": [
+        0.2108,
+        0.4834
+      ],
+      "mean_ci90_pct": [
+        -17.0114,
+        -1.5293
+      ],
+      "first_half_mean_pct": -10.8713,
+      "second_half_mean_pct": -7.6694,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "discovery.fee_efficiency",
+      "metric": "price",
+      "horizon": "1d",
+      "benchmark": "BTC, same venue",
+      "events": 435,
+      "clustered_repeats": 0,
+      "pending": 4,
+      "missed": 0,
+      "no_t0": 10,
+      "neutral_direction": 0,
+      "n": 48,
+      "mean_net_pct": -1.12,
+      "median_net_pct": -1.0262,
+      "mean_gross_pct": -0.52,
+      "hit_rate": 0.3333,
+      "hit_rate_ci90": [
+        0.233,
+        0.4515
+      ],
+      "mean_ci90_pct": [
+        -2.1927,
+        -0.0472
+      ],
+      "first_half_mean_pct": -0.7433,
+      "second_half_mean_pct": -1.4967,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "discovery.fee_efficiency",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 435,
+      "clustered_repeats": 0,
+      "pending": 13,
+      "missed": 1,
+      "no_t0": 10,
+      "neutral_direction": 0,
+      "n": 38,
+      "mean_net_pct": -4.5678,
+      "median_net_pct": -4.396,
+      "mean_gross_pct": -3.9678,
+      "hit_rate": 0.2105,
+      "hit_rate_ci90": [
+        0.1229,
+        0.3366
+      ],
+      "mean_ci90_pct": [
+        -7.1176,
+        -2.0179
+      ],
+      "first_half_mean_pct": -4.1048,
+      "second_half_mean_pct": -5.0307,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "discovery.fee_efficiency",
+      "metric": "price",
+      "horizon": "30d",
+      "benchmark": "BTC, same venue",
+      "events": 435,
+      "clustered_repeats": 0,
+      "pending": 36,
+      "missed": 0,
+      "no_t0": 10,
+      "neutral_direction": 0,
+      "n": 16,
+      "mean_net_pct": -17.5955,
+      "median_net_pct": -18.9593,
+      "mean_gross_pct": -16.9955,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.1446
+      ],
+      "mean_ci90_pct": [
+        -21.6839,
+        -13.5071
+      ],
+      "first_half_mean_pct": -21.5047,
+      "second_half_mean_pct": -13.6863,
+      "status": "collecting",
+      "status_reason": "16/30 independent samples"
+    },
+    {
+      "type": "discovery.fee_efficiency",
+      "metric": "tvl",
+      "horizon": "7d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 435,
+      "clustered_repeats": 0,
+      "pending": 81,
+      "missed": 2,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 352,
+      "mean_net_pct": 4.9599,
+      "median_net_pct": -2.2663,
+      "mean_gross_pct": 4.9599,
+      "hit_rate": 0.358,
+      "hit_rate_ci90": [
+        0.3172,
+        0.4009
+      ],
+      "mean_ci90_pct": [
+        -6.0524,
+        15.9723
+      ],
+      "first_half_mean_pct": 13.4507,
+      "second_half_mean_pct": -3.5309,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "discovery.fee_efficiency",
+      "metric": "tvl",
+      "horizon": "30d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 435,
+      "clustered_repeats": 0,
+      "pending": 312,
+      "missed": 1,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 122,
+      "mean_net_pct": -8.6109,
+      "median_net_pct": -9.5937,
+      "mean_gross_pct": -8.6109,
+      "hit_rate": 0.2705,
+      "hit_rate_ci90": [
+        0.2099,
+        0.3411
+      ],
+      "mean_ci90_pct": [
+        -14.1258,
+        -3.0961
+      ],
+      "first_half_mean_pct": -11.9242,
+      "second_half_mean_pct": -5.2977,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "discovery.fee_momentum",
+      "metric": "price",
+      "horizon": "1d",
+      "benchmark": "BTC, same venue",
+      "events": 195,
+      "clustered_repeats": 0,
+      "pending": 3,
+      "missed": 0,
+      "no_t0": 5,
+      "neutral_direction": 0,
+      "n": 79,
+      "mean_net_pct": -0.7035,
+      "median_net_pct": -0.6801,
+      "mean_gross_pct": -0.1073,
+      "hit_rate": 0.3544,
+      "hit_rate_ci90": [
+        0.2721,
+        0.4464
+      ],
+      "mean_ci90_pct": [
+        -2.019,
+        0.612
+      ],
+      "first_half_mean_pct": -1.634,
+      "second_half_mean_pct": 0.2037,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "discovery.fee_momentum",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 195,
+      "clustered_repeats": 0,
+      "pending": 28,
+      "missed": 1,
+      "no_t0": 5,
+      "neutral_direction": 0,
+      "n": 53,
+      "mean_net_pct": 0.6929,
+      "median_net_pct": -3.4336,
+      "mean_gross_pct": 1.2872,
+      "hit_rate": 0.283,
+      "hit_rate_ci90": [
+        0.1937,
+        0.3934
+      ],
+      "mean_ci90_pct": [
+        -6.1375,
+        7.5233
+      ],
+      "first_half_mean_pct": 0.2885,
+      "second_half_mean_pct": 1.0823,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.fee_momentum",
+      "metric": "price",
+      "horizon": "30d",
+      "benchmark": "BTC, same venue",
+      "events": 195,
+      "clustered_repeats": 0,
+      "pending": 65,
+      "missed": 0,
+      "no_t0": 5,
+      "neutral_direction": 0,
+      "n": 17,
+      "mean_net_pct": -3.3008,
+      "median_net_pct": -13.3974,
+      "mean_gross_pct": -2.7008,
+      "hit_rate": 0.2941,
+      "hit_rate_ci90": [
+        0.1512,
+        0.4936
+      ],
+      "mean_ci90_pct": [
+        -16.3351,
+        9.7335
+      ],
+      "first_half_mean_pct": -8.3887,
+      "second_half_mean_pct": 1.2217,
+      "status": "collecting",
+      "status_reason": "17/30 independent samples"
+    },
+    {
+      "type": "discovery.fee_momentum",
+      "metric": "tvl",
+      "horizon": "7d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 195,
+      "clustered_repeats": 0,
+      "pending": 39,
+      "missed": 0,
+      "no_t0": 38,
+      "neutral_direction": 0,
+      "n": 118,
+      "mean_net_pct": 1.8583,
+      "median_net_pct": -1.7332,
+      "mean_gross_pct": 1.8583,
+      "hit_rate": 0.3644,
+      "hit_rate_ci90": [
+        0.2953,
+        0.4396
+      ],
+      "mean_ci90_pct": [
+        -2.6178,
+        6.3343
+      ],
+      "first_half_mean_pct": 2.0916,
+      "second_half_mean_pct": 1.6249,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.fee_momentum",
+      "metric": "tvl",
+      "horizon": "30d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 195,
+      "clustered_repeats": 0,
+      "pending": 107,
+      "missed": 0,
+      "no_t0": 38,
+      "neutral_direction": 0,
+      "n": 50,
+      "mean_net_pct": -3.0555,
+      "median_net_pct": -7.6517,
+      "mean_gross_pct": -3.0555,
+      "hit_rate": 0.3,
+      "hit_rate_ci90": [
+        0.2059,
+        0.4146
+      ],
+      "mean_ci90_pct": [
+        -13.4149,
+        7.304
+      ],
+      "first_half_mean_pct": -16.8809,
+      "second_half_mean_pct": 10.7699,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "discovery.fresh_listing_on_llama",
+      "metric": "price",
+      "horizon": "1d",
+      "benchmark": "BTC, same venue",
+      "events": 69,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -25.3108,
+      "median_net_pct": -25.3108,
+      "mean_gross_pct": -24.7108,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -163.5758,
+        112.9541
+      ],
+      "first_half_mean_pct": -3.4127,
+      "second_half_mean_pct": -47.209,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "discovery.fresh_listing_on_llama",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 69,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -45.2903,
+      "median_net_pct": -45.2903,
+      "mean_gross_pct": -44.6903,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -242.5599,
+        151.9794
+      ],
+      "first_half_mean_pct": -14.0471,
+      "second_half_mean_pct": -76.5335,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "discovery.fresh_listing_on_llama",
+      "metric": "price",
+      "horizon": "30d",
+      "benchmark": "BTC, same venue",
+      "events": 69,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -47.5774,
+      "median_net_pct": -47.5774,
+      "mean_gross_pct": -46.9774,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -303.9296,
+        208.7747
+      ],
+      "first_half_mean_pct": -6.9768,
+      "second_half_mean_pct": -88.178,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "discovery.fresh_listing_on_llama",
+      "metric": "tvl",
+      "horizon": "7d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 69,
+      "clustered_repeats": 0,
+      "pending": 8,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 61,
+      "mean_net_pct": 2.055,
+      "median_net_pct": -3.0612,
+      "mean_gross_pct": 2.055,
+      "hit_rate": 0.4098,
+      "hit_rate_ci90": [
+        0.3122,
+        0.5151
+      ],
+      "mean_ci90_pct": [
+        -6.0017,
+        10.1117
+      ],
+      "first_half_mean_pct": 3.3056,
+      "second_half_mean_pct": 0.8447,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.fresh_listing_on_llama",
+      "metric": "tvl",
+      "horizon": "30d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 69,
+      "clustered_repeats": 0,
+      "pending": 43,
+      "missed": 1,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 25,
+      "mean_net_pct": 37.9951,
+      "median_net_pct": -14.7305,
+      "mean_gross_pct": 37.9951,
+      "hit_rate": 0.36,
+      "hit_rate_ci90": [
+        0.2231,
+        0.5243
+      ],
+      "mean_ci90_pct": [
+        -4.1665,
+        80.1567
+      ],
+      "first_half_mean_pct": 45.3819,
+      "second_half_mean_pct": 31.1765,
+      "status": "collecting",
+      "status_reason": "25/30 independent samples"
+    },
+    {
+      "type": "discovery.tokenless_momentum",
+      "metric": "tvl",
+      "horizon": "7d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 90,
+      "clustered_repeats": 0,
+      "pending": 8,
+      "missed": 1,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 81,
+      "mean_net_pct": -0.7996,
+      "median_net_pct": -1.5799,
+      "mean_gross_pct": -0.7996,
+      "hit_rate": 0.4444,
+      "hit_rate_ci90": [
+        0.3569,
+        0.5356
+      ],
+      "mean_ci90_pct": [
+        -5.8796,
+        4.2803
+      ],
+      "first_half_mean_pct": -0.3883,
+      "second_half_mean_pct": -1.201,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.tokenless_momentum",
+      "metric": "tvl",
+      "horizon": "30d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 90,
+      "clustered_repeats": 0,
+      "pending": 43,
+      "missed": 1,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 46,
+      "mean_net_pct": 21.732,
+      "median_net_pct": -12.4273,
+      "mean_gross_pct": 21.732,
+      "hit_rate": 0.413,
+      "hit_rate_ci90": [
+        0.3017,
+        0.534
+      ],
+      "mean_ci90_pct": [
+        -2.4433,
+        45.9074
+      ],
+      "first_half_mean_pct": 17.2234,
+      "second_half_mean_pct": 26.2407,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "discovery.tvl_momentum",
+      "metric": "price",
+      "horizon": "1d",
+      "benchmark": "BTC, same venue",
+      "events": 131,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 10,
+      "neutral_direction": 0,
+      "n": 17,
+      "mean_net_pct": -1.0979,
+      "median_net_pct": -2.1214,
+      "mean_gross_pct": -0.4979,
+      "hit_rate": 0.4118,
+      "hit_rate_ci90": [
+        0.2411,
+        0.6066
+      ],
+      "mean_ci90_pct": [
+        -9.9368,
+        7.741
+      ],
+      "first_half_mean_pct": 3.6073,
+      "second_half_mean_pct": -5.2803,
+      "status": "collecting",
+      "status_reason": "17/30 independent samples"
+    },
+    {
+      "type": "discovery.tvl_momentum",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 131,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 10,
+      "neutral_direction": 0,
+      "n": 17,
+      "mean_net_pct": -2.5036,
+      "median_net_pct": -4.8392,
+      "mean_gross_pct": -1.9036,
+      "hit_rate": 0.4118,
+      "hit_rate_ci90": [
+        0.2411,
+        0.6066
+      ],
+      "mean_ci90_pct": [
+        -15.6884,
+        10.6812
+      ],
+      "first_half_mean_pct": 3.8372,
+      "second_half_mean_pct": -8.1399,
+      "status": "collecting",
+      "status_reason": "17/30 independent samples"
+    },
+    {
+      "type": "discovery.tvl_momentum",
+      "metric": "price",
+      "horizon": "30d",
+      "benchmark": "BTC, same venue",
+      "events": 131,
+      "clustered_repeats": 0,
+      "pending": 3,
+      "missed": 0,
+      "no_t0": 10,
+      "neutral_direction": 0,
+      "n": 14,
+      "mean_net_pct": 12.0917,
+      "median_net_pct": -5.8181,
+      "mean_gross_pct": 12.6917,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.2988,
+        0.7012
+      ],
+      "mean_ci90_pct": [
+        -18.33,
+        42.5135
+      ],
+      "first_half_mean_pct": 33.9985,
+      "second_half_mean_pct": -9.815,
+      "status": "collecting",
+      "status_reason": "14/30 independent samples"
+    },
+    {
+      "type": "discovery.tvl_momentum",
+      "metric": "tvl",
+      "horizon": "7d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 131,
+      "clustered_repeats": 0,
+      "pending": 7,
+      "missed": 1,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 123,
+      "mean_net_pct": 12.8213,
+      "median_net_pct": -1.7745,
+      "mean_gross_pct": 12.8213,
+      "hit_rate": 0.4472,
+      "hit_rate_ci90": [
+        0.3753,
+        0.5212
+      ],
+      "mean_ci90_pct": [
+        -4.3259,
+        29.9685
+      ],
+      "first_half_mean_pct": -7.1842,
+      "second_half_mean_pct": 32.5041,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "discovery.tvl_momentum",
+      "metric": "tvl",
+      "horizon": "30d",
+      "benchmark": "aggregate DeFi TVL",
+      "events": 131,
+      "clustered_repeats": 0,
+      "pending": 63,
+      "missed": 1,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 67,
+      "mean_net_pct": 3.2272,
+      "median_net_pct": -12.9066,
+      "mean_gross_pct": 3.2272,
+      "hit_rate": 0.3284,
+      "hit_rate_ci90": [
+        0.2423,
+        0.4278
+      ],
+      "mean_ci90_pct": [
+        -13.0223,
+        19.4766
+      ],
+      "first_half_mean_pct": 7.6567,
+      "second_half_mean_pct": -1.0721,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "hack",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 41,
+      "clustered_repeats": 3,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "hack",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 41,
+      "clustered_repeats": 3,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "hack",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 41,
+      "clustered_repeats": 3,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "hack",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 41,
+      "clustered_repeats": 3,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 1,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "ignition.binance_perp",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 247,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 247,
+      "mean_net_pct": -0.9702,
+      "median_net_pct": -0.9662,
+      "mean_gross_pct": -0.3702,
+      "hit_rate": 0.3765,
+      "hit_rate_ci90": [
+        0.3274,
+        0.4283
+      ],
+      "mean_ci90_pct": [
+        -1.626,
+        -0.3145
+      ],
+      "first_half_mean_pct": -1.4426,
+      "second_half_mean_pct": -0.5017,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "ignition.binance_perp",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 247,
+      "clustered_repeats": 0,
+      "pending": 1,
+      "missed": 2,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 244,
+      "mean_net_pct": -1.1827,
+      "median_net_pct": -2.2969,
+      "mean_gross_pct": -0.5827,
+      "hit_rate": 0.3607,
+      "hit_rate_ci90": [
+        0.3119,
+        0.4125
+      ],
+      "mean_ci90_pct": [
+        -2.6403,
+        0.2749
+      ],
+      "first_half_mean_pct": -1.5052,
+      "second_half_mean_pct": -0.8602,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "ignition.binance_perp",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 247,
+      "clustered_repeats": 0,
+      "pending": 1,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 246,
+      "mean_net_pct": -1.8536,
+      "median_net_pct": -5.002,
+      "mean_gross_pct": -1.2536,
+      "hit_rate": 0.3089,
+      "hit_rate_ci90": [
+        0.2628,
+        0.3593
+      ],
+      "mean_ci90_pct": [
+        -3.9594,
+        0.2523
+      ],
+      "first_half_mean_pct": -2.2959,
+      "second_half_mean_pct": -1.4112,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "ignition.binance_perp",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 247,
+      "clustered_repeats": 0,
+      "pending": 5,
+      "missed": 2,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 240,
+      "mean_net_pct": -2.7659,
+      "median_net_pct": -6.8365,
+      "mean_gross_pct": -2.1659,
+      "hit_rate": 0.3125,
+      "hit_rate_ci90": [
+        0.2656,
+        0.3636
+      ],
+      "mean_ci90_pct": [
+        -5.3035,
+        -0.2284
+      ],
+      "first_half_mean_pct": -2.332,
+      "second_half_mean_pct": -3.1999,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "ignition.binance_perp",
+      "metric": "price",
+      "horizon": "7d",
+      "benchmark": "BTC, same venue",
+      "events": 247,
+      "clustered_repeats": 0,
+      "pending": 23,
+      "missed": 2,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 222,
+      "mean_net_pct": -3.119,
+      "median_net_pct": -9.6537,
+      "mean_gross_pct": -2.519,
+      "hit_rate": 0.2838,
+      "hit_rate_ci90": [
+        0.2368,
+        0.3359
+      ],
+      "mean_ci90_pct": [
+        -6.3575,
+        0.1194
+      ],
+      "first_half_mean_pct": -1.3183,
+      "second_half_mean_pct": -4.9198,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "listing.binance_notice",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -2.3776,
+      "median_net_pct": -2.3776,
+      "mean_gross_pct": -1.7776,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -9.716,
+        4.9607
+      ],
+      "first_half_mean_pct": -3.5399,
+      "second_half_mean_pct": -1.2154,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_notice",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 6.892,
+      "median_net_pct": 6.892,
+      "mean_gross_pct": 7.492,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -64.8763,
+        78.6602
+      ],
+      "first_half_mean_pct": 18.2585,
+      "second_half_mean_pct": -4.4746,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_notice",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 13.3953,
+      "median_net_pct": 13.3953,
+      "mean_gross_pct": 13.9953,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -74.7222,
+        101.5128
+      ],
+      "first_half_mean_pct": 27.3512,
+      "second_half_mean_pct": -0.5606,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_notice",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 4.9183,
+      "median_net_pct": 4.9183,
+      "mean_gross_pct": 5.5183,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -47.7237,
+        57.5603
+      ],
+      "first_half_mean_pct": 13.2557,
+      "second_half_mean_pct": -3.419,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_perp",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 2,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 0.4514,
+      "median_net_pct": 0.4514,
+      "mean_gross_pct": 1.0514,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -5.6771,
+        6.5799
+      ],
+      "first_half_mean_pct": 1.422,
+      "second_half_mean_pct": -0.5192,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_perp",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 2,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 5.1499,
+      "median_net_pct": 5.1499,
+      "mean_gross_pct": 5.7499,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -92.2094,
+        102.5091
+      ],
+      "first_half_mean_pct": 20.5695,
+      "second_half_mean_pct": -10.2697,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_perp",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 2,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 12.332,
+      "median_net_pct": 12.332,
+      "mean_gross_pct": 12.932,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -158.184,
+        182.848
+      ],
+      "first_half_mean_pct": 39.338,
+      "second_half_mean_pct": -14.674,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.binance_perp",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 2,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 8.7389,
+      "median_net_pct": 8.7389,
+      "mean_gross_pct": 9.3389,
+      "hit_rate": 1.0,
+      "hit_rate_ci90": [
+        0.425,
+        1.0
+      ],
+      "mean_ci90_pct": [
+        -42.7122,
+        60.19
+      ],
+      "first_half_mean_pct": 16.8876,
+      "second_half_mean_pct": 0.5902,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "listing.coinbase",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 7,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 7,
+      "mean_net_pct": 5.6123,
+      "median_net_pct": -0.328,
+      "mean_gross_pct": 6.2123,
+      "hit_rate": 0.4286,
+      "hit_rate_ci90": [
+        0.1864,
+        0.7105
+      ],
+      "mean_ci90_pct": [
+        -0.2561,
+        11.4807
+      ],
+      "first_half_mean_pct": 4.886,
+      "second_half_mean_pct": 6.1571,
+      "status": "collecting",
+      "status_reason": "7/30 independent samples"
+    },
+    {
+      "type": "listing.coinbase",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 7,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 7,
+      "mean_net_pct": -15.1992,
+      "median_net_pct": -3.1839,
+      "mean_gross_pct": -14.5992,
+      "hit_rate": 0.1429,
+      "hit_rate_ci90": [
+        0.0325,
+        0.4523
+      ],
+      "mean_ci90_pct": [
+        -32.6143,
+        2.2158
+      ],
+      "first_half_mean_pct": -5.9832,
+      "second_half_mean_pct": -22.1113,
+      "status": "collecting",
+      "status_reason": "7/30 independent samples"
+    },
+    {
+      "type": "listing.coinbase",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 7,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 7,
+      "mean_net_pct": -9.6261,
+      "median_net_pct": -10.0262,
+      "mean_gross_pct": -9.0261,
+      "hit_rate": 0.1429,
+      "hit_rate_ci90": [
+        0.0325,
+        0.4523
+      ],
+      "mean_ci90_pct": [
+        -30.9903,
+        11.7382
+      ],
+      "first_half_mean_pct": 3.4597,
+      "second_half_mean_pct": -19.4404,
+      "status": "collecting",
+      "status_reason": "7/30 independent samples"
+    },
+    {
+      "type": "listing.coinbase",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 7,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 7,
+      "mean_net_pct": -12.866,
+      "median_net_pct": -7.123,
+      "mean_gross_pct": -12.266,
+      "hit_rate": 0.2857,
+      "hit_rate_ci90": [
+        0.0996,
+        0.5913
+      ],
+      "mean_ci90_pct": [
+        -36.1115,
+        10.3796
+      ],
+      "first_half_mean_pct": -1.9099,
+      "second_half_mean_pct": -21.083,
+      "status": "collecting",
+      "status_reason": "7/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_perp",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 1,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 1,
+      "mean_net_pct": 34.6628,
+      "median_net_pct": 34.6628,
+      "mean_gross_pct": 35.2628,
+      "hit_rate": 1.0,
+      "hit_rate_ci90": [
+        0.2699,
+        1.0
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "1/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_perp",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 1,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 1,
+      "mean_net_pct": 49.8297,
+      "median_net_pct": 49.8297,
+      "mean_gross_pct": 50.4297,
+      "hit_rate": 1.0,
+      "hit_rate_ci90": [
+        0.2699,
+        1.0
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "1/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_perp",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 1,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 1,
+      "mean_net_pct": 26.8209,
+      "median_net_pct": 26.8209,
+      "mean_gross_pct": 27.4209,
+      "hit_rate": 1.0,
+      "hit_rate_ci90": [
+        0.2699,
+        1.0
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "1/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_perp",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 1,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 1,
+      "mean_net_pct": 40.2537,
+      "median_net_pct": 40.2537,
+      "mean_gross_pct": 40.8537,
+      "hit_rate": 1.0,
+      "hit_rate_ci90": [
+        0.2699,
+        1.0
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "1/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_spot",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 19,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 19,
+      "mean_net_pct": -22.4366,
+      "median_net_pct": -8.242,
+      "mean_gross_pct": -21.8366,
+      "hit_rate": 0.0526,
+      "hit_rate_ci90": [
+        0.0118,
+        0.205
+      ],
+      "mean_ci90_pct": [
+        -33.6373,
+        -11.236
+      ],
+      "first_half_mean_pct": -22.3661,
+      "second_half_mean_pct": -22.5001,
+      "status": "collecting",
+      "status_reason": "19/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_spot",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 19,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 19,
+      "mean_net_pct": -15.5051,
+      "median_net_pct": -0.6484,
+      "mean_gross_pct": -14.9051,
+      "hit_rate": 0.1579,
+      "hit_rate_ci90": [
+        0.0649,
+        0.3362
+      ],
+      "mean_ci90_pct": [
+        -27.3638,
+        -3.6465
+      ],
+      "first_half_mean_pct": -19.3356,
+      "second_half_mean_pct": -12.0577,
+      "status": "collecting",
+      "status_reason": "19/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_spot",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 19,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 19,
+      "mean_net_pct": 20811.0526,
+      "median_net_pct": 102.8222,
+      "mean_gross_pct": 20811.6526,
+      "hit_rate": 0.6316,
+      "hit_rate_ci90": [
+        0.4441,
+        0.7863
+      ],
+      "mean_ci90_pct": [
+        9458.0152,
+        32164.0901
+      ],
+      "first_half_mean_pct": 1579.8763,
+      "second_half_mean_pct": 38119.1114,
+      "status": "collecting",
+      "status_reason": "19/30 independent samples"
+    },
+    {
+      "type": "listing.hyperliquid_spot",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 19,
+      "clustered_repeats": 0,
+      "pending": 1,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 18,
+      "mean_net_pct": 22209.5681,
+      "median_net_pct": 7592.2038,
+      "mean_gross_pct": 22210.1681,
+      "hit_rate": 0.8333,
+      "hit_rate_ci90": [
+        0.6482,
+        0.9314
+      ],
+      "mean_ci90_pct": [
+        10076.1371,
+        34342.9991
+      ],
+      "first_half_mean_pct": 1679.0414,
+      "second_half_mean_pct": 42740.0948,
+      "status": "collecting",
+      "status_reason": "18/30 independent samples"
+    },
+    {
+      "type": "listing.okx_spot",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 82,
+      "clustered_repeats": 6,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 20,
+      "neutral_direction": 0,
+      "n": 56,
+      "mean_net_pct": 0.2369,
+      "median_net_pct": -0.5777,
+      "mean_gross_pct": 0.8369,
+      "hit_rate": 0.1786,
+      "hit_rate_ci90": [
+        0.1098,
+        0.2769
+      ],
+      "mean_ci90_pct": [
+        -2.1085,
+        2.5822
+      ],
+      "first_half_mean_pct": 0.6666,
+      "second_half_mean_pct": -0.1929,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "listing.okx_spot",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 82,
+      "clustered_repeats": 6,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 20,
+      "neutral_direction": 0,
+      "n": 56,
+      "mean_net_pct": -0.9173,
+      "median_net_pct": -0.7398,
+      "mean_gross_pct": -0.3173,
+      "hit_rate": 0.3036,
+      "hit_rate_ci90": [
+        0.2135,
+        0.4117
+      ],
+      "mean_ci90_pct": [
+        -2.5848,
+        0.7502
+      ],
+      "first_half_mean_pct": -1.7484,
+      "second_half_mean_pct": -0.0862,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "listing.okx_spot",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 82,
+      "clustered_repeats": 6,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 20,
+      "neutral_direction": 0,
+      "n": 56,
+      "mean_net_pct": -0.5616,
+      "median_net_pct": -0.752,
+      "mean_gross_pct": 0.0384,
+      "hit_rate": 0.375,
+      "hit_rate_ci90": [
+        0.2767,
+        0.4849
+      ],
+      "mean_ci90_pct": [
+        -3.1174,
+        1.9942
+      ],
+      "first_half_mean_pct": -0.8644,
+      "second_half_mean_pct": -0.2589,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "listing.okx_spot",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 82,
+      "clustered_repeats": 6,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 20,
+      "neutral_direction": 0,
+      "n": 56,
+      "mean_net_pct": -1.4919,
+      "median_net_pct": -1.6278,
+      "mean_gross_pct": -0.8919,
+      "hit_rate": 0.3393,
+      "hit_rate_ci90": [
+        0.2448,
+        0.4486
+      ],
+      "mean_ci90_pct": [
+        -4.6614,
+        1.6775
+      ],
+      "first_half_mean_pct": -3.6449,
+      "second_half_mean_pct": 0.661,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "listing.okx_swap",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 47,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 2,
+      "neutral_direction": 0,
+      "n": 45,
+      "mean_net_pct": -1.3235,
+      "median_net_pct": -0.7348,
+      "mean_gross_pct": -0.7235,
+      "hit_rate": 0.1778,
+      "hit_rate_ci90": [
+        0.1032,
+        0.2889
+      ],
+      "mean_ci90_pct": [
+        -2.6226,
+        -0.0244
+      ],
+      "first_half_mean_pct": -1.5391,
+      "second_half_mean_pct": -1.1172,
+      "status": "failed",
+      "status_reason": "90% CI on mean net excess below zero"
+    },
+    {
+      "type": "listing.okx_swap",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 47,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 2,
+      "neutral_direction": 0,
+      "n": 45,
+      "mean_net_pct": -1.1484,
+      "median_net_pct": -0.6182,
+      "mean_gross_pct": -0.5484,
+      "hit_rate": 0.3778,
+      "hit_rate_ci90": [
+        0.269,
+        0.5004
+      ],
+      "mean_ci90_pct": [
+        -2.9673,
+        0.6706
+      ],
+      "first_half_mean_pct": -2.1061,
+      "second_half_mean_pct": -0.2323,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "listing.okx_swap",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 47,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 2,
+      "neutral_direction": 0,
+      "n": 45,
+      "mean_net_pct": -0.8779,
+      "median_net_pct": -0.6848,
+      "mean_gross_pct": -0.2779,
+      "hit_rate": 0.3778,
+      "hit_rate_ci90": [
+        0.269,
+        0.5004
+      ],
+      "mean_ci90_pct": [
+        -2.7594,
+        1.0035
+      ],
+      "first_half_mean_pct": -0.7964,
+      "second_half_mean_pct": -0.9559,
+      "status": "inconclusive",
+      "status_reason": "90% CI on mean net excess includes zero"
+    },
+    {
+      "type": "listing.okx_swap",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 47,
+      "clustered_repeats": 0,
+      "pending": 5,
+      "missed": 0,
+      "no_t0": 2,
+      "neutral_direction": 0,
+      "n": 40,
+      "mean_net_pct": -1.4736,
+      "median_net_pct": -1.009,
+      "mean_gross_pct": -0.8736,
+      "hit_rate": 0.325,
+      "hit_rate_ci90": [
+        0.2177,
+        0.4545
+      ],
+      "mean_ci90_pct": [
+        -3.7635,
+        0.8163
+      ],
+      "first_half_mean_pct": -3.5098,
+      "second_half_mean_pct": 0.5626,
+      "status": "failed",
+      "status_reason": "first and second half disagree in sign"
+    },
+    {
+      "type": "listing.upbit_btc",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 6,
+      "mean_net_pct": -31.1841,
+      "median_net_pct": -39.972,
+      "mean_gross_pct": -30.5841,
+      "hit_rate": 0.1667,
+      "hit_rate_ci90": [
+        0.0381,
+        0.5024
+      ],
+      "mean_ci90_pct": [
+        -67.1407,
+        4.7724
+      ],
+      "first_half_mean_pct": -37.7534,
+      "second_half_mean_pct": -24.6149,
+      "status": "collecting",
+      "status_reason": "6/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_btc",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 6,
+      "mean_net_pct": -36.5134,
+      "median_net_pct": -42.8904,
+      "mean_gross_pct": -35.9134,
+      "hit_rate": 0.1667,
+      "hit_rate_ci90": [
+        0.0381,
+        0.5024
+      ],
+      "mean_ci90_pct": [
+        -68.6114,
+        -4.4154
+      ],
+      "first_half_mean_pct": -37.8348,
+      "second_half_mean_pct": -35.1921,
+      "status": "collecting",
+      "status_reason": "6/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_btc",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 6,
+      "mean_net_pct": -36.8103,
+      "median_net_pct": -49.5487,
+      "mean_gross_pct": -36.2103,
+      "hit_rate": 0.1667,
+      "hit_rate_ci90": [
+        0.0381,
+        0.5024
+      ],
+      "mean_ci90_pct": [
+        -69.9796,
+        -3.641
+      ],
+      "first_half_mean_pct": -44.9761,
+      "second_half_mean_pct": -28.6445,
+      "status": "collecting",
+      "status_reason": "6/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_btc",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 6,
+      "mean_net_pct": -40.2141,
+      "median_net_pct": -46.7549,
+      "mean_gross_pct": -39.6141,
+      "hit_rate": 0.1667,
+      "hit_rate_ci90": [
+        0.0381,
+        0.5024
+      ],
+      "mean_ci90_pct": [
+        -67.0957,
+        -13.3325
+      ],
+      "first_half_mean_pct": -44.7909,
+      "second_half_mean_pct": -35.6373,
+      "status": "collecting",
+      "status_reason": "6/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_krw",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 13,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 13,
+      "mean_net_pct": -5.8077,
+      "median_net_pct": -3.4485,
+      "mean_gross_pct": -5.2077,
+      "hit_rate": 0.3077,
+      "hit_rate_ci90": [
+        0.1464,
+        0.5352
+      ],
+      "mean_ci90_pct": [
+        -10.8436,
+        -0.7719
+      ],
+      "first_half_mean_pct": -4.8293,
+      "second_half_mean_pct": -6.6464,
+      "status": "collecting",
+      "status_reason": "13/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_krw",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 13,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 13,
+      "mean_net_pct": -14.0912,
+      "median_net_pct": -12.6869,
+      "mean_gross_pct": -13.4912,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.1723
+      ],
+      "mean_ci90_pct": [
+        -18.4467,
+        -9.7358
+      ],
+      "first_half_mean_pct": -10.6716,
+      "second_half_mean_pct": -17.0223,
+      "status": "collecting",
+      "status_reason": "13/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_krw",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 13,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 13,
+      "mean_net_pct": -19.3314,
+      "median_net_pct": -16.8888,
+      "mean_gross_pct": -18.7314,
+      "hit_rate": 0.0769,
+      "hit_rate_ci90": [
+        0.0174,
+        0.2823
+      ],
+      "mean_ci90_pct": [
+        -26.6102,
+        -12.0527
+      ],
+      "first_half_mean_pct": -11.2048,
+      "second_half_mean_pct": -26.2971,
+      "status": "collecting",
+      "status_reason": "13/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_krw",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 13,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 13,
+      "mean_net_pct": -26.1667,
+      "median_net_pct": -29.0279,
+      "mean_gross_pct": -25.5667,
+      "hit_rate": 0.0769,
+      "hit_rate_ci90": [
+        0.0174,
+        0.2823
+      ],
+      "mean_ci90_pct": [
+        -33.5852,
+        -18.7483
+      ],
+      "first_half_mean_pct": -16.6565,
+      "second_half_mean_pct": -34.3183,
+      "status": "collecting",
+      "status_reason": "13/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_notice",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 3,
+      "mean_net_pct": 9.2241,
+      "median_net_pct": 9.1519,
+      "mean_gross_pct": 9.8241,
+      "hit_rate": 0.6667,
+      "hit_rate_ci90": [
+        0.2535,
+        0.9217
+      ],
+      "mean_ci90_pct": [
+        -13.353,
+        31.8012
+      ],
+      "first_half_mean_pct": 9.1519,
+      "second_half_mean_pct": 9.2602,
+      "status": "collecting",
+      "status_reason": "3/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_notice",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 3,
+      "mean_net_pct": 10.7833,
+      "median_net_pct": 19.7581,
+      "mean_gross_pct": 11.3833,
+      "hit_rate": 0.6667,
+      "hit_rate_ci90": [
+        0.2535,
+        0.9217
+      ],
+      "mean_ci90_pct": [
+        -15.7722,
+        37.3388
+      ],
+      "first_half_mean_pct": 19.7581,
+      "second_half_mean_pct": 6.2959,
+      "status": "collecting",
+      "status_reason": "3/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_notice",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 3,
+      "mean_net_pct": 1.1088,
+      "median_net_pct": 6.9438,
+      "mean_gross_pct": 1.7088,
+      "hit_rate": 0.6667,
+      "hit_rate_ci90": [
+        0.2535,
+        0.9217
+      ],
+      "mean_ci90_pct": [
+        -34.3816,
+        36.5993
+      ],
+      "first_half_mean_pct": 18.6277,
+      "second_half_mean_pct": -7.6506,
+      "status": "collecting",
+      "status_reason": "3/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_notice",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 3,
+      "mean_net_pct": -6.1683,
+      "median_net_pct": 1.8101,
+      "mean_gross_pct": -5.5683,
+      "hit_rate": 0.6667,
+      "hit_rate_ci90": [
+        0.2535,
+        0.9217
+      ],
+      "mean_ci90_pct": [
+        -47.3144,
+        34.9778
+      ],
+      "first_half_mean_pct": 1.8101,
+      "second_half_mean_pct": -10.1575,
+      "status": "collecting",
+      "status_reason": "3/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_usdt",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 9,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 9,
+      "mean_net_pct": 63.656,
+      "median_net_pct": -0.706,
+      "mean_gross_pct": 64.256,
+      "hit_rate": 0.1111,
+      "hit_rate_ci90": [
+        0.0252,
+        0.3768
+      ],
+      "mean_ci90_pct": [
+        -108.8299,
+        236.1419
+      ],
+      "first_half_mean_pct": 152.7727,
+      "second_half_mean_pct": -7.6374,
+      "status": "collecting",
+      "status_reason": "9/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_usdt",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 9,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 9,
+      "mean_net_pct": 48.9408,
+      "median_net_pct": -4.3495,
+      "mean_gross_pct": 49.5408,
+      "hit_rate": 0.2222,
+      "hit_rate_ci90": [
+        0.0765,
+        0.4964
+      ],
+      "mean_ci90_pct": [
+        -127.3669,
+        225.2486
+      ],
+      "first_half_mean_pct": 152.4508,
+      "second_half_mean_pct": -33.8671,
+      "status": "collecting",
+      "status_reason": "9/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_usdt",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 9,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 9,
+      "mean_net_pct": 59.7416,
+      "median_net_pct": -75.021,
+      "mean_gross_pct": 60.3416,
+      "hit_rate": 0.1111,
+      "hit_rate_ci90": [
+        0.0252,
+        0.3768
+      ],
+      "mean_ci90_pct": [
+        -178.9288,
+        298.412
+      ],
+      "first_half_mean_pct": 222.8557,
+      "second_half_mean_pct": -70.7496,
+      "status": "collecting",
+      "status_reason": "9/30 independent samples"
+    },
+    {
+      "type": "listing.upbit_usdt",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 9,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 9,
+      "mean_net_pct": 107.1696,
+      "median_net_pct": -70.7167,
+      "mean_gross_pct": 107.7696,
+      "hit_rate": 0.1111,
+      "hit_rate_ci90": [
+        0.0252,
+        0.3768
+      ],
+      "mean_ci90_pct": [
+        -225.6645,
+        440.0036
+      ],
+      "first_half_mean_pct": 328.8101,
+      "second_half_mean_pct": -70.1429,
+      "status": "collecting",
+      "status_reason": "9/30 independent samples"
+    },
+    {
+      "type": "news.hack_exploit",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -1.4952,
+      "median_net_pct": -1.4952,
+      "mean_gross_pct": -0.8952,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -2.7906,
+        -0.1998
+      ],
+      "first_half_mean_pct": -1.29,
+      "second_half_mean_pct": -1.7003,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.hack_exploit",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -0.7162,
+      "median_net_pct": -0.7162,
+      "mean_gross_pct": -0.1162,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -4.4432,
+        3.0107
+      ],
+      "first_half_mean_pct": -1.3065,
+      "second_half_mean_pct": -0.126,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.hack_exploit",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -3.5191,
+      "median_net_pct": -3.5191,
+      "mean_gross_pct": -2.9191,
+      "hit_rate": 0.0,
+      "hit_rate_ci90": [
+        0.0,
+        0.575
+      ],
+      "mean_ci90_pct": [
+        -12.3686,
+        5.3304
+      ],
+      "first_half_mean_pct": -4.9207,
+      "second_half_mean_pct": -2.1176,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.hack_exploit",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 6,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 1.2359,
+      "median_net_pct": 1.2359,
+      "mean_gross_pct": 1.8359,
+      "hit_rate": 1.0,
+      "hit_rate_ci90": [
+        0.425,
+        1.0
+      ],
+      "mean_ci90_pct": [
+        -3.8159,
+        6.2877
+      ],
+      "first_half_mean_pct": 2.036,
+      "second_half_mean_pct": 0.4358,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.legal",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 5,
+      "clustered_repeats": 1,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "news.legal",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 5,
+      "clustered_repeats": 1,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "news.legal",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 5,
+      "clustered_repeats": 1,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "news.legal",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 5,
+      "clustered_repeats": 1,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 0,
+      "mean_net_pct": null,
+      "median_net_pct": null,
+      "mean_gross_pct": null,
+      "hit_rate": null,
+      "hit_rate_ci90": [
+        null,
+        null
+      ],
+      "mean_ci90_pct": [
+        null,
+        null
+      ],
+      "first_half_mean_pct": null,
+      "second_half_mean_pct": null,
+      "status": "collecting",
+      "status_reason": "0/30 independent samples"
+    },
+    {
+      "type": "news.product_launch",
+      "metric": "price",
+      "horizon": "1h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 0.19,
+      "median_net_pct": 0.19,
+      "mean_gross_pct": 0.64,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -3.0027,
+        3.3827
+      ],
+      "first_half_mean_pct": 0.6956,
+      "second_half_mean_pct": -0.3157,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.product_launch",
+      "metric": "price",
+      "horizon": "4h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 1.8429,
+      "median_net_pct": 1.8429,
+      "mean_gross_pct": 2.2929,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -14.3237,
+        18.0095
+      ],
+      "first_half_mean_pct": 4.4033,
+      "second_half_mean_pct": -0.7175,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.product_launch",
+      "metric": "price",
+      "horizon": "24h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": 1.939,
+      "median_net_pct": 1.939,
+      "mean_gross_pct": 2.389,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -14.564,
+        18.442
+      ],
+      "first_half_mean_pct": 4.5527,
+      "second_half_mean_pct": -0.6747,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    },
+    {
+      "type": "news.product_launch",
+      "metric": "price",
+      "horizon": "72h",
+      "benchmark": "BTC, same venue",
+      "events": 4,
+      "clustered_repeats": 0,
+      "pending": 0,
+      "missed": 0,
+      "no_t0": 0,
+      "neutral_direction": 0,
+      "n": 2,
+      "mean_net_pct": -0.6,
+      "median_net_pct": -0.6,
+      "mean_gross_pct": -0.15,
+      "hit_rate": 0.5,
+      "hit_rate_ci90": [
+        0.1209,
+        0.8791
+      ],
+      "mean_ci90_pct": [
+        -6.6534,
+        5.4535
+      ],
+      "first_half_mean_pct": 0.3588,
+      "second_half_mean_pct": -1.5587,
+      "status": "collecting",
+      "status_reason": "2/30 independent samples"
+    }
+  ]
+}

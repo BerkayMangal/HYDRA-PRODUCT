@@ -1,0 +1,25 @@
+{
+  "headline": "BTC shows slight resilience amid bearish sentiment.",
+  "detail": "Despite a 24h change of +0.08% and a low Fear & Greed score of 26, BTC's price remains high at $77,617. The L/S ratio of 2.58 indicates more long positions, suggesting potential bullish sentiment among traders.",
+  "signal": "BULLISH",
+  "confidence": 65,
+  "provider": "GPT-4o-mini",
+  "agreement": "SINGLE",
+  "conviction": "MEDIUM",
+  "providers": {
+    "gpt": {
+      "headline": "BTC shows slight resilience amid bearish sentiment.",
+      "detail": "Despite a 24h change of +0.08% and a low Fear & Greed score of 26, BTC's price remains high at $77,617. The L/S ratio of 2.58 indicates more long positions, suggesting potential bullish sentiment among traders.",
+      "signal": "BULLISH",
+      "confidence": 65,
+      "provider": "GPT-4o-mini"
+    }
+  },
+  "data_points": 12,
+  "updated_at": "2026-11-03T16:02:25.530134+00:00",
+  "error": null,
+  "provider_cooldowns": {
+    "Claude": 10237,
+    "Perplexity": 10237
+  }
+}
