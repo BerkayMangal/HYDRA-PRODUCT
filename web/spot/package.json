@@ -1,0 +1,6 @@
+{
+  "name": "hydra-spot", "version": "0.1.0", "private": true, "type": "module",
+  "scripts": {"build": "tsc --noEmit && vite build", "test": "tsx --test test/*.test.ts"},
+  "dependencies": {"@nktkas/hyperliquid": "0.33.3", "decimal.js": "10.6.0", "viem": "2.57.16"},
+  "devDependencies": {"typescript": "5.9.3", "vite": "8.3.5", "tsx": "4.20.6", "@types/node": "24.10.1"}
+}

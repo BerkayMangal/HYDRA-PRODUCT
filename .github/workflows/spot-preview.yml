@@ -1,0 +1,64 @@
+name: Spot phone preview
+on:
+  push:
+    branches: [feature/spot-wallet-preview-20261103]
+    paths: ['web/spot/**', 'static/spot/**', '.github/workflows/spot-preview.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: hydra-spot-preview
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: web/spot/package-lock.json
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        working-directory: web/spot
+      - run: npm test && npm run build
+        working-directory: web/spot
+      - name: Assemble phone preview
+        run: |
+          mkdir -p /tmp/spot-pages/spot
+          cp -r static/spot/. /tmp/spot-pages/spot/
+          printf '<!doctype html><meta http-equiv="refresh" content="0;url=./spot/">' > /tmp/spot-pages/index.html
+          touch /tmp/spot-pages/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/spot-pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/deploy-pages@v4
+        id: deployment
+      - name: Verify public preview
+        env:
+          PREVIEW_URL: ${{ steps.deployment.outputs.page_url }}spot/
+        run: |
+          python - <<'PY'
+          import os, urllib.request
+          url=os.environ['PREVIEW_URL']
+          with urllib.request.urlopen(url, timeout=30) as r:
+              html=r.read().decode()
+              assert r.status==200 and 'HYDRA · Spot' in html and 'assets/' in html
+          print('Verified HTTPS phone preview:',url)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('Phone preview: '+url+'\n\nNo financial transactions were executed by this workflow.\n')
+          PY

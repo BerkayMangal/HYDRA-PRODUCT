@@ -281,6 +281,12 @@ async def api_performance():
         "total_signals": 0, "recent": [],
     }))
 
+# User-initiated spot UI. Signing and submission stay in the user's wallet/browser.
+# No server signer, agent approval, deposit or withdrawal endpoint is exposed.
+_SPOT_DIR = os.path.join(_STATIC_DIR, "spot")
+if os.path.isfile(os.path.join(_SPOT_DIR, "index.html")):
+    app.mount("/spot", StaticFiles(directory=_SPOT_DIR, html=True), name="spot")
+
 # ── Page routes — all serve static/index.html ────────────────────────
 def _serve_frontend():
     _idx = os.path.join(_STATIC_DIR, "index.html")

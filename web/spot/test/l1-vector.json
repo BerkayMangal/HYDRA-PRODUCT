@@ -1,0 +1,26 @@
+{
+  "source": "https://github.com/hyperliquid-dex/hyperliquid-python-sdk/blob/master/hyperliquid/utils/signing.py",
+  "source_sha256": "938ec0a1f9611874b423ca946696e19a71d32d14709f521ea5d526f4398c0b85",
+  "action": {
+    "type": "order",
+    "orders": [
+      {
+        "a": 10142,
+        "b": true,
+        "p": "77897",
+        "s": "0.00032",
+        "r": false,
+        "t": {
+          "limit": {
+            "tif": "Ioc"
+          }
+        },
+        "c": "0x00000000000000000000000000000001"
+      }
+    ],
+    "grouping": "na"
+  },
+  "nonce": 1800000000000,
+  "expiresAfter": 1800000030000,
+  "expectedHash": "0x8d79ef7123e26c8e54e8740e1a204ab5b53e63fa0b1287fdb6573ac6ebefe47b"
+}
