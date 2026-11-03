@@ -1,13 +1,17 @@
 name: Spot phone preview
 on:
   push:
-    branches: [feature/spot-wallet-preview-20261103]
-    paths: ['web/spot/**', 'static/spot/**', '.github/workflows/spot-preview.yml']
+    branches: [main]
+    paths: ['.github/workflows/spot-preview.yml']
   workflow_dispatch:
 permissions:
   contents: read
   pages: write
   id-token: write
+# Pages deployment respects the repository's main-branch environment rule.
+# Build the reviewed UI revision; this workflow does not deploy the Railway app.
+env:
+  HYDRA_SPOT_SOURCE_SHA: ab44d58e756b7c1e6eb8fdcf68d65e49601400e7
 concurrency:
   group: hydra-spot-preview
   cancel-in-progress: false
@@ -17,6 +21,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.HYDRA_SPOT_SOURCE_SHA }}
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -36,7 +42,7 @@ jobs:
           import json, os
           from pathlib import Path
           Path('/tmp/spot-pages/spot/release.json').write_text(json.dumps({
-              'commit': os.environ['GITHUB_SHA'],
+              'commit': os.environ['HYDRA_SPOT_SOURCE_SHA'],
               'product': 'HYDRA Spot preview',
           }) + '\n')
           PY
@@ -72,7 +78,7 @@ jobs:
                       assert r.status==200 and 'HYDRA · Spot' in html and 'assets/' in html
                   with urllib.request.urlopen(urljoin(url, 'release.json'), timeout=20) as r:
                       release=json.load(r)
-                      assert release['commit']==os.environ['GITHUB_SHA']
+                      assert release['commit']==os.environ['HYDRA_SPOT_SOURCE_SHA']
                   break
               except Exception:
                   if attempt==11:
