@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-11-04T09:26:51.732023+00:00",
+  "run": "https://github.com/BerkayMangal/HYDRA-PRODUCT/actions/runs/41807286338",
+  "workflow_status": "Success",
+  "audit_result": "missing_railway_access",
+  "scope_checked": "GitHub repository and production environment RAILWAY_TOKEN / RAILWAY_API_TOKEN",
+  "deployments_started": 0,
+  "service_changes": 0,
+  "interpretation": "Diagnostic completed; this is not a successful production deployment."
+}

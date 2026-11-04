@@ -1,0 +1,120 @@
+{
+  "checked_at_utc": "2026-11-04T08:54:32.006960+00:00",
+  "base_url": "https://web-production-57fc0.up.railway.app",
+  "requests_read_only": true,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 15943,
+      "title": [
+        "HYDRA · crypto market read"
+      ],
+      "script_src": [
+        "/assets/hydra.js"
+      ]
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 32,
+      "response_keys": [
+        "status",
+        "cycles"
+      ]
+    },
+    {
+      "path": "/api/version",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/wallets",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/research",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/research/tools",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/research/costs",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/research/forward",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/research/pilot",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/spot/",
+      "status": 404,
+      "content_type": "application/json",
+      "bytes": 22,
+      "response_keys": [
+        "detail"
+      ]
+    },
+    {
+      "path": "/api/scalp",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 13225,
+      "model_state": "active",
+      "model_ids": [
+        "ml15-ens-h2-long",
+        "ml15-hgb-c1x2-long",
+        "swing-xgb-p3x5-long"
+      ],
+      "last_bar": "2026-11-04T08:45:00+00:00"
+    },
+    {
+      "path": "/assets/hydra.js",
+      "status": 200,
+      "content_type": "text/javascript; charset=utf-8",
+      "bytes": 65981
+    }
+  ]
+}
