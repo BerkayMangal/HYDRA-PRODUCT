@@ -129,7 +129,7 @@ def main():
     if summary:
         Path(summary).write_text('# Railway source audit\n\nStatus: '+result['status']+'\n\nNo deployment or service change was performed.\n')
     if result['status'] != 'source_metadata_read':
-        print('::warning::Railway source could not be read. See the audit artifact; no deployment was attempted.')
+        print('::warning::Railway source status: ' + result['status'] + '. No deployment was attempted.')
 
 
 if __name__ == '__main__':
