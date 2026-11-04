@@ -1,0 +1,32 @@
+name: Railway source audit
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/railway_source_audit.py', '.github/workflows/railway-source-audit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read existing source metadata only
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
+          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID || secrets.RAILWAY_PROJECT_ID }}
+          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID || secrets.RAILWAY_ENVIRONMENT_ID }}
+          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID || secrets.RAILWAY_SERVICE_ID }}
+        run: python -m scripts.railway_source_audit --out "${RUNNER_TEMP}/railway-source-audit.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: railway-source-audit
+          path: ${{ runner.temp }}/railway-source-audit.json
