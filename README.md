@@ -1,3 +1,14 @@
+> **Historical research/source repository. Production is elsewhere.**
+> The live HYDRA application deploys from
+> [BerkayMangal/hydra-trading-bot](https://github.com/BerkayMangal/hydra-trading-bot),
+> branch `main`, to https://web-production-57fc0.up.railway.app/.
+> Research modules and evidence from this repository were recovered into that
+> repository in migration commit `ef2c6f5`. Check the production `/api/version`
+> endpoint to verify the actual running release. Pushing here does not update it.
+> Keep this repository as the historical research archive; do not delete its evidence.
+> The separate GitHub Pages spot demo is not the main product; wallet purchases
+> and connection work are deferred.
+
 # HYDRA — BTC Market Intelligence System
 
 > **What this is:** A market monitoring, data aggregation, and research platform focused on BTC spot and perpetual markets.

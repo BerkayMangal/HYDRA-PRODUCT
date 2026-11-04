@@ -1,75 +1,14 @@
-name: Deploy Railway
-
+name: Production deployment moved
 on:
-  workflow_run:
-    workflows: [Tests]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
-  deployments: write
-
-concurrency:
-  group: hydra-railway-production
-  cancel-in-progress: false
-
 jobs:
-  deploy:
-    # Static spot publications must not redeploy the independent Railway app.
-    if: >-
-      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
-      (github.event.workflow_run.conclusion == 'success' &&
-       !startsWith(github.event.workflow_run.head_commit.message, '[spot-preview]') &&
-       !startsWith(github.event.workflow_run.head_commit.message, '[deployment-audit]') &&
-       github.event.workflow_run.event == 'push' &&
-       github.event.workflow_run.head_branch == 'main' &&
-       github.event.workflow_run.head_repository.full_name == github.repository)
+  canonical_repository:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    environment:
-      name: production
-      url: https://web-production-57fc0.up.railway.app
-    env:
-      HYDRA_DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
-      RAILWAY_CLI: /tmp/hydra-railway-cli
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ env.HYDRA_DEPLOY_SHA }}
-          persist-credentials: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Validate manual release
-        if: github.event_name == 'workflow_dispatch'
+      - name: Point to the actual production source
         run: |
-          python -m pip install -r requirements-dev.txt
-          python -m pip check
-          python -m pytest -q -p no:cacheprovider
-      - name: Verify Railway access and existing domain
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
-          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID || secrets.RAILWAY_PROJECT_ID }}
-          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID || secrets.RAILWAY_ENVIRONMENT_ID }}
-          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID || secrets.RAILWAY_SERVICE_ID }}
-        run: python scripts/railway_deploy.py --check-access
-      - name: Install pinned Railway CLI
-        run: python scripts/railway_deploy.py --install-cli
-      - name: Deploy and verify the exact release
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
-          RAILWAY_PROJECT_ID: ${{ vars.RAILWAY_PROJECT_ID || secrets.RAILWAY_PROJECT_ID }}
-          RAILWAY_ENVIRONMENT_ID: ${{ vars.RAILWAY_ENVIRONMENT_ID || secrets.RAILWAY_ENVIRONMENT_ID }}
-          RAILWAY_SERVICE_ID: ${{ vars.RAILWAY_SERVICE_ID || secrets.RAILWAY_SERVICE_ID }}
-        run: python scripts/railway_deploy.py --deploy
-      - name: Save release verification
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: railway-release-verification
-          path: ${{ runner.temp }}/hydra-release-verification.json
-          if-no-files-found: ignore
+          echo '::notice::Production deploys from BerkayMangal/hydra-trading-bot main. HYDRA-PRODUCT is the historical research archive; no deployment is performed here.'
+          echo 'Production source: https://github.com/BerkayMangal/hydra-trading-bot' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Live application: https://web-production-57fc0.up.railway.app/' >> "$GITHUB_STEP_SUMMARY"
